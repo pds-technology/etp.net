@@ -1,0 +1,4 @@
+[submodule "etp"]
+	path = etp
+	url = https://bitbucket.org/energistics/etpv1
+	branch = master
