@@ -15,7 +15,6 @@ etp:
 	git submodule update  --remote	
 
 library: source	
-	if not exist nuget\lib mkdir nuget\lib
 	csc /target:library /out:nuget/lib/ETP.Messages.dll /reference:Avro.dll /lib:./etp/build/bin /recurse:*.cs	
 
 package: library content
