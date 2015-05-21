@@ -1,5 +1,5 @@
 PROTOCOL_DEFINITION=./etp/src/Schemas/etp.avpr
-VERSION=1.0.5
+VERSION=1.0.6
 BUILD=alpha
 source: $(PROTOCOL_DEFINITION)
 	rm -Rf Energistics
@@ -23,7 +23,9 @@ package: library content
 	
 publish: package
 	cd nuget & nuget setApiKey 4d9228fd-aea7-4cbe-8f55-2cf178f7b2c2 & cd ..
-	cd nuget & nuget push ETP.1.0.5-alpha.nupkg & cd ..
+	cd nuget & nuget push ETP.$(VERSION)-$(BUILD).nupkg & cd ..
+	git tag -a $(VERSION)-$(BUILD) -m 'PUBLISH $(VERSION)-$(BUILD) to NUGET'
+	git push --tags
 	
 .PHONY: source content library
 
