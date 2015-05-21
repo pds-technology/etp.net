@@ -1,5 +1,6 @@
 PROTOCOL_DEFINITION=./etp/src/Schemas/etp.avpr
-
+VERSION=1.0.5
+BUILD=alpha
 source: $(PROTOCOL_DEFINITION)
 	rm -Rf Energistics
 	./etp/build/bin/avrogen -p $< .
@@ -14,14 +15,15 @@ etp:
 	git submodule update  --remote	
 
 library: source	
-	csc /target:library /out:nuget/lib/ETP.Messages.dll /reference:Avro.dll /lib:g:\usr\local\bin /recurse:*.cs	
+	csc /target:library /out:nuget/lib/ETP.Messages.dll /reference:Avro.dll /lib:./etp/build/bin /recurse:*.cs	
 
 package: library content
+	cd nuget & sed -E 's/__VERSION__/$(VERSION)/' Template.nuspec | sed -E 's/__BUILD__/$(BUILD)/' > ETP.nuspec & cd ..
 	cd nuget & nuget pack ETP.nuspec & cd ..
 	
 publish: package
 	cd nuget & nuget setApiKey 4d9228fd-aea7-4cbe-8f55-2cf178f7b2c2 & cd ..
-	cd nuget & nuget push ETP.1.0.4-alpha.nupkg & cd ..
+	cd nuget & nuget push ETP.1.0.5-alpha.nupkg & cd ..
 	
 .PHONY: source content library
 
