@@ -9,7 +9,7 @@ $(PROTOCOL_DEFINITION): etp
 
 content:
 	rm -Rf ./nuget/content/*
-	cp -R ./etp/src/Schemas/* ./nuget/content
+	cp -Rp ./etp/src/Schemas/* ./nuget/content/
 
 etp:
 	git submodule update  --remote	
