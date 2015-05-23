@@ -14,8 +14,8 @@ content:
 etp:
 	git submodule update  --remote	
 
-library: source	
-	csc /target:library /out:nuget/lib/ETP.Messages.dll /reference:Avro.dll /lib:./etp/build/bin /recurse:*.cs	
+library: source	etp.snk
+	csc /target:library /out:nuget/lib/ETP.Messages.dll /reference:Avro.dll /lib:./etp/build/bin /recurse:*.cs	/keyfile:etp.snk
 
 package: library content
 	cd nuget & sed -E 's/__VERSION__/$(VERSION)/' Template.nuspec | sed -E 's/__BUILD__/$(BUILD)/' > ETP.nuspec & cd ..
@@ -26,6 +26,9 @@ publish: package
 	cd nuget & nuget push ETP.$(VERSION)-$(BUILD).nupkg & cd ..
 	git tag -a $(VERSION)-$(BUILD) -m 'PUBLISH $(VERSION)-$(BUILD) to NUGET'
 	git push --tags
+	
+etp.snk:
+	sn -k etp.snk
 	
 .PHONY: source content library
 
