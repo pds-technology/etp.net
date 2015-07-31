@@ -1,6 +1,6 @@
 PROTOCOL_DEFINITION=./etp/src/Schemas/etp.avpr
-VERSION=1.0.6
-BUILD=alpha
+VERSION=1.2.0
+BUILD=
 source: $(PROTOCOL_DEFINITION)
 	rm -Rf Energistics
 	./etp/build/bin/avrogen -p $< .
