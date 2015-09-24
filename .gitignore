@@ -1,1 +1,2 @@
 *.bak
+nuget/nuget_ci_info.txt

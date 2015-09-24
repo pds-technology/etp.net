@@ -13,6 +13,7 @@ content:
 
 etp:
 	git submodule update  --remote	
+	cd etp & git pull origin master & cd ..
 
 library: source	etp.snk
 	csc /target:library /out:nuget/lib/ETP.Messages.dll /reference:Avro.dll /lib:./etp/build/bin /recurse:*.cs	/keyfile:etp.snk
