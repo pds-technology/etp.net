@@ -1,5 +1,5 @@
 PROTOCOL_DEFINITION=./etp/src/Schemas/etp.avpr
-VERSION=1.2.0
+VERSION=1.3.0
 BUILD=
 source: $(PROTOCOL_DEFINITION)
 	rm -Rf Energistics
