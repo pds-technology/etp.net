@@ -22,7 +22,7 @@ library: source	etp.snk
 	csc /target:library /out:nuget/lib/ETP.Messages.dll /reference:Avro.dll /lib:./etp/build/bin /recurse:Energistics/*.cs Properties/AssemblyInfo.cs /keyfile:etp.snk
 
 package: library content
-	sed -E 's/__VERSION__/$(VERSION)/' nuget/Template.nuspec | sed -E 's/__BUILD__/$(BUILDPREFIX)$(BUILD)/' > nuget/ETP.nuspec
+	sed -E 's/__VERSION__/$(VERSION)/' nuget/Template.nuspec | sed -E 's/__BUILD__/$(BUILDPREFIX)$(BUILD)/' > nuget/ETP.$(VERSION)$(BUILDPREFIX)$(BUILD).nuspec
 	cd nuget && nuget pack ETP.nuspec && cd ..
 	
 publish: package
