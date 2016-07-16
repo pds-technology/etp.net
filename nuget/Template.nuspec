@@ -9,7 +9,7 @@
         <projectUrl>https://bitbucket.org/energistics/etp.net</projectUrl>
         <iconUrl>https://bitbucket-assetroot.s3.amazonaws.com/c/photos/2013/Nov/08/energistics-avatar-2297613920-0.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>The Energistics Transfer Protocol (ETP) is a specification for an asynchronous message-based data transfer standard used by the Energistics family data formats</description>
+        <description>The Energistics Transfer Protocol (ETP) is a specification for an asynchronous message-based data transfer standard used by the Energistics family data formats. This version was built from https://bitbucket.org/energistics/etpv1/commits/__GITHASH__</description>
         <dependencies>
             <dependency id="Apache.Avro" version="1.7.7.2" />
         </dependencies>

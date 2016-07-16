@@ -3,7 +3,6 @@ VERSION=1.4.0
 BUILD=0
 BUILDPREFIX=.
 PACKAGE=ETP.$(VERSION)$(BUILDPREFIX)$(BUILD)
-GIT_HASH=`git rev-parse --verify HEAD`
 source: $(PROTOCOL_DEFINITION)
 	rm -Rf Energistics
 	./etp/build/bin/avrogen -p $< .
@@ -19,7 +18,7 @@ etp:
 	cd etp & git pull origin master & cd ..
 
 library: source	etp.snk
-	bash fill_templates.sh $(BUILD)
+	bash fill_templates.sh $(VERSION) $(BUILDPREFIX) $(BUILD) $(PACKAGE)
 	csc /target:library /out:nuget/lib/ETP.Messages.dll /reference:Avro.dll /lib:./etp/build/bin /recurse:Energistics/*.cs Properties/AssemblyInfo.cs /keyfile:etp.snk
 
 package: library content
