@@ -29,15 +29,9 @@ package: library content
 publish: package
 	cd nuget && nuget setApiKey 4d9228fd-aea7-4cbe-8f55-2cf178f7b2c2 && cd ..
 	cd nuget && nuget push $(PACKAGE).nupkg && cd ..
-	git tag -a $(VERSION)-$(BUILD) -m 'PUBLISH $(VERSION)-$(BUILD) to NUGET'
-	git push --tags
-	
-release: package
-	cd nuget && nuget setApiKey 4d9228fd-aea7-4cbe-8f55-2cf178f7b2c2 && cd ..
-	cd nuget && nuget push $(PACKAGE).nupkg && cd ..
 	git tag -a $(VERSION)$(BUILDPREFIX)$(BUILD) -m 'PUBLISH $(VERSION)$(BUILDPREFIX)$(BUILD) to NUGET'
 	git push --tags
-
+	
 etp.snk:
 	sn -k etp.snk
 	
