@@ -22,8 +22,7 @@ library: source	etp.snk
 	csc /target:library /out:nuget/lib/ETP.Messages.dll /reference:Avro.dll /lib:./etp/build/bin /recurse:Energistics/*.cs Properties/AssemblyInfo.cs /keyfile:etp.snk
 
 package: library content
-	sed -E 's/__VERSION__/$(VERSION)/' nuget/Template.nuspec | sed -E 's/__BUILD__/$(BUILDPREFIX)$(BUILD)/' > nuget/$(PACKAGE).nuspec
-	cd nuget && nuget pack ETP.nuspec && cd ..
+	cd nuget && nuget pack $(PACKAGE).nuspec && cd ..
 	
 publish: package
 	cd nuget && nuget setApiKey 4d9228fd-aea7-4cbe-8f55-2cf178f7b2c2 && cd ..
