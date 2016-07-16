@@ -2,16 +2,16 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
     <metadata>
         <id>ETP</id>
-        <version>__VERSION__-__BUILD__</version>
+        <version>__VERSION____BUILD__</version>
         <title>Energistics Transport Protocol</title>
-        <authors>Welly Tambunan</authors>
+        <authors>Welly Tambunan, William McKenzie</authors>
         <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0.html</licenseUrl>
-        <projectUrl>https://bitbucket.org/energistics/etpv1</projectUrl>
+        <projectUrl>https://bitbucket.org/energistics/etp.net</projectUrl>
         <iconUrl>https://bitbucket-assetroot.s3.amazonaws.com/c/photos/2013/Nov/08/energistics-avatar-2297613920-0.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>The Energistics Transfer Protocol (ETP) is a specification for an asynchronous message-based data transfer standard used by the Energistics family data formats</description>
         <dependencies>
-            <dependency id="Apache.Avro" version="1.7.7.1" />
+            <dependency id="Apache.Avro" version="1.7.7.2" />
         </dependencies>
     </metadata>
 </package>

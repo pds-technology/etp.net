@@ -1,6 +1,7 @@
 PROTOCOL_DEFINITION=./etp/src/Schemas/etp.avpr
-VERSION=1.3.0
+VERSION=1.4.0
 BUILD=0
+BUILDPREFIX=.
 GIT_HASH=`git rev-parse --verify HEAD`
 source: $(PROTOCOL_DEFINITION)
 	rm -Rf Energistics
@@ -21,19 +22,19 @@ library: source	etp.snk
 	csc /target:library /out:nuget/lib/ETP.Messages.dll /reference:Avro.dll /lib:./etp/build/bin /recurse:Energistics/*.cs Properties/AssemblyInfo.cs /keyfile:etp.snk
 
 package: library content
-	cd nuget & sed -E 's/__VERSION__/$(VERSION)/' Template.nuspec | sed -E 's/__BUILD__/$(BUILD)/' > ETP.nuspec & cd ..
-	cd nuget & nuget pack ETP.nuspec & cd ..
+	sed -E 's/__VERSION__/$(VERSION)/' nuget/Template.nuspec | sed -E 's/__BUILD__/$(BUILDPREFIX)$(BUILD)/' > nuget/ETP.nuspec
+	cd nuget && nuget pack ETP.nuspec && cd ..
 	
 publish: package
-	cd nuget & nuget setApiKey 4d9228fd-aea7-4cbe-8f55-2cf178f7b2c2 & cd ..
-	cd nuget & nuget push ETP.$(VERSION)-$(BUILD).nupkg & cd ..
+	cd nuget && nuget setApiKey 4d9228fd-aea7-4cbe-8f55-2cf178f7b2c2 && cd ..
+	cd nuget && nuget push ETP.$(VERSION)-$(BUILD).nupkg && cd ..
 	git tag -a $(VERSION)-$(BUILD) -m 'PUBLISH $(VERSION)-$(BUILD) to NUGET'
 	git push --tags
 	
 release: package
-	cd nuget & nuget setApiKey 4d9228fd-aea7-4cbe-8f55-2cf178f7b2c2 & cd ..
-	cd nuget & nuget push ETP.$(VERSION)-$(BUILD).nupkg & cd ..
-	git tag -a $(VERSION)-$(BUILD) -m 'PUBLISH $(VERSION)-$(BUILD) to NUGET'
+	cd nuget && nuget setApiKey 4d9228fd-aea7-4cbe-8f55-2cf178f7b2c2 && cd ..
+	cd nuget && nuget push ETP.$(VERSION)-$(BUILD).nupkg && cd ..
+	git tag -a $(VERSION)$(BUILDPREFIX)$(BUILD) -m 'PUBLISH $(VERSION)$(BUILDPREFIX)$(BUILD) to NUGET'
 	git push --tags
 
 etp.snk:
