@@ -19,7 +19,7 @@ etp:
 
 library: source	etp.snk
 	bash fill_templates.sh $(VERSION) $(BUILDPREFIX) $(BUILD) $(PACKAGE)
-	csc /target:library /out:nuget/lib/ETP.Messages.dll /reference:Avro.dll /lib:./etp/build/bin /recurse:Energistics/*.cs Properties/AssemblyInfo.cs /keyfile:etp.snk
+	csc /target:library /out:nuget/lib/ETP.Messages.dll /reference:Avro.dll /lib:./etp/build/bin /recurse:Energistics\*.cs Properties\AssemblyInfo.cs /keyfile:etp.snk
 
 package: library content
 	cd nuget && nuget pack $(PACKAGE).nuspec && cd ..
