@@ -17,9 +17,7 @@ content:
 
 etp:
 	git submodule update  --remote	
-	cd etp & git pull origin master & git checkout HEAD & cd ..
-	git checkout master
-	
+	cd etp && git pull origin master && git checkout HEAD && make & cd ..	
 
 library: source	etp.snk csc.rsp
 	bash fill_templates.sh $(VERSION) $(BUILDPREFIX) $(BUILD) $(PACKAGE)
@@ -37,6 +35,6 @@ publish: package
 etp.snk:
 	sn -k etp.snk
 	
-.PHONY: source content library
+.PHONY: source content library etp
 
 .SUFFIXES: .cs .avsc .avpr
