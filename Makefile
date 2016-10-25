@@ -6,6 +6,8 @@ PACKAGE=ETP.$(VERSION)$(BUILDPREFIX)$(BUILD)
 source: $(PROTOCOL_DEFINITION)
 	rm -Rf Energistics
 	./etp/build/bin/avrogen -p $< .
+	find ./Energistics -name "*.cs" | sed s/\\//\\\\/g > csc.rsp
+	echo ".\Properties\AssemblyInfo.cs" >> csc.rsp
 
 $(PROTOCOL_DEFINITION): etp
 
@@ -15,11 +17,13 @@ content:
 
 etp:
 	git submodule update  --remote	
-	cd etp & git pull origin master & cd ..
+	cd etp & git pull origin master & git checkout HEAD & cd ..
+	git checkout master
+	
 
-library: source	etp.snk
+library: source	etp.snk csc.rsp
 	bash fill_templates.sh $(VERSION) $(BUILDPREFIX) $(BUILD) $(PACKAGE)
-	csc /target:library /out:nuget/lib/ETP.Messages.dll /reference:Avro.dll /lib:./etp/build/bin /recurse:Energistics\*.cs Properties\AssemblyInfo.cs /keyfile:etp.snk
+	csc /warn:4 /target:library /out:nuget/lib/ETP.Messages.dll /reference:Avro.dll /lib:./etp/build/bin /keyfile:etp.snk @csc.rsp
 
 package: library content
 	cd nuget && nuget pack $(PACKAGE).nuspec && cd ..
