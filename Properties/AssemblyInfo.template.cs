@@ -34,4 +34,4 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("__VERSION__.__BUILD__")]
 [assembly: AssemblyFileVersion("__VERSION__.__BUILD__")]
-[assembly: AssemblyMetadata("Git.Sha", "__GITHASH__")]
+[assembly: AssemblyInformationalVersion("__VERSION__.__BUILD__-__GITHASH__")]
