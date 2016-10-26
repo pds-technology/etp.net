@@ -17,9 +17,9 @@ content:
 
 etp:
 	git submodule update  --remote	
-	cd etp & git pull origin master & git checkout HEAD & make & cd ..	
+	cd etp && git pull origin master && git checkout HEAD && make && cd ..	
 
-library: source	etp.snk csc.rsp
+library: source	etp.snk
 	bash fill_templates.sh $(VERSION) $(BUILDPREFIX) $(BUILD) $(PACKAGE)
 	csc /warn:4 /target:library /out:nuget/lib/ETP.Messages.dll /reference:Avro.dll /lib:./etp/build/bin /keyfile:etp.snk @csc.rsp
 
