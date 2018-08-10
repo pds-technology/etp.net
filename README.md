@@ -1,1 +1,1 @@
-This is the git repository for ETP.NET, the .NET library for Energistics Transport Protocol.
+This is the git repository for the Energistics Transfer Protocol message serialization library for .NET.
