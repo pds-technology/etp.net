@@ -47,6 +47,13 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Datatypes\IDataValue.cs" />
+    <Compile Include="Common\Datatypes\IMessageHeader.cs" />
+    <Compile Include="Common\Datatypes\ISupportedProtocol.cs" />
+    <Compile Include="Common\Datatypes\Object\IResource.cs" />
+    <Compile Include="Common\Datatypes\Object\IDataObject.cs" />
+    <Compile Include="Common\Protocol\Core\IProtocolException.cs" />
+    <Compile Include="Common\Protocol\Core\IAcknowledge.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="v11\Datatypes\AnyArray.cs" />
     <Compile Include="v11\Datatypes\ArrayOfBoolean.cs" />
@@ -69,16 +76,18 @@
     <Compile Include="v11\Datatypes\DataAttribute.cs" />
     <Compile Include="v11\Datatypes\DataValue.cs" />
     <Compile Include="v11\Datatypes\MessageHeader.cs" />
+    <Compile Include="v11\Extensions.cs" />
     <Compile Include="v11\Datatypes\Object\DataObject.cs" />
     <Compile Include="v11\Datatypes\Object\GrowingObjectIndex.cs" />
     <Compile Include="v11\Datatypes\Object\NotificationRequestRecord.cs" />
     <Compile Include="v11\Datatypes\Object\ObjectChange.cs" />
     <Compile Include="v11\Datatypes\Object\ObjectChangeTypes.cs" />
     <Compile Include="v11\Datatypes\Object\Resource.cs" />
-    <Compile Include="v11\Datatypes\Protocols.cs" />
     <Compile Include="v11\Datatypes\ServerCapabilities.cs" />
     <Compile Include="v11\Datatypes\SupportedProtocol.cs" />
     <Compile Include="v11\Datatypes\Version.cs" />
+    <Compile Include="v11\MessageTypes.cs" />
+    <Compile Include="v11\Protocols.cs" />
     <Compile Include="v11\Protocol\ChannelDataFrame\ChannelDataFrameSet.cs" />
     <Compile Include="v11\Protocol\ChannelDataFrame\ChannelMetadata.cs" />
     <Compile Include="v11\Protocol\ChannelDataFrame\RequestChannelData.cs" />
@@ -165,10 +174,12 @@
     <Compile Include="v12\Datatypes\Object\ObjectChangeKinds.cs" />
     <Compile Include="v12\Datatypes\Object\ObjectIndex.cs" />
     <Compile Include="v12\Datatypes\Object\Resource.cs" />
-    <Compile Include="v12\Datatypes\Protocols.cs" />
     <Compile Include="v12\Datatypes\ServerCapabilities.cs" />
     <Compile Include="v12\Datatypes\SupportedProtocol.cs" />
     <Compile Include="v12\Datatypes\Version.cs" />
+    <Compile Include="v12\Extensions.cs" />
+    <Compile Include="v12\MessageTypes.cs" />
+    <Compile Include="v12\Protocols.cs" />
     <Compile Include="v12\Protocol\ChannelDataFrame\ChannelDataFrameSet.cs" />
     <Compile Include="v12\Protocol\ChannelDataFrame\ChannelMetadata.cs" />
     <Compile Include="v12\Protocol\ChannelDataFrame\RequestChannelData.cs" />
