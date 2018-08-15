@@ -82,6 +82,21 @@ namespace Energistics.Etp.v12
                     set { CustomData = value as IDictionary<string, DataValue>; }
                 }
             }
+
+            public partial class DataItem : IDataItem
+            {
+                IDataValue IDataItem.Value
+                {
+                    get { return Value; }
+                    set { Value = value as DataValue; }
+                }
+
+                IList IDataItem.ValueAttributes
+                {
+                    get { return ValueAttributes as IList; }
+                    set { ValueAttributes = value as IList<DataAttribute>; }
+                }
+            }
         }
 
         namespace Object
@@ -98,6 +113,15 @@ namespace Energistics.Etp.v12
             }
 
             public partial class Resource : IResource { }
+        }
+
+        public partial class DataAttribute : IDataAttribute
+        {
+            IDataValue IDataAttribute.AttributeValue
+            {
+                get { return AttributeValue; }
+                set { AttributeValue = value as DataValue; }
+            }
         }
 
         public partial class DataValue : IDataValue { }
