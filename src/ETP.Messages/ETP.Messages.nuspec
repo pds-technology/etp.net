@@ -3,7 +3,7 @@
   <metadata>
     <id>ETP</id>
     <version>$version$</version>
-    <title>Energistics Transport Protocol</title>
+    <title>Energistics Transfer Protocol</title>
     <owners>Energistics</owners>
     <authors>Welly Tambunan, William McKenzie, Bobby Diaz</authors>
     <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0.html</licenseUrl>

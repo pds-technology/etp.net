@@ -55,7 +55,7 @@ namespace Energistics.Etp.v11
                     set { DomainObject = (Object.DataObject) value; }
                 }
 
-                IList IChannelMetadataRecord.AttributeMetadata
+                public IList AttributeMetadata
                 {
                     get { return null; }
                     set { }

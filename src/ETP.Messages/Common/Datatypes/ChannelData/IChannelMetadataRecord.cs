@@ -21,7 +21,7 @@ using Energistics.Etp.Common.Datatypes.Object;
 
 namespace Energistics.Etp.Common.Datatypes.ChannelData
 {
-    interface IChannelMetadataRecord : Avro.Specific.ISpecificRecord
+    public interface IChannelMetadataRecord : Avro.Specific.ISpecificRecord
     {
 	    string ChannelUri { get; set; }
 
