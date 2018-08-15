@@ -26,6 +26,6 @@ namespace Energistics.Etp.Common.Datatypes
 
         string Role { get; set; }
 
-        IDictionary ProtocolCapabilities { get; }
+        IDictionary ProtocolCapabilities { get; set; }
     }
 }

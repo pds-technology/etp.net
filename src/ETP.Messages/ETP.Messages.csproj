@@ -47,6 +47,8 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Datatypes\ChannelData\IChannelMetadataRecord.cs" />
+    <Compile Include="Common\Datatypes\ChannelData\IIndexMetadataRecord.cs" />
     <Compile Include="Common\Datatypes\IDataValue.cs" />
     <Compile Include="Common\Datatypes\IMessageHeader.cs" />
     <Compile Include="Common\Datatypes\ISupportedProtocol.cs" />

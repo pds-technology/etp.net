@@ -16,30 +16,31 @@
 // limitations under the License.
 //-----------------------------------------------------------------------
 
-using System.Collections.Generic;
+using System.Collections;
 
-namespace Energistics.Etp.Common.Datatypes.Object
+namespace Energistics.Etp.Common.Datatypes.ChannelData
 {
-    public interface IResource : Avro.Specific.ISpecificRecord
+    public interface IIndexMetadataRecord : Avro.Specific.ISpecificRecord
     {
+		int IndexKind { get; set; }
+
+		string Uom { get; set; }
+
+        string DepthDatum { get; set; }
+
+        int Direction { get; set; }
+
+        string Mnemonic { get; set; }
+
+        string Description { get; set; }
+
         string Uri { get; set; }
 
-        string ContentType { get; set; }
+        IDictionary CustomData { get; set; }
 
-        string Name { get; set; }
+        int Scale { get; set; }
 
-        bool ChannelSubscribable { get; set; }
+        string TimeDatum { get; set; }
 
-        IDictionary<string, string> CustomData { get; set; }
-
-        string ResourceType { get; set; }
-
-        int? ChildCount { get; set; }
-
-        string Uuid { get; set; }
-
-        long? LastChanged { get; set; }
-
-        bool ObjectNotifiable { get; set; }
     }
 }

@@ -17,7 +17,9 @@
 //-----------------------------------------------------------------------
 
 using System.Collections;
+using System.Collections.Generic;
 using Energistics.Etp.Common.Datatypes;
+using Energistics.Etp.Common.Datatypes.ChannelData;
 using Energistics.Etp.Common.Datatypes.Object;
 using Energistics.Etp.Common.Protocol.Core;
 
@@ -25,6 +27,63 @@ namespace Energistics.Etp.v11
 {
     namespace Datatypes
     {
+        namespace ChannelData
+        {
+            public partial class ChannelMetadataRecord : IChannelMetadataRecord
+            {
+                int IChannelMetadataRecord.Status
+                {
+                    get { return (int) Status; }
+                    set { Status = (ChannelStatuses) value; }
+                }
+
+                IList IChannelMetadataRecord.Indexes
+                {
+                    get { return Indexes as IList; }
+                    set { Indexes = value as IList<IndexMetadataRecord>; }
+                }
+
+                IDictionary IChannelMetadataRecord.CustomData
+                {
+                    get { return CustomData as IDictionary; }
+                    set { CustomData = value as IDictionary<string, DataValue>; }
+                }
+
+                IDataObject IChannelMetadataRecord.DomainObject
+                {
+                    get { return DomainObject; }
+                    set { DomainObject = (Object.DataObject) value; }
+                }
+
+                IList IChannelMetadataRecord.AttributeMetadata
+                {
+                    get { return null; }
+                    set { }
+                }
+            }
+
+            public partial class IndexMetadataRecord : IIndexMetadataRecord
+            {
+                public int IndexKind
+                {
+                    get { return (int) IndexType; }
+                    set { IndexType = (ChannelIndexTypes) value; }
+                }
+
+                int IIndexMetadataRecord.Direction
+                {
+                    get { return (int) Direction; }
+                    set { Direction = (IndexDirections) value; }
+                }
+
+                IDictionary IIndexMetadataRecord.CustomData
+                {
+                    get { return CustomData as IDictionary; }
+                    set { CustomData = value as IDictionary<string, DataValue>; }
+                }
+            }
+        }
+
         namespace Object
         {
             public partial class DataObject : IDataObject
@@ -36,7 +95,20 @@ namespace Energistics.Etp.v11
                 }
             }
 
-            public partial class Resource : IResource { }
+            public partial class Resource : IResource
+            {
+                public int? ChildCount
+                {
+                    get { return HasChildren < 0 ? (int?) null : HasChildren; }
+                    set { HasChildren = value ?? -1; }
+                }
+
+                long? IResource.LastChanged
+                {
+                    get { return LastChanged < 0 ? (long?) null : LastChanged; }
+                    set { LastChanged = value ?? -1; }
+                }
+            }
         }
 
         public partial class DataValue : IDataValue { }
@@ -45,7 +117,11 @@ namespace Energistics.Etp.v11
 
         public partial class SupportedProtocol : ISupportedProtocol
         {
-            IDictionary ISupportedProtocol.ProtocolCapabilities => ProtocolCapabilities as IDictionary;
+            IDictionary ISupportedProtocol.ProtocolCapabilities
+            {
+                get { return ProtocolCapabilities as IDictionary; }
+                set { ProtocolCapabilities = value as IDictionary<string, DataValue>; }
+            }
         }
     }
 
