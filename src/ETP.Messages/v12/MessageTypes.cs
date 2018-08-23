@@ -55,6 +55,20 @@ namespace Energistics.Etp.v12
         }
 
         /// <summary>
+        /// An enumeration of Channel Data Load protocol message types.
+        /// </summary>
+        public enum ChannelDataLoad
+        {
+            Start = 0,
+            OpenChannel,
+            OpenChannelResponse,
+            CloseChannel,
+            RealtimeData,
+            InfillRealtimeData,
+            ChannelDataChange
+        }
+
+        /// <summary>
         /// An enumeration of Channel Data Frame protocol message types.
         /// </summary>
         public enum ChannelDataFrame
@@ -75,6 +89,15 @@ namespace Energistics.Etp.v12
         }
 
         /// <summary>
+        /// An enumeration of Discovery Query protocol message types.
+        /// </summary>
+        public enum DiscoveryQuery
+        {
+            FindResources = 1,
+            FindResourcesResponse
+        }
+
+        /// <summary>
         /// An enumeration of Store protocol message types.
         /// </summary>
         public enum Store
@@ -83,6 +106,15 @@ namespace Energistics.Etp.v12
             PutObject,
             DeleteObject,
             Object
+        }
+
+        /// <summary>
+        /// An enumeration of Store Query protocol message types.
+        /// </summary>
+        public enum StoreQuery
+        {
+            FindObjects = 1,
+            FindObjectsResponse
         }
 
         /// <summary>
@@ -110,6 +142,28 @@ namespace Energistics.Etp.v12
             ReplacePartsByRange,
             DescribeParts,
             PartsMetadata
+        }
+
+        /// <summary>
+        /// An enumeration of Growing Object Notification protocol message types.
+        /// </summary>
+        public enum GrowingObjectNotification
+        {
+            RequestPartNotification = 1,
+            PartChangeNotification,
+            PartDeleteNotification,
+            CancelPartNotification,
+            DeletePartsByRangeNotification,
+            ReplacePartsByRangeNotification
+        }
+
+        /// <summary>
+        /// An enumeration of Growing Object Query protocol message types.
+        /// </summary>
+        public enum GrowingObjectQuery
+        {
+            FindParts = 1,
+            FindPartsResponse
         }
 
         /// <summary>
