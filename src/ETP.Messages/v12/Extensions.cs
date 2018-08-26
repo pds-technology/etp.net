@@ -62,6 +62,32 @@ namespace Energistics.Etp.v12
                 }
             }
 
+            public partial class ChannelRangeInfo : IChannelRangeInfo { }
+
+            public partial class ChannelStreamingInfo : IChannelStreamingInfo
+            {
+                IStreamingStartIndex IChannelStreamingInfo.StartIndex
+                {
+                    get { return StartIndex; }
+                    set { StartIndex = value as StreamingStartIndex; }
+                }
+            }
+
+            public partial class DataItem : IDataItem
+            {
+                IDataValue IDataItem.Value
+                {
+                    get { return Value; }
+                    set { Value = value as DataValue; }
+                }
+
+                IList IDataItem.ValueAttributes
+                {
+                    get { return ValueAttributes as IList; }
+                    set { ValueAttributes = value as IList<DataAttribute>; }
+                }
+            }
+
             public partial class IndexMetadataRecord : IIndexMetadataRecord
             {
                 int IIndexMetadataRecord.IndexKind
@@ -83,20 +109,7 @@ namespace Energistics.Etp.v12
                 }
             }
 
-            public partial class DataItem : IDataItem
-            {
-                IDataValue IDataItem.Value
-                {
-                    get { return Value; }
-                    set { Value = value as DataValue; }
-                }
-
-                IList IDataItem.ValueAttributes
-                {
-                    get { return ValueAttributes as IList; }
-                    set { ValueAttributes = value as IList<DataAttribute>; }
-                }
-            }
+            public partial class StreamingStartIndex : IStreamingStartIndex { }
         }
 
         namespace Object
@@ -112,8 +125,22 @@ namespace Energistics.Etp.v12
                 public string ContentEncoding { get; set; }
             }
 
+            public partial class NotificationRequestRecord : INotificationRequestRecord { }
+
             public partial class Resource : IResource { }
         }
+
+        public partial class AnyArray : IAnyArray { }
+
+        public partial class ArrayOfBoolean : IEtpArray<bool> { }
+
+        public partial class ArrayOfDouble : IEtpArray<double> { }
+
+        public partial class ArrayOfFloat : IEtpArray<float> { }
+
+        public partial class ArrayOfInt : IEtpArray<int> { }
+
+        public partial class ArrayOfLong : IEtpArray<long> { }
 
         public partial class DataAttribute : IDataAttribute
         {
