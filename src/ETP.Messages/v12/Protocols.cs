@@ -39,6 +39,7 @@ namespace Energistics.Etp.v12
 		GrowingObjectQuery,
 		GrowingObjectNotificationQuery,
 		Transaction,
+        ChannelDataLoad = 23,
 		DirectedDiscovery = 30
 	}
 }

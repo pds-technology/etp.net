@@ -62,6 +62,8 @@
     <Compile Include="Common\Datatypes\Object\INotificationRequestRecord.cs" />
     <Compile Include="Common\Datatypes\Object\IResource.cs" />
     <Compile Include="Common\Datatypes\Object\IDataObject.cs" />
+    <Compile Include="v12\Datatypes\ChannelData\DataPoint.cs" />
+    <Compile Include="v12\Datatypes\Uuid.cs" />
     <Compile Include="Common\Protocol\Core\IProtocolException.cs" />
     <Compile Include="Common\Protocol\Core\IAcknowledge.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -193,6 +195,12 @@
     <Compile Include="v12\Protocol\ChannelDataFrame\ChannelDataFrameSet.cs" />
     <Compile Include="v12\Protocol\ChannelDataFrame\ChannelMetadata.cs" />
     <Compile Include="v12\Protocol\ChannelDataFrame\RequestChannelData.cs" />
+    <Compile Include="v12\Protocol\ChannelDataLoad\ChannelDataChange.cs" />
+    <Compile Include="v12\Protocol\ChannelDataLoad\CloseChannel.cs" />
+    <Compile Include="v12\Protocol\ChannelDataLoad\InfillRealtimeData.cs" />
+    <Compile Include="v12\Protocol\ChannelDataLoad\OpenChannel.cs" />
+    <Compile Include="v12\Protocol\ChannelDataLoad\OpenChannelResponse.cs" />
+    <Compile Include="v12\Protocol\ChannelDataLoad\RealtimeData.cs" />
     <Compile Include="v12\Protocol\ChannelStreaming\ChannelData.cs" />
     <Compile Include="v12\Protocol\ChannelStreaming\ChannelDataChange.cs" />
     <Compile Include="v12\Protocol\ChannelStreaming\ChannelDescribe.cs" />

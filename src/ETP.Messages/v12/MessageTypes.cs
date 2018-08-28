@@ -59,8 +59,7 @@ namespace Energistics.Etp.v12
         /// </summary>
         public enum ChannelDataLoad
         {
-            Start = 0,
-            OpenChannel,
+            OpenChannel = 1,
             OpenChannelResponse,
             CloseChannel,
             RealtimeData,
