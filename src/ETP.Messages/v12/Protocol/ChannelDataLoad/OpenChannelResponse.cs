@@ -15,13 +15,13 @@ namespace Energistics.Etp.v12.Protocol.ChannelDataLoad
 	
 	public partial class OpenChannelResponse : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""OpenChannelResponse"",""namespace"":""Energistics.Etp.v12.Protocol.ChannelDataLoad"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""uuid"",""type"":{""type"":""fixed"",""name"":""Uuid"",""namespace"":""Energistics.Etp.v12.Datatypes"",""size"":16}},{""name"":""id"",""type"":""long""},{""name"":""lastIndex"",""type"":{""type"":""record"",""name"":""IndexValue"",""namespace"":""Energistics.Etp.v12.Datatypes"",""fields"":[{""name"":""item"",""type"":[""null"",""double"",""long""]}],""fullName"":""Energistics.Etp.v12.Datatypes.IndexValue"",""depends"":[]}},{""name"":""infill"",""default"":true,""type"":""boolean""},{""name"":""dataChange"",""default"":true,""type"":""boolean""}],""messageType"":""2"",""protocol"":""23"",""senderRole"":""consumer"",""protocolRoles"":""producer,consumer""}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""OpenChannelResponse"",""namespace"":""Energistics.Etp.v12.Protocol.ChannelDataLoad"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""uuid"",""type"":{""type"":""fixed"",""name"":""Uuid"",""namespace"":""Energistics.Etp.v12.Datatypes"",""size"":16}},{""name"":""id"",""type"":""long""},{""name"":""lastIndex"",""type"":{""type"":""record"",""name"":""IndexValue"",""namespace"":""Energistics.Etp.v12.Datatypes"",""fields"":[{""name"":""item"",""type"":[""null"",""double"",""long""]}],""fullName"":""Energistics.Etp.v12.Datatypes.IndexValue"",""depends"":[]}},{""name"":""infill"",""default"":true,""type"":""boolean""},{""name"":""dataChanges"",""default"":true,""type"":""boolean""}],""messageType"":""2"",""protocol"":""23"",""senderRole"":""consumer"",""protocolRoles"":""producer,consumer""}");
 		private string _uri;
 		private Energistics.Etp.v12.Datatypes.Uuid _uuid;
 		private long _id;
 		private Energistics.Etp.v12.Datatypes.IndexValue _lastIndex;
 		private bool _infill;
-		private bool _dataChange;
+		private bool _dataChanges;
 		public virtual Schema Schema
 		{
 			get
@@ -84,15 +84,15 @@ namespace Energistics.Etp.v12.Protocol.ChannelDataLoad
 				this._infill = value;
 			}
 		}
-		public bool DataChange
+		public bool DataChanges
 		{
 			get
 			{
-				return this._dataChange;
+				return this._dataChanges;
 			}
 			set
 			{
-				this._dataChange = value;
+				this._dataChanges = value;
 			}
 		}
 		public virtual object Get(int fieldPos)
@@ -104,7 +104,7 @@ namespace Energistics.Etp.v12.Protocol.ChannelDataLoad
 			case 2: return this._id;
 			case 3: return this._lastIndex;
 			case 4: return this._infill;
-			case 5: return this._dataChange;
+			case 5: return this._dataChanges;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -117,7 +117,7 @@ namespace Energistics.Etp.v12.Protocol.ChannelDataLoad
 			case 2: this._id = (System.Int64)fieldValue; break;
 			case 3: this._lastIndex = (Energistics.Etp.v12.Datatypes.IndexValue)fieldValue; break;
 			case 4: this._infill = (System.Boolean)fieldValue; break;
-			case 5: this._dataChange = (System.Boolean)fieldValue; break;
+			case 5: this._dataChanges = (System.Boolean)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

@@ -88,6 +88,27 @@ namespace Energistics.Etp.v12
                 }
             }
 
+            public partial class DataPoint : IDataPoint
+            {
+                IList IDataPoint.Indexes
+                {
+                    get { return Indexes as IList; }
+                    set { Indexes = value as IList<IndexValue>; }
+                }
+
+                IDataValue IDataPoint.Value
+                {
+                    get { return Value; }
+                    set { Value = value as DataValue; }
+                }
+
+                IList IDataPoint.ValueAttributes
+                {
+                    get { return ValueAttributes as IList; }
+                    set { ValueAttributes = value as IList<DataAttribute>; }
+                }
+            }
+
             public partial class IndexMetadataRecord : IIndexMetadataRecord
             {
                 int IIndexMetadataRecord.IndexKind
@@ -152,6 +173,8 @@ namespace Energistics.Etp.v12
         }
 
         public partial class DataValue : IDataValue { }
+
+        public partial class IndexValue : IIndexValue { }
 
         public partial class MessageHeader : IMessageHeader { }
 

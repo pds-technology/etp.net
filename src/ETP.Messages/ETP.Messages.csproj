@@ -50,10 +50,12 @@
     <Compile Include="Common\Datatypes\ChannelData\IChannelMetadataRecord.cs" />
     <Compile Include="Common\Datatypes\ChannelData\IChannelRangeInfo.cs" />
     <Compile Include="Common\Datatypes\ChannelData\IChannelStreamingInfo.cs" />
+    <Compile Include="Common\Datatypes\ChannelData\IDataPoint.cs" />
     <Compile Include="Common\Datatypes\ChannelData\IDataItem.cs" />
     <Compile Include="Common\Datatypes\ChannelData\IIndexMetadataRecord.cs" />
     <Compile Include="Common\Datatypes\ChannelData\IStreamingStartIndex.cs" />
     <Compile Include="Common\Datatypes\IDataAttribute.cs" />
+    <Compile Include="Common\Datatypes\IIndexValue.cs" />
     <Compile Include="Common\Datatypes\IDataValue.cs" />
     <Compile Include="Common\Datatypes\IAnyArray.cs" />
     <Compile Include="Common\Datatypes\IEtpArray.cs" />
@@ -282,10 +284,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\License.txt">
+    <Resource Include="..\..\License.txt">
       <Link>License.txt</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
