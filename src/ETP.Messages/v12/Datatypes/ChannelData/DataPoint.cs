@@ -15,11 +15,13 @@ namespace Energistics.Etp.v12.Datatypes.ChannelData
 	
 	public partial class DataPoint : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""DataPoint"",""namespace"":""Energistics.Etp.v12.Datatypes.ChannelData"",""fields"":[{""name"":""channelId"",""type"":""long""},{""name"":""indexes"",""type"":{""type"":""array"",""items"":{""type"":""record"",""name"":""IndexValue"",""namespace"":""Energistics.Etp.v12.Datatypes"",""fields"":[{""name"":""item"",""type"":[""null"",""double"",""long""]}],""fullName"":""Energistics.Etp.v12.Datatypes.IndexValue"",""depends"":[]}}},{""name"":""value"",""type"":{""type"":""record"",""name"":""DataValue"",""namespace"":""Energistics.Etp.v12.Datatypes"",""fields"":[{""name"":""item"",""type"":[""null"",""double"",""float"",""int"",""long"",""string"",{""type"":""record"",""name"":""ArrayOfDouble"",""namespace"":""Energistics.Etp.v12.Datatypes"",""fields"":[{""name"":""values"",""type"":{""type"":""array"",""items"":""double""}}],""fullName"":""Energistics.Etp.v12.Datatypes.ArrayOfDouble"",""depends"":[]},""boolean"",""bytes""]}],""fullName"":""Energistics.Etp.v12.Datatypes.DataValue"",""depends"":[
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""DataPoint"",""namespace"":""Energistics.Etp.v12.Datatypes.ChannelData"",""fields"":[{""name"":""channelId"",""type"":""long""},{""name"":""indexes"",""type"":{""type"":""array"",""items"":{""type"":""record"",""name"":""IndexValue"",""namespace"":""Energistics.Etp.v12.Datatypes"",""fields"":[{""name"":""item"",""type"":[""null"",""long"",""double""]}],""fullName"":""Energistics.Etp.v12.Datatypes.IndexValue"",""depends"":[]}}},{""name"":""value"",""type"":{""type"":""record"",""name"":""DataValue"",""namespace"":""Energistics.Etp.v12.Datatypes"",""fields"":[{""name"":""item"",""type"":[""null"",""double"",""float"",""int"",""long"",""string"",{""type"":""record"",""name"":""ArrayOfDouble"",""namespace"":""Energistics.Etp.v12.Datatypes"",""fields"":[{""name"":""values"",""type"":{""type"":""array"",""items"":""double""}}],""fullName"":""Energistics.Etp.v12.Datatypes.ArrayOfDouble"",""depends"":[]},""boolean"",""bytes""]}],""fullName"":""Energistics.Etp.v12.Datatypes.DataValue"",""depends"":[
   ""Energistics.Etp.v12.Datatypes.ArrayOfDouble""
 ]}},{""name"":""valueAttributes"",""type"":{""type"":""array"",""items"":{""type"":""record"",""name"":""DataAttribute"",""namespace"":""Energistics.Etp.v12.Datatypes"",""fields"":[{""name"":""attributeId"",""type"":""int""},{""name"":""attributeValue"",""type"":""DataValue""}],""fullName"":""Energistics.Etp.v12.Datatypes.DataAttribute"",""depends"":[
   ""Energistics.Etp.v12.Datatypes.DataValue""
-]}}}]}");
+]}}}],""fullName"":""Energistics.Etp.v12.Datatypes.ChannelData.DataPoint"",""depends"":[
+  ""Energistics.Etp.v12.Datatypes.IndexValue""
+]}");
 		private long _channelId;
 		private IList<Energistics.Etp.v12.Datatypes.IndexValue> _indexes;
 		private Energistics.Etp.v12.Datatypes.DataValue _value;

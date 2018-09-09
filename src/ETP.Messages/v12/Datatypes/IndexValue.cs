@@ -16,7 +16,7 @@ namespace Energistics.Etp.v12.Datatypes
 	public partial class IndexValue : ISpecificRecord
 	{
 		public static Schema _SCHEMA = Avro.Schema.Parse("{\"type\":\"record\",\"name\":\"IndexValue\",\"namespace\":\"Energistics.Etp.v12.Datatypes\"," +
-				"\"fields\":[{\"name\":\"item\",\"type\":[\"null\",\"double\",\"long\"]}],\"fullName\":\"Energisti" +
+				"\"fields\":[{\"name\":\"item\",\"type\":[\"null\",\"long\",\"double\"]}],\"fullName\":\"Energisti" +
 				"cs.Etp.v12.Datatypes.IndexValue\",\"depends\":[]}");
 		private object _item;
 		public virtual Schema Schema

@@ -18,7 +18,7 @@ namespace Energistics.Etp.v12.Protocol.ChannelDataLoad
 		public static Schema _SCHEMA = Avro.Schema.Parse("{\"type\":\"record\",\"name\":\"ChannelDataChange\",\"namespace\":\"Energistics.Etp.v12.Prot" +
 				"ocol.ChannelDataLoad\",\"fields\":[{\"name\":\"id\",\"type\":\"long\"},{\"name\":\"startIndex\"" +
 				",\"type\":{\"type\":\"record\",\"name\":\"IndexValue\",\"namespace\":\"Energistics.Etp.v12.Da" +
-				"tatypes\",\"fields\":[{\"name\":\"item\",\"type\":[\"null\",\"double\",\"long\"]}],\"fullName\":\"" +
+				"tatypes\",\"fields\":[{\"name\":\"item\",\"type\":[\"null\",\"long\",\"double\"]}],\"fullName\":\"" +
 				"Energistics.Etp.v12.Datatypes.IndexValue\",\"depends\":[]}},{\"name\":\"endIndex\",\"typ" +
 				"e\":\"Energistics.Etp.v12.Datatypes.IndexValue\"},{\"name\":\"data\",\"type\":{\"type\":\"ar" +
 				"ray\",\"items\":{\"type\":\"record\",\"name\":\"DataPoint\",\"namespace\":\"Energistics.Etp.v1" +
@@ -35,8 +35,11 @@ namespace Energistics.Etp.v12.Protocol.ChannelDataLoad
 				"ribute\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"attribute" +
 				"Id\",\"type\":\"int\"},{\"name\":\"attributeValue\",\"type\":\"DataValue\"}],\"fullName\":\"Ener" +
 				"gistics.Etp.v12.Datatypes.DataAttribute\",\"depends\":[\r\n  \"Energistics.Etp.v12.Dat" +
-				"atypes.DataValue\"\r\n]}}}]}}}],\"messageType\":\"6\",\"protocol\":\"23\",\"senderRole\":\"pro" +
-				"ducer\",\"protocolRoles\":\"producer,consumer\"}");
+				"atypes.DataValue\"\r\n]}}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.ChannelData.D" +
+				"ataPoint\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.IndexValue\"\r\n]}}}],\"mess" +
+				"ageType\":\"6\",\"protocol\":\"23\",\"senderRole\":\"producer\",\"protocolRoles\":\"producer,c" +
+				"onsumer\",\"fullName\":\"Energistics.Etp.v12.Protocol.ChannelDataLoad.ChannelDataCha" +
+				"nge\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.IndexValue\"\r\n]}");
 		private long _id;
 		private Energistics.Etp.v12.Datatypes.IndexValue _startIndex;
 		private Energistics.Etp.v12.Datatypes.IndexValue _endIndex;

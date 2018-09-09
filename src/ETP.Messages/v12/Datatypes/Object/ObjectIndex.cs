@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Datatypes.Object
 	
 	public partial class ObjectIndex : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""ObjectIndex"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""indexValue"",""type"":{""type"":""record"",""name"":""IndexValue"",""namespace"":""Energistics.Etp.v12.Datatypes"",""fields"":[{""name"":""item"",""type"":[""null"",""double"",""long""]}],""fullName"":""Energistics.Etp.v12.Datatypes.IndexValue"",""depends"":[]}},{""name"":""uom"",""type"":""string""},{""name"":""depthDatum"",""default"":"""",""type"":""string""}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.ObjectIndex"",""depends"":[
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""ObjectIndex"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""indexValue"",""type"":{""type"":""record"",""name"":""IndexValue"",""namespace"":""Energistics.Etp.v12.Datatypes"",""fields"":[{""name"":""item"",""type"":[""null"",""long"",""double""]}],""fullName"":""Energistics.Etp.v12.Datatypes.IndexValue"",""depends"":[]}},{""name"":""uom"",""type"":""string""},{""name"":""depthDatum"",""default"":"""",""type"":""string""}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.ObjectIndex"",""depends"":[
   ""Energistics.Etp.v12.Datatypes.IndexValue""
 ]}");
 		private Energistics.Etp.v12.Datatypes.IndexValue _indexValue;
