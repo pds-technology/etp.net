@@ -20,7 +20,7 @@ namespace Energistics.Etp.v12.Protocol.ChannelDataLoad
 				":\"record\",\"name\":\"DataPoint\",\"namespace\":\"Energistics.Etp.v12.Datatypes.ChannelD" +
 				"ata\",\"fields\":[{\"name\":\"channelId\",\"type\":\"long\"},{\"name\":\"indexes\",\"type\":{\"typ" +
 				"e\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"IndexValue\",\"namespace\":\"Energistics" +
-				".Etp.v12.Datatypes\",\"fields\":[{\"name\":\"item\",\"type\":[\"null\",\"double\",\"long\"]}],\"" +
+				".Etp.v12.Datatypes\",\"fields\":[{\"name\":\"item\",\"type\":[\"null\",\"long\",\"double\"]}],\"" +
 				"fullName\":\"Energistics.Etp.v12.Datatypes.IndexValue\",\"depends\":[]}}},{\"name\":\"va" +
 				"lue\",\"type\":{\"type\":\"record\",\"name\":\"DataValue\",\"namespace\":\"Energistics.Etp.v12" +
 				".Datatypes\",\"fields\":[{\"name\":\"item\",\"type\":[\"null\",\"double\",\"float\",\"int\",\"long" +
@@ -33,8 +33,9 @@ namespace Energistics.Etp.v12.Protocol.ChannelDataLoad
 				"ace\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"attributeId\",\"type\":\"int" +
 				"\"},{\"name\":\"attributeValue\",\"type\":\"DataValue\"}],\"fullName\":\"Energistics.Etp.v12" +
 				".Datatypes.DataAttribute\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.DataValu" +
-				"e\"\r\n]}}}]}}}],\"messageType\":\"4\",\"protocol\":\"23\",\"senderRole\":\"producer\",\"protoco" +
-				"lRoles\":\"producer,consumer\"}");
+				"e\"\r\n]}}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.ChannelData.DataPoint\",\"depe" +
+				"nds\":[\r\n  \"Energistics.Etp.v12.Datatypes.IndexValue\"\r\n]}}}],\"messageType\":\"4\",\"p" +
+				"rotocol\":\"23\",\"senderRole\":\"producer\",\"protocolRoles\":\"producer,consumer\"}");
 		private IList<Energistics.Etp.v12.Datatypes.ChannelData.DataPoint> _data;
 		public virtual Schema Schema
 		{
