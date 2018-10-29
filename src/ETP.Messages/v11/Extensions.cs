@@ -22,6 +22,7 @@ using Energistics.Etp.Common.Datatypes;
 using Energistics.Etp.Common.Datatypes.ChannelData;
 using Energistics.Etp.Common.Datatypes.Object;
 using Energistics.Etp.Common.Protocol.Core;
+using Newtonsoft.Json;
 
 namespace Energistics.Etp.v11
 {
@@ -55,6 +56,7 @@ namespace Energistics.Etp.v11
                     set { DomainObject = (Object.DataObject) value; }
                 }
 
+                [JsonIgnore]
                 public IList AttributeMetadata
                 {
                     get { return null; }
@@ -90,6 +92,7 @@ namespace Energistics.Etp.v11
 
             public partial class IndexMetadataRecord : IIndexMetadataRecord
             {
+                [JsonIgnore]
                 public int IndexKind
                 {
                     get { return (int) IndexType; }
@@ -127,6 +130,7 @@ namespace Energistics.Etp.v11
 
             public partial class Resource : IResource
             {
+                [JsonIgnore]
                 public int? ChildCount
                 {
                     get { return HasChildren < 0 ? (int?) null : HasChildren; }

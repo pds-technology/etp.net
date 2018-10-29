@@ -22,6 +22,7 @@ using Energistics.Etp.Common.Datatypes;
 using Energistics.Etp.Common.Datatypes.ChannelData;
 using Energistics.Etp.Common.Datatypes.Object;
 using Energistics.Etp.Common.Protocol.Core;
+using Newtonsoft.Json;
 
 namespace Energistics.Etp.v12
 {
@@ -143,6 +144,7 @@ namespace Energistics.Etp.v12
                     set { Resource = (Resource) value; }
                 }
 
+                [JsonIgnore]
                 public string ContentEncoding { get; set; }
             }
 
