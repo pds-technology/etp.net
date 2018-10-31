@@ -5,7 +5,7 @@
 //    is regenerated
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Energistics.Etp.v12.Protocol.ChannelStreaming
+namespace Energistics.Etp.v12.Protocol.Transaction
 {
 	using System;
 	using System.Collections.Generic;
@@ -13,33 +13,33 @@ namespace Energistics.Etp.v12.Protocol.ChannelStreaming
 	using Avro;
 	using Avro.Specific;
 	
-	public partial class ChannelStreamingStop : ISpecificRecord
+	public partial class CommitTransaction : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""ChannelStreamingStop"",""namespace"":""Energistics.Etp.v12.Protocol.ChannelStreaming"",""fields"":[{""name"":""channels"",""type"":{""type"":""array"",""items"":""long""}}],""messageType"":""5"",""protocol"":""1"",""senderRole"":""consumer"",""protocolRoles"":""producer,consumer"",""fullName"":""Energistics.Etp.v12.Protocol.ChannelStreaming.ChannelStreamingStop"",""depends"":[]}");
-		private IList<System.Int64> _channels;
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""CommitTransaction"",""namespace"":""Energistics.Etp.v12.Protocol.Transaction"",""fields"":[{""name"":""uuid"",""type"":""string""}],""protocol"":""18"",""messageType"":""3"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":""False"",""fullName"":""Energistics.Etp.v12.Protocol.Transaction.CommitTransaction"",""depends"":[]}");
+		private string _uuid;
 		public virtual Schema Schema
 		{
 			get
 			{
-				return ChannelStreamingStop._SCHEMA;
+				return CommitTransaction._SCHEMA;
 			}
 		}
-		public IList<System.Int64> Channels
+		public string Uuid
 		{
 			get
 			{
-				return this._channels;
+				return this._uuid;
 			}
 			set
 			{
-				this._channels = value;
+				this._uuid = value;
 			}
 		}
 		public virtual object Get(int fieldPos)
 		{
 			switch (fieldPos)
 			{
-			case 0: return this._channels;
+			case 0: return this._uuid;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -47,7 +47,7 @@ namespace Energistics.Etp.v12.Protocol.ChannelStreaming
 		{
 			switch (fieldPos)
 			{
-			case 0: this._channels = (IList<System.Int64>)fieldValue; break;
+			case 0: this._uuid = (System.String)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

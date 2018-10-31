@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Protocol.WitsmlSoap
 	
 	public partial class WMSL_GetBaseMsgResponse : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""WMSL_GetBaseMsgResponse"",""namespace"":""Energistics.Etp.v12.Protocol.WitsmlSoap"",""fields"":[{""name"":""Result"",""type"":""string""}],""messageType"":""6"",""protocol"":""8"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""fullName"":""Energistics.Etp.v12.Protocol.WitsmlSoap.WMSL_GetBaseMsgResponse"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""WMSL_GetBaseMsgResponse"",""namespace"":""Energistics.Etp.v12.Protocol.WitsmlSoap"",""fields"":[{""name"":""Result"",""type"":""string""}],""protocol"":""8"",""messageType"":""6"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":""False"",""fullName"":""Energistics.Etp.v12.Protocol.WitsmlSoap.WMSL_GetBaseMsgResponse"",""depends"":[]}");
 		private string _Result;
 		public virtual Schema Schema
 		{

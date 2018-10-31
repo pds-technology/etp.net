@@ -13,9 +13,10 @@ namespace Energistics.Etp.v12.Datatypes.ChannelData
 	using Avro;
 	using Avro.Specific;
 	
-	public enum Roles
+	public enum ChannelStatusKind
 	{
-		producer,
-		consumer,
+		Active,
+		Inactive,
+		Closed,
 	}
 }

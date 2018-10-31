@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Protocol.Discovery
 	
 	public partial class GetResources : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""GetResources"",""namespace"":""Energistics.Etp.v12.Protocol.Discovery"",""fields"":[{""name"":""uri"",""type"":""string""}],""messageType"":""1"",""protocol"":""3"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""fullName"":""Energistics.Etp.v12.Protocol.Discovery.GetResources"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""GetResources"",""namespace"":""Energistics.Etp.v12.Protocol.Discovery"",""fields"":[{""name"":""uri"",""type"":""string""}],""protocol"":""3"",""messageType"":""1"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":""False"",""fullName"":""Energistics.Etp.v12.Protocol.Discovery.GetResources"",""depends"":[]}");
 		private string _uri;
 		public virtual Schema Schema
 		{

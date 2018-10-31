@@ -17,37 +17,54 @@ namespace Energistics.Etp.v12.Protocol.GrowingObject
 	{
 		public static Schema _SCHEMA = Avro.Schema.Parse("{\"type\":\"record\",\"name\":\"PartsMetadata\",\"namespace\":\"Energistics.Etp.v12.Protocol" +
 				".GrowingObject\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"indexKind\",\"ty" +
-				"pe\":{\"type\":\"enum\",\"name\":\"ChannelIndexKinds\",\"namespace\":\"Energistics.Etp.v12.D" +
-				"atatypes.ChannelData\",\"symbols\":[\"Time\",\"Depth\"],\"fullName\":\"Energistics.Etp.v12" +
-				".Datatypes.ChannelData.ChannelIndexKinds\",\"depends\":[]}},{\"name\":\"indexDirection" +
-				"\",\"type\":{\"type\":\"enum\",\"name\":\"IndexDirections\",\"namespace\":\"Energistics.Etp.v1" +
-				"2.Datatypes.ChannelData\",\"symbols\":[\"Increasing\",\"Decreasing\"],\"fullName\":\"Energ" +
-				"istics.Etp.v12.Datatypes.ChannelData.IndexDirections\",\"depends\":[]}},{\"name\":\"na" +
-				"me\",\"type\":\"string\"},{\"name\":\"indexInterval\",\"type\":{\"type\":\"record\",\"name\":\"Ind" +
-				"exInterval\",\"namespace\":\"Energistics.Etp.v12.Datatypes.Object\",\"fields\":[{\"name\"" +
-				":\"startIndex\",\"type\":{\"type\":\"record\",\"name\":\"IndexValue\",\"namespace\":\"Energisti" +
-				"cs.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"item\",\"type\":[\"null\",\"double\",\"long\"]}]" +
-				",\"fullName\":\"Energistics.Etp.v12.Datatypes.IndexValue\",\"depends\":[]}},{\"name\":\"e" +
-				"ndIndex\",\"type\":\"Energistics.Etp.v12.Datatypes.IndexValue\"},{\"name\":\"uom\",\"type\"" +
-				":\"string\"},{\"name\":\"depthDatum\",\"default\":\"\",\"type\":\"string\"}],\"fullName\":\"Energ" +
-				"istics.Etp.v12.Datatypes.Object.IndexInterval\",\"depends\":[\r\n  \"Energistics.Etp.v" +
-				"12.Datatypes.IndexValue\",\r\n  \"Energistics.Etp.v12.Datatypes.IndexValue\"\r\n]}},{\"n" +
-				"ame\":\"uuid\",\"default\":\"\",\"type\":\"string\"},{\"name\":\"customData\",\"type\":{\"type\":\"m" +
-				"ap\",\"values\":{\"type\":\"record\",\"name\":\"DataValue\",\"namespace\":\"Energistics.Etp.v1" +
-				"2.Datatypes\",\"fields\":[{\"name\":\"item\",\"type\":[\"null\",\"double\",\"float\",\"int\",\"lon" +
-				"g\",\"string\",{\"type\":\"record\",\"name\":\"ArrayOfDouble\",\"namespace\":\"Energistics.Etp" +
-				".v12.Datatypes\",\"fields\":[{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":\"doubl" +
-				"e\"}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.ArrayOfDouble\",\"depends\":[]},\"bo" +
-				"olean\",\"bytes\"]}],\"fullName\":\"Energistics.Etp.v12.Datatypes.DataValue\",\"depends\"" +
-				":[\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfDouble\"\r\n]}}}],\"messageType\":\"9\",\"pr" +
-				"otocol\":\"6\",\"senderRole\":\"store\",\"protocolRoles\":\"store,customer\",\"fullName\":\"En" +
-				"ergistics.Etp.v12.Protocol.GrowingObject.PartsMetadata\",\"depends\":[\r\n  \"Energist" +
-				"ics.Etp.v12.Datatypes.ChannelData.ChannelIndexKinds\",\r\n  \"Energistics.Etp.v12.Da" +
-				"tatypes.ChannelData.IndexDirections\",\r\n  \"Energistics.Etp.v12.Datatypes.Object.I" +
-				"ndexInterval\",\r\n  \"Energistics.Etp.v12.Datatypes.DataValue\"\r\n]}");
+				"pe\":{\"type\":\"enum\",\"name\":\"ChannelIndexKind\",\"namespace\":\"Energistics.Etp.v12.Da" +
+				"tatypes.ChannelData\",\"symbols\":[\"Time\",\"Depth\"],\"fullName\":\"Energistics.Etp.v12." +
+				"Datatypes.ChannelData.ChannelIndexKind\",\"depends\":[]}},{\"name\":\"indexDirection\"," +
+				"\"type\":{\"type\":\"enum\",\"name\":\"IndexDirection\",\"namespace\":\"Energistics.Etp.v12.D" +
+				"atatypes.ChannelData\",\"symbols\":[\"Increasing\",\"Decreasing\"],\"fullName\":\"Energist" +
+				"ics.Etp.v12.Datatypes.ChannelData.IndexDirection\",\"depends\":[]}},{\"name\":\"name\"," +
+				"\"type\":\"string\"},{\"name\":\"indexInterval\",\"type\":{\"type\":\"record\",\"name\":\"IndexIn" +
+				"terval\",\"namespace\":\"Energistics.Etp.v12.Datatypes.Object\",\"fields\":[{\"name\":\"st" +
+				"artIndex\",\"type\":{\"type\":\"record\",\"name\":\"IndexValue\",\"namespace\":\"Energistics.E" +
+				"tp.v12.Datatypes\",\"fields\":[{\"name\":\"item\",\"type\":[\"null\",\"long\",\"double\"]}],\"fu" +
+				"llName\":\"Energistics.Etp.v12.Datatypes.IndexValue\",\"depends\":[]}},{\"name\":\"endIn" +
+				"dex\",\"type\":\"Energistics.Etp.v12.Datatypes.IndexValue\"},{\"name\":\"uom\",\"type\":\"st" +
+				"ring\"},{\"name\":\"depthDatum\",\"default\":\"\",\"type\":\"string\"}],\"fullName\":\"Energisti" +
+				"cs.Etp.v12.Datatypes.Object.IndexInterval\",\"depends\":[\r\n  \"Energistics.Etp.v12.D" +
+				"atatypes.IndexValue\",\r\n  \"Energistics.Etp.v12.Datatypes.IndexValue\"\r\n]}},{\"name\"" +
+				":\"uuid\",\"default\":\"\",\"type\":\"string\"},{\"name\":\"customData\",\"type\":{\"type\":\"map\"," +
+				"\"values\":{\"type\":\"record\",\"name\":\"DataValue\",\"namespace\":\"Energistics.Etp.v12.Da" +
+				"tatypes\",\"fields\":[{\"name\":\"item\",\"type\":[\"null\",\"boolean\",\"int\",\"long\",\"float\"," +
+				"\"double\",\"string\",{\"type\":\"record\",\"name\":\"ArrayOfBoolean\",\"namespace\":\"Energist" +
+				"ics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\"" +
+				":\"boolean\"}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.ArrayOfBoolean\",\"depends" +
+				"\":[]},{\"type\":\"record\",\"name\":\"ArrayOfInt\",\"namespace\":\"Energistics.Etp.v12.Data" +
+				"types\",\"fields\":[{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":\"int\"}}],\"fullN" +
+				"ame\":\"Energistics.Etp.v12.Datatypes.ArrayOfInt\",\"depends\":[]},{\"type\":\"record\",\"" +
+				"name\":\"ArrayOfLong\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name" +
+				"\":\"values\",\"type\":{\"type\":\"array\",\"items\":\"long\"}}],\"fullName\":\"Energistics.Etp." +
+				"v12.Datatypes.ArrayOfLong\",\"depends\":[]},{\"type\":\"record\",\"name\":\"ArrayOfFloat\"," +
+				"\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"values\",\"type\":{\"" +
+				"type\":\"array\",\"items\":\"float\"}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.Array" +
+				"OfFloat\",\"depends\":[]},{\"type\":\"record\",\"name\":\"ArrayOfDouble\",\"namespace\":\"Ener" +
+				"gistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"values\",\"type\":{\"type\":\"array\",\"it" +
+				"ems\":\"double\"}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.ArrayOfDouble\",\"depen" +
+				"ds\":[]},{\"type\":\"record\",\"name\":\"ArrayOfString\",\"namespace\":\"Energistics.Etp.v12" +
+				".Datatypes\",\"fields\":[{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":\"string\"}}" +
+				"],\"fullName\":\"Energistics.Etp.v12.Datatypes.ArrayOfString\",\"depends\":[]},\"bytes\"" +
+				"]}],\"fullName\":\"Energistics.Etp.v12.Datatypes.DataValue\",\"depends\":[\r\n  \"Energis" +
+				"tics.Etp.v12.Datatypes.ArrayOfBoolean\",\r\n  \"Energistics.Etp.v12.Datatypes.ArrayO" +
+				"fInt\",\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfLong\",\r\n  \"Energistics.Etp.v12.D" +
+				"atatypes.ArrayOfFloat\",\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfDouble\",\r\n  \"En" +
+				"ergistics.Etp.v12.Datatypes.ArrayOfString\"\r\n]}}}],\"protocol\":\"6\",\"messageType\":\"" +
+				"9\",\"senderRole\":\"store\",\"protocolRoles\":\"store,customer\",\"multipartFlag\":\"True\"," +
+				"\"fullName\":\"Energistics.Etp.v12.Protocol.GrowingObject.PartsMetadata\",\"depends\":" +
+				"[\r\n  \"Energistics.Etp.v12.Datatypes.ChannelData.ChannelIndexKind\",\r\n  \"Energisti" +
+				"cs.Etp.v12.Datatypes.ChannelData.IndexDirection\",\r\n  \"Energistics.Etp.v12.Dataty" +
+				"pes.Object.IndexInterval\",\r\n  \"Energistics.Etp.v12.Datatypes.DataValue\"\r\n]}");
 		private string _uri;
-		private Energistics.Etp.v12.Datatypes.ChannelData.ChannelIndexKinds _indexKind;
-		private Energistics.Etp.v12.Datatypes.ChannelData.IndexDirections _indexDirection;
+		private Energistics.Etp.v12.Datatypes.ChannelData.ChannelIndexKind _indexKind;
+		private Energistics.Etp.v12.Datatypes.ChannelData.IndexDirection _indexDirection;
 		private string _name;
 		private Energistics.Etp.v12.Datatypes.Object.IndexInterval _indexInterval;
 		private string _uuid;
@@ -70,7 +87,7 @@ namespace Energistics.Etp.v12.Protocol.GrowingObject
 				this._uri = value;
 			}
 		}
-		public Energistics.Etp.v12.Datatypes.ChannelData.ChannelIndexKinds IndexKind
+		public Energistics.Etp.v12.Datatypes.ChannelData.ChannelIndexKind IndexKind
 		{
 			get
 			{
@@ -81,7 +98,7 @@ namespace Energistics.Etp.v12.Protocol.GrowingObject
 				this._indexKind = value;
 			}
 		}
-		public Energistics.Etp.v12.Datatypes.ChannelData.IndexDirections IndexDirection
+		public Energistics.Etp.v12.Datatypes.ChannelData.IndexDirection IndexDirection
 		{
 			get
 			{
@@ -155,8 +172,8 @@ namespace Energistics.Etp.v12.Protocol.GrowingObject
 			switch (fieldPos)
 			{
 			case 0: this._uri = (System.String)fieldValue; break;
-			case 1: this._indexKind = (Energistics.Etp.v12.Datatypes.ChannelData.ChannelIndexKinds)fieldValue; break;
-			case 2: this._indexDirection = (Energistics.Etp.v12.Datatypes.ChannelData.IndexDirections)fieldValue; break;
+			case 1: this._indexKind = (Energistics.Etp.v12.Datatypes.ChannelData.ChannelIndexKind)fieldValue; break;
+			case 2: this._indexDirection = (Energistics.Etp.v12.Datatypes.ChannelData.IndexDirection)fieldValue; break;
 			case 3: this._name = (System.String)fieldValue; break;
 			case 4: this._indexInterval = (Energistics.Etp.v12.Datatypes.Object.IndexInterval)fieldValue; break;
 			case 5: this._uuid = (System.String)fieldValue; break;

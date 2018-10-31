@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Protocol.Core
 	
 	public partial class RenewSecurityToken : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""RenewSecurityToken"",""namespace"":""Energistics.Etp.v12.Protocol.Core"",""fields"":[{""name"":""token"",""type"":""string""}],""messageType"":""6"",""protocol"":""0"",""senderRole"":""client"",""protocolRoles"":""client,server"",""fullName"":""Energistics.Etp.v12.Protocol.Core.RenewSecurityToken"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""RenewSecurityToken"",""namespace"":""Energistics.Etp.v12.Protocol.Core"",""fields"":[{""name"":""token"",""type"":""string""}],""protocol"":""0"",""messageType"":""6"",""senderRole"":""client"",""protocolRoles"":""client, server"",""multipartFlag"":""False"",""fullName"":""Energistics.Etp.v12.Protocol.Core.RenewSecurityToken"",""depends"":[]}");
 		private string _token;
 		public virtual Schema Schema
 		{

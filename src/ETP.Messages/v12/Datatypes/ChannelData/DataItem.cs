@@ -15,16 +15,44 @@ namespace Energistics.Etp.v12.Datatypes.ChannelData
 	
 	public partial class DataItem : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""DataItem"",""namespace"":""Energistics.Etp.v12.Datatypes.ChannelData"",""fields"":[{""name"":""indexes"",""type"":{""type"":""array"",""items"":""long""}},{""name"":""channelId"",""type"":""long""},{""name"":""value"",""type"":{""type"":""record"",""name"":""DataValue"",""namespace"":""Energistics.Etp.v12.Datatypes"",""fields"":[{""name"":""item"",""type"":[""null"",""double"",""float"",""int"",""long"",""string"",{""type"":""record"",""name"":""ArrayOfDouble"",""namespace"":""Energistics.Etp.v12.Datatypes"",""fields"":[{""name"":""values"",""type"":{""type"":""array"",""items"":""double""}}],""fullName"":""Energistics.Etp.v12.Datatypes.ArrayOfDouble"",""depends"":[]},""boolean"",""bytes""]}],""fullName"":""Energistics.Etp.v12.Datatypes.DataValue"",""depends"":[
-  ""Energistics.Etp.v12.Datatypes.ArrayOfDouble""
-]}},{""name"":""valueAttributes"",""type"":{""type"":""array"",""items"":{""type"":""record"",""name"":""DataAttribute"",""namespace"":""Energistics.Etp.v12.Datatypes"",""fields"":[{""name"":""attributeId"",""type"":""int""},{""name"":""attributeValue"",""type"":""DataValue""}],""fullName"":""Energistics.Etp.v12.Datatypes.DataAttribute"",""depends"":[
-  ""Energistics.Etp.v12.Datatypes.DataValue""
-]}}}],""fullName"":""Energistics.Etp.v12.Datatypes.ChannelData.DataItem"",""depends"":[
-  ""Energistics.Etp.v12.Datatypes.DataValue"",
-  ""Energistics.Etp.v12.Datatypes.DataAttribute""
-]}");
-		private IList<System.Int64> _indexes;
+		public static Schema _SCHEMA = Avro.Schema.Parse("{\"type\":\"record\",\"name\":\"DataItem\",\"namespace\":\"Energistics.Etp.v12.Datatypes.Cha" +
+				"nnelData\",\"fields\":[{\"name\":\"channelId\",\"type\":\"long\"},{\"name\":\"indexes\",\"type\":" +
+				"{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"IndexValue\",\"namespace\":\"Energi" +
+				"stics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"item\",\"type\":[\"null\",\"long\",\"double\"" +
+				"]}],\"fullName\":\"Energistics.Etp.v12.Datatypes.IndexValue\",\"depends\":[]}}},{\"name" +
+				"\":\"value\",\"type\":{\"type\":\"record\",\"name\":\"DataValue\",\"namespace\":\"Energistics.Et" +
+				"p.v12.Datatypes\",\"fields\":[{\"name\":\"item\",\"type\":[\"null\",\"boolean\",\"int\",\"long\"," +
+				"\"float\",\"double\",\"string\",{\"type\":\"record\",\"name\":\"ArrayOfBoolean\",\"namespace\":\"" +
+				"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"values\",\"type\":{\"type\":\"array\"" +
+				",\"items\":\"boolean\"}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.ArrayOfBoolean\"," +
+				"\"depends\":[]},{\"type\":\"record\",\"name\":\"ArrayOfInt\",\"namespace\":\"Energistics.Etp." +
+				"v12.Datatypes\",\"fields\":[{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":\"int\"}}" +
+				"],\"fullName\":\"Energistics.Etp.v12.Datatypes.ArrayOfInt\",\"depends\":[]},{\"type\":\"r" +
+				"ecord\",\"name\":\"ArrayOfLong\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fields\"" +
+				":[{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":\"long\"}}],\"fullName\":\"Energist" +
+				"ics.Etp.v12.Datatypes.ArrayOfLong\",\"depends\":[]},{\"type\":\"record\",\"name\":\"ArrayO" +
+				"fFloat\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"values\",\"" +
+				"type\":{\"type\":\"array\",\"items\":\"float\"}}],\"fullName\":\"Energistics.Etp.v12.Datatyp" +
+				"es.ArrayOfFloat\",\"depends\":[]},{\"type\":\"record\",\"name\":\"ArrayOfDouble\",\"namespac" +
+				"e\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"values\",\"type\":{\"type\":\"ar" +
+				"ray\",\"items\":\"double\"}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.ArrayOfDouble" +
+				"\",\"depends\":[]},{\"type\":\"record\",\"name\":\"ArrayOfString\",\"namespace\":\"Energistics" +
+				".Etp.v12.Datatypes\",\"fields\":[{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":\"s" +
+				"tring\"}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.ArrayOfString\",\"depends\":[]}" +
+				",\"bytes\"]}],\"fullName\":\"Energistics.Etp.v12.Datatypes.DataValue\",\"depends\":[\r\n  " +
+				"\"Energistics.Etp.v12.Datatypes.ArrayOfBoolean\",\r\n  \"Energistics.Etp.v12.Datatype" +
+				"s.ArrayOfInt\",\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfLong\",\r\n  \"Energistics.E" +
+				"tp.v12.Datatypes.ArrayOfFloat\",\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfDouble\"" +
+				",\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfString\"\r\n]}},{\"name\":\"valueAttributes" +
+				"\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"DataAttribute\",\"namesp" +
+				"ace\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"attributeId\",\"type\":\"int" +
+				"\"},{\"name\":\"attributeValue\",\"type\":\"DataValue\"}],\"fullName\":\"Energistics.Etp.v12" +
+				".Datatypes.DataAttribute\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.DataValu" +
+				"e\"\r\n]}}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.ChannelData.DataItem\",\"depen" +
+				"ds\":[\r\n  \"Energistics.Etp.v12.Datatypes.IndexValue\",\r\n  \"Energistics.Etp.v12.Dat" +
+				"atypes.DataValue\",\r\n  \"Energistics.Etp.v12.Datatypes.DataAttribute\"\r\n]}");
 		private long _channelId;
+		private IList<Energistics.Etp.v12.Datatypes.IndexValue> _indexes;
 		private Energistics.Etp.v12.Datatypes.DataValue _value;
 		private IList<Energistics.Etp.v12.Datatypes.DataAttribute> _valueAttributes;
 		public virtual Schema Schema
@@ -32,17 +60,6 @@ namespace Energistics.Etp.v12.Datatypes.ChannelData
 			get
 			{
 				return DataItem._SCHEMA;
-			}
-		}
-		public IList<System.Int64> Indexes
-		{
-			get
-			{
-				return this._indexes;
-			}
-			set
-			{
-				this._indexes = value;
 			}
 		}
 		public long ChannelId
@@ -54,6 +71,17 @@ namespace Energistics.Etp.v12.Datatypes.ChannelData
 			set
 			{
 				this._channelId = value;
+			}
+		}
+		public IList<Energistics.Etp.v12.Datatypes.IndexValue> Indexes
+		{
+			get
+			{
+				return this._indexes;
+			}
+			set
+			{
+				this._indexes = value;
 			}
 		}
 		public Energistics.Etp.v12.Datatypes.DataValue Value
@@ -82,8 +110,8 @@ namespace Energistics.Etp.v12.Datatypes.ChannelData
 		{
 			switch (fieldPos)
 			{
-			case 0: return this._indexes;
-			case 1: return this._channelId;
+			case 0: return this._channelId;
+			case 1: return this._indexes;
 			case 2: return this._value;
 			case 3: return this._valueAttributes;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
@@ -93,8 +121,8 @@ namespace Energistics.Etp.v12.Datatypes.ChannelData
 		{
 			switch (fieldPos)
 			{
-			case 0: this._indexes = (IList<System.Int64>)fieldValue; break;
-			case 1: this._channelId = (System.Int64)fieldValue; break;
+			case 0: this._channelId = (System.Int64)fieldValue; break;
+			case 1: this._indexes = (IList<Energistics.Etp.v12.Datatypes.IndexValue>)fieldValue; break;
 			case 2: this._value = (Energistics.Etp.v12.Datatypes.DataValue)fieldValue; break;
 			case 3: this._valueAttributes = (IList<Energistics.Etp.v12.Datatypes.DataAttribute>)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");

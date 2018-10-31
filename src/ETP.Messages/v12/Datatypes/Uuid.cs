@@ -16,7 +16,7 @@ namespace Energistics.Etp.v12.Datatypes
 	public partial class Uuid : SpecificFixed
 	{
 		public static Schema _SCHEMA = Avro.Schema.Parse("{\"type\":\"fixed\",\"name\":\"Uuid\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"size\":" +
-				"16}");
+				"16,\"fullName\":\"Energistics.Etp.v12.Datatypes.Uuid\",\"depends\":[]}");
 		private static uint fixedSize = 16;
 		public Uuid() : 
 				base(fixedSize)

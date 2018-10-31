@@ -15,7 +15,8 @@ namespace Energistics.Etp.v12.Protocol.ChannelDataLoad
 	
 	public partial class OpenChannelResponse : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""OpenChannelResponse"",""namespace"":""Energistics.Etp.v12.Protocol.ChannelDataLoad"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""uuid"",""type"":{""type"":""fixed"",""name"":""Uuid"",""namespace"":""Energistics.Etp.v12.Datatypes"",""size"":16}},{""name"":""id"",""type"":""long""},{""name"":""lastIndex"",""type"":{""type"":""record"",""name"":""IndexValue"",""namespace"":""Energistics.Etp.v12.Datatypes"",""fields"":[{""name"":""item"",""type"":[""null"",""long"",""double""]}],""fullName"":""Energistics.Etp.v12.Datatypes.IndexValue"",""depends"":[]}},{""name"":""infill"",""default"":true,""type"":""boolean""},{""name"":""dataChanges"",""default"":true,""type"":""boolean""}],""messageType"":""2"",""protocol"":""23"",""senderRole"":""consumer"",""protocolRoles"":""producer,consumer"",""fullName"":""Energistics.Etp.v12.Protocol.ChannelDataLoad.OpenChannelResponse"",""depends"":[
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""OpenChannelResponse"",""namespace"":""Energistics.Etp.v12.Protocol.ChannelDataLoad"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""uuid"",""type"":{""type"":""fixed"",""name"":""Uuid"",""namespace"":""Energistics.Etp.v12.Datatypes"",""size"":16,""fullName"":""Energistics.Etp.v12.Datatypes.Uuid"",""depends"":[]}},{""name"":""id"",""type"":""long""},{""name"":""lastIndex"",""type"":{""type"":""record"",""name"":""IndexValue"",""namespace"":""Energistics.Etp.v12.Datatypes"",""fields"":[{""name"":""item"",""type"":[""null"",""long"",""double""]}],""fullName"":""Energistics.Etp.v12.Datatypes.IndexValue"",""depends"":[]}},{""name"":""infill"",""default"":true,""type"":""boolean""},{""name"":""dataChanges"",""default"":true,""type"":""boolean""},{""name"":""openStatus"",""default"":true,""type"":""boolean""},{""name"":""openError"",""default"":"""",""type"":""string""}],""protocol"":""22"",""messageType"":""2"",""senderRole"":""consumer"",""protocolRoles"":""producer,consumer"",""multipartFlag"":""False"",""fullName"":""Energistics.Etp.v12.Protocol.ChannelDataLoad.OpenChannelResponse"",""depends"":[
+  ""Energistics.Etp.v12.Datatypes.Uuid"",
   ""Energistics.Etp.v12.Datatypes.IndexValue""
 ]}");
 		private string _uri;
@@ -24,6 +25,8 @@ namespace Energistics.Etp.v12.Protocol.ChannelDataLoad
 		private Energistics.Etp.v12.Datatypes.IndexValue _lastIndex;
 		private bool _infill;
 		private bool _dataChanges;
+		private bool _openStatus;
+		private string _openError;
 		public virtual Schema Schema
 		{
 			get
@@ -97,6 +100,28 @@ namespace Energistics.Etp.v12.Protocol.ChannelDataLoad
 				this._dataChanges = value;
 			}
 		}
+		public bool OpenStatus
+		{
+			get
+			{
+				return this._openStatus;
+			}
+			set
+			{
+				this._openStatus = value;
+			}
+		}
+		public string OpenError
+		{
+			get
+			{
+				return this._openError;
+			}
+			set
+			{
+				this._openError = value;
+			}
+		}
 		public virtual object Get(int fieldPos)
 		{
 			switch (fieldPos)
@@ -107,6 +132,8 @@ namespace Energistics.Etp.v12.Protocol.ChannelDataLoad
 			case 3: return this._lastIndex;
 			case 4: return this._infill;
 			case 5: return this._dataChanges;
+			case 6: return this._openStatus;
+			case 7: return this._openError;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -120,6 +147,8 @@ namespace Energistics.Etp.v12.Protocol.ChannelDataLoad
 			case 3: this._lastIndex = (Energistics.Etp.v12.Datatypes.IndexValue)fieldValue; break;
 			case 4: this._infill = (System.Boolean)fieldValue; break;
 			case 5: this._dataChanges = (System.Boolean)fieldValue; break;
+			case 6: this._openStatus = (System.Boolean)fieldValue; break;
+			case 7: this._openError = (System.String)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

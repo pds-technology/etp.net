@@ -18,7 +18,7 @@ namespace Energistics.Etp.v12.Protocol.ChannelDataFrame
 		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""RequestChannelData"",""namespace"":""Energistics.Etp.v12.Protocol.ChannelDataFrame"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""requestedInterval"",""type"":{""type"":""record"",""name"":""IndexInterval"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""startIndex"",""type"":{""type"":""record"",""name"":""IndexValue"",""namespace"":""Energistics.Etp.v12.Datatypes"",""fields"":[{""name"":""item"",""type"":[""null"",""long"",""double""]}],""fullName"":""Energistics.Etp.v12.Datatypes.IndexValue"",""depends"":[]}},{""name"":""endIndex"",""type"":""Energistics.Etp.v12.Datatypes.IndexValue""},{""name"":""uom"",""type"":""string""},{""name"":""depthDatum"",""default"":"""",""type"":""string""}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.IndexInterval"",""depends"":[
   ""Energistics.Etp.v12.Datatypes.IndexValue"",
   ""Energistics.Etp.v12.Datatypes.IndexValue""
-]}}],""messageType"":""1"",""protocol"":""2"",""senderRole"":""consumer"",""protocolRoles"":""producer,consumer"",""fullName"":""Energistics.Etp.v12.Protocol.ChannelDataFrame.RequestChannelData"",""depends"":[
+]}}],""protocol"":""2"",""messageType"":""1"",""senderRole"":""consumer"",""protocolRoles"":""producer,consumer"",""multipartFlag"":""False"",""fullName"":""Energistics.Etp.v12.Protocol.ChannelDataFrame.RequestChannelData"",""depends"":[
   ""Energistics.Etp.v12.Datatypes.Object.IndexInterval""
 ]}");
 		private string _uri;

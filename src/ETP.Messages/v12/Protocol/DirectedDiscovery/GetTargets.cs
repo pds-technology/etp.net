@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Protocol.DirectedDiscovery
 	
 	public partial class GetTargets : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""GetTargets"",""namespace"":""Energistics.Etp.v12.Protocol.DirectedDiscovery"",""fields"":[{""name"":""uri"",""type"":""string""}],""messageType"":""4"",""protocol"":""30"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""fullName"":""Energistics.Etp.v12.Protocol.DirectedDiscovery.GetTargets"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""GetTargets"",""namespace"":""Energistics.Etp.v12.Protocol.DirectedDiscovery"",""fields"":[{""name"":""uri"",""type"":""string""}],""protocol"":""30"",""messageType"":""4"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":""False"",""fullName"":""Energistics.Etp.v12.Protocol.DirectedDiscovery.GetTargets"",""depends"":[]}");
 		private string _uri;
 		public virtual Schema Schema
 		{

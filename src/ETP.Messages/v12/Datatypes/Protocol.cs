@@ -13,7 +13,7 @@ namespace Energistics.Etp.v12.Datatypes
 	using Avro;
 	using Avro.Specific;
 	
-	public enum Protocols
+	public enum Protocol
 	{
 		Core,
 		ChannelStreaming,
@@ -34,6 +34,10 @@ namespace Energistics.Etp.v12.Datatypes
 		GrowingObjectQuery,
 		GrowingObjectNotificationQuery,
 		Transaction,
+		DataArrayQuery,
+		DataArrayNotificationQuery,
+		ChannelSubscribe,
+		ChannelDataLoad,
 		DirectedDiscovery,
 	}
 }

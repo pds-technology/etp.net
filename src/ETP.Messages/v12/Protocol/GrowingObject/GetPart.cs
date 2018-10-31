@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Protocol.GrowingObject
 	
 	public partial class GetPart : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""GetPart"",""namespace"":""Energistics.Etp.v12.Protocol.GrowingObject"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""uid"",""type"":""string""}],""messageType"":""3"",""protocol"":""6"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""fullName"":""Energistics.Etp.v12.Protocol.GrowingObject.GetPart"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""GetPart"",""namespace"":""Energistics.Etp.v12.Protocol.GrowingObject"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""uid"",""type"":""string""}],""protocol"":""6"",""messageType"":""3"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":""False"",""fullName"":""Energistics.Etp.v12.Protocol.GrowingObject.GetPart"",""depends"":[]}");
 		private string _uri;
 		private string _uid;
 		public virtual Schema Schema

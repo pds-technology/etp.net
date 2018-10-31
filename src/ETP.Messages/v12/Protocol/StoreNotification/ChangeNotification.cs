@@ -18,27 +18,28 @@ namespace Energistics.Etp.v12.Protocol.StoreNotification
 		public static Schema _SCHEMA = Avro.Schema.Parse("{\"type\":\"record\",\"name\":\"ChangeNotification\",\"namespace\":\"Energistics.Etp.v12.Pro" +
 				"tocol.StoreNotification\",\"fields\":[{\"name\":\"change\",\"type\":{\"type\":\"record\",\"nam" +
 				"e\":\"ObjectChange\",\"namespace\":\"Energistics.Etp.v12.Datatypes.Object\",\"fields\":[{" +
-				"\"name\":\"changeKind\",\"type\":{\"type\":\"enum\",\"name\":\"ObjectChangeKinds\",\"namespace\"" +
-				":\"Energistics.Etp.v12.Datatypes.Object\",\"symbols\":[\"insert\",\"update\"],\"fullName\"" +
-				":\"Energistics.Etp.v12.Datatypes.Object.ObjectChangeKinds\",\"depends\":[]}},{\"name\"" +
-				":\"changeTime\",\"type\":\"long\"},{\"name\":\"dataObject\",\"type\":{\"type\":\"record\",\"name\"" +
-				":\"DataObject\",\"namespace\":\"Energistics.Etp.v12.Datatypes.Object\",\"fields\":[{\"nam" +
-				"e\":\"resource\",\"type\":{\"type\":\"record\",\"name\":\"Resource\",\"namespace\":\"Energistics" +
-				".Etp.v12.Datatypes.Object\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"con" +
-				"tentType\",\"type\":\"string\"},{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"channelSubsc" +
-				"ribable\",\"default\":false,\"type\":\"boolean\"},{\"name\":\"customData\",\"type\":{\"type\":\"" +
-				"map\",\"values\":\"string\"}},{\"name\":\"resourceType\",\"type\":\"string\"},{\"name\":\"childC" +
-				"ount\",\"default\":null,\"type\":[\"null\",\"int\"]},{\"name\":\"uuid\",\"default\":\"\",\"type\":\"" +
-				"string\"},{\"name\":\"lastChanged\",\"type\":[\"null\",\"long\"]},{\"name\":\"objectNotifiable" +
-				"\",\"default\":false,\"type\":\"boolean\"}],\"fullName\":\"Energistics.Etp.v12.Datatypes.O" +
-				"bject.Resource\",\"depends\":[]}},{\"name\":\"data\",\"type\":\"bytes\"}],\"fullName\":\"Energ" +
-				"istics.Etp.v12.Datatypes.Object.DataObject\",\"depends\":[\r\n  \"Energistics.Etp.v12." +
-				"Datatypes.Object.Resource\"\r\n]}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.Objec" +
-				"t.ObjectChange\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.Object.ObjectChang" +
-				"eKinds\",\r\n  \"Energistics.Etp.v12.Datatypes.Object.DataObject\"\r\n]}}],\"messageType" +
-				"\":\"2\",\"protocol\":\"5\",\"senderRole\":\"store\",\"protocolRoles\":\"store,customer\",\"full" +
-				"Name\":\"Energistics.Etp.v12.Protocol.StoreNotification.ChangeNotification\",\"depen" +
-				"ds\":[\r\n  \"Energistics.Etp.v12.Datatypes.Object.ObjectChange\"\r\n]}");
+				"\"name\":\"changeKind\",\"type\":{\"type\":\"enum\",\"name\":\"ObjectChangeKind\",\"namespace\":" +
+				"\"Energistics.Etp.v12.Datatypes.Object\",\"symbols\":[\"insert\",\"update\",\"authorized\"" +
+				"],\"fullName\":\"Energistics.Etp.v12.Datatypes.Object.ObjectChangeKind\",\"depends\":[" +
+				"]}},{\"name\":\"changeTime\",\"type\":\"long\"},{\"name\":\"dataObject\",\"type\":{\"type\":\"rec" +
+				"ord\",\"name\":\"DataObject\",\"namespace\":\"Energistics.Etp.v12.Datatypes.Object\",\"fie" +
+				"lds\":[{\"name\":\"resource\",\"type\":{\"type\":\"record\",\"name\":\"Resource\",\"namespace\":\"" +
+				"Energistics.Etp.v12.Datatypes.Object\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{" +
+				"\"name\":\"contentType\",\"type\":\"string\"},{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"c" +
+				"hannelSubscribable\",\"default\":false,\"type\":\"boolean\"},{\"name\":\"customData\",\"type" +
+				"\":{\"type\":\"map\",\"values\":\"string\"}},{\"name\":\"resourceType\",\"type\":\"string\"},{\"na" +
+				"me\":\"childCount\",\"default\":null,\"type\":[\"null\",\"int\"]},{\"name\":\"uuid\",\"default\":" +
+				"\"\",\"type\":\"string\"},{\"name\":\"lastChanged\",\"type\":[\"null\",\"long\"]},{\"name\":\"objec" +
+				"tNotifiable\",\"default\":false,\"type\":\"boolean\"}],\"fullName\":\"Energistics.Etp.v12." +
+				"Datatypes.Object.Resource\",\"depends\":[]}},{\"name\":\"data\",\"type\":\"bytes\"}],\"fullN" +
+				"ame\":\"Energistics.Etp.v12.Datatypes.Object.DataObject\",\"depends\":[\r\n  \"Energisti" +
+				"cs.Etp.v12.Datatypes.Object.Resource\"\r\n]}}],\"fullName\":\"Energistics.Etp.v12.Data" +
+				"types.Object.ObjectChange\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.Object." +
+				"ObjectChangeKind\",\r\n  \"Energistics.Etp.v12.Datatypes.Object.DataObject\"\r\n]}}],\"p" +
+				"rotocol\":\"5\",\"messageType\":\"2\",\"senderRole\":\"store\",\"protocolRoles\":\"store,custo" +
+				"mer\",\"multipartFlag\":\"False\",\"fullName\":\"Energistics.Etp.v12.Protocol.StoreNotif" +
+				"ication.ChangeNotification\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.Object" +
+				".ObjectChange\"\r\n]}");
 		private Energistics.Etp.v12.Datatypes.Object.ObjectChange _change;
 		public virtual Schema Schema
 		{

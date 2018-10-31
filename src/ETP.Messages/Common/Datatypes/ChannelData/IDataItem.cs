@@ -17,15 +17,14 @@
 //-----------------------------------------------------------------------
 
 using System.Collections;
-using System.Collections.Generic;
 
 namespace Energistics.Etp.Common.Datatypes.ChannelData
 {
     public interface IDataItem : Avro.Specific.ISpecificRecord
     {
-		IList<long> Indexes { get; set; }
+        long ChannelId { get; set; }
 
-		long ChannelId { get; set; }
+		IList Indexes { get; set; }
 
         IDataValue Value { get; set; }
 

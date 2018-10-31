@@ -24,8 +24,12 @@ namespace Energistics.Etp.Common.Datatypes.ChannelData
     {
         IList<long> ChannelId { get; set; }
 
-        long StartIndex { get; set; }
+        object StartIndex { get; set; }
 
-        long EndIndex { get; set; }
+        object EndIndex { get; set; }
+
+        string Uom { get; set; }
+
+        string DepthDatum { get; set; }
     }
 }

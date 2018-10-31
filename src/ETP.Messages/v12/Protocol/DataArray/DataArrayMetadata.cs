@@ -15,11 +15,11 @@ namespace Energistics.Etp.v12.Protocol.DataArray
 	
 	public partial class DataArrayMetadata : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""DataArrayMetadata"",""namespace"":""Energistics.Etp.v12.Protocol.DataArray"",""fields"":[{""name"":""dimensions"",""type"":{""type"":""array"",""items"":""long""}},{""name"":""arrayType"",""type"":{""type"":""enum"",""name"":""AnyArrayTypes"",""namespace"":""Energistics.Etp.v12.Datatypes"",""symbols"":[""arrayOfBoolean"",""arrayOfBytes"",""arrayOfInt"",""arrayOfLong"",""arrayOfFloat"",""arrayOfDouble""],""fullName"":""Energistics.Etp.v12.Datatypes.AnyArrayTypes"",""depends"":[]}}],""messageType"":""7"",""protocol"":""9"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""fullName"":""Energistics.Etp.v12.Protocol.DataArray.DataArrayMetadata"",""depends"":[
-  ""Energistics.Etp.v12.Datatypes.AnyArrayTypes""
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""DataArrayMetadata"",""namespace"":""Energistics.Etp.v12.Protocol.DataArray"",""fields"":[{""name"":""dimensions"",""type"":{""type"":""array"",""items"":""long""}},{""name"":""arrayType"",""type"":{""type"":""enum"",""name"":""AnyArrayType"",""namespace"":""Energistics.Etp.v12.Datatypes"",""symbols"":[""arrayOfBoolean"",""arrayOfBytes"",""arrayOfInt"",""arrayOfLong"",""arrayOfFloat"",""arrayOfDouble"",""arrayOfString""],""fullName"":""Energistics.Etp.v12.Datatypes.AnyArrayType"",""depends"":[]}}],""protocol"":""9"",""messageType"":""7"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":""False"",""fullName"":""Energistics.Etp.v12.Protocol.DataArray.DataArrayMetadata"",""depends"":[
+  ""Energistics.Etp.v12.Datatypes.AnyArrayType""
 ]}");
 		private IList<System.Int64> _dimensions;
-		private Energistics.Etp.v12.Datatypes.AnyArrayTypes _arrayType;
+		private Energistics.Etp.v12.Datatypes.AnyArrayType _arrayType;
 		public virtual Schema Schema
 		{
 			get
@@ -38,7 +38,7 @@ namespace Energistics.Etp.v12.Protocol.DataArray
 				this._dimensions = value;
 			}
 		}
-		public Energistics.Etp.v12.Datatypes.AnyArrayTypes ArrayType
+		public Energistics.Etp.v12.Datatypes.AnyArrayType ArrayType
 		{
 			get
 			{
@@ -63,7 +63,7 @@ namespace Energistics.Etp.v12.Protocol.DataArray
 			switch (fieldPos)
 			{
 			case 0: this._dimensions = (IList<System.Int64>)fieldValue; break;
-			case 1: this._arrayType = (Energistics.Etp.v12.Datatypes.AnyArrayTypes)fieldValue; break;
+			case 1: this._arrayType = (Energistics.Etp.v12.Datatypes.AnyArrayType)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

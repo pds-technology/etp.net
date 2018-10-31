@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Protocol.Transaction
 	
 	public partial class StartTransaction : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""StartTransaction"",""namespace"":""Energistics.Etp.v12.Protocol.Transaction"",""fields"":[],""messageType"":""1"",""protocol"":""18"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""fullName"":""Energistics.Etp.v12.Protocol.Transaction.StartTransaction"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""StartTransaction"",""namespace"":""Energistics.Etp.v12.Protocol.Transaction"",""fields"":[],""protocol"":""18"",""messageType"":""1"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":""False"",""fullName"":""Energistics.Etp.v12.Protocol.Transaction.StartTransaction"",""depends"":[]}");
 		public virtual Schema Schema
 		{
 			get

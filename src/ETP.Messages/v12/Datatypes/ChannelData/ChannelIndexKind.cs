@@ -13,9 +13,9 @@ namespace Energistics.Etp.v12.Datatypes.ChannelData
 	using Avro;
 	using Avro.Specific;
 	
-	public enum IndexDirections
+	public enum ChannelIndexKind
 	{
-		Increasing,
-		Decreasing,
+		Time,
+		Depth,
 	}
 }

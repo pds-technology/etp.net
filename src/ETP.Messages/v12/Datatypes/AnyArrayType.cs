@@ -5,7 +5,7 @@
 //    is regenerated
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Energistics.Etp.v12.Datatypes.ChannelData
+namespace Energistics.Etp.v12.Datatypes
 {
 	using System;
 	using System.Collections.Generic;
@@ -13,9 +13,14 @@ namespace Energistics.Etp.v12.Datatypes.ChannelData
 	using Avro;
 	using Avro.Specific;
 	
-	public enum ChannelIndexKinds
+	public enum AnyArrayType
 	{
-		Time,
-		Depth,
+		arrayOfBoolean,
+		arrayOfBytes,
+		arrayOfInt,
+		arrayOfLong,
+		arrayOfFloat,
+		arrayOfDouble,
+		arrayOfString,
 	}
 }

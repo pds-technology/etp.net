@@ -53,7 +53,7 @@ namespace Energistics.Etp.v11
                 IDataObject IChannelMetadataRecord.DomainObject
                 {
                     get { return DomainObject; }
-                    set { DomainObject = (Object.DataObject) value; }
+                    set { DomainObject = (Object.DataObject)value; }
                 }
 
                 [JsonIgnore]
@@ -64,7 +64,34 @@ namespace Energistics.Etp.v11
                 }
             }
 
-            public partial class ChannelRangeInfo : IChannelRangeInfo { }
+            public partial class ChannelRangeInfo : IChannelRangeInfo
+            {
+                object IChannelRangeInfo.StartIndex
+                {
+                    get { return StartIndex; }
+                    set { StartIndex = (long) value; }
+                }
+
+                object IChannelRangeInfo.EndIndex
+                {
+                    get { return EndIndex; }
+                    set { EndIndex = (long) value; }
+                }
+
+                [JsonIgnore]
+                public string Uom
+                {
+                    get { return null; }
+                    set { }
+                }
+
+                [JsonIgnore]
+                public string DepthDatum
+                {
+                    get { return null; }
+                    set { }
+                }
+            }
 
             public partial class ChannelStreamingInfo : IChannelStreamingInfo
             {
@@ -77,6 +104,12 @@ namespace Energistics.Etp.v11
 
             public partial class DataItem : IDataItem
             {
+                IList IDataItem.Indexes
+                {
+                    get { return Indexes as IList; }
+                    set { Indexes = value as IList<long>; }
+                }
+
                 IDataValue IDataItem.Value
                 {
                     get { return Value; }
@@ -103,6 +136,20 @@ namespace Energistics.Etp.v11
                 {
                     get { return (int) Direction; }
                     set { Direction = (IndexDirections) value; }
+                }
+
+                [JsonIgnore]
+                public object StartIndex
+                {
+                    get { return null; }
+                    set { }
+                }
+
+                [JsonIgnore]
+                public object EndIndex
+                {
+                    get { return null; }
+                    set { }
                 }
 
                 IDictionary IIndexMetadataRecord.CustomData

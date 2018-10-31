@@ -17,37 +17,29 @@ namespace Energistics.Etp.v12.Datatypes.ChannelData
 	{
 		public static Schema _SCHEMA = Avro.Schema.Parse("{\"type\":\"record\",\"name\":\"IndexMetadataRecord\",\"namespace\":\"Energistics.Etp.v12.Da" +
 				"tatypes.ChannelData\",\"fields\":[{\"name\":\"indexKind\",\"default\":\"Time\",\"type\":{\"typ" +
-				"e\":\"enum\",\"name\":\"ChannelIndexKinds\",\"namespace\":\"Energistics.Etp.v12.Datatypes." +
-				"ChannelData\",\"symbols\":[\"Time\",\"Depth\"],\"fullName\":\"Energistics.Etp.v12.Datatype" +
-				"s.ChannelData.ChannelIndexKinds\",\"depends\":[]}},{\"name\":\"uom\",\"type\":\"string\"},{" +
-				"\"name\":\"depthDatum\",\"default\":\"\",\"type\":\"string\"},{\"name\":\"direction\",\"default\":" +
-				"\"Increasing\",\"type\":{\"type\":\"enum\",\"name\":\"IndexDirections\",\"namespace\":\"Energis" +
-				"tics.Etp.v12.Datatypes.ChannelData\",\"symbols\":[\"Increasing\",\"Decreasing\"],\"fullN" +
-				"ame\":\"Energistics.Etp.v12.Datatypes.ChannelData.IndexDirections\",\"depends\":[]}}," +
-				"{\"name\":\"mnemonic\",\"default\":\"\",\"type\":\"string\"},{\"name\":\"description\",\"default\"" +
-				":\"\",\"type\":\"string\"},{\"name\":\"uri\",\"default\":\"\",\"type\":\"string\"},{\"name\":\"custom" +
-				"Data\",\"type\":{\"type\":\"map\",\"values\":{\"type\":\"record\",\"name\":\"DataValue\",\"namespa" +
-				"ce\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"item\",\"type\":[\"null\",\"dou" +
-				"ble\",\"float\",\"int\",\"long\",\"string\",{\"type\":\"record\",\"name\":\"ArrayOfDouble\",\"name" +
-				"space\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"values\",\"type\":{\"type\"" +
-				":\"array\",\"items\":\"double\"}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.ArrayOfDo" +
-				"uble\",\"depends\":[]},\"boolean\",\"bytes\"]}],\"fullName\":\"Energistics.Etp.v12.Datatyp" +
-				"es.DataValue\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfDouble\"\r\n]}}}" +
-				",{\"name\":\"scale\",\"default\":3,\"type\":\"int\"},{\"name\":\"timeDatum\",\"default\":\"\",\"typ" +
-				"e\":\"string\"}],\"fullName\":\"Energistics.Etp.v12.Datatypes.ChannelData.IndexMetadat" +
-				"aRecord\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.ChannelData.ChannelIndexK" +
-				"inds\",\r\n  \"Energistics.Etp.v12.Datatypes.ChannelData.IndexDirections\",\r\n  \"Energ" +
-				"istics.Etp.v12.Datatypes.DataValue\"\r\n]}");
-		private Energistics.Etp.v12.Datatypes.ChannelData.ChannelIndexKinds _indexKind;
-		private string _uom;
-		private string _depthDatum;
-		private Energistics.Etp.v12.Datatypes.ChannelData.IndexDirections _direction;
-		private string _mnemonic;
-		private string _description;
-		private string _uri;
-		private IDictionary<string,Energistics.Etp.v12.Datatypes.DataValue> _customData;
-		private int _scale;
-		private string _timeDatum;
+				"e\":\"enum\",\"name\":\"ChannelIndexKind\",\"namespace\":\"Energistics.Etp.v12.Datatypes.C" +
+				"hannelData\",\"symbols\":[\"Time\",\"Depth\"],\"fullName\":\"Energistics.Etp.v12.Datatypes" +
+				".ChannelData.ChannelIndexKind\",\"depends\":[]}},{\"name\":\"interval\",\"type\":{\"type\":" +
+				"\"record\",\"name\":\"IndexInterval\",\"namespace\":\"Energistics.Etp.v12.Datatypes.Objec" +
+				"t\",\"fields\":[{\"name\":\"startIndex\",\"type\":{\"type\":\"record\",\"name\":\"IndexValue\",\"n" +
+				"amespace\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"item\",\"type\":[\"null" +
+				"\",\"long\",\"double\"]}],\"fullName\":\"Energistics.Etp.v12.Datatypes.IndexValue\",\"depe" +
+				"nds\":[]}},{\"name\":\"endIndex\",\"type\":\"Energistics.Etp.v12.Datatypes.IndexValue\"}," +
+				"{\"name\":\"uom\",\"type\":\"string\"},{\"name\":\"depthDatum\",\"default\":\"\",\"type\":\"string\"" +
+				"}],\"fullName\":\"Energistics.Etp.v12.Datatypes.Object.IndexInterval\",\"depends\":[\r\n" +
+				"  \"Energistics.Etp.v12.Datatypes.IndexValue\",\r\n  \"Energistics.Etp.v12.Datatypes." +
+				"IndexValue\"\r\n]}},{\"name\":\"direction\",\"default\":\"Increasing\",\"type\":{\"type\":\"enum" +
+				"\",\"name\":\"IndexDirection\",\"namespace\":\"Energistics.Etp.v12.Datatypes.ChannelData" +
+				"\",\"symbols\":[\"Increasing\",\"Decreasing\"],\"fullName\":\"Energistics.Etp.v12.Datatype" +
+				"s.ChannelData.IndexDirection\",\"depends\":[]}},{\"name\":\"name\",\"default\":\"\",\"type\":" +
+				"\"string\"}],\"fullName\":\"Energistics.Etp.v12.Datatypes.ChannelData.IndexMetadataRe" +
+				"cord\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.ChannelData.ChannelIndexKind" +
+				"\",\r\n  \"Energistics.Etp.v12.Datatypes.Object.IndexInterval\",\r\n  \"Energistics.Etp." +
+				"v12.Datatypes.ChannelData.IndexDirection\"\r\n]}");
+		private Energistics.Etp.v12.Datatypes.ChannelData.ChannelIndexKind _indexKind;
+		private Energistics.Etp.v12.Datatypes.Object.IndexInterval _interval;
+		private Energistics.Etp.v12.Datatypes.ChannelData.IndexDirection _direction;
+		private string _name;
 		public virtual Schema Schema
 		{
 			get
@@ -55,7 +47,7 @@ namespace Energistics.Etp.v12.Datatypes.ChannelData
 				return IndexMetadataRecord._SCHEMA;
 			}
 		}
-		public Energistics.Etp.v12.Datatypes.ChannelData.ChannelIndexKinds IndexKind
+		public Energistics.Etp.v12.Datatypes.ChannelData.ChannelIndexKind IndexKind
 		{
 			get
 			{
@@ -66,29 +58,18 @@ namespace Energistics.Etp.v12.Datatypes.ChannelData
 				this._indexKind = value;
 			}
 		}
-		public string Uom
+		public Energistics.Etp.v12.Datatypes.Object.IndexInterval Interval
 		{
 			get
 			{
-				return this._uom;
+				return this._interval;
 			}
 			set
 			{
-				this._uom = value;
+				this._interval = value;
 			}
 		}
-		public string DepthDatum
-		{
-			get
-			{
-				return this._depthDatum;
-			}
-			set
-			{
-				this._depthDatum = value;
-			}
-		}
-		public Energistics.Etp.v12.Datatypes.ChannelData.IndexDirections Direction
+		public Energistics.Etp.v12.Datatypes.ChannelData.IndexDirection Direction
 		{
 			get
 			{
@@ -99,70 +80,15 @@ namespace Energistics.Etp.v12.Datatypes.ChannelData
 				this._direction = value;
 			}
 		}
-		public string Mnemonic
+		public string Name
 		{
 			get
 			{
-				return this._mnemonic;
+				return this._name;
 			}
 			set
 			{
-				this._mnemonic = value;
-			}
-		}
-		public string Description
-		{
-			get
-			{
-				return this._description;
-			}
-			set
-			{
-				this._description = value;
-			}
-		}
-		public string Uri
-		{
-			get
-			{
-				return this._uri;
-			}
-			set
-			{
-				this._uri = value;
-			}
-		}
-		public IDictionary<string,Energistics.Etp.v12.Datatypes.DataValue> CustomData
-		{
-			get
-			{
-				return this._customData;
-			}
-			set
-			{
-				this._customData = value;
-			}
-		}
-		public int Scale
-		{
-			get
-			{
-				return this._scale;
-			}
-			set
-			{
-				this._scale = value;
-			}
-		}
-		public string TimeDatum
-		{
-			get
-			{
-				return this._timeDatum;
-			}
-			set
-			{
-				this._timeDatum = value;
+				this._name = value;
 			}
 		}
 		public virtual object Get(int fieldPos)
@@ -170,15 +96,9 @@ namespace Energistics.Etp.v12.Datatypes.ChannelData
 			switch (fieldPos)
 			{
 			case 0: return this._indexKind;
-			case 1: return this._uom;
-			case 2: return this._depthDatum;
-			case 3: return this._direction;
-			case 4: return this._mnemonic;
-			case 5: return this._description;
-			case 6: return this._uri;
-			case 7: return this._customData;
-			case 8: return this._scale;
-			case 9: return this._timeDatum;
+			case 1: return this._interval;
+			case 2: return this._direction;
+			case 3: return this._name;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -186,16 +106,10 @@ namespace Energistics.Etp.v12.Datatypes.ChannelData
 		{
 			switch (fieldPos)
 			{
-			case 0: this._indexKind = (Energistics.Etp.v12.Datatypes.ChannelData.ChannelIndexKinds)fieldValue; break;
-			case 1: this._uom = (System.String)fieldValue; break;
-			case 2: this._depthDatum = (System.String)fieldValue; break;
-			case 3: this._direction = (Energistics.Etp.v12.Datatypes.ChannelData.IndexDirections)fieldValue; break;
-			case 4: this._mnemonic = (System.String)fieldValue; break;
-			case 5: this._description = (System.String)fieldValue; break;
-			case 6: this._uri = (System.String)fieldValue; break;
-			case 7: this._customData = (IDictionary<string,Energistics.Etp.v12.Datatypes.DataValue>)fieldValue; break;
-			case 8: this._scale = (System.Int32)fieldValue; break;
-			case 9: this._timeDatum = (System.String)fieldValue; break;
+			case 0: this._indexKind = (Energistics.Etp.v12.Datatypes.ChannelData.ChannelIndexKind)fieldValue; break;
+			case 1: this._interval = (Energistics.Etp.v12.Datatypes.Object.IndexInterval)fieldValue; break;
+			case 2: this._direction = (Energistics.Etp.v12.Datatypes.ChannelData.IndexDirection)fieldValue; break;
+			case 3: this._name = (System.String)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Protocol.DataArray
 	
 	public partial class DescribeDataArray : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""DescribeDataArray"",""namespace"":""Energistics.Etp.v12.Protocol.DataArray"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""pathInResource"",""type"":""string""}],""messageType"":""6"",""protocol"":""9"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""fullName"":""Energistics.Etp.v12.Protocol.DataArray.DescribeDataArray"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""DescribeDataArray"",""namespace"":""Energistics.Etp.v12.Protocol.DataArray"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""pathInResource"",""type"":""string""}],""protocol"":""9"",""messageType"":""6"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":""False"",""fullName"":""Energistics.Etp.v12.Protocol.DataArray.DescribeDataArray"",""depends"":[]}");
 		private string _uri;
 		private string _pathInResource;
 		public virtual Schema Schema

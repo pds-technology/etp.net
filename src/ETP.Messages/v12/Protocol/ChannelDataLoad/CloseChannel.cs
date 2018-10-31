@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Protocol.ChannelDataLoad
 	
 	public partial class CloseChannel : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""CloseChannel"",""namespace"":""Energistics.Etp.v12.Protocol.ChannelDataLoad"",""fields"":[{""name"":""id"",""type"":""long""},{""name"":""closeReason"",""default"":"""",""type"":""string""}],""messageType"":""3"",""protocol"":""23"",""senderRole"":""producer, consumer"",""protocolRoles"":""consumer""}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""CloseChannel"",""namespace"":""Energistics.Etp.v12.Protocol.ChannelDataLoad"",""fields"":[{""name"":""id"",""type"":""long""},{""name"":""closeReason"",""default"":"""",""type"":""string""}],""protocol"":""22"",""messageType"":""3"",""senderRole"":""consumer"",""protocolRoles"":""producer,consumer"",""multipartFlag"":""False"",""fullName"":""Energistics.Etp.v12.Protocol.ChannelDataLoad.CloseChannel"",""depends"":[]}");
 		private long _id;
 		private string _closeReason;
 		public virtual Schema Schema

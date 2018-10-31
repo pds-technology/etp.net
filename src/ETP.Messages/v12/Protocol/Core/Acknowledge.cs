@@ -15,10 +15,7 @@ namespace Energistics.Etp.v12.Protocol.Core
 	
 	public partial class Acknowledge : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse("{\"type\":\"record\",\"name\":\"Acknowledge\",\"namespace\":\"Energistics.Etp.v12.Protocol.C" +
-				"ore\",\"fields\":[],\"messageType\":\"1001\",\"protocol\":\"0\",\"senderRole\":\"*\",\"protocolR" +
-				"oles\":\"client,server\",\"fullName\":\"Energistics.Etp.v12.Protocol.Core.Acknowledge\"" +
-				",\"depends\":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""Acknowledge"",""namespace"":""Energistics.Etp.v12.Protocol.Core"",""fields"":[],""protocol"":""0"",""messageType"":""1001"",""senderRole"":""*"",""protocolRoles"":""client, server"",""multipartFlag"":""False"",""fullName"":""Energistics.Etp.v12.Protocol.Core.Acknowledge"",""depends"":[]}");
 		public virtual Schema Schema
 		{
 			get

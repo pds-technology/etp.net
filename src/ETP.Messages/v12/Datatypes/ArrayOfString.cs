@@ -5,7 +5,7 @@
 //    is regenerated
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Energistics.Etp.v12.Datatypes.ChannelData
+namespace Energistics.Etp.v12.Datatypes
 {
 	using System;
 	using System.Collections.Generic;
@@ -13,36 +13,35 @@ namespace Energistics.Etp.v12.Datatypes.ChannelData
 	using Avro;
 	using Avro.Specific;
 	
-	public partial class StreamingStartIndex : ISpecificRecord
+	public partial class ArrayOfString : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse("{\"type\":\"record\",\"name\":\"StreamingStartIndex\",\"namespace\":\"Energistics.Etp.v12.Da" +
-				"tatypes.ChannelData\",\"fields\":[{\"name\":\"item\",\"type\":[\"null\",\"int\",\"long\"]}],\"fu" +
-				"llName\":\"Energistics.Etp.v12.Datatypes.ChannelData.StreamingStartIndex\",\"depends" +
-				"\":[]}");
-		private object _item;
+		public static Schema _SCHEMA = Avro.Schema.Parse("{\"type\":\"record\",\"name\":\"ArrayOfString\",\"namespace\":\"Energistics.Etp.v12.Datatype" +
+				"s\",\"fields\":[{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":\"string\"}}],\"fullNa" +
+				"me\":\"Energistics.Etp.v12.Datatypes.ArrayOfString\",\"depends\":[]}");
+		private IList<System.String> _values;
 		public virtual Schema Schema
 		{
 			get
 			{
-				return StreamingStartIndex._SCHEMA;
+				return ArrayOfString._SCHEMA;
 			}
 		}
-		public object Item
+		public IList<System.String> Values
 		{
 			get
 			{
-				return this._item;
+				return this._values;
 			}
 			set
 			{
-				this._item = value;
+				this._values = value;
 			}
 		}
 		public virtual object Get(int fieldPos)
 		{
 			switch (fieldPos)
 			{
-			case 0: return this._item;
+			case 0: return this._values;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -50,7 +49,7 @@ namespace Energistics.Etp.v12.Datatypes.ChannelData
 		{
 			switch (fieldPos)
 			{
-			case 0: this._item = (System.Object)fieldValue; break;
+			case 0: this._values = (IList<System.String>)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

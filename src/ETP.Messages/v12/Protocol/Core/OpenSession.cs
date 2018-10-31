@@ -27,18 +27,35 @@ namespace Energistics.Etp.v12.Protocol.Core
 				"rgistics.Etp.v12.Datatypes.Version\",\"depends\":[]}},{\"name\":\"role\",\"type\":\"string" +
 				"\"},{\"name\":\"protocolCapabilities\",\"type\":{\"type\":\"map\",\"values\":{\"type\":\"record\"" +
 				",\"name\":\"DataValue\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name" +
-				"\":\"item\",\"type\":[\"null\",\"double\",\"float\",\"int\",\"long\",\"string\",{\"type\":\"record\"," +
-				"\"name\":\"ArrayOfDouble\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"n" +
-				"ame\":\"values\",\"type\":{\"type\":\"array\",\"items\":\"double\"}}],\"fullName\":\"Energistics" +
-				".Etp.v12.Datatypes.ArrayOfDouble\",\"depends\":[]},\"boolean\",\"bytes\"]}],\"fullName\":" +
-				"\"Energistics.Etp.v12.Datatypes.DataValue\",\"depends\":[\r\n  \"Energistics.Etp.v12.Da" +
-				"tatypes.ArrayOfDouble\"\r\n]}}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.Supporte" +
-				"dProtocol\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.Version\",\r\n  \"Energisti" +
-				"cs.Etp.v12.Datatypes.DataValue\"\r\n]}}},{\"name\":\"supportedObjects\",\"type\":{\"type\":" +
-				"\"array\",\"items\":\"string\"}},{\"name\":\"supportedCompression\",\"type\":\"string\"}],\"mes" +
-				"sageType\":\"2\",\"protocol\":\"0\",\"senderRole\":\"server\",\"protocolRoles\":\"client,serve" +
-				"r\",\"fullName\":\"Energistics.Etp.v12.Protocol.Core.OpenSession\",\"depends\":[\r\n  \"En" +
-				"ergistics.Etp.v12.Datatypes.SupportedProtocol\"\r\n]}");
+				"\":\"item\",\"type\":[\"null\",\"boolean\",\"int\",\"long\",\"float\",\"double\",\"string\",{\"type\"" +
+				":\"record\",\"name\":\"ArrayOfBoolean\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"f" +
+				"ields\":[{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":\"boolean\"}}],\"fullName\":" +
+				"\"Energistics.Etp.v12.Datatypes.ArrayOfBoolean\",\"depends\":[]},{\"type\":\"record\",\"n" +
+				"ame\":\"ArrayOfInt\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":" +
+				"\"values\",\"type\":{\"type\":\"array\",\"items\":\"int\"}}],\"fullName\":\"Energistics.Etp.v12" +
+				".Datatypes.ArrayOfInt\",\"depends\":[]},{\"type\":\"record\",\"name\":\"ArrayOfLong\",\"name" +
+				"space\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"values\",\"type\":{\"type\"" +
+				":\"array\",\"items\":\"long\"}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.ArrayOfLong" +
+				"\",\"depends\":[]},{\"type\":\"record\",\"name\":\"ArrayOfFloat\",\"namespace\":\"Energistics." +
+				"Etp.v12.Datatypes\",\"fields\":[{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":\"fl" +
+				"oat\"}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.ArrayOfFloat\",\"depends\":[]},{\"" +
+				"type\":\"record\",\"name\":\"ArrayOfDouble\",\"namespace\":\"Energistics.Etp.v12.Datatypes" +
+				"\",\"fields\":[{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":\"double\"}}],\"fullNam" +
+				"e\":\"Energistics.Etp.v12.Datatypes.ArrayOfDouble\",\"depends\":[]},{\"type\":\"record\"," +
+				"\"name\":\"ArrayOfString\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"n" +
+				"ame\":\"values\",\"type\":{\"type\":\"array\",\"items\":\"string\"}}],\"fullName\":\"Energistics" +
+				".Etp.v12.Datatypes.ArrayOfString\",\"depends\":[]},\"bytes\"]}],\"fullName\":\"Energisti" +
+				"cs.Etp.v12.Datatypes.DataValue\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.Ar" +
+				"rayOfBoolean\",\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfInt\",\r\n  \"Energistics.Et" +
+				"p.v12.Datatypes.ArrayOfLong\",\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfFloat\",\r\n" +
+				"  \"Energistics.Etp.v12.Datatypes.ArrayOfDouble\",\r\n  \"Energistics.Etp.v12.Datatyp" +
+				"es.ArrayOfString\"\r\n]}}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.SupportedProt" +
+				"ocol\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.Version\",\r\n  \"Energistics.Et" +
+				"p.v12.Datatypes.DataValue\"\r\n]}}},{\"name\":\"supportedObjects\",\"type\":{\"type\":\"arra" +
+				"y\",\"items\":\"string\"}},{\"name\":\"supportedCompression\",\"type\":\"string\"}],\"protocol" +
+				"\":\"0\",\"messageType\":\"2\",\"senderRole\":\"server\",\"protocolRoles\":\"client, server\",\"" +
+				"multipartFlag\":\"False\",\"fullName\":\"Energistics.Etp.v12.Protocol.Core.OpenSession" +
+				"\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.SupportedProtocol\"\r\n]}");
 		private string _applicationName;
 		private string _applicationVersion;
 		private string _sessionId;

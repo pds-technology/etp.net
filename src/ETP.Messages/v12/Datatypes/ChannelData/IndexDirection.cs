@@ -13,10 +13,9 @@ namespace Energistics.Etp.v12.Datatypes.ChannelData
 	using Avro;
 	using Avro.Specific;
 	
-	public enum ChannelStatuses
+	public enum IndexDirection
 	{
-		Active,
-		Inactive,
-		Closed,
+		Increasing,
+		Decreasing,
 	}
 }

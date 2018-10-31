@@ -15,10 +15,14 @@ namespace Energistics.Etp.v12.Datatypes.ChannelData
 	
 	public partial class ChannelRangeInfo : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""ChannelRangeInfo"",""namespace"":""Energistics.Etp.v12.Datatypes.ChannelData"",""fields"":[{""name"":""channelId"",""type"":{""type"":""array"",""items"":""long""}},{""name"":""startIndex"",""type"":""long""},{""name"":""endIndex"",""type"":""long""}],""fullName"":""Energistics.Etp.v12.Datatypes.ChannelData.ChannelRangeInfo"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""ChannelRangeInfo"",""namespace"":""Energistics.Etp.v12.Datatypes.ChannelData"",""fields"":[{""name"":""channelId"",""type"":{""type"":""array"",""items"":""long""}},{""name"":""interval"",""type"":{""type"":""record"",""name"":""IndexInterval"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""startIndex"",""type"":{""type"":""record"",""name"":""IndexValue"",""namespace"":""Energistics.Etp.v12.Datatypes"",""fields"":[{""name"":""item"",""type"":[""null"",""long"",""double""]}],""fullName"":""Energistics.Etp.v12.Datatypes.IndexValue"",""depends"":[]}},{""name"":""endIndex"",""type"":""Energistics.Etp.v12.Datatypes.IndexValue""},{""name"":""uom"",""type"":""string""},{""name"":""depthDatum"",""default"":"""",""type"":""string""}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.IndexInterval"",""depends"":[
+  ""Energistics.Etp.v12.Datatypes.IndexValue"",
+  ""Energistics.Etp.v12.Datatypes.IndexValue""
+]}}],""fullName"":""Energistics.Etp.v12.Datatypes.ChannelData.ChannelRangeInfo"",""depends"":[
+  ""Energistics.Etp.v12.Datatypes.Object.IndexInterval""
+]}");
 		private IList<System.Int64> _channelId;
-		private long _startIndex;
-		private long _endIndex;
+		private Energistics.Etp.v12.Datatypes.Object.IndexInterval _interval;
 		public virtual Schema Schema
 		{
 			get
@@ -37,26 +41,15 @@ namespace Energistics.Etp.v12.Datatypes.ChannelData
 				this._channelId = value;
 			}
 		}
-		public long StartIndex
+		public Energistics.Etp.v12.Datatypes.Object.IndexInterval Interval
 		{
 			get
 			{
-				return this._startIndex;
+				return this._interval;
 			}
 			set
 			{
-				this._startIndex = value;
-			}
-		}
-		public long EndIndex
-		{
-			get
-			{
-				return this._endIndex;
-			}
-			set
-			{
-				this._endIndex = value;
+				this._interval = value;
 			}
 		}
 		public virtual object Get(int fieldPos)
@@ -64,8 +57,7 @@ namespace Energistics.Etp.v12.Datatypes.ChannelData
 			switch (fieldPos)
 			{
 			case 0: return this._channelId;
-			case 1: return this._startIndex;
-			case 2: return this._endIndex;
+			case 1: return this._interval;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -74,8 +66,7 @@ namespace Energistics.Etp.v12.Datatypes.ChannelData
 			switch (fieldPos)
 			{
 			case 0: this._channelId = (IList<System.Int64>)fieldValue; break;
-			case 1: this._startIndex = (System.Int64)fieldValue; break;
-			case 2: this._endIndex = (System.Int64)fieldValue; break;
+			case 1: this._interval = (Energistics.Etp.v12.Datatypes.Object.IndexInterval)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

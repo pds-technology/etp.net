@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Protocol.DataArray
 	
 	public partial class GetDataArraySlice : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""GetDataArraySlice"",""namespace"":""Energistics.Etp.v12.Protocol.DataArray"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""pathInResource"",""type"":""string""},{""name"":""start"",""type"":{""type"":""array"",""items"":""long""}},{""name"":""count"",""type"":{""type"":""array"",""items"":""long""}}],""messageType"":""3"",""protocol"":""9"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""fullName"":""Energistics.Etp.v12.Protocol.DataArray.GetDataArraySlice"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""GetDataArraySlice"",""namespace"":""Energistics.Etp.v12.Protocol.DataArray"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""pathInResource"",""type"":""string""},{""name"":""start"",""type"":{""type"":""array"",""items"":""long""}},{""name"":""count"",""type"":{""type"":""array"",""items"":""long""}}],""protocol"":""9"",""messageType"":""3"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":""False"",""fullName"":""Energistics.Etp.v12.Protocol.DataArray.GetDataArraySlice"",""depends"":[]}");
 		private string _uri;
 		private string _pathInResource;
 		private IList<System.Int64> _start;

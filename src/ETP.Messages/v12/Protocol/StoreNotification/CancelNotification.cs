@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Protocol.StoreNotification
 	
 	public partial class CancelNotification : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""CancelNotification"",""namespace"":""Energistics.Etp.v12.Protocol.StoreNotification"",""fields"":[{""name"":""requestUuid"",""type"":""string""}],""messageType"":""4"",""protocol"":""5"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""fullName"":""Energistics.Etp.v12.Protocol.StoreNotification.CancelNotification"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""CancelNotification"",""namespace"":""Energistics.Etp.v12.Protocol.StoreNotification"",""fields"":[{""name"":""requestUuid"",""type"":""string""}],""protocol"":""5"",""messageType"":""4"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":""False"",""fullName"":""Energistics.Etp.v12.Protocol.StoreNotification.CancelNotification"",""depends"":[]}");
 		private string _requestUuid;
 		public virtual Schema Schema
 		{

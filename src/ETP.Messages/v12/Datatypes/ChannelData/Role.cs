@@ -5,7 +5,7 @@
 //    is regenerated
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Energistics.Etp.v12.Datatypes.Object
+namespace Energistics.Etp.v12.Datatypes.ChannelData
 {
 	using System;
 	using System.Collections.Generic;
@@ -13,9 +13,9 @@ namespace Energistics.Etp.v12.Datatypes.Object
 	using Avro;
 	using Avro.Specific;
 	
-	public enum ObjectChangeKinds
+	public enum Role
 	{
-		insert,
-		update,
+		producer,
+		consumer,
 	}
 }

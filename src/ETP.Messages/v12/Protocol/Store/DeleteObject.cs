@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Protocol.Store
 	
 	public partial class DeleteObject : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""DeleteObject"",""namespace"":""Energistics.Etp.v12.Protocol.Store"",""fields"":[{""name"":""uri"",""type"":""string""}],""messageType"":""3"",""protocol"":""4"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""fullName"":""Energistics.Etp.v12.Protocol.Store.DeleteObject"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""DeleteObject"",""namespace"":""Energistics.Etp.v12.Protocol.Store"",""fields"":[{""name"":""uri"",""type"":""string""}],""protocol"":""4"",""messageType"":""3"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":""False"",""fullName"":""Energistics.Etp.v12.Protocol.Store.DeleteObject"",""depends"":[]}");
 		private string _uri;
 		public virtual Schema Schema
 		{

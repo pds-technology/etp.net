@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Protocol.WitsmlSoap
 	
 	public partial class WMLS_GetVersion : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""WMLS_GetVersion"",""namespace"":""Energistics.Etp.v12.Protocol.WitsmlSoap"",""fields"":[],""messageType"":""11"",""protocol"":""8"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""fullName"":""Energistics.Etp.v12.Protocol.WitsmlSoap.WMLS_GetVersion"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""WMLS_GetVersion"",""namespace"":""Energistics.Etp.v12.Protocol.WitsmlSoap"",""fields"":[],""protocol"":""8"",""messageType"":""11"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":""False"",""fullName"":""Energistics.Etp.v12.Protocol.WitsmlSoap.WMLS_GetVersion"",""depends"":[]}");
 		public virtual Schema Schema
 		{
 			get

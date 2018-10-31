@@ -17,25 +17,25 @@ namespace Energistics.Etp.v12.Datatypes.Object
 	{
 		public static Schema _SCHEMA = Avro.Schema.Parse("{\"type\":\"record\",\"name\":\"ObjectChange\",\"namespace\":\"Energistics.Etp.v12.Datatypes" +
 				".Object\",\"fields\":[{\"name\":\"changeKind\",\"type\":{\"type\":\"enum\",\"name\":\"ObjectChan" +
-				"geKinds\",\"namespace\":\"Energistics.Etp.v12.Datatypes.Object\",\"symbols\":[\"insert\"," +
-				"\"update\"],\"fullName\":\"Energistics.Etp.v12.Datatypes.Object.ObjectChangeKinds\",\"d" +
-				"epends\":[]}},{\"name\":\"changeTime\",\"type\":\"long\"},{\"name\":\"dataObject\",\"type\":{\"t" +
-				"ype\":\"record\",\"name\":\"DataObject\",\"namespace\":\"Energistics.Etp.v12.Datatypes.Obj" +
-				"ect\",\"fields\":[{\"name\":\"resource\",\"type\":{\"type\":\"record\",\"name\":\"Resource\",\"nam" +
-				"espace\":\"Energistics.Etp.v12.Datatypes.Object\",\"fields\":[{\"name\":\"uri\",\"type\":\"s" +
-				"tring\"},{\"name\":\"contentType\",\"type\":\"string\"},{\"name\":\"name\",\"type\":\"string\"},{" +
-				"\"name\":\"channelSubscribable\",\"default\":false,\"type\":\"boolean\"},{\"name\":\"customDa" +
-				"ta\",\"type\":{\"type\":\"map\",\"values\":\"string\"}},{\"name\":\"resourceType\",\"type\":\"stri" +
-				"ng\"},{\"name\":\"childCount\",\"default\":null,\"type\":[\"null\",\"int\"]},{\"name\":\"uuid\",\"" +
-				"default\":\"\",\"type\":\"string\"},{\"name\":\"lastChanged\",\"type\":[\"null\",\"long\"]},{\"nam" +
-				"e\":\"objectNotifiable\",\"default\":false,\"type\":\"boolean\"}],\"fullName\":\"Energistics" +
-				".Etp.v12.Datatypes.Object.Resource\",\"depends\":[]}},{\"name\":\"data\",\"type\":\"bytes\"" +
-				"}],\"fullName\":\"Energistics.Etp.v12.Datatypes.Object.DataObject\",\"depends\":[\r\n  \"" +
-				"Energistics.Etp.v12.Datatypes.Object.Resource\"\r\n]}}],\"fullName\":\"Energistics.Etp" +
-				".v12.Datatypes.Object.ObjectChange\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatype" +
-				"s.Object.ObjectChangeKinds\",\r\n  \"Energistics.Etp.v12.Datatypes.Object.DataObject" +
-				"\"\r\n]}");
-		private Energistics.Etp.v12.Datatypes.Object.ObjectChangeKinds _changeKind;
+				"geKind\",\"namespace\":\"Energistics.Etp.v12.Datatypes.Object\",\"symbols\":[\"insert\",\"" +
+				"update\",\"authorized\"],\"fullName\":\"Energistics.Etp.v12.Datatypes.Object.ObjectCha" +
+				"ngeKind\",\"depends\":[]}},{\"name\":\"changeTime\",\"type\":\"long\"},{\"name\":\"dataObject\"" +
+				",\"type\":{\"type\":\"record\",\"name\":\"DataObject\",\"namespace\":\"Energistics.Etp.v12.Da" +
+				"tatypes.Object\",\"fields\":[{\"name\":\"resource\",\"type\":{\"type\":\"record\",\"name\":\"Res" +
+				"ource\",\"namespace\":\"Energistics.Etp.v12.Datatypes.Object\",\"fields\":[{\"name\":\"uri" +
+				"\",\"type\":\"string\"},{\"name\":\"contentType\",\"type\":\"string\"},{\"name\":\"name\",\"type\":" +
+				"\"string\"},{\"name\":\"channelSubscribable\",\"default\":false,\"type\":\"boolean\"},{\"name" +
+				"\":\"customData\",\"type\":{\"type\":\"map\",\"values\":\"string\"}},{\"name\":\"resourceType\",\"" +
+				"type\":\"string\"},{\"name\":\"childCount\",\"default\":null,\"type\":[\"null\",\"int\"]},{\"nam" +
+				"e\":\"uuid\",\"default\":\"\",\"type\":\"string\"},{\"name\":\"lastChanged\",\"type\":[\"null\",\"lo" +
+				"ng\"]},{\"name\":\"objectNotifiable\",\"default\":false,\"type\":\"boolean\"}],\"fullName\":\"" +
+				"Energistics.Etp.v12.Datatypes.Object.Resource\",\"depends\":[]}},{\"name\":\"data\",\"ty" +
+				"pe\":\"bytes\"}],\"fullName\":\"Energistics.Etp.v12.Datatypes.Object.DataObject\",\"depe" +
+				"nds\":[\r\n  \"Energistics.Etp.v12.Datatypes.Object.Resource\"\r\n]}}],\"fullName\":\"Ener" +
+				"gistics.Etp.v12.Datatypes.Object.ObjectChange\",\"depends\":[\r\n  \"Energistics.Etp.v" +
+				"12.Datatypes.Object.ObjectChangeKind\",\r\n  \"Energistics.Etp.v12.Datatypes.Object." +
+				"DataObject\"\r\n]}");
+		private Energistics.Etp.v12.Datatypes.Object.ObjectChangeKind _changeKind;
 		private long _changeTime;
 		private Energistics.Etp.v12.Datatypes.Object.DataObject _dataObject;
 		public virtual Schema Schema
@@ -45,7 +45,7 @@ namespace Energistics.Etp.v12.Datatypes.Object
 				return ObjectChange._SCHEMA;
 			}
 		}
-		public Energistics.Etp.v12.Datatypes.Object.ObjectChangeKinds ChangeKind
+		public Energistics.Etp.v12.Datatypes.Object.ObjectChangeKind ChangeKind
 		{
 			get
 			{
@@ -92,7 +92,7 @@ namespace Energistics.Etp.v12.Datatypes.Object
 		{
 			switch (fieldPos)
 			{
-			case 0: this._changeKind = (Energistics.Etp.v12.Datatypes.Object.ObjectChangeKinds)fieldValue; break;
+			case 0: this._changeKind = (Energistics.Etp.v12.Datatypes.Object.ObjectChangeKind)fieldValue; break;
 			case 1: this._changeTime = (System.Int64)fieldValue; break;
 			case 2: this._dataObject = (Energistics.Etp.v12.Datatypes.Object.DataObject)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");

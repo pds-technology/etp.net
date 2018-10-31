@@ -16,6 +16,7 @@
 // limitations under the License.
 //-----------------------------------------------------------------------
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Energistics.Etp.Common.Datatypes;
@@ -32,10 +33,58 @@ namespace Energistics.Etp.v12
         {
             public partial class ChannelMetadataRecord : IChannelMetadataRecord
             {
+                string IChannelMetadataRecord.Uuid
+                {
+                    get { return new Guid(Uuid.Value).ToString(); }
+                    set { Uuid = new Uuid { Value = Guid.Parse(value).ToByteArray() }; }
+                }
+
+                [JsonIgnore]
+                public long ChannelId
+                {
+                    get { return Id; }
+                    set { Id = value; }
+                }
+
+                [JsonIgnore]
+                public string ChannelUri
+                {
+                    get { return DomainObjectUri; }
+                    set { DomainObjectUri = value; }
+                }
+
                 int IChannelMetadataRecord.Status
                 {
                     get { return (int)Status; }
-                    set { Status = (ChannelStatuses)value; }
+                    set { Status = (ChannelStatusKind)value; }
+                }
+
+                [JsonIgnore]
+                public long? StartIndex
+                {
+                    get { return null; }
+                    set { }
+                }
+
+                [JsonIgnore]
+                public long? EndIndex
+                {
+                    get { return null; }
+                    set { }
+                }
+
+                [JsonIgnore]
+                public string ContentType
+                {
+                    get { return null; }
+                    set { }
+                }
+
+                [JsonIgnore]
+                public string Description
+                {
+                    get { return null; }
+                    set { }
                 }
 
                 IList IChannelMetadataRecord.Indexes
@@ -50,10 +99,11 @@ namespace Energistics.Etp.v12
                     set { CustomData = value as IDictionary<string, DataValue>; }
                 }
 
-                IDataObject IChannelMetadataRecord.DomainObject
+                [JsonIgnore]
+                public IDataObject DomainObject
                 {
-                    get { return DomainObject; }
-                    set { DomainObject = (Object.DataObject)value; }
+                    get { return null; }
+                    set { }
                 }
 
                 IList IChannelMetadataRecord.AttributeMetadata
@@ -63,19 +113,45 @@ namespace Energistics.Etp.v12
                 }
             }
 
-            public partial class ChannelRangeInfo : IChannelRangeInfo { }
-
-            public partial class ChannelStreamingInfo : IChannelStreamingInfo
+            public partial class ChannelRangeInfo : IChannelRangeInfo
             {
-                IStreamingStartIndex IChannelStreamingInfo.StartIndex
+                [JsonIgnore]
+                public object StartIndex
                 {
-                    get { return StartIndex; }
-                    set { StartIndex = value as StreamingStartIndex; }
+                    get { return Interval.StartIndex?.Item; }
+                    set { Interval.StartIndex = new IndexValue { Item = value }; }
+                }
+
+                [JsonIgnore]
+                public object EndIndex
+                {
+                    get { return Interval.EndIndex?.Item; }
+                    set { Interval.EndIndex = new IndexValue { Item = value }; }
+                }
+
+                [JsonIgnore]
+                public string Uom
+                {
+                    get { return Interval.Uom; }
+                    set { Interval.Uom = value; }
+                }
+
+                [JsonIgnore]
+                public string DepthDatum
+                {
+                    get { return Interval.DepthDatum; }
+                    set { Interval.DepthDatum = value; }
                 }
             }
 
             public partial class DataItem : IDataItem
             {
+                IList IDataItem.Indexes
+                {
+                    get { return Indexes as IList; }
+                    set { Indexes = value as IList<IndexValue>; }
+                }
+
                 IDataValue IDataItem.Value
                 {
                     get { return Value; }
@@ -89,49 +165,90 @@ namespace Energistics.Etp.v12
                 }
             }
 
-            public partial class DataPoint : IDataPoint
-            {
-                IList IDataPoint.Indexes
-                {
-                    get { return Indexes as IList; }
-                    set { Indexes = value as IList<IndexValue>; }
-                }
-
-                IDataValue IDataPoint.Value
-                {
-                    get { return Value; }
-                    set { Value = value as DataValue; }
-                }
-
-                IList IDataPoint.ValueAttributes
-                {
-                    get { return ValueAttributes as IList; }
-                    set { ValueAttributes = value as IList<DataAttribute>; }
-                }
-            }
-
             public partial class IndexMetadataRecord : IIndexMetadataRecord
             {
+                [JsonIgnore]
+                public string Mnemonic
+                {
+                    get { return Name; }
+                    set { Name = value; }
+                }
+
                 int IIndexMetadataRecord.IndexKind
                 {
                     get { return (int)IndexKind; }
-                    set { IndexKind = (ChannelIndexKinds) value; }
+                    set { IndexKind = (ChannelIndexKind) value; }
                 }
 
                 int IIndexMetadataRecord.Direction
                 {
                     get { return (int)Direction; }
-                    set { Direction = (IndexDirections)value; }
+                    set { Direction = (IndexDirection)value; }
                 }
 
-                IDictionary IIndexMetadataRecord.CustomData
+                [JsonIgnore]
+                public object StartIndex
                 {
-                    get { return CustomData as IDictionary; }
-                    set { CustomData = value as IDictionary<string, DataValue>; }
+                    get { return Interval.StartIndex?.Item; }
+                    set { Interval.StartIndex = new IndexValue { Item = value }; }
+                }
+
+                [JsonIgnore]
+                public object EndIndex
+                {
+                    get { return Interval.EndIndex?.Item; }
+                    set { Interval.EndIndex = new IndexValue { Item = value }; }
+                }
+
+                [JsonIgnore]
+                public string Uom
+                {
+                    get { return Interval.Uom; }
+                    set { Interval.Uom = value; }
+                }
+
+                [JsonIgnore]
+                public string DepthDatum
+                {
+                    get { return Interval.DepthDatum; }
+                    set { Interval.DepthDatum = value; }
+                }
+
+                [JsonIgnore]
+                public string Uri
+                {
+                    get { return null; }
+                    set { }
+                }
+
+                [JsonIgnore]
+                public string Description
+                {
+                    get { return null; }
+                    set { }
+                }
+
+                [JsonIgnore]
+                public string TimeDatum
+                {
+                    get { return null; }
+                    set { }
+                }
+
+                [JsonIgnore]
+                public int Scale
+                {
+                    get { return 0; }
+                    set { }
+                }
+
+                [JsonIgnore]
+                public IDictionary CustomData
+                {
+                    get { return null; }
+                    set { }
                 }
             }
-
-            public partial class StreamingStartIndex : IStreamingStartIndex { }
         }
 
         namespace Object
@@ -145,7 +262,11 @@ namespace Energistics.Etp.v12
                 }
 
                 [JsonIgnore]
-                public string ContentEncoding { get; set; }
+                public string ContentEncoding
+                {
+                    get { return null; }
+                    set { }
+                }
             }
 
             public partial class NotificationRequestRecord : INotificationRequestRecord { }
@@ -164,6 +285,8 @@ namespace Energistics.Etp.v12
         public partial class ArrayOfInt : IEtpArray<int> { }
 
         public partial class ArrayOfLong : IEtpArray<long> { }
+
+        public partial class ArrayOfString : IEtpArray<string> { }
 
         public partial class DataAttribute : IDataAttribute
         {

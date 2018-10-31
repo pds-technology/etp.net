@@ -22,25 +22,28 @@ namespace Energistics.Etp.Common.Datatypes.ChannelData
 {
     public interface IIndexMetadataRecord : Avro.Specific.ISpecificRecord
     {
+        string Mnemonic { get; set; }
+
 		int IndexKind { get; set; }
-
-		string Uom { get; set; }
-
-        string DepthDatum { get; set; }
 
         int Direction { get; set; }
 
-        string Mnemonic { get; set; }
+        object StartIndex { get; set; }
+
+        object EndIndex { get; set; }
+
+        string Uom { get; set; }
+
+        string DepthDatum { get; set; }
 
         string Description { get; set; }
 
         string Uri { get; set; }
 
-        IDictionary CustomData { get; set; }
-
         int Scale { get; set; }
 
         string TimeDatum { get; set; }
 
+        IDictionary CustomData { get; set; }
     }
 }
