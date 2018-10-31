@@ -41,17 +41,27 @@ namespace Energistics.Etp.v12
         /// </summary>
         public enum ChannelStreaming
         {
-            Start = 0,
-            ChannelDescribe = 1,
-            ChannelMetadata = 2,
-            ChannelData = 3,
-            ChannelStreamingStart = 4,
-            ChannelStreamingStop = 5,
-            ChannelDataChange = 6,
-            //NotUsed = 7,
-            ChannelRemove = 8,
-            ChannelRangeRequest = 9,
-            ChannelStatusChange = 10
+            ChannelMetadata = 1,
+            ChannelData,
+            StartStreaming,
+            StopStreaming
+        }
+
+        /// <summary>
+        /// An enumeration of Channel Subscribe protocol message types.
+        /// </summary>
+        public enum ChannelSubscribe
+        {
+            GetChannelMetadata = 1,
+            GetChannelMetadataResponse = 2,
+            SubscribeChannels = 3,
+            RealtimeData = 4,
+            InfillData = 5,
+            ChangedData = 6,
+            UnsubscribeChannels = 7,
+            SubscriptionStopped = 8,
+            GetRange = 9,
+            GetRangeReponse = 10
         }
 
         /// <summary>
@@ -63,8 +73,8 @@ namespace Energistics.Etp.v12
             OpenChannelResponse,
             CloseChannel,
             RealtimeData,
-            InfillRealtimeData,
-            ChannelDataChange
+            InfillData,
+            ChangedData
         }
 
         /// <summary>

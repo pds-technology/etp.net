@@ -205,6 +205,7 @@
     <Compile Include="v12\Protocol\ChannelStreaming\ChannelMetadata.cs" />
     <Compile Include="v12\Protocol\ChannelStreaming\StartStreaming.cs" />
     <Compile Include="v12\Protocol\ChannelStreaming\StopStreaming.cs" />
+    <Compile Include="v12\Protocol\ChannelSubscribe\ChangedData.cs" />
     <Compile Include="v12\Protocol\ChannelSubscribe\GetChannelMetadata.cs" />
     <Compile Include="v12\Protocol\ChannelSubscribe\GetChannelMetadataResponse.cs" />
     <Compile Include="v12\Protocol\ChannelSubscribe\GetRange.cs" />
