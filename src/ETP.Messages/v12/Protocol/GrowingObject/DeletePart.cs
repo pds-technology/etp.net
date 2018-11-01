@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Protocol.GrowingObject
 	
 	public partial class DeletePart : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""DeletePart"",""namespace"":""Energistics.Etp.v12.Protocol.GrowingObject"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""uid"",""type"":""string""}],""protocol"":""6"",""messageType"":""1"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":""False"",""fullName"":""Energistics.Etp.v12.Protocol.GrowingObject.DeletePart"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""DeletePart"",""namespace"":""Energistics.Etp.v12.Protocol.GrowingObject"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""uid"",""type"":""string""}],""protocol"":""6"",""messageType"":""1"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.GrowingObject.DeletePart"",""depends"":[]}");
 		private string _uri;
 		private string _uid;
 		public virtual Schema Schema

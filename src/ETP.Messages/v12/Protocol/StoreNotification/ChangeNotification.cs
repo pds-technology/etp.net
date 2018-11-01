@@ -37,9 +37,9 @@ namespace Energistics.Etp.v12.Protocol.StoreNotification
 				"types.Object.ObjectChange\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.Object." +
 				"ObjectChangeKind\",\r\n  \"Energistics.Etp.v12.Datatypes.Object.DataObject\"\r\n]}}],\"p" +
 				"rotocol\":\"5\",\"messageType\":\"2\",\"senderRole\":\"store\",\"protocolRoles\":\"store,custo" +
-				"mer\",\"multipartFlag\":\"False\",\"fullName\":\"Energistics.Etp.v12.Protocol.StoreNotif" +
-				"ication.ChangeNotification\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.Object" +
-				".ObjectChange\"\r\n]}");
+				"mer\",\"multipartFlag\":false,\"fullName\":\"Energistics.Etp.v12.Protocol.StoreNotific" +
+				"ation.ChangeNotification\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.Object.O" +
+				"bjectChange\"\r\n]}");
 		private Energistics.Etp.v12.Datatypes.Object.ObjectChange _change;
 		public virtual Schema Schema
 		{

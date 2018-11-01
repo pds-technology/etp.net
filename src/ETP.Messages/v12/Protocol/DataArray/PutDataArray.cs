@@ -42,9 +42,9 @@ namespace Energistics.Etp.v12.Protocol.DataArray
 				"\n  \"Energistics.Etp.v12.Datatypes.ArrayOfDouble\",\r\n  \"Energistics.Etp.v12.Dataty" +
 				"pes.ArrayOfString\"\r\n]}},{\"name\":\"dimensions\",\"type\":{\"type\":\"array\",\"items\":\"lon" +
 				"g\"}}],\"protocol\":\"9\",\"messageType\":\"4\",\"senderRole\":\"customer\",\"protocolRoles\":\"" +
-				"store,customer\",\"multipartFlag\":\"False\",\"fullName\":\"Energistics.Etp.v12.Protocol" +
-				".DataArray.PutDataArray\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.AnyArray\"" +
-				"\r\n]}");
+				"store,customer\",\"multipartFlag\":false,\"fullName\":\"Energistics.Etp.v12.Protocol.D" +
+				"ataArray.PutDataArray\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.AnyArray\"\r\n" +
+				"]}");
 		private string _uri;
 		private string _pathInResource;
 		private Energistics.Etp.v12.Datatypes.AnyArray _data;

@@ -53,9 +53,9 @@ namespace Energistics.Etp.v12.Protocol.Core
 				"Etp.v12.Datatypes.Version\",\r\n  \"Energistics.Etp.v12.Datatypes.DataValue\"\r\n]}}},{" +
 				"\"name\":\"supportedObjects\",\"type\":{\"type\":\"array\",\"items\":\"string\"}},{\"name\":\"sup" +
 				"portedCompression\",\"type\":\"string\"}],\"protocol\":\"0\",\"messageType\":\"1\",\"senderRol" +
-				"e\":\"client\",\"protocolRoles\":\"client, server\",\"multipartFlag\":\"False\",\"fullName\":" +
-				"\"Energistics.Etp.v12.Protocol.Core.RequestSession\",\"depends\":[\r\n  \"Energistics.E" +
-				"tp.v12.Datatypes.SupportedProtocol\"\r\n]}");
+				"e\":\"client\",\"protocolRoles\":\"client, server\",\"multipartFlag\":false,\"fullName\":\"E" +
+				"nergistics.Etp.v12.Protocol.Core.RequestSession\",\"depends\":[\r\n  \"Energistics.Etp" +
+				".v12.Datatypes.SupportedProtocol\"\r\n]}");
 		private string _applicationName;
 		private string _applicationVersion;
 		private IList<Energistics.Etp.v12.Datatypes.SupportedProtocol> _requestedProtocols;

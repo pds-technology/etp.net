@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Protocol.GrowingObjectNotification
 	
 	public partial class CancelPartNotification : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""CancelPartNotification"",""namespace"":""Energistics.Etp.v12.Protocol.GrowingObjectNotification"",""fields"":[{""name"":""requestUuid"",""type"":""string""}],""protocol"":""7"",""messageType"":""4"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":""False"",""fullName"":""Energistics.Etp.v12.Protocol.GrowingObjectNotification.CancelPartNotification"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""CancelPartNotification"",""namespace"":""Energistics.Etp.v12.Protocol.GrowingObjectNotification"",""fields"":[{""name"":""requestUuid"",""type"":""string""}],""protocol"":""7"",""messageType"":""4"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.GrowingObjectNotification.CancelPartNotification"",""depends"":[]}");
 		private string _requestUuid;
 		public virtual Schema Schema
 		{

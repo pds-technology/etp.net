@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Protocol.WitsmlSoap
 	
 	public partial class WMSL_DeleteFromStoreResponse : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""WMSL_DeleteFromStoreResponse"",""namespace"":""Energistics.Etp.v12.Protocol.WitsmlSoap"",""fields"":[{""name"":""Result"",""type"":""int""},{""name"":""SuppMsgOut"",""type"":""string""}],""protocol"":""8"",""messageType"":""4"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":""False"",""fullName"":""Energistics.Etp.v12.Protocol.WitsmlSoap.WMSL_DeleteFromStoreResponse"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""WMSL_DeleteFromStoreResponse"",""namespace"":""Energistics.Etp.v12.Protocol.WitsmlSoap"",""fields"":[{""name"":""Result"",""type"":""int""},{""name"":""SuppMsgOut"",""type"":""string""}],""protocol"":""8"",""messageType"":""4"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.WitsmlSoap.WMSL_DeleteFromStoreResponse"",""depends"":[]}");
 		private int _Result;
 		private string _SuppMsgOut;
 		public virtual Schema Schema

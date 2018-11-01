@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Protocol.ChannelStreaming
 	
 	public partial class StartStreaming : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""StartStreaming"",""namespace"":""Energistics.Etp.v12.Protocol.ChannelStreaming"",""fields"":[],""protocol"":""1"",""messageType"":""3"",""senderRole"":""consumer"",""protocolRoles"":""producer,consumer"",""multipartFlag"":""False"",""fullName"":""Energistics.Etp.v12.Protocol.ChannelStreaming.StartStreaming"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""StartStreaming"",""namespace"":""Energistics.Etp.v12.Protocol.ChannelStreaming"",""fields"":[],""protocol"":""1"",""messageType"":""3"",""senderRole"":""consumer"",""protocolRoles"":""producer,consumer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.ChannelStreaming.StartStreaming"",""depends"":[]}");
 		public virtual Schema Schema
 		{
 			get

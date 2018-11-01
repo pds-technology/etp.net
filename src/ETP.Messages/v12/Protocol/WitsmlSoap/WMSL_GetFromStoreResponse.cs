@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Protocol.WitsmlSoap
 	
 	public partial class WMSL_GetFromStoreResponse : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""WMSL_GetFromStoreResponse"",""namespace"":""Energistics.Etp.v12.Protocol.WitsmlSoap"",""fields"":[{""name"":""Result"",""type"":""int""},{""name"":""XMLout"",""type"":""string""},{""name"":""SuppMsgOut"",""type"":""string""}],""protocol"":""8"",""messageType"":""10"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":""False"",""fullName"":""Energistics.Etp.v12.Protocol.WitsmlSoap.WMSL_GetFromStoreResponse"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""WMSL_GetFromStoreResponse"",""namespace"":""Energistics.Etp.v12.Protocol.WitsmlSoap"",""fields"":[{""name"":""Result"",""type"":""int""},{""name"":""XMLout"",""type"":""string""},{""name"":""SuppMsgOut"",""type"":""string""}],""protocol"":""8"",""messageType"":""10"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.WitsmlSoap.WMSL_GetFromStoreResponse"",""depends"":[]}");
 		private int _Result;
 		private string _XMLout;
 		private string _SuppMsgOut;

@@ -41,9 +41,8 @@ namespace Energistics.Etp.v12.Protocol.DataArray
 				"s.ArrayOfLong\",\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfFloat\",\r\n  \"Energistics" +
 				".Etp.v12.Datatypes.ArrayOfDouble\",\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfStri" +
 				"ng\"\r\n]}}],\"protocol\":\"9\",\"messageType\":\"1\",\"senderRole\":\"store\",\"protocolRoles\":" +
-				"\"store,customer\",\"multipartFlag\":\"True\",\"fullName\":\"Energistics.Etp.v12.Protocol" +
-				".DataArray.DataArray\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.AnyArray\"\r\n]" +
-				"}");
+				"\"store,customer\",\"multipartFlag\":true,\"fullName\":\"Energistics.Etp.v12.Protocol.D" +
+				"ataArray.DataArray\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.AnyArray\"\r\n]}");
 		private IList<System.Int64> _dimensions;
 		private Energistics.Etp.v12.Datatypes.AnyArray _data;
 		public virtual Schema Schema

@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Protocol.GrowingObjectQuery
 	
 	public partial class FindPartsResponse : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""FindPartsResponse"",""namespace"":""Energistics.Etp.v12.Protocol.GrowingObjectQuery"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""uid"",""type"":""string""},{""name"":""contentType"",""type"":""string""},{""name"":""data"",""type"":""bytes""},{""name"":""serverSortOrder"",""type"":""string""}],""protocol"":""16"",""messageType"":""2"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":""True"",""fullName"":""Energistics.Etp.v12.Protocol.GrowingObjectQuery.FindPartsResponse"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""FindPartsResponse"",""namespace"":""Energistics.Etp.v12.Protocol.GrowingObjectQuery"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""uid"",""type"":""string""},{""name"":""contentType"",""type"":""string""},{""name"":""data"",""type"":""bytes""},{""name"":""serverSortOrder"",""type"":""string""}],""protocol"":""16"",""messageType"":""2"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":true,""fullName"":""Energistics.Etp.v12.Protocol.GrowingObjectQuery.FindPartsResponse"",""depends"":[]}");
 		private string _uri;
 		private string _uid;
 		private string _contentType;

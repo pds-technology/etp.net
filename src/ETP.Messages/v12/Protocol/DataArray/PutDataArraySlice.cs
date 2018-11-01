@@ -43,9 +43,9 @@ namespace Energistics.Etp.v12.Protocol.DataArray
 				"atatypes.ArrayOfString\"\r\n]}},{\"name\":\"dimensions\",\"type\":{\"type\":\"array\",\"items\"" +
 				":\"long\"}},{\"name\":\"start\",\"type\":{\"type\":\"array\",\"items\":\"long\"}},{\"name\":\"count" +
 				"\",\"type\":{\"type\":\"array\",\"items\":\"long\"}}],\"protocol\":\"9\",\"messageType\":\"5\",\"sen" +
-				"derRole\":\"customer\",\"protocolRoles\":\"store,customer\",\"multipartFlag\":\"False\",\"fu" +
-				"llName\":\"Energistics.Etp.v12.Protocol.DataArray.PutDataArraySlice\",\"depends\":[\r\n" +
-				"  \"Energistics.Etp.v12.Datatypes.AnyArray\"\r\n]}");
+				"derRole\":\"customer\",\"protocolRoles\":\"store,customer\",\"multipartFlag\":false,\"full" +
+				"Name\":\"Energistics.Etp.v12.Protocol.DataArray.PutDataArraySlice\",\"depends\":[\r\n  " +
+				"\"Energistics.Etp.v12.Datatypes.AnyArray\"\r\n]}");
 		private string _uri;
 		private string _pathInResource;
 		private Energistics.Etp.v12.Datatypes.AnyArray _data;

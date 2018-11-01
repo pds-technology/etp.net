@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Protocol.GrowingObjectNotification
 	
 	public partial class PartDeleteNotification : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""PartDeleteNotification"",""namespace"":""Energistics.Etp.v12.Protocol.GrowingObjectNotification"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""uid"",""type"":""string""},{""name"":""changeTime"",""type"":""long""}],""protocol"":""7"",""messageType"":""3"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":""False"",""fullName"":""Energistics.Etp.v12.Protocol.GrowingObjectNotification.PartDeleteNotification"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""PartDeleteNotification"",""namespace"":""Energistics.Etp.v12.Protocol.GrowingObjectNotification"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""uid"",""type"":""string""},{""name"":""changeTime"",""type"":""long""}],""protocol"":""7"",""messageType"":""3"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.GrowingObjectNotification.PartDeleteNotification"",""depends"":[]}");
 		private string _uri;
 		private string _uid;
 		private long _changeTime;

@@ -46,9 +46,9 @@ namespace Energistics.Etp.v12.Protocol.ChannelDataFrame
 				"Double\",\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfString\"\r\n]}}}],\"fullName\":\"Ene" +
 				"rgistics.Etp.v12.Datatypes.ChannelData.DataFrame\",\"depends\":[\r\n  \"Energistics.Et" +
 				"p.v12.Datatypes.DataValue\"\r\n]}}}],\"protocol\":\"2\",\"messageType\":\"4\",\"senderRole\":" +
-				"\"producer\",\"protocolRoles\":\"producer,consumer\",\"multipartFlag\":\"False\",\"fullName" +
-				"\":\"Energistics.Etp.v12.Protocol.ChannelDataFrame.ChannelDataFrameSet\",\"depends\":" +
-				"[\r\n  \"Energistics.Etp.v12.Datatypes.ChannelData.DataFrame\"\r\n]}");
+				"\"producer\",\"protocolRoles\":\"producer,consumer\",\"multipartFlag\":false,\"fullName\":" +
+				"\"Energistics.Etp.v12.Protocol.ChannelDataFrame.ChannelDataFrameSet\",\"depends\":[\r" +
+				"\n  \"Energistics.Etp.v12.Datatypes.ChannelData.DataFrame\"\r\n]}");
 		private IList<System.Int64> _channels;
 		private IList<Energistics.Etp.v12.Datatypes.ChannelData.DataFrame> _data;
 		public virtual Schema Schema

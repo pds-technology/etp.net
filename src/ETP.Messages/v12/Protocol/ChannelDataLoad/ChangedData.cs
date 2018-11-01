@@ -60,10 +60,10 @@ namespace Energistics.Etp.v12.Protocol.ChannelDataLoad
 				"Etp.v12.Datatypes.ChannelData.DataItem\",\"depends\":[\r\n  \"Energistics.Etp.v12.Data" +
 				"types.IndexValue\",\r\n  \"Energistics.Etp.v12.Datatypes.DataValue\",\r\n  \"Energistics" +
 				".Etp.v12.Datatypes.DataAttribute\"\r\n]}}}],\"protocol\":\"22\",\"messageType\":\"6\",\"send" +
-				"erRole\":\"producer\",\"protocolRoles\":\"producer,consumer\",\"multipartFlag\":\"True\",\"f" +
-				"ullName\":\"Energistics.Etp.v12.Protocol.ChannelDataLoad.ChangedData\",\"depends\":[\r" +
-				"\n  \"Energistics.Etp.v12.Datatypes.Object.IndexInterval\",\r\n  \"Energistics.Etp.v12" +
-				".Datatypes.ChannelData.DataItem\"\r\n]}");
+				"erRole\":\"producer\",\"protocolRoles\":\"producer,consumer\",\"multipartFlag\":true,\"ful" +
+				"lName\":\"Energistics.Etp.v12.Protocol.ChannelDataLoad.ChangedData\",\"depends\":[\r\n " +
+				" \"Energistics.Etp.v12.Datatypes.Object.IndexInterval\",\r\n  \"Energistics.Etp.v12.D" +
+				"atatypes.ChannelData.DataItem\"\r\n]}");
 		private Energistics.Etp.v12.Datatypes.Object.IndexInterval _changedInterval;
 		private IList<Energistics.Etp.v12.Datatypes.ChannelData.DataItem> _data;
 		public virtual Schema Schema

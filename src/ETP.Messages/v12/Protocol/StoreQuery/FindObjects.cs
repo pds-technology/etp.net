@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Protocol.StoreQuery
 	
 	public partial class FindObjects : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""FindObjects"",""namespace"":""Energistics.Etp.v12.Protocol.StoreQuery"",""fields"":[{""name"":""uri"",""type"":""string""}],""protocol"":""14"",""messageType"":""1"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":""False"",""fullName"":""Energistics.Etp.v12.Protocol.StoreQuery.FindObjects"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""FindObjects"",""namespace"":""Energistics.Etp.v12.Protocol.StoreQuery"",""fields"":[{""name"":""uri"",""type"":""string""}],""protocol"":""14"",""messageType"":""1"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.StoreQuery.FindObjects"",""depends"":[]}");
 		private string _uri;
 		public virtual Schema Schema
 		{

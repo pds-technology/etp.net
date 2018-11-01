@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Protocol.DataArray
 	
 	public partial class GetDataArray : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""GetDataArray"",""namespace"":""Energistics.Etp.v12.Protocol.DataArray"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""pathInResource"",""type"":""string""}],""protocol"":""9"",""messageType"":""2"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":""False"",""fullName"":""Energistics.Etp.v12.Protocol.DataArray.GetDataArray"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""GetDataArray"",""namespace"":""Energistics.Etp.v12.Protocol.DataArray"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""pathInResource"",""type"":""string""}],""protocol"":""9"",""messageType"":""2"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.DataArray.GetDataArray"",""depends"":[]}");
 		private string _uri;
 		private string _pathInResource;
 		public virtual Schema Schema

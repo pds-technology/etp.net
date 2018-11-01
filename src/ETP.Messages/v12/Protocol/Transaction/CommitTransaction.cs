@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Protocol.Transaction
 	
 	public partial class CommitTransaction : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""CommitTransaction"",""namespace"":""Energistics.Etp.v12.Protocol.Transaction"",""fields"":[{""name"":""uuid"",""type"":""string""}],""protocol"":""18"",""messageType"":""3"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":""False"",""fullName"":""Energistics.Etp.v12.Protocol.Transaction.CommitTransaction"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""CommitTransaction"",""namespace"":""Energistics.Etp.v12.Protocol.Transaction"",""fields"":[{""name"":""uuid"",""type"":""string""}],""protocol"":""18"",""messageType"":""3"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.Transaction.CommitTransaction"",""depends"":[]}");
 		private string _uuid;
 		public virtual Schema Schema
 		{

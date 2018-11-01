@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Protocol.GrowingObject
 	
 	public partial class ObjectPart : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""ObjectPart"",""namespace"":""Energistics.Etp.v12.Protocol.GrowingObject"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""contentType"",""type"":""string""},{""name"":""uid"",""type"":""string""},{""name"":""data"",""type"":""bytes""}],""protocol"":""6"",""messageType"":""6"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":""True"",""fullName"":""Energistics.Etp.v12.Protocol.GrowingObject.ObjectPart"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""ObjectPart"",""namespace"":""Energistics.Etp.v12.Protocol.GrowingObject"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""contentType"",""type"":""string""},{""name"":""uid"",""type"":""string""},{""name"":""data"",""type"":""bytes""}],""protocol"":""6"",""messageType"":""6"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":true,""fullName"":""Energistics.Etp.v12.Protocol.GrowingObject.ObjectPart"",""depends"":[]}");
 		private string _uri;
 		private string _contentType;
 		private string _uid;

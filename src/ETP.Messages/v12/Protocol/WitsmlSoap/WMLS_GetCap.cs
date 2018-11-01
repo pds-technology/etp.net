@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Protocol.WitsmlSoap
 	
 	public partial class WMLS_GetCap : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""WMLS_GetCap"",""namespace"":""Energistics.Etp.v12.Protocol.WitsmlSoap"",""fields"":[{""name"":""OptionsIn"",""type"":""string""}],""protocol"":""8"",""messageType"":""7"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":""False"",""fullName"":""Energistics.Etp.v12.Protocol.WitsmlSoap.WMLS_GetCap"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""WMLS_GetCap"",""namespace"":""Energistics.Etp.v12.Protocol.WitsmlSoap"",""fields"":[{""name"":""OptionsIn"",""type"":""string""}],""protocol"":""8"",""messageType"":""7"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.WitsmlSoap.WMLS_GetCap"",""depends"":[]}");
 		private string _OptionsIn;
 		public virtual Schema Schema
 		{

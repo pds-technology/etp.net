@@ -57,11 +57,11 @@ namespace Energistics.Etp.v12.Protocol.GrowingObject
 				"fInt\",\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfLong\",\r\n  \"Energistics.Etp.v12.D" +
 				"atatypes.ArrayOfFloat\",\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfDouble\",\r\n  \"En" +
 				"ergistics.Etp.v12.Datatypes.ArrayOfString\"\r\n]}}}],\"protocol\":\"6\",\"messageType\":\"" +
-				"9\",\"senderRole\":\"store\",\"protocolRoles\":\"store,customer\",\"multipartFlag\":\"True\"," +
-				"\"fullName\":\"Energistics.Etp.v12.Protocol.GrowingObject.PartsMetadata\",\"depends\":" +
-				"[\r\n  \"Energistics.Etp.v12.Datatypes.ChannelData.ChannelIndexKind\",\r\n  \"Energisti" +
-				"cs.Etp.v12.Datatypes.ChannelData.IndexDirection\",\r\n  \"Energistics.Etp.v12.Dataty" +
-				"pes.Object.IndexInterval\",\r\n  \"Energistics.Etp.v12.Datatypes.DataValue\"\r\n]}");
+				"9\",\"senderRole\":\"store\",\"protocolRoles\":\"store,customer\",\"multipartFlag\":true,\"f" +
+				"ullName\":\"Energistics.Etp.v12.Protocol.GrowingObject.PartsMetadata\",\"depends\":[\r" +
+				"\n  \"Energistics.Etp.v12.Datatypes.ChannelData.ChannelIndexKind\",\r\n  \"Energistics" +
+				".Etp.v12.Datatypes.ChannelData.IndexDirection\",\r\n  \"Energistics.Etp.v12.Datatype" +
+				"s.Object.IndexInterval\",\r\n  \"Energistics.Etp.v12.Datatypes.DataValue\"\r\n]}");
 		private string _uri;
 		private Energistics.Etp.v12.Datatypes.ChannelData.ChannelIndexKind _indexKind;
 		private Energistics.Etp.v12.Datatypes.ChannelData.IndexDirection _indexDirection;

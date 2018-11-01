@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Protocol.Core
 	
 	public partial class ProtocolException : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""ProtocolException"",""namespace"":""Energistics.Etp.v12.Protocol.Core"",""fields"":[{""name"":""errorCode"",""type"":""int""},{""name"":""errorMessage"",""type"":""string""}],""protocol"":""0"",""messageType"":""1000"",""senderRole"":""*"",""protocolRoles"":""client, server"",""multipartFlag"":""False"",""fullName"":""Energistics.Etp.v12.Protocol.Core.ProtocolException"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""ProtocolException"",""namespace"":""Energistics.Etp.v12.Protocol.Core"",""fields"":[{""name"":""errorCode"",""type"":""int""},{""name"":""errorMessage"",""type"":""string""}],""protocol"":""0"",""messageType"":""1000"",""senderRole"":""*"",""protocolRoles"":""client, server"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.Core.ProtocolException"",""depends"":[]}");
 		private int _errorCode;
 		private string _errorMessage;
 		public virtual Schema Schema

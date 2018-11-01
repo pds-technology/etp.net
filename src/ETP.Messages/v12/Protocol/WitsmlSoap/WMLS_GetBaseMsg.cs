@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Protocol.WitsmlSoap
 	
 	public partial class WMLS_GetBaseMsg : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""WMLS_GetBaseMsg"",""namespace"":""Energistics.Etp.v12.Protocol.WitsmlSoap"",""fields"":[{""name"":""ReturnValueIn"",""type"":""int""}],""protocol"":""8"",""messageType"":""5"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":""False"",""fullName"":""Energistics.Etp.v12.Protocol.WitsmlSoap.WMLS_GetBaseMsg"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""WMLS_GetBaseMsg"",""namespace"":""Energistics.Etp.v12.Protocol.WitsmlSoap"",""fields"":[{""name"":""ReturnValueIn"",""type"":""int""}],""protocol"":""8"",""messageType"":""5"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.WitsmlSoap.WMLS_GetBaseMsg"",""depends"":[]}");
 		private int _ReturnValueIn;
 		public virtual Schema Schema
 		{

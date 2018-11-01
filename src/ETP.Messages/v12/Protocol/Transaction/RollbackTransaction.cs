@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Protocol.Transaction
 	
 	public partial class RollbackTransaction : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""RollbackTransaction"",""namespace"":""Energistics.Etp.v12.Protocol.Transaction"",""fields"":[{""name"":""uuid"",""type"":""string""}],""protocol"":""18"",""messageType"":""4"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":""False"",""fullName"":""Energistics.Etp.v12.Protocol.Transaction.RollbackTransaction"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""RollbackTransaction"",""namespace"":""Energistics.Etp.v12.Protocol.Transaction"",""fields"":[{""name"":""uuid"",""type"":""string""}],""protocol"":""18"",""messageType"":""4"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.Transaction.RollbackTransaction"",""depends"":[]}");
 		private string _uuid;
 		public virtual Schema Schema
 		{

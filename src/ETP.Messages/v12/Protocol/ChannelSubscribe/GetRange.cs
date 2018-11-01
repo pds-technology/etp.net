@@ -20,7 +20,7 @@ namespace Energistics.Etp.v12.Protocol.ChannelSubscribe
   ""Energistics.Etp.v12.Datatypes.IndexValue""
 ]}}],""fullName"":""Energistics.Etp.v12.Datatypes.ChannelData.ChannelRangeInfo"",""depends"":[
   ""Energistics.Etp.v12.Datatypes.Object.IndexInterval""
-]}}}],""protocol"":""21"",""messageType"":""9"",""senderRole"":""consumer"",""protocolRoles"":""producer,consumer"",""multipartFlag"":""False"",""fullName"":""Energistics.Etp.v12.Protocol.ChannelSubscribe.GetRange"",""depends"":[
+]}}}],""protocol"":""21"",""messageType"":""9"",""senderRole"":""consumer"",""protocolRoles"":""producer,consumer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.ChannelSubscribe.GetRange"",""depends"":[
   ""Energistics.Etp.v12.Datatypes.ChannelData.ChannelRangeInfo""
 ]}");
 		private IList<Energistics.Etp.v12.Datatypes.ChannelData.ChannelRangeInfo> _channelRanges;

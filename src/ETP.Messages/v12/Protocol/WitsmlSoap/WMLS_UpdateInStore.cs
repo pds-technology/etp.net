@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Protocol.WitsmlSoap
 	
 	public partial class WMLS_UpdateInStore : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""WMLS_UpdateInStore"",""namespace"":""Energistics.Etp.v12.Protocol.WitsmlSoap"",""fields"":[{""name"":""WMLtypeIn"",""type"":""string""},{""name"":""XMLin"",""type"":""string""},{""name"":""OptionsIn"",""type"":""string""},{""name"":""CapabilitiesIn"",""type"":""string""}],""protocol"":""8"",""messageType"":""13"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":""False"",""fullName"":""Energistics.Etp.v12.Protocol.WitsmlSoap.WMLS_UpdateInStore"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""WMLS_UpdateInStore"",""namespace"":""Energistics.Etp.v12.Protocol.WitsmlSoap"",""fields"":[{""name"":""WMLtypeIn"",""type"":""string""},{""name"":""XMLin"",""type"":""string""},{""name"":""OptionsIn"",""type"":""string""},{""name"":""CapabilitiesIn"",""type"":""string""}],""protocol"":""8"",""messageType"":""13"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.WitsmlSoap.WMLS_UpdateInStore"",""depends"":[]}");
 		private string _WMLtypeIn;
 		private string _XMLin;
 		private string _OptionsIn;

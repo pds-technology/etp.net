@@ -18,7 +18,7 @@ namespace Energistics.Etp.v12.Protocol.GrowingObject
 		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""DeletePartsByRange"",""namespace"":""Energistics.Etp.v12.Protocol.GrowingObject"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""deleteInterval"",""type"":{""type"":""record"",""name"":""IndexInterval"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""startIndex"",""type"":{""type"":""record"",""name"":""IndexValue"",""namespace"":""Energistics.Etp.v12.Datatypes"",""fields"":[{""name"":""item"",""type"":[""null"",""long"",""double""]}],""fullName"":""Energistics.Etp.v12.Datatypes.IndexValue"",""depends"":[]}},{""name"":""endIndex"",""type"":""Energistics.Etp.v12.Datatypes.IndexValue""},{""name"":""uom"",""type"":""string""},{""name"":""depthDatum"",""default"":"""",""type"":""string""}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.IndexInterval"",""depends"":[
   ""Energistics.Etp.v12.Datatypes.IndexValue"",
   ""Energistics.Etp.v12.Datatypes.IndexValue""
-]}},{""name"":""includeOverlappingIntervals"",""type"":""boolean""}],""protocol"":""6"",""messageType"":""2"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":""False"",""fullName"":""Energistics.Etp.v12.Protocol.GrowingObject.DeletePartsByRange"",""depends"":[
+]}},{""name"":""includeOverlappingIntervals"",""type"":""boolean""}],""protocol"":""6"",""messageType"":""2"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.GrowingObject.DeletePartsByRange"",""depends"":[
   ""Energistics.Etp.v12.Datatypes.Object.IndexInterval""
 ]}");
 		private string _uri;

@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Protocol.WitsmlSoap
 	
 	public partial class WMLS_DeleteFromStore : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""WMLS_DeleteFromStore"",""namespace"":""Energistics.Etp.v12.Protocol.WitsmlSoap"",""fields"":[{""name"":""WMLtypeIn"",""type"":""string""},{""name"":""XMLin"",""type"":""string""},{""name"":""OptionsIn"",""type"":""string""},{""name"":""CapabilitiesIn"",""type"":""string""}],""protocol"":""8"",""messageType"":""3"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":""False"",""fullName"":""Energistics.Etp.v12.Protocol.WitsmlSoap.WMLS_DeleteFromStore"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""WMLS_DeleteFromStore"",""namespace"":""Energistics.Etp.v12.Protocol.WitsmlSoap"",""fields"":[{""name"":""WMLtypeIn"",""type"":""string""},{""name"":""XMLin"",""type"":""string""},{""name"":""OptionsIn"",""type"":""string""},{""name"":""CapabilitiesIn"",""type"":""string""}],""protocol"":""8"",""messageType"":""3"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.WitsmlSoap.WMLS_DeleteFromStore"",""depends"":[]}");
 		private string _WMLtypeIn;
 		private string _XMLin;
 		private string _OptionsIn;

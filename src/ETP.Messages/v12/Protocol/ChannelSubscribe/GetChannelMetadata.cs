@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Protocol.ChannelSubscribe
 	
 	public partial class GetChannelMetadata : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""GetChannelMetadata"",""namespace"":""Energistics.Etp.v12.Protocol.ChannelSubscribe"",""fields"":[{""name"":""uuids"",""type"":{""type"":""array"",""items"":{""type"":""fixed"",""name"":""Uuid"",""namespace"":""Energistics.Etp.v12.Datatypes"",""size"":16,""fullName"":""Energistics.Etp.v12.Datatypes.Uuid"",""depends"":[]}}}],""protocol"":""21"",""messageType"":""1"",""senderRole"":""consumer"",""protocolRoles"":""producer,consumer"",""multipartFlag"":""False"",""fullName"":""Energistics.Etp.v12.Protocol.ChannelSubscribe.GetChannelMetadata"",""depends"":[
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""GetChannelMetadata"",""namespace"":""Energistics.Etp.v12.Protocol.ChannelSubscribe"",""fields"":[{""name"":""uuids"",""type"":{""type"":""array"",""items"":{""type"":""fixed"",""name"":""Uuid"",""namespace"":""Energistics.Etp.v12.Datatypes"",""size"":16,""fullName"":""Energistics.Etp.v12.Datatypes.Uuid"",""depends"":[]}}}],""protocol"":""21"",""messageType"":""1"",""senderRole"":""consumer"",""protocolRoles"":""producer,consumer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.ChannelSubscribe.GetChannelMetadata"",""depends"":[
   ""Energistics.Etp.v12.Datatypes.Uuid""
 ]}");
 		private IList<Energistics.Etp.v12.Datatypes.Uuid> _uuids;

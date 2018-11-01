@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Protocol.Transaction
 	
 	public partial class CommitTransactionResponse : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""CommitTransactionResponse"",""namespace"":""Energistics.Etp.v12.Protocol.Transaction"",""fields"":[{""name"":""uuid"",""type"":""string""},{""name"":""successful"",""default"":1,""type"":""boolean""},{""name"":""failureReason"",""default"":"""",""type"":""string""}],""protocol"":""18"",""messageType"":""5"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":""False"",""fullName"":""Energistics.Etp.v12.Protocol.Transaction.CommitTransactionResponse"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""CommitTransactionResponse"",""namespace"":""Energistics.Etp.v12.Protocol.Transaction"",""fields"":[{""name"":""uuid"",""type"":""string""},{""name"":""successful"",""default"":1,""type"":""boolean""},{""name"":""failureReason"",""default"":"""",""type"":""string""}],""protocol"":""18"",""messageType"":""5"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.Transaction.CommitTransactionResponse"",""depends"":[]}");
 		private string _uuid;
 		private bool _successful;
 		private string _failureReason;

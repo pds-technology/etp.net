@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Protocol.GrowingObject
 	
 	public partial class DescribeParts : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""DescribeParts"",""namespace"":""Energistics.Etp.v12.Protocol.GrowingObject"",""fields"":[{""name"":""uri"",""type"":""string""}],""protocol"":""6"",""messageType"":""8"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":""False"",""fullName"":""Energistics.Etp.v12.Protocol.GrowingObject.DescribeParts"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""DescribeParts"",""namespace"":""Energistics.Etp.v12.Protocol.GrowingObject"",""fields"":[{""name"":""uri"",""type"":""string""}],""protocol"":""6"",""messageType"":""8"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.GrowingObject.DescribeParts"",""depends"":[]}");
 		private string _uri;
 		public virtual Schema Schema
 		{

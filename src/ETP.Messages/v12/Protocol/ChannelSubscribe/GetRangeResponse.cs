@@ -54,9 +54,9 @@ namespace Energistics.Etp.v12.Protocol.ChannelSubscribe
 				"s\":[\r\n  \"Energistics.Etp.v12.Datatypes.IndexValue\",\r\n  \"Energistics.Etp.v12.Data" +
 				"types.DataValue\",\r\n  \"Energistics.Etp.v12.Datatypes.DataAttribute\"\r\n]}}}],\"proto" +
 				"col\":\"21\",\"messageType\":\"10\",\"senderRole\":\"producer\",\"protocolRoles\":\"producer,c" +
-				"onsumer\",\"multipartFlag\":\"True\",\"fullName\":\"Energistics.Etp.v12.Protocol.Channel" +
-				"Subscribe.GetRangeResponse\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.Channe" +
-				"lData.DataItem\"\r\n]}");
+				"onsumer\",\"multipartFlag\":true,\"fullName\":\"Energistics.Etp.v12.Protocol.ChannelSu" +
+				"bscribe.GetRangeResponse\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.ChannelD" +
+				"ata.DataItem\"\r\n]}");
 		private IList<Energistics.Etp.v12.Datatypes.ChannelData.DataItem> _data;
 		public virtual Schema Schema
 		{

@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Protocol.Core
 	
 	public partial class CloseSession : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""CloseSession"",""namespace"":""Energistics.Etp.v12.Protocol.Core"",""fields"":[{""name"":""reason"",""default"":"""",""type"":""string""}],""protocol"":""0"",""messageType"":""5"",""senderRole"":""client,server"",""protocolRoles"":""client, server"",""multipartFlag"":""False"",""fullName"":""Energistics.Etp.v12.Protocol.Core.CloseSession"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""CloseSession"",""namespace"":""Energistics.Etp.v12.Protocol.Core"",""fields"":[{""name"":""reason"",""default"":"""",""type"":""string""}],""protocol"":""0"",""messageType"":""5"",""senderRole"":""client,server"",""protocolRoles"":""client, server"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.Core.CloseSession"",""depends"":[]}");
 		private string _reason;
 		public virtual Schema Schema
 		{

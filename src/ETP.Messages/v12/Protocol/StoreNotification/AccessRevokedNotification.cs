@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Protocol.StoreNotification
 	
 	public partial class AccessRevokedNotification : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""AccessRevokedNotification"",""namespace"":""Energistics.Etp.v12.Protocol.StoreNotification"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""changeTime"",""type"":""long""}],""protocol"":""5"",""messageType"":""5"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":""False"",""fullName"":""Energistics.Etp.v12.Protocol.StoreNotification.AccessRevokedNotification"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""AccessRevokedNotification"",""namespace"":""Energistics.Etp.v12.Protocol.StoreNotification"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""changeTime"",""type"":""long""}],""protocol"":""5"",""messageType"":""5"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.StoreNotification.AccessRevokedNotification"",""depends"":[]}");
 		private string _uri;
 		private long _changeTime;
 		public virtual Schema Schema

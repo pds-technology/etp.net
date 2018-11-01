@@ -54,8 +54,8 @@ namespace Energistics.Etp.v12.Protocol.Core
 				"p.v12.Datatypes.DataValue\"\r\n]}}},{\"name\":\"supportedObjects\",\"type\":{\"type\":\"arra" +
 				"y\",\"items\":\"string\"}},{\"name\":\"supportedCompression\",\"type\":\"string\"}],\"protocol" +
 				"\":\"0\",\"messageType\":\"2\",\"senderRole\":\"server\",\"protocolRoles\":\"client, server\",\"" +
-				"multipartFlag\":\"False\",\"fullName\":\"Energistics.Etp.v12.Protocol.Core.OpenSession" +
-				"\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.SupportedProtocol\"\r\n]}");
+				"multipartFlag\":false,\"fullName\":\"Energistics.Etp.v12.Protocol.Core.OpenSession\"," +
+				"\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.SupportedProtocol\"\r\n]}");
 		private string _applicationName;
 		private string _applicationVersion;
 		private string _sessionId;

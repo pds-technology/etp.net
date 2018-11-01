@@ -84,9 +84,9 @@ namespace Energistics.Etp.v12.Protocol.ChannelDataFrame
 				"s.Etp.v12.Datatypes.ChannelData.ChannelStatusKind\",\r\n  \"Energistics.Etp.v12.Data" +
 				"types.DataValue\",\r\n  \"Energistics.Etp.v12.Datatypes.AttributeMetadataRecord\"\r\n]}" +
 				"}}],\"protocol\":\"2\",\"messageType\":\"3\",\"senderRole\":\"producer\",\"protocolRoles\":\"pr" +
-				"oducer,consumer\",\"multipartFlag\":\"True\",\"fullName\":\"Energistics.Etp.v12.Protocol" +
-				".ChannelDataFrame.ChannelMetadata\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes" +
-				".ChannelData.ChannelMetadataRecord\"\r\n]}");
+				"oducer,consumer\",\"multipartFlag\":true,\"fullName\":\"Energistics.Etp.v12.Protocol.C" +
+				"hannelDataFrame.ChannelMetadata\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.C" +
+				"hannelData.ChannelMetadataRecord\"\r\n]}");
 		private IList<Energistics.Etp.v12.Datatypes.ChannelData.ChannelMetadataRecord> _channels;
 		public virtual Schema Schema
 		{

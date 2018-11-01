@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Protocol.GrowingObjectQuery
 	
 	public partial class FindParts : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""FindParts"",""namespace"":""Energistics.Etp.v12.Protocol.GrowingObjectQuery"",""fields"":[{""name"":""uri"",""type"":""string""}],""protocol"":""16"",""messageType"":""1"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":""False"",""fullName"":""Energistics.Etp.v12.Protocol.GrowingObjectQuery.FindParts"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""FindParts"",""namespace"":""Energistics.Etp.v12.Protocol.GrowingObjectQuery"",""fields"":[{""name"":""uri"",""type"":""string""}],""protocol"":""16"",""messageType"":""1"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.GrowingObjectQuery.FindParts"",""depends"":[]}");
 		private string _uri;
 		public virtual Schema Schema
 		{

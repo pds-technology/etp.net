@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Protocol.StoreNotification
 	
 	public partial class DeleteNotification : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""DeleteNotification"",""namespace"":""Energistics.Etp.v12.Protocol.StoreNotification"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""changeTime"",""type"":""long""}],""protocol"":""5"",""messageType"":""3"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":""False"",""fullName"":""Energistics.Etp.v12.Protocol.StoreNotification.DeleteNotification"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""DeleteNotification"",""namespace"":""Energistics.Etp.v12.Protocol.StoreNotification"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""changeTime"",""type"":""long""}],""protocol"":""5"",""messageType"":""3"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.StoreNotification.DeleteNotification"",""depends"":[]}");
 		private string _uri;
 		private long _changeTime;
 		public virtual Schema Schema
