@@ -26,15 +26,20 @@ namespace Energistics.Etp.v12.Datatypes.Object
 				"\",\"type\":\"string\"},{\"name\":\"contentType\",\"type\":\"string\"},{\"name\":\"name\",\"type\":" +
 				"\"string\"},{\"name\":\"channelSubscribable\",\"default\":false,\"type\":\"boolean\"},{\"name" +
 				"\":\"customData\",\"type\":{\"type\":\"map\",\"values\":\"string\"}},{\"name\":\"resourceType\",\"" +
-				"type\":\"string\"},{\"name\":\"childCount\",\"default\":null,\"type\":[\"null\",\"int\"]},{\"nam" +
-				"e\":\"uuid\",\"default\":\"\",\"type\":\"string\"},{\"name\":\"lastChanged\",\"type\":[\"null\",\"lo" +
-				"ng\"]},{\"name\":\"objectNotifiable\",\"default\":false,\"type\":\"boolean\"}],\"fullName\":\"" +
-				"Energistics.Etp.v12.Datatypes.Object.Resource\",\"depends\":[]}},{\"name\":\"data\",\"ty" +
-				"pe\":\"bytes\"}],\"fullName\":\"Energistics.Etp.v12.Datatypes.Object.DataObject\",\"depe" +
-				"nds\":[\r\n  \"Energistics.Etp.v12.Datatypes.Object.Resource\"\r\n]}}],\"fullName\":\"Ener" +
-				"gistics.Etp.v12.Datatypes.Object.ObjectChange\",\"depends\":[\r\n  \"Energistics.Etp.v" +
-				"12.Datatypes.Object.ObjectChangeKind\",\r\n  \"Energistics.Etp.v12.Datatypes.Object." +
-				"DataObject\"\r\n]}");
+				"type\":{\"type\":\"enum\",\"name\":\"ResourceKind\",\"namespace\":\"Energistics.Etp.v12.Data" +
+				"types.Object\",\"symbols\":[\"DataObject\",\"Folder\",\"UriProtocol\"],\"fullName\":\"Energi" +
+				"stics.Etp.v12.Datatypes.Object.ResourceKind\",\"depends\":[]}},{\"name\":\"childCount\"" +
+				",\"default\":null,\"type\":[\"null\",\"int\"]},{\"name\":\"uuid\",\"type\":[\"null\",{\"type\":\"fi" +
+				"xed\",\"name\":\"Uuid\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"size\":16,\"fullNa" +
+				"me\":\"Energistics.Etp.v12.Datatypes.Uuid\",\"depends\":[]}]},{\"name\":\"lastChanged\",\"" +
+				"type\":[\"null\",\"long\"]},{\"name\":\"objectNotifiable\",\"default\":false,\"type\":\"boolea" +
+				"n\"}],\"fullName\":\"Energistics.Etp.v12.Datatypes.Object.Resource\",\"depends\":[\r\n  \"" +
+				"Energistics.Etp.v12.Datatypes.Object.ResourceKind\",\r\n  \"Energistics.Etp.v12.Data" +
+				"types.Uuid\"\r\n]}},{\"name\":\"data\",\"type\":\"bytes\"}],\"fullName\":\"Energistics.Etp.v12" +
+				".Datatypes.Object.DataObject\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.Obje" +
+				"ct.Resource\"\r\n]}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.Object.ObjectChange" +
+				"\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.Object.ObjectChangeKind\",\r\n  \"En" +
+				"ergistics.Etp.v12.Datatypes.Object.DataObject\"\r\n]}");
 		private Energistics.Etp.v12.Datatypes.Object.ObjectChangeKind _changeKind;
 		private long _changeTime;
 		private Energistics.Etp.v12.Datatypes.Object.DataObject _dataObject;

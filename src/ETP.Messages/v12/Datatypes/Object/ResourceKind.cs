@@ -5,7 +5,7 @@
 //    is regenerated
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Energistics.Etp.v12.Datatypes
+namespace Energistics.Etp.v12.Datatypes.Object
 {
 	using System;
 	using System.Collections.Generic;
@@ -13,14 +13,10 @@ namespace Energistics.Etp.v12.Datatypes
 	using Avro;
 	using Avro.Specific;
 	
-	public enum AnyArrayType
+	public enum ResourceKind
 	{
-		arrayOfBoolean,
-		arrayOfInt,
-		arrayOfLong,
-		arrayOfFloat,
-		arrayOfDouble,
-		arrayOfString,
-		bytes,
+		DataObject,
+		Folder,
+		UriProtocol,
 	}
 }

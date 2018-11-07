@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Protocol.ChannelSubscribe
 	
 	public partial class SubscriptionStopped : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""SubscriptionStopped"",""namespace"":""Energistics.Etp.v12.Protocol.ChannelSubscribe"",""fields"":[{""name"":""channelIds"",""type"":{""type"":""array"",""items"":""long""}}],""protocol"":""21"",""messageType"":""8"",""senderRole"":""consumer"",""protocolRoles"":""producer,consumer"",""multipartFlag"":true,""fullName"":""Energistics.Etp.v12.Protocol.ChannelSubscribe.SubscriptionStopped"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""SubscriptionStopped"",""namespace"":""Energistics.Etp.v12.Protocol.ChannelSubscribe"",""fields"":[{""name"":""channelIds"",""type"":{""type"":""array"",""items"":""long""}}],""protocol"":""21"",""messageType"":""8"",""senderRole"":""producer"",""protocolRoles"":""producer,consumer"",""multipartFlag"":true,""fullName"":""Energistics.Etp.v12.Protocol.ChannelSubscribe.SubscriptionStopped"",""depends"":[]}");
 		private IList<System.Int64> _channelIds;
 		public virtual Schema Schema
 		{

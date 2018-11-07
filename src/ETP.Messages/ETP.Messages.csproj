@@ -69,8 +69,10 @@
     <Compile Include="v12\Datatypes\ChannelData\ChannelStatusKind.cs" />
     <Compile Include="v12\Datatypes\ChannelData\ChannelSubscribeInfo.cs" />
     <Compile Include="v12\Datatypes\ChannelData\IndexDirection.cs" />
+    <Compile Include="v12\Datatypes\ChannelData\OpenChannelInfo.cs" />
     <Compile Include="v12\Datatypes\ChannelData\Role.cs" />
     <Compile Include="v12\Datatypes\Object\ObjectChangeKind.cs" />
+    <Compile Include="v12\Datatypes\Object\ResourceKind.cs" />
     <Compile Include="v12\Datatypes\Uuid.cs" />
     <Compile Include="Common\Protocol\Core\IProtocolException.cs" />
     <Compile Include="Common\Protocol\Core\IAcknowledge.cs" />

@@ -15,8 +15,10 @@ namespace Energistics.Etp.v12.Protocol.StoreNotification
 	
 	public partial class CancelNotification : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""CancelNotification"",""namespace"":""Energistics.Etp.v12.Protocol.StoreNotification"",""fields"":[{""name"":""requestUuid"",""type"":""string""}],""protocol"":""5"",""messageType"":""4"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.StoreNotification.CancelNotification"",""depends"":[]}");
-		private string _requestUuid;
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""CancelNotification"",""namespace"":""Energistics.Etp.v12.Protocol.StoreNotification"",""fields"":[{""name"":""requestUuid"",""type"":{""type"":""fixed"",""name"":""Uuid"",""namespace"":""Energistics.Etp.v12.Datatypes"",""size"":16,""fullName"":""Energistics.Etp.v12.Datatypes.Uuid"",""depends"":[]}}],""protocol"":""5"",""messageType"":""4"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.StoreNotification.CancelNotification"",""depends"":[
+  ""Energistics.Etp.v12.Datatypes.Uuid""
+]}");
+		private Energistics.Etp.v12.Datatypes.Uuid _requestUuid;
 		public virtual Schema Schema
 		{
 			get
@@ -24,7 +26,7 @@ namespace Energistics.Etp.v12.Protocol.StoreNotification
 				return CancelNotification._SCHEMA;
 			}
 		}
-		public string RequestUuid
+		public Energistics.Etp.v12.Datatypes.Uuid RequestUuid
 		{
 			get
 			{
@@ -47,7 +49,7 @@ namespace Energistics.Etp.v12.Protocol.StoreNotification
 		{
 			switch (fieldPos)
 			{
-			case 0: this._requestUuid = (System.String)fieldValue; break;
+			case 0: this._requestUuid = (Energistics.Etp.v12.Datatypes.Uuid)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

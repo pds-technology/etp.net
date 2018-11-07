@@ -15,10 +15,8 @@ namespace Energistics.Etp.v12.Protocol.ChannelSubscribe
 	
 	public partial class GetChannelMetadata : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""GetChannelMetadata"",""namespace"":""Energistics.Etp.v12.Protocol.ChannelSubscribe"",""fields"":[{""name"":""uuids"",""type"":{""type"":""array"",""items"":{""type"":""fixed"",""name"":""Uuid"",""namespace"":""Energistics.Etp.v12.Datatypes"",""size"":16,""fullName"":""Energistics.Etp.v12.Datatypes.Uuid"",""depends"":[]}}}],""protocol"":""21"",""messageType"":""1"",""senderRole"":""consumer"",""protocolRoles"":""producer,consumer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.ChannelSubscribe.GetChannelMetadata"",""depends"":[
-  ""Energistics.Etp.v12.Datatypes.Uuid""
-]}");
-		private IList<Energistics.Etp.v12.Datatypes.Uuid> _uuids;
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""GetChannelMetadata"",""namespace"":""Energistics.Etp.v12.Protocol.ChannelSubscribe"",""fields"":[{""name"":""uris"",""type"":{""type"":""array"",""items"":""string""}}],""protocol"":""21"",""messageType"":""1"",""senderRole"":""consumer"",""protocolRoles"":""producer,consumer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.ChannelSubscribe.GetChannelMetadata"",""depends"":[]}");
+		private IList<System.String> _uris;
 		public virtual Schema Schema
 		{
 			get
@@ -26,22 +24,22 @@ namespace Energistics.Etp.v12.Protocol.ChannelSubscribe
 				return GetChannelMetadata._SCHEMA;
 			}
 		}
-		public IList<Energistics.Etp.v12.Datatypes.Uuid> Uuids
+		public IList<System.String> Uris
 		{
 			get
 			{
-				return this._uuids;
+				return this._uris;
 			}
 			set
 			{
-				this._uuids = value;
+				this._uris = value;
 			}
 		}
 		public virtual object Get(int fieldPos)
 		{
 			switch (fieldPos)
 			{
-			case 0: return this._uuids;
+			case 0: return this._uris;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -49,7 +47,7 @@ namespace Energistics.Etp.v12.Protocol.ChannelSubscribe
 		{
 			switch (fieldPos)
 			{
-			case 0: this._uuids = (IList<Energistics.Etp.v12.Datatypes.Uuid>)fieldValue; break;
+			case 0: this._uris = (IList<System.String>)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

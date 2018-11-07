@@ -15,15 +15,18 @@ namespace Energistics.Etp.v12.Datatypes.Object
 	
 	public partial class Resource : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""Resource"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""contentType"",""type"":""string""},{""name"":""name"",""type"":""string""},{""name"":""channelSubscribable"",""default"":false,""type"":""boolean""},{""name"":""customData"",""type"":{""type"":""map"",""values"":""string""}},{""name"":""resourceType"",""type"":""string""},{""name"":""childCount"",""default"":null,""type"":[""null"",""int""]},{""name"":""uuid"",""default"":"""",""type"":""string""},{""name"":""lastChanged"",""type"":[""null"",""long""]},{""name"":""objectNotifiable"",""default"":false,""type"":""boolean""}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.Resource"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""Resource"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""contentType"",""type"":""string""},{""name"":""name"",""type"":""string""},{""name"":""channelSubscribable"",""default"":false,""type"":""boolean""},{""name"":""customData"",""type"":{""type"":""map"",""values"":""string""}},{""name"":""resourceType"",""type"":{""type"":""enum"",""name"":""ResourceKind"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""symbols"":[""DataObject"",""Folder"",""UriProtocol""],""fullName"":""Energistics.Etp.v12.Datatypes.Object.ResourceKind"",""depends"":[]}},{""name"":""childCount"",""default"":null,""type"":[""null"",""int""]},{""name"":""uuid"",""type"":[""null"",{""type"":""fixed"",""name"":""Uuid"",""namespace"":""Energistics.Etp.v12.Datatypes"",""size"":16,""fullName"":""Energistics.Etp.v12.Datatypes.Uuid"",""depends"":[]}]},{""name"":""lastChanged"",""type"":[""null"",""long""]},{""name"":""objectNotifiable"",""default"":false,""type"":""boolean""}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.Resource"",""depends"":[
+  ""Energistics.Etp.v12.Datatypes.Object.ResourceKind"",
+  ""Energistics.Etp.v12.Datatypes.Uuid""
+]}");
 		private string _uri;
 		private string _contentType;
 		private string _name;
 		private bool _channelSubscribable;
 		private IDictionary<string,System.String> _customData;
-		private string _resourceType;
+		private Energistics.Etp.v12.Datatypes.Object.ResourceKind _resourceType;
 		private System.Nullable<int> _childCount;
-		private string _uuid;
+		private Energistics.Etp.v12.Datatypes.Uuid _uuid;
 		private System.Nullable<long> _lastChanged;
 		private bool _objectNotifiable;
 		public virtual Schema Schema
@@ -88,7 +91,7 @@ namespace Energistics.Etp.v12.Datatypes.Object
 				this._customData = value;
 			}
 		}
-		public string ResourceType
+		public Energistics.Etp.v12.Datatypes.Object.ResourceKind ResourceType
 		{
 			get
 			{
@@ -110,7 +113,7 @@ namespace Energistics.Etp.v12.Datatypes.Object
 				this._childCount = value;
 			}
 		}
-		public string Uuid
+		public Energistics.Etp.v12.Datatypes.Uuid Uuid
 		{
 			get
 			{
@@ -169,9 +172,9 @@ namespace Energistics.Etp.v12.Datatypes.Object
 			case 2: this._name = (System.String)fieldValue; break;
 			case 3: this._channelSubscribable = (System.Boolean)fieldValue; break;
 			case 4: this._customData = (IDictionary<string,System.String>)fieldValue; break;
-			case 5: this._resourceType = (System.String)fieldValue; break;
+			case 5: this._resourceType = (Energistics.Etp.v12.Datatypes.Object.ResourceKind)fieldValue; break;
 			case 6: this._childCount = (System.Nullable<int>)fieldValue; break;
-			case 7: this._uuid = (System.String)fieldValue; break;
+			case 7: this._uuid = (Energistics.Etp.v12.Datatypes.Uuid)fieldValue; break;
 			case 8: this._lastChanged = (System.Nullable<long>)fieldValue; break;
 			case 9: this._objectNotifiable = (System.Boolean)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");

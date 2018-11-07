@@ -15,7 +15,9 @@ namespace Energistics.Etp.v12.Datatypes.Object
 	
 	public partial class GraphResource : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""GraphResource"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""contentType"",""type"":""string""},{""name"":""name"",""type"":""string""},{""name"":""channelSubscribable"",""default"":false,""type"":""boolean""},{""name"":""customData"",""type"":{""type"":""map"",""values"":""string""}},{""name"":""resourceType"",""type"":""string""},{""name"":""sourceCount"",""default"":-1,""type"":""int""},{""name"":""targetCount"",""default"":-1,""type"":""int""},{""name"":""contentCount"",""default"":-1,""type"":""int""},{""name"":""uuid"",""default"":"""",""type"":""string""},{""name"":""lastChanged"",""type"":""long""},{""name"":""objectNotifiable"",""default"":false,""type"":""boolean""}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.GraphResource"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""GraphResource"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""contentType"",""type"":""string""},{""name"":""name"",""type"":""string""},{""name"":""channelSubscribable"",""default"":false,""type"":""boolean""},{""name"":""customData"",""type"":{""type"":""map"",""values"":""string""}},{""name"":""resourceType"",""type"":""string""},{""name"":""sourceCount"",""default"":-1,""type"":""int""},{""name"":""targetCount"",""default"":-1,""type"":""int""},{""name"":""contentCount"",""default"":-1,""type"":""int""},{""name"":""uuid"",""type"":[""null"",{""type"":""fixed"",""name"":""Uuid"",""namespace"":""Energistics.Etp.v12.Datatypes"",""size"":16,""fullName"":""Energistics.Etp.v12.Datatypes.Uuid"",""depends"":[]}]},{""name"":""lastChanged"",""type"":""long""},{""name"":""objectNotifiable"",""default"":false,""type"":""boolean""}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.GraphResource"",""depends"":[
+  ""Energistics.Etp.v12.Datatypes.Uuid""
+]}");
 		private string _uri;
 		private string _contentType;
 		private string _name;
@@ -25,7 +27,7 @@ namespace Energistics.Etp.v12.Datatypes.Object
 		private int _sourceCount;
 		private int _targetCount;
 		private int _contentCount;
-		private string _uuid;
+		private Energistics.Etp.v12.Datatypes.Uuid _uuid;
 		private long _lastChanged;
 		private bool _objectNotifiable;
 		public virtual Schema Schema
@@ -134,7 +136,7 @@ namespace Energistics.Etp.v12.Datatypes.Object
 				this._contentCount = value;
 			}
 		}
-		public string Uuid
+		public Energistics.Etp.v12.Datatypes.Uuid Uuid
 		{
 			get
 			{
@@ -199,7 +201,7 @@ namespace Energistics.Etp.v12.Datatypes.Object
 			case 6: this._sourceCount = (System.Int32)fieldValue; break;
 			case 7: this._targetCount = (System.Int32)fieldValue; break;
 			case 8: this._contentCount = (System.Int32)fieldValue; break;
-			case 9: this._uuid = (System.String)fieldValue; break;
+			case 9: this._uuid = (Energistics.Etp.v12.Datatypes.Uuid)fieldValue; break;
 			case 10: this._lastChanged = (System.Int64)fieldValue; break;
 			case 11: this._objectNotifiable = (System.Boolean)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");

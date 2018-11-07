@@ -269,9 +269,34 @@ namespace Energistics.Etp.v12
                 }
             }
 
-            public partial class NotificationRequestRecord : INotificationRequestRecord { }
+            public partial class NotificationRequestRecord : INotificationRequestRecord
+            {
+                string INotificationRequestRecord.Uuid
+                {
+                    get { return new Guid(Uuid.Value).ToString(); }
+                    set { Uuid = new Uuid { Value = Guid.Parse(value).ToByteArray() }; }
+                }
+            }
 
-            public partial class Resource : IResource { }
+            public partial class Resource : IResource
+            {
+                string IResource.Uuid
+                {
+                    get { return new Guid(Uuid.Value).ToString(); }
+                    set { Uuid = new Uuid { Value = Guid.Parse(value).ToByteArray() }; }
+                }
+
+                string IResource.ResourceType
+                {
+                    get { return ResourceType.ToString(); }
+                    set
+                    {
+                        ResourceKind enumValue;
+                        Enum.TryParse(value, out enumValue);
+                        ResourceType = enumValue;
+                    }
+                }
+            }
         }
 
         public partial class AnyArray : IAnyArray { }

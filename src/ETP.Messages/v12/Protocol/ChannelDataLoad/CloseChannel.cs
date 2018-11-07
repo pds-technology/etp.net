@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Protocol.ChannelDataLoad
 	
 	public partial class CloseChannel : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""CloseChannel"",""namespace"":""Energistics.Etp.v12.Protocol.ChannelDataLoad"",""fields"":[{""name"":""id"",""type"":""long""},{""name"":""closeReason"",""default"":"""",""type"":""string""}],""protocol"":""22"",""messageType"":""3"",""senderRole"":""consumer"",""protocolRoles"":""producer,consumer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.ChannelDataLoad.CloseChannel"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""CloseChannel"",""namespace"":""Energistics.Etp.v12.Protocol.ChannelDataLoad"",""fields"":[{""name"":""id"",""type"":""long""},{""name"":""closeReason"",""default"":"""",""type"":""string""}],""protocol"":""22"",""messageType"":""3"",""senderRole"":""producer,consumer"",""protocolRoles"":""producer,consumer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.ChannelDataLoad.CloseChannel"",""depends"":[]}");
 		private long _id;
 		private string _closeReason;
 		public virtual Schema Schema

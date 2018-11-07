@@ -15,11 +15,29 @@ namespace Energistics.Etp.v12.Protocol.StoreQuery
 	
 	public partial class FindObjectsResponse : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""FindObjectsResponse"",""namespace"":""Energistics.Etp.v12.Protocol.StoreQuery"",""fields"":[{""name"":""dataObject"",""type"":{""type"":""record"",""name"":""DataObject"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""resource"",""type"":{""type"":""record"",""name"":""Resource"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""contentType"",""type"":""string""},{""name"":""name"",""type"":""string""},{""name"":""channelSubscribable"",""default"":false,""type"":""boolean""},{""name"":""customData"",""type"":{""type"":""map"",""values"":""string""}},{""name"":""resourceType"",""type"":""string""},{""name"":""childCount"",""default"":null,""type"":[""null"",""int""]},{""name"":""uuid"",""default"":"""",""type"":""string""},{""name"":""lastChanged"",""type"":[""null"",""long""]},{""name"":""objectNotifiable"",""default"":false,""type"":""boolean""}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.Resource"",""depends"":[]}},{""name"":""data"",""type"":""bytes""}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.DataObject"",""depends"":[
-  ""Energistics.Etp.v12.Datatypes.Object.Resource""
-]}},{""name"":""serverSortOrder"",""type"":""string""}],""protocol"":""14"",""messageType"":""2"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":true,""fullName"":""Energistics.Etp.v12.Protocol.StoreQuery.FindObjectsResponse"",""depends"":[
-  ""Energistics.Etp.v12.Datatypes.Object.DataObject""
-]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse("{\"type\":\"record\",\"name\":\"FindObjectsResponse\",\"namespace\":\"Energistics.Etp.v12.Pr" +
+				"otocol.StoreQuery\",\"fields\":[{\"name\":\"dataObject\",\"type\":{\"type\":\"record\",\"name\"" +
+				":\"DataObject\",\"namespace\":\"Energistics.Etp.v12.Datatypes.Object\",\"fields\":[{\"nam" +
+				"e\":\"resource\",\"type\":{\"type\":\"record\",\"name\":\"Resource\",\"namespace\":\"Energistics" +
+				".Etp.v12.Datatypes.Object\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"con" +
+				"tentType\",\"type\":\"string\"},{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"channelSubsc" +
+				"ribable\",\"default\":false,\"type\":\"boolean\"},{\"name\":\"customData\",\"type\":{\"type\":\"" +
+				"map\",\"values\":\"string\"}},{\"name\":\"resourceType\",\"type\":{\"type\":\"enum\",\"name\":\"Re" +
+				"sourceKind\",\"namespace\":\"Energistics.Etp.v12.Datatypes.Object\",\"symbols\":[\"DataO" +
+				"bject\",\"Folder\",\"UriProtocol\"],\"fullName\":\"Energistics.Etp.v12.Datatypes.Object." +
+				"ResourceKind\",\"depends\":[]}},{\"name\":\"childCount\",\"default\":null,\"type\":[\"null\"," +
+				"\"int\"]},{\"name\":\"uuid\",\"type\":[\"null\",{\"type\":\"fixed\",\"name\":\"Uuid\",\"namespace\":" +
+				"\"Energistics.Etp.v12.Datatypes\",\"size\":16,\"fullName\":\"Energistics.Etp.v12.Dataty" +
+				"pes.Uuid\",\"depends\":[]}]},{\"name\":\"lastChanged\",\"type\":[\"null\",\"long\"]},{\"name\":" +
+				"\"objectNotifiable\",\"default\":false,\"type\":\"boolean\"}],\"fullName\":\"Energistics.Et" +
+				"p.v12.Datatypes.Object.Resource\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.O" +
+				"bject.ResourceKind\",\r\n  \"Energistics.Etp.v12.Datatypes.Uuid\"\r\n]}},{\"name\":\"data\"" +
+				",\"type\":\"bytes\"}],\"fullName\":\"Energistics.Etp.v12.Datatypes.Object.DataObject\",\"" +
+				"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.Object.Resource\"\r\n]}},{\"name\":\"serv" +
+				"erSortOrder\",\"type\":\"string\"}],\"protocol\":\"14\",\"messageType\":\"2\",\"senderRole\":\"s" +
+				"tore\",\"protocolRoles\":\"store,customer\",\"multipartFlag\":true,\"fullName\":\"Energist" +
+				"ics.Etp.v12.Protocol.StoreQuery.FindObjectsResponse\",\"depends\":[\r\n  \"Energistics" +
+				".Etp.v12.Datatypes.Object.DataObject\"\r\n]}");
 		private Energistics.Etp.v12.Datatypes.Object.DataObject _dataObject;
 		private string _serverSortOrder;
 		public virtual Schema Schema

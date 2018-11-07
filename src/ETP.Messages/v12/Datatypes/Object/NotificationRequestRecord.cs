@@ -15,9 +15,11 @@ namespace Energistics.Etp.v12.Datatypes.Object
 	
 	public partial class NotificationRequestRecord : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""NotificationRequestRecord"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""uuid"",""type"":""string""},{""name"":""includeObjectData"",""type"":""boolean""},{""name"":""startTime"",""type"":""long""},{""name"":""objectTypes"",""type"":{""type"":""array"",""items"":""string""}}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.NotificationRequestRecord"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""NotificationRequestRecord"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""uuid"",""type"":{""type"":""fixed"",""name"":""Uuid"",""namespace"":""Energistics.Etp.v12.Datatypes"",""size"":16,""fullName"":""Energistics.Etp.v12.Datatypes.Uuid"",""depends"":[]}},{""name"":""includeObjectData"",""type"":""boolean""},{""name"":""startTime"",""type"":""long""},{""name"":""objectTypes"",""type"":{""type"":""array"",""items"":""string""}}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.NotificationRequestRecord"",""depends"":[
+  ""Energistics.Etp.v12.Datatypes.Uuid""
+]}");
 		private string _uri;
-		private string _uuid;
+		private Energistics.Etp.v12.Datatypes.Uuid _uuid;
 		private bool _includeObjectData;
 		private long _startTime;
 		private IList<System.String> _objectTypes;
@@ -39,7 +41,7 @@ namespace Energistics.Etp.v12.Datatypes.Object
 				this._uri = value;
 			}
 		}
-		public string Uuid
+		public Energistics.Etp.v12.Datatypes.Uuid Uuid
 		{
 			get
 			{
@@ -100,7 +102,7 @@ namespace Energistics.Etp.v12.Datatypes.Object
 			switch (fieldPos)
 			{
 			case 0: this._uri = (System.String)fieldValue; break;
-			case 1: this._uuid = (System.String)fieldValue; break;
+			case 1: this._uuid = (Energistics.Etp.v12.Datatypes.Uuid)fieldValue; break;
 			case 2: this._includeObjectData = (System.Boolean)fieldValue; break;
 			case 3: this._startTime = (System.Int64)fieldValue; break;
 			case 4: this._objectTypes = (IList<System.String>)fieldValue; break;
