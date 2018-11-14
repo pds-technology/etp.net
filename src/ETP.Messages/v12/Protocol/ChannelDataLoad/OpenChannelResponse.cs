@@ -15,13 +15,14 @@ namespace Energistics.Etp.v12.Protocol.ChannelDataLoad
 	
 	public partial class OpenChannelResponse : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""OpenChannelResponse"",""namespace"":""Energistics.Etp.v12.Protocol.ChannelDataLoad"",""fields"":[{""name"":""channels"",""type"":{""type"":""array"",""items"":{""type"":""record"",""name"":""OpenChannelInfo"",""namespace"":""Energistics.Etp.v12.Datatypes.ChannelData"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""uuid"",""type"":{""type"":""fixed"",""name"":""Uuid"",""namespace"":""Energistics.Etp.v12.Datatypes"",""size"":16,""fullName"":""Energistics.Etp.v12.Datatypes.Uuid"",""depends"":[]}},{""name"":""id"",""type"":""long""},{""name"":""lastIndex"",""type"":{""type"":""record"",""name"":""IndexValue"",""namespace"":""Energistics.Etp.v12.Datatypes"",""fields"":[{""name"":""item"",""type"":[""null"",""long"",""double""]}],""fullName"":""Energistics.Etp.v12.Datatypes.IndexValue"",""depends"":[]}},{""name"":""infill"",""default"":true,""type"":""boolean""},{""name"":""dataChanges"",""default"":true,""type"":""boolean""},{""name"":""openStatus"",""default"":true,""type"":""boolean""},{""name"":""openError"",""default"":"""",""type"":""string""}],""fullName"":""Energistics.Etp.v12.Datatypes.ChannelData.OpenChannelInfo"",""depends"":[
-  ""Energistics.Etp.v12.Datatypes.Uuid"",
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""OpenChannelResponse"",""namespace"":""Energistics.Etp.v12.Protocol.ChannelDataLoad"",""fields"":[{""name"":""channels"",""type"":{""type"":""array"",""items"":{""type"":""record"",""name"":""OpenChannelInfo"",""namespace"":""Energistics.Etp.v12.Datatypes.ChannelData"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""id"",""type"":""long""},{""name"":""lastIndex"",""type"":{""type"":""record"",""name"":""IndexValue"",""namespace"":""Energistics.Etp.v12.Datatypes"",""fields"":[{""name"":""item"",""type"":[""null"",""long"",""double""]}],""fullName"":""Energistics.Etp.v12.Datatypes.IndexValue"",""depends"":[]}},{""name"":""infill"",""default"":true,""type"":""boolean""},{""name"":""dataChanges"",""default"":true,""type"":""boolean""}],""fullName"":""Energistics.Etp.v12.Datatypes.ChannelData.OpenChannelInfo"",""depends"":[
   ""Energistics.Etp.v12.Datatypes.IndexValue""
-]}}}],""protocol"":""22"",""messageType"":""2"",""senderRole"":""consumer"",""protocolRoles"":""producer,consumer"",""multipartFlag"":true,""fullName"":""Energistics.Etp.v12.Protocol.ChannelDataLoad.OpenChannelResponse"",""depends"":[
-  ""Energistics.Etp.v12.Datatypes.ChannelData.OpenChannelInfo""
+]}}},{""name"":""errors"",""type"":{""type"":""array"",""items"":{""type"":""record"",""name"":""ErrorInfo"",""namespace"":""Energistics.Etp.v12.Datatypes"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""message"",""type"":""string""},{""name"":""code"",""type"":""int""}],""fullName"":""Energistics.Etp.v12.Datatypes.ErrorInfo"",""depends"":[]}}}],""protocol"":""22"",""messageType"":""2"",""senderRole"":""consumer"",""protocolRoles"":""producer,consumer"",""multipartFlag"":true,""fullName"":""Energistics.Etp.v12.Protocol.ChannelDataLoad.OpenChannelResponse"",""depends"":[
+  ""Energistics.Etp.v12.Datatypes.ChannelData.OpenChannelInfo"",
+  ""Energistics.Etp.v12.Datatypes.ErrorInfo""
 ]}");
 		private IList<Energistics.Etp.v12.Datatypes.ChannelData.OpenChannelInfo> _channels;
+		private IList<Energistics.Etp.v12.Datatypes.ErrorInfo> _errors;
 		public virtual Schema Schema
 		{
 			get
@@ -40,11 +41,23 @@ namespace Energistics.Etp.v12.Protocol.ChannelDataLoad
 				this._channels = value;
 			}
 		}
+		public IList<Energistics.Etp.v12.Datatypes.ErrorInfo> Errors
+		{
+			get
+			{
+				return this._errors;
+			}
+			set
+			{
+				this._errors = value;
+			}
+		}
 		public virtual object Get(int fieldPos)
 		{
 			switch (fieldPos)
 			{
 			case 0: return this._channels;
+			case 1: return this._errors;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -53,6 +66,7 @@ namespace Energistics.Etp.v12.Protocol.ChannelDataLoad
 			switch (fieldPos)
 			{
 			case 0: this._channels = (IList<Energistics.Etp.v12.Datatypes.ChannelData.OpenChannelInfo>)fieldValue; break;
+			case 1: this._errors = (IList<Energistics.Etp.v12.Datatypes.ErrorInfo>)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

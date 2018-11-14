@@ -15,10 +15,10 @@ namespace Energistics.Etp.v12.Protocol.Transaction
 	
 	public partial class CommitTransactionResponse : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""CommitTransactionResponse"",""namespace"":""Energistics.Etp.v12.Protocol.Transaction"",""fields"":[{""name"":""uuid"",""type"":{""type"":""fixed"",""name"":""Uuid"",""namespace"":""Energistics.Etp.v12.Datatypes"",""size"":16,""fullName"":""Energistics.Etp.v12.Datatypes.Uuid"",""depends"":[]}},{""name"":""successful"",""default"":true,""type"":""boolean""},{""name"":""failureReason"",""default"":"""",""type"":""string""}],""protocol"":""18"",""messageType"":""5"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.Transaction.CommitTransactionResponse"",""depends"":[
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""CommitTransactionResponse"",""namespace"":""Energistics.Etp.v12.Protocol.Transaction"",""fields"":[{""name"":""transactionUuid"",""type"":{""type"":""fixed"",""name"":""Uuid"",""namespace"":""Energistics.Etp.v12.Datatypes"",""size"":16,""fullName"":""Energistics.Etp.v12.Datatypes.Uuid"",""depends"":[]}},{""name"":""successful"",""default"":true,""type"":""boolean""},{""name"":""failureReason"",""default"":"""",""type"":""string""}],""protocol"":""18"",""messageType"":""5"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.Transaction.CommitTransactionResponse"",""depends"":[
   ""Energistics.Etp.v12.Datatypes.Uuid""
 ]}");
-		private Energistics.Etp.v12.Datatypes.Uuid _uuid;
+		private Energistics.Etp.v12.Datatypes.Uuid _transactionUuid;
 		private bool _successful;
 		private string _failureReason;
 		public virtual Schema Schema
@@ -28,15 +28,15 @@ namespace Energistics.Etp.v12.Protocol.Transaction
 				return CommitTransactionResponse._SCHEMA;
 			}
 		}
-		public Energistics.Etp.v12.Datatypes.Uuid Uuid
+		public Energistics.Etp.v12.Datatypes.Uuid TransactionUuid
 		{
 			get
 			{
-				return this._uuid;
+				return this._transactionUuid;
 			}
 			set
 			{
-				this._uuid = value;
+				this._transactionUuid = value;
 			}
 		}
 		public bool Successful
@@ -65,7 +65,7 @@ namespace Energistics.Etp.v12.Protocol.Transaction
 		{
 			switch (fieldPos)
 			{
-			case 0: return this._uuid;
+			case 0: return this._transactionUuid;
 			case 1: return this._successful;
 			case 2: return this._failureReason;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
@@ -75,7 +75,7 @@ namespace Energistics.Etp.v12.Protocol.Transaction
 		{
 			switch (fieldPos)
 			{
-			case 0: this._uuid = (Energistics.Etp.v12.Datatypes.Uuid)fieldValue; break;
+			case 0: this._transactionUuid = (Energistics.Etp.v12.Datatypes.Uuid)fieldValue; break;
 			case 1: this._successful = (System.Boolean)fieldValue; break;
 			case 2: this._failureReason = (System.String)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");

@@ -15,18 +15,15 @@ namespace Energistics.Etp.v12.Datatypes.Object
 	
 	public partial class Resource : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""Resource"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""contentType"",""type"":""string""},{""name"":""name"",""type"":""string""},{""name"":""channelSubscribable"",""default"":false,""type"":""boolean""},{""name"":""customData"",""type"":{""type"":""map"",""values"":""string""}},{""name"":""resourceType"",""type"":{""type"":""enum"",""name"":""ResourceKind"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""symbols"":[""DataObject"",""Folder"",""UriProtocol""],""fullName"":""Energistics.Etp.v12.Datatypes.Object.ResourceKind"",""depends"":[]}},{""name"":""childCount"",""default"":null,""type"":[""null"",""int""]},{""name"":""uuid"",""type"":[""null"",{""type"":""fixed"",""name"":""Uuid"",""namespace"":""Energistics.Etp.v12.Datatypes"",""size"":16,""fullName"":""Energistics.Etp.v12.Datatypes.Uuid"",""depends"":[]}]},{""name"":""lastChanged"",""type"":[""null"",""long""]},{""name"":""objectNotifiable"",""default"":false,""type"":""boolean""}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.Resource"",""depends"":[
-  ""Energistics.Etp.v12.Datatypes.Object.ResourceKind"",
-  ""Energistics.Etp.v12.Datatypes.Uuid""
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""Resource"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""contentType"",""type"":""string""},{""name"":""name"",""type"":""string""},{""name"":""customData"",""type"":{""type"":""map"",""values"":""string""}},{""name"":""resourceType"",""type"":{""type"":""enum"",""name"":""ResourceKind"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""symbols"":[""DataObject"",""Folder"",""UriProtocol"",""DataSpace""],""fullName"":""Energistics.Etp.v12.Datatypes.Object.ResourceKind"",""depends"":[]}},{""name"":""childCount"",""default"":null,""type"":[""null"",""int""]},{""name"":""lastChanged"",""type"":[""null"",""long""]},{""name"":""objectNotifiable"",""type"":""boolean""}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.Resource"",""depends"":[
+  ""Energistics.Etp.v12.Datatypes.Object.ResourceKind""
 ]}");
 		private string _uri;
 		private string _contentType;
 		private string _name;
-		private bool _channelSubscribable;
 		private IDictionary<string,System.String> _customData;
 		private Energistics.Etp.v12.Datatypes.Object.ResourceKind _resourceType;
 		private System.Nullable<int> _childCount;
-		private Energistics.Etp.v12.Datatypes.Uuid _uuid;
 		private System.Nullable<long> _lastChanged;
 		private bool _objectNotifiable;
 		public virtual Schema Schema
@@ -69,17 +66,6 @@ namespace Energistics.Etp.v12.Datatypes.Object
 				this._name = value;
 			}
 		}
-		public bool ChannelSubscribable
-		{
-			get
-			{
-				return this._channelSubscribable;
-			}
-			set
-			{
-				this._channelSubscribable = value;
-			}
-		}
 		public IDictionary<string,System.String> CustomData
 		{
 			get
@@ -113,17 +99,6 @@ namespace Energistics.Etp.v12.Datatypes.Object
 				this._childCount = value;
 			}
 		}
-		public Energistics.Etp.v12.Datatypes.Uuid Uuid
-		{
-			get
-			{
-				return this._uuid;
-			}
-			set
-			{
-				this._uuid = value;
-			}
-		}
 		public System.Nullable<long> LastChanged
 		{
 			get
@@ -153,13 +128,11 @@ namespace Energistics.Etp.v12.Datatypes.Object
 			case 0: return this._uri;
 			case 1: return this._contentType;
 			case 2: return this._name;
-			case 3: return this._channelSubscribable;
-			case 4: return this._customData;
-			case 5: return this._resourceType;
-			case 6: return this._childCount;
-			case 7: return this._uuid;
-			case 8: return this._lastChanged;
-			case 9: return this._objectNotifiable;
+			case 3: return this._customData;
+			case 4: return this._resourceType;
+			case 5: return this._childCount;
+			case 6: return this._lastChanged;
+			case 7: return this._objectNotifiable;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -170,13 +143,11 @@ namespace Energistics.Etp.v12.Datatypes.Object
 			case 0: this._uri = (System.String)fieldValue; break;
 			case 1: this._contentType = (System.String)fieldValue; break;
 			case 2: this._name = (System.String)fieldValue; break;
-			case 3: this._channelSubscribable = (System.Boolean)fieldValue; break;
-			case 4: this._customData = (IDictionary<string,System.String>)fieldValue; break;
-			case 5: this._resourceType = (Energistics.Etp.v12.Datatypes.Object.ResourceKind)fieldValue; break;
-			case 6: this._childCount = (System.Nullable<int>)fieldValue; break;
-			case 7: this._uuid = (Energistics.Etp.v12.Datatypes.Uuid)fieldValue; break;
-			case 8: this._lastChanged = (System.Nullable<long>)fieldValue; break;
-			case 9: this._objectNotifiable = (System.Boolean)fieldValue; break;
+			case 3: this._customData = (IDictionary<string,System.String>)fieldValue; break;
+			case 4: this._resourceType = (Energistics.Etp.v12.Datatypes.Object.ResourceKind)fieldValue; break;
+			case 5: this._childCount = (System.Nullable<int>)fieldValue; break;
+			case 6: this._lastChanged = (System.Nullable<long>)fieldValue; break;
+			case 7: this._objectNotifiable = (System.Boolean)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

@@ -15,26 +15,11 @@ namespace Energistics.Etp.v12.Protocol.DiscoveryQuery
 	
 	public partial class FindResourcesResponse : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse("{\"type\":\"record\",\"name\":\"FindResourcesResponse\",\"namespace\":\"Energistics.Etp.v12." +
-				"Protocol.DiscoveryQuery\",\"fields\":[{\"name\":\"resource\",\"type\":{\"type\":\"record\",\"n" +
-				"ame\":\"Resource\",\"namespace\":\"Energistics.Etp.v12.Datatypes.Object\",\"fields\":[{\"n" +
-				"ame\":\"uri\",\"type\":\"string\"},{\"name\":\"contentType\",\"type\":\"string\"},{\"name\":\"name" +
-				"\",\"type\":\"string\"},{\"name\":\"channelSubscribable\",\"default\":false,\"type\":\"boolean" +
-				"\"},{\"name\":\"customData\",\"type\":{\"type\":\"map\",\"values\":\"string\"}},{\"name\":\"resour" +
-				"ceType\",\"type\":{\"type\":\"enum\",\"name\":\"ResourceKind\",\"namespace\":\"Energistics.Etp" +
-				".v12.Datatypes.Object\",\"symbols\":[\"DataObject\",\"Folder\",\"UriProtocol\"],\"fullName" +
-				"\":\"Energistics.Etp.v12.Datatypes.Object.ResourceKind\",\"depends\":[]}},{\"name\":\"ch" +
-				"ildCount\",\"default\":null,\"type\":[\"null\",\"int\"]},{\"name\":\"uuid\",\"type\":[\"null\",{\"" +
-				"type\":\"fixed\",\"name\":\"Uuid\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"size\":1" +
-				"6,\"fullName\":\"Energistics.Etp.v12.Datatypes.Uuid\",\"depends\":[]}]},{\"name\":\"lastC" +
-				"hanged\",\"type\":[\"null\",\"long\"]},{\"name\":\"objectNotifiable\",\"default\":false,\"type" +
-				"\":\"boolean\"}],\"fullName\":\"Energistics.Etp.v12.Datatypes.Object.Resource\",\"depend" +
-				"s\":[\r\n  \"Energistics.Etp.v12.Datatypes.Object.ResourceKind\",\r\n  \"Energistics.Etp" +
-				".v12.Datatypes.Uuid\"\r\n]}},{\"name\":\"serverSortOrder\",\"type\":\"string\"}],\"protocol\"" +
-				":\"13\",\"messageType\":\"2\",\"senderRole\":\"store\",\"protocolRoles\":\"store,customer\",\"m" +
-				"ultipartFlag\":true,\"fullName\":\"Energistics.Etp.v12.Protocol.DiscoveryQuery.FindR" +
-				"esourcesResponse\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.Object.Resource\"" +
-				"\r\n]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""FindResourcesResponse"",""namespace"":""Energistics.Etp.v12.Protocol.DiscoveryQuery"",""fields"":[{""name"":""resource"",""type"":{""type"":""record"",""name"":""Resource"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""contentType"",""type"":""string""},{""name"":""name"",""type"":""string""},{""name"":""customData"",""type"":{""type"":""map"",""values"":""string""}},{""name"":""resourceType"",""type"":{""type"":""enum"",""name"":""ResourceKind"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""symbols"":[""DataObject"",""Folder"",""UriProtocol"",""DataSpace""],""fullName"":""Energistics.Etp.v12.Datatypes.Object.ResourceKind"",""depends"":[]}},{""name"":""childCount"",""default"":null,""type"":[""null"",""int""]},{""name"":""lastChanged"",""type"":[""null"",""long""]},{""name"":""objectNotifiable"",""type"":""boolean""}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.Resource"",""depends"":[
+  ""Energistics.Etp.v12.Datatypes.Object.ResourceKind""
+]}},{""name"":""serverSortOrder"",""type"":""string""}],""protocol"":""13"",""messageType"":""2"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":true,""fullName"":""Energistics.Etp.v12.Protocol.DiscoveryQuery.FindResourcesResponse"",""depends"":[
+  ""Energistics.Etp.v12.Datatypes.Object.Resource""
+]}");
 		private Energistics.Etp.v12.Datatypes.Object.Resource _resource;
 		private string _serverSortOrder;
 		public virtual Schema Schema

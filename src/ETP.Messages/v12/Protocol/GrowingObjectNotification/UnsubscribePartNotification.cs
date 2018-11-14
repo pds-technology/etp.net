@@ -5,7 +5,7 @@
 //    is regenerated
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Energistics.Etp.v12.Protocol.StoreNotification
+namespace Energistics.Etp.v12.Protocol.GrowingObjectNotification
 {
 	using System;
 	using System.Collections.Generic;
@@ -13,9 +13,9 @@ namespace Energistics.Etp.v12.Protocol.StoreNotification
 	using Avro;
 	using Avro.Specific;
 	
-	public partial class CancelNotification : ISpecificRecord
+	public partial class UnsubscribePartNotification : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""CancelNotification"",""namespace"":""Energistics.Etp.v12.Protocol.StoreNotification"",""fields"":[{""name"":""requestUuid"",""type"":{""type"":""fixed"",""name"":""Uuid"",""namespace"":""Energistics.Etp.v12.Datatypes"",""size"":16,""fullName"":""Energistics.Etp.v12.Datatypes.Uuid"",""depends"":[]}}],""protocol"":""5"",""messageType"":""4"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.StoreNotification.CancelNotification"",""depends"":[
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""UnsubscribePartNotification"",""namespace"":""Energistics.Etp.v12.Protocol.GrowingObjectNotification"",""fields"":[{""name"":""requestUuid"",""type"":{""type"":""fixed"",""name"":""Uuid"",""namespace"":""Energistics.Etp.v12.Datatypes"",""size"":16,""fullName"":""Energistics.Etp.v12.Datatypes.Uuid"",""depends"":[]}}],""protocol"":""7"",""messageType"":""4"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.GrowingObjectNotification.UnsubscribePartNotification"",""depends"":[
   ""Energistics.Etp.v12.Datatypes.Uuid""
 ]}");
 		private Energistics.Etp.v12.Datatypes.Uuid _requestUuid;
@@ -23,7 +23,7 @@ namespace Energistics.Etp.v12.Protocol.StoreNotification
 		{
 			get
 			{
-				return CancelNotification._SCHEMA;
+				return UnsubscribePartNotification._SCHEMA;
 			}
 		}
 		public Energistics.Etp.v12.Datatypes.Uuid RequestUuid

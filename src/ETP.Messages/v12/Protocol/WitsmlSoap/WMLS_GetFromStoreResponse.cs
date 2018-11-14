@@ -13,16 +13,17 @@ namespace Energistics.Etp.v12.Protocol.WitsmlSoap
 	using Avro;
 	using Avro.Specific;
 	
-	public partial class WMSL_DeleteFromStoreResponse : ISpecificRecord
+	public partial class WMLS_GetFromStoreResponse : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""WMSL_DeleteFromStoreResponse"",""namespace"":""Energistics.Etp.v12.Protocol.WitsmlSoap"",""fields"":[{""name"":""Result"",""type"":""int""},{""name"":""SuppMsgOut"",""type"":""string""}],""protocol"":""8"",""messageType"":""4"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.WitsmlSoap.WMSL_DeleteFromStoreResponse"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""WMLS_GetFromStoreResponse"",""namespace"":""Energistics.Etp.v12.Protocol.WitsmlSoap"",""fields"":[{""name"":""Result"",""type"":""int""},{""name"":""XMLout"",""type"":""string""},{""name"":""SuppMsgOut"",""type"":""string""}],""protocol"":""8"",""messageType"":""10"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.WitsmlSoap.WMLS_GetFromStoreResponse"",""depends"":[]}");
 		private int _Result;
+		private string _XMLout;
 		private string _SuppMsgOut;
 		public virtual Schema Schema
 		{
 			get
 			{
-				return WMSL_DeleteFromStoreResponse._SCHEMA;
+				return WMLS_GetFromStoreResponse._SCHEMA;
 			}
 		}
 		public int Result
@@ -34,6 +35,17 @@ namespace Energistics.Etp.v12.Protocol.WitsmlSoap
 			set
 			{
 				this._Result = value;
+			}
+		}
+		public string XMLout
+		{
+			get
+			{
+				return this._XMLout;
+			}
+			set
+			{
+				this._XMLout = value;
 			}
 		}
 		public string SuppMsgOut
@@ -52,7 +64,8 @@ namespace Energistics.Etp.v12.Protocol.WitsmlSoap
 			switch (fieldPos)
 			{
 			case 0: return this._Result;
-			case 1: return this._SuppMsgOut;
+			case 1: return this._XMLout;
+			case 2: return this._SuppMsgOut;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -61,7 +74,8 @@ namespace Energistics.Etp.v12.Protocol.WitsmlSoap
 			switch (fieldPos)
 			{
 			case 0: this._Result = (System.Int32)fieldValue; break;
-			case 1: this._SuppMsgOut = (System.String)fieldValue; break;
+			case 1: this._XMLout = (System.String)fieldValue; break;
+			case 2: this._SuppMsgOut = (System.String)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

@@ -13,18 +13,19 @@ namespace Energistics.Etp.v12.Protocol.WitsmlSoap
 	using Avro;
 	using Avro.Specific;
 	
-	public partial class WMSL_GetBaseMsgResponse : ISpecificRecord
+	public partial class WMLS_UpdateInStoreResponse : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""WMSL_GetBaseMsgResponse"",""namespace"":""Energistics.Etp.v12.Protocol.WitsmlSoap"",""fields"":[{""name"":""Result"",""type"":""string""}],""protocol"":""8"",""messageType"":""6"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.WitsmlSoap.WMSL_GetBaseMsgResponse"",""depends"":[]}");
-		private string _Result;
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""WMLS_UpdateInStoreResponse"",""namespace"":""Energistics.Etp.v12.Protocol.WitsmlSoap"",""fields"":[{""name"":""Result"",""type"":""int""},{""name"":""SuppMsgOut"",""type"":""string""}],""protocol"":""8"",""messageType"":""14"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.WitsmlSoap.WMLS_UpdateInStoreResponse"",""depends"":[]}");
+		private int _Result;
+		private string _SuppMsgOut;
 		public virtual Schema Schema
 		{
 			get
 			{
-				return WMSL_GetBaseMsgResponse._SCHEMA;
+				return WMLS_UpdateInStoreResponse._SCHEMA;
 			}
 		}
-		public string Result
+		public int Result
 		{
 			get
 			{
@@ -35,11 +36,23 @@ namespace Energistics.Etp.v12.Protocol.WitsmlSoap
 				this._Result = value;
 			}
 		}
+		public string SuppMsgOut
+		{
+			get
+			{
+				return this._SuppMsgOut;
+			}
+			set
+			{
+				this._SuppMsgOut = value;
+			}
+		}
 		public virtual object Get(int fieldPos)
 		{
 			switch (fieldPos)
 			{
 			case 0: return this._Result;
+			case 1: return this._SuppMsgOut;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -47,7 +60,8 @@ namespace Energistics.Etp.v12.Protocol.WitsmlSoap
 		{
 			switch (fieldPos)
 			{
-			case 0: this._Result = (System.String)fieldValue; break;
+			case 0: this._Result = (System.Int32)fieldValue; break;
+			case 1: this._SuppMsgOut = (System.String)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

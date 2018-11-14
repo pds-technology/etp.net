@@ -13,33 +13,33 @@ namespace Energistics.Etp.v12.Protocol.GrowingObject
 	using Avro;
 	using Avro.Specific;
 	
-	public partial class DescribeParts : ISpecificRecord
+	public partial class GetPartsMetadata : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""DescribeParts"",""namespace"":""Energistics.Etp.v12.Protocol.GrowingObject"",""fields"":[{""name"":""uri"",""type"":""string""}],""protocol"":""6"",""messageType"":""8"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.GrowingObject.DescribeParts"",""depends"":[]}");
-		private string _uri;
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""GetPartsMetadata"",""namespace"":""Energistics.Etp.v12.Protocol.GrowingObject"",""fields"":[{""name"":""uris"",""type"":{""type"":""array"",""items"":""string""}}],""protocol"":""6"",""messageType"":""8"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.GrowingObject.GetPartsMetadata"",""depends"":[]}");
+		private IList<System.String> _uris;
 		public virtual Schema Schema
 		{
 			get
 			{
-				return DescribeParts._SCHEMA;
+				return GetPartsMetadata._SCHEMA;
 			}
 		}
-		public string Uri
+		public IList<System.String> Uris
 		{
 			get
 			{
-				return this._uri;
+				return this._uris;
 			}
 			set
 			{
-				this._uri = value;
+				this._uris = value;
 			}
 		}
 		public virtual object Get(int fieldPos)
 		{
 			switch (fieldPos)
 			{
-			case 0: return this._uri;
+			case 0: return this._uris;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -47,7 +47,7 @@ namespace Energistics.Etp.v12.Protocol.GrowingObject
 		{
 			switch (fieldPos)
 			{
-			case 0: this._uri = (System.String)fieldValue; break;
+			case 0: this._uris = (IList<System.String>)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

@@ -13,16 +13,16 @@ namespace Energistics.Etp.v12.Protocol.StoreNotification
 	using Avro;
 	using Avro.Specific;
 	
-	public partial class AccessRevokedNotification : ISpecificRecord
+	public partial class ObjectDeleted : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""AccessRevokedNotification"",""namespace"":""Energistics.Etp.v12.Protocol.StoreNotification"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""changeTime"",""type"":""long""}],""protocol"":""5"",""messageType"":""5"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.StoreNotification.AccessRevokedNotification"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""ObjectDeleted"",""namespace"":""Energistics.Etp.v12.Protocol.StoreNotification"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""changeTime"",""type"":""long""}],""protocol"":""5"",""messageType"":""3"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.StoreNotification.ObjectDeleted"",""depends"":[]}");
 		private string _uri;
 		private long _changeTime;
 		public virtual Schema Schema
 		{
 			get
 			{
-				return AccessRevokedNotification._SCHEMA;
+				return ObjectDeleted._SCHEMA;
 			}
 		}
 		public string Uri

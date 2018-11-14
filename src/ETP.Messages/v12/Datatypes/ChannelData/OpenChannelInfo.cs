@@ -15,18 +15,14 @@ namespace Energistics.Etp.v12.Datatypes.ChannelData
 	
 	public partial class OpenChannelInfo : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""OpenChannelInfo"",""namespace"":""Energistics.Etp.v12.Datatypes.ChannelData"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""uuid"",""type"":{""type"":""fixed"",""name"":""Uuid"",""namespace"":""Energistics.Etp.v12.Datatypes"",""size"":16,""fullName"":""Energistics.Etp.v12.Datatypes.Uuid"",""depends"":[]}},{""name"":""id"",""type"":""long""},{""name"":""lastIndex"",""type"":{""type"":""record"",""name"":""IndexValue"",""namespace"":""Energistics.Etp.v12.Datatypes"",""fields"":[{""name"":""item"",""type"":[""null"",""long"",""double""]}],""fullName"":""Energistics.Etp.v12.Datatypes.IndexValue"",""depends"":[]}},{""name"":""infill"",""default"":true,""type"":""boolean""},{""name"":""dataChanges"",""default"":true,""type"":""boolean""},{""name"":""openStatus"",""default"":true,""type"":""boolean""},{""name"":""openError"",""default"":"""",""type"":""string""}],""fullName"":""Energistics.Etp.v12.Datatypes.ChannelData.OpenChannelInfo"",""depends"":[
-  ""Energistics.Etp.v12.Datatypes.Uuid"",
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""OpenChannelInfo"",""namespace"":""Energistics.Etp.v12.Datatypes.ChannelData"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""id"",""type"":""long""},{""name"":""lastIndex"",""type"":{""type"":""record"",""name"":""IndexValue"",""namespace"":""Energistics.Etp.v12.Datatypes"",""fields"":[{""name"":""item"",""type"":[""null"",""long"",""double""]}],""fullName"":""Energistics.Etp.v12.Datatypes.IndexValue"",""depends"":[]}},{""name"":""infill"",""default"":true,""type"":""boolean""},{""name"":""dataChanges"",""default"":true,""type"":""boolean""}],""fullName"":""Energistics.Etp.v12.Datatypes.ChannelData.OpenChannelInfo"",""depends"":[
   ""Energistics.Etp.v12.Datatypes.IndexValue""
 ]}");
 		private string _uri;
-		private Energistics.Etp.v12.Datatypes.Uuid _uuid;
 		private long _id;
 		private Energistics.Etp.v12.Datatypes.IndexValue _lastIndex;
 		private bool _infill;
 		private bool _dataChanges;
-		private bool _openStatus;
-		private string _openError;
 		public virtual Schema Schema
 		{
 			get
@@ -43,17 +39,6 @@ namespace Energistics.Etp.v12.Datatypes.ChannelData
 			set
 			{
 				this._uri = value;
-			}
-		}
-		public Energistics.Etp.v12.Datatypes.Uuid Uuid
-		{
-			get
-			{
-				return this._uuid;
-			}
-			set
-			{
-				this._uuid = value;
 			}
 		}
 		public long Id
@@ -100,40 +85,15 @@ namespace Energistics.Etp.v12.Datatypes.ChannelData
 				this._dataChanges = value;
 			}
 		}
-		public bool OpenStatus
-		{
-			get
-			{
-				return this._openStatus;
-			}
-			set
-			{
-				this._openStatus = value;
-			}
-		}
-		public string OpenError
-		{
-			get
-			{
-				return this._openError;
-			}
-			set
-			{
-				this._openError = value;
-			}
-		}
 		public virtual object Get(int fieldPos)
 		{
 			switch (fieldPos)
 			{
 			case 0: return this._uri;
-			case 1: return this._uuid;
-			case 2: return this._id;
-			case 3: return this._lastIndex;
-			case 4: return this._infill;
-			case 5: return this._dataChanges;
-			case 6: return this._openStatus;
-			case 7: return this._openError;
+			case 1: return this._id;
+			case 2: return this._lastIndex;
+			case 3: return this._infill;
+			case 4: return this._dataChanges;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -142,13 +102,10 @@ namespace Energistics.Etp.v12.Datatypes.ChannelData
 			switch (fieldPos)
 			{
 			case 0: this._uri = (System.String)fieldValue; break;
-			case 1: this._uuid = (Energistics.Etp.v12.Datatypes.Uuid)fieldValue; break;
-			case 2: this._id = (System.Int64)fieldValue; break;
-			case 3: this._lastIndex = (Energistics.Etp.v12.Datatypes.IndexValue)fieldValue; break;
-			case 4: this._infill = (System.Boolean)fieldValue; break;
-			case 5: this._dataChanges = (System.Boolean)fieldValue; break;
-			case 6: this._openStatus = (System.Boolean)fieldValue; break;
-			case 7: this._openError = (System.String)fieldValue; break;
+			case 1: this._id = (System.Int64)fieldValue; break;
+			case 2: this._lastIndex = (Energistics.Etp.v12.Datatypes.IndexValue)fieldValue; break;
+			case 3: this._infill = (System.Boolean)fieldValue; break;
+			case 4: this._dataChanges = (System.Boolean)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

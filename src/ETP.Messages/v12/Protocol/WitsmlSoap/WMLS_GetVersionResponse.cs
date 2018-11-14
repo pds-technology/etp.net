@@ -13,19 +13,18 @@ namespace Energistics.Etp.v12.Protocol.WitsmlSoap
 	using Avro;
 	using Avro.Specific;
 	
-	public partial class WMSL_AddToStoreResponse : ISpecificRecord
+	public partial class WMLS_GetVersionResponse : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""WMSL_AddToStoreResponse"",""namespace"":""Energistics.Etp.v12.Protocol.WitsmlSoap"",""fields"":[{""name"":""Result"",""type"":""int""},{""name"":""SuppMsgOut"",""type"":""string""}],""protocol"":""8"",""messageType"":""2"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.WitsmlSoap.WMSL_AddToStoreResponse"",""depends"":[]}");
-		private int _Result;
-		private string _SuppMsgOut;
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""WMLS_GetVersionResponse"",""namespace"":""Energistics.Etp.v12.Protocol.WitsmlSoap"",""fields"":[{""name"":""Result"",""type"":""string""}],""protocol"":""8"",""messageType"":""12"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.WitsmlSoap.WMLS_GetVersionResponse"",""depends"":[]}");
+		private string _Result;
 		public virtual Schema Schema
 		{
 			get
 			{
-				return WMSL_AddToStoreResponse._SCHEMA;
+				return WMLS_GetVersionResponse._SCHEMA;
 			}
 		}
-		public int Result
+		public string Result
 		{
 			get
 			{
@@ -36,23 +35,11 @@ namespace Energistics.Etp.v12.Protocol.WitsmlSoap
 				this._Result = value;
 			}
 		}
-		public string SuppMsgOut
-		{
-			get
-			{
-				return this._SuppMsgOut;
-			}
-			set
-			{
-				this._SuppMsgOut = value;
-			}
-		}
 		public virtual object Get(int fieldPos)
 		{
 			switch (fieldPos)
 			{
 			case 0: return this._Result;
-			case 1: return this._SuppMsgOut;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -60,8 +47,7 @@ namespace Energistics.Etp.v12.Protocol.WitsmlSoap
 		{
 			switch (fieldPos)
 			{
-			case 0: this._Result = (System.Int32)fieldValue; break;
-			case 1: this._SuppMsgOut = (System.String)fieldValue; break;
+			case 0: this._Result = (System.String)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

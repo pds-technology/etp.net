@@ -13,11 +13,12 @@ namespace Energistics.Etp.v12.Datatypes.Object
 	using Avro;
 	using Avro.Specific;
 	
-	public enum ResourceKind
+	public enum ContextScopeKind
 	{
-		DataObject,
-		Folder,
-		UriProtocol,
-		DataSpace,
+		self,
+		sources,
+		targets,
+		sourcesOrSelf,
+		targetsOrSelf,
 	}
 }

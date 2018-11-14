@@ -173,8 +173,6 @@ namespace Energistics.Etp.v11
                 }
             }
 
-            public partial class NotificationRequestRecord : INotificationRequestRecord { }
-
             public partial class Resource : IResource
             {
                 [JsonIgnore]

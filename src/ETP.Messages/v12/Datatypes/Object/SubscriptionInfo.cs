@@ -13,21 +13,21 @@ namespace Energistics.Etp.v12.Datatypes.Object
 	using Avro;
 	using Avro.Specific;
 	
-	public partial class NotificationRequestRecord : ISpecificRecord
+	public partial class SubscriptionInfo : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""NotificationRequestRecord"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""uuid"",""type"":{""type"":""fixed"",""name"":""Uuid"",""namespace"":""Energistics.Etp.v12.Datatypes"",""size"":16,""fullName"":""Energistics.Etp.v12.Datatypes.Uuid"",""depends"":[]}},{""name"":""includeObjectData"",""type"":""boolean""},{""name"":""startTime"",""type"":""long""},{""name"":""objectTypes"",""type"":{""type"":""array"",""items"":""string""}}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.NotificationRequestRecord"",""depends"":[
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""SubscriptionInfo"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""requestUuid"",""type"":{""type"":""fixed"",""name"":""Uuid"",""namespace"":""Energistics.Etp.v12.Datatypes"",""size"":16,""fullName"":""Energistics.Etp.v12.Datatypes.Uuid"",""depends"":[]}},{""name"":""includeObjectData"",""type"":""boolean""},{""name"":""startTime"",""type"":""long""},{""name"":""contentTypes"",""type"":{""type"":""array"",""items"":""string""}}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.SubscriptionInfo"",""depends"":[
   ""Energistics.Etp.v12.Datatypes.Uuid""
 ]}");
 		private string _uri;
-		private Energistics.Etp.v12.Datatypes.Uuid _uuid;
+		private Energistics.Etp.v12.Datatypes.Uuid _requestUuid;
 		private bool _includeObjectData;
 		private long _startTime;
-		private IList<System.String> _objectTypes;
+		private IList<System.String> _contentTypes;
 		public virtual Schema Schema
 		{
 			get
 			{
-				return NotificationRequestRecord._SCHEMA;
+				return SubscriptionInfo._SCHEMA;
 			}
 		}
 		public string Uri
@@ -41,15 +41,15 @@ namespace Energistics.Etp.v12.Datatypes.Object
 				this._uri = value;
 			}
 		}
-		public Energistics.Etp.v12.Datatypes.Uuid Uuid
+		public Energistics.Etp.v12.Datatypes.Uuid RequestUuid
 		{
 			get
 			{
-				return this._uuid;
+				return this._requestUuid;
 			}
 			set
 			{
-				this._uuid = value;
+				this._requestUuid = value;
 			}
 		}
 		public bool IncludeObjectData
@@ -74,15 +74,15 @@ namespace Energistics.Etp.v12.Datatypes.Object
 				this._startTime = value;
 			}
 		}
-		public IList<System.String> ObjectTypes
+		public IList<System.String> ContentTypes
 		{
 			get
 			{
-				return this._objectTypes;
+				return this._contentTypes;
 			}
 			set
 			{
-				this._objectTypes = value;
+				this._contentTypes = value;
 			}
 		}
 		public virtual object Get(int fieldPos)
@@ -90,10 +90,10 @@ namespace Energistics.Etp.v12.Datatypes.Object
 			switch (fieldPos)
 			{
 			case 0: return this._uri;
-			case 1: return this._uuid;
+			case 1: return this._requestUuid;
 			case 2: return this._includeObjectData;
 			case 3: return this._startTime;
-			case 4: return this._objectTypes;
+			case 4: return this._contentTypes;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -102,10 +102,10 @@ namespace Energistics.Etp.v12.Datatypes.Object
 			switch (fieldPos)
 			{
 			case 0: this._uri = (System.String)fieldValue; break;
-			case 1: this._uuid = (Energistics.Etp.v12.Datatypes.Uuid)fieldValue; break;
+			case 1: this._requestUuid = (Energistics.Etp.v12.Datatypes.Uuid)fieldValue; break;
 			case 2: this._includeObjectData = (System.Boolean)fieldValue; break;
 			case 3: this._startTime = (System.Int64)fieldValue; break;
-			case 4: this._objectTypes = (IList<System.String>)fieldValue; break;
+			case 4: this._contentTypes = (IList<System.String>)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

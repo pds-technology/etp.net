@@ -33,10 +33,11 @@ namespace Energistics.Etp.v12
         {
             public partial class ChannelMetadataRecord : IChannelMetadataRecord
             {
-                string IChannelMetadataRecord.Uuid
+                [JsonIgnore]
+                public string Uuid
                 {
-                    get { return new Guid(Uuid.Value).ToString(); }
-                    set { Uuid = new Uuid { Value = Guid.Parse(value).ToByteArray() }; }
+                    get { return null; }
+                    set { }
                 }
 
                 [JsonIgnore]
@@ -49,8 +50,8 @@ namespace Energistics.Etp.v12
                 [JsonIgnore]
                 public string ChannelUri
                 {
-                    get { return DomainObjectUri; }
-                    set { DomainObjectUri = value; }
+                    get { return Uri; }
+                    set { Uri = value; }
                 }
 
                 int IChannelMetadataRecord.Status
@@ -269,21 +270,13 @@ namespace Energistics.Etp.v12
                 }
             }
 
-            public partial class NotificationRequestRecord : INotificationRequestRecord
-            {
-                string INotificationRequestRecord.Uuid
-                {
-                    get { return new Guid(Uuid.Value).ToString(); }
-                    set { Uuid = new Uuid { Value = Guid.Parse(value).ToByteArray() }; }
-                }
-            }
-
             public partial class Resource : IResource
             {
-                string IResource.Uuid
+                [JsonIgnore]
+                public string Uuid
                 {
-                    get { return new Guid(Uuid.Value).ToString(); }
-                    set { Uuid = new Uuid { Value = Guid.Parse(value).ToByteArray() }; }
+                    get { return null; }
+                    set { }
                 }
 
                 string IResource.ResourceType
@@ -295,6 +288,13 @@ namespace Energistics.Etp.v12
                         Enum.TryParse(value, out enumValue);
                         ResourceType = enumValue;
                     }
+                }
+
+                [JsonIgnore]
+                public bool ChannelSubscribable
+                {
+                    get { return false; }
+                    set { }
                 }
             }
         }

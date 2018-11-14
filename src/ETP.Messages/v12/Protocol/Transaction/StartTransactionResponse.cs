@@ -13,9 +13,9 @@ namespace Energistics.Etp.v12.Protocol.Transaction
 	using Avro;
 	using Avro.Specific;
 	
-	public partial class RollbackTransaction : ISpecificRecord
+	public partial class StartTransactionResponse : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""RollbackTransaction"",""namespace"":""Energistics.Etp.v12.Protocol.Transaction"",""fields"":[{""name"":""transactionUuid"",""type"":{""type"":""fixed"",""name"":""Uuid"",""namespace"":""Energistics.Etp.v12.Datatypes"",""size"":16,""fullName"":""Energistics.Etp.v12.Datatypes.Uuid"",""depends"":[]}}],""protocol"":""18"",""messageType"":""4"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.Transaction.RollbackTransaction"",""depends"":[
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""StartTransactionResponse"",""namespace"":""Energistics.Etp.v12.Protocol.Transaction"",""fields"":[{""name"":""transactionUuid"",""type"":{""type"":""fixed"",""name"":""Uuid"",""namespace"":""Energistics.Etp.v12.Datatypes"",""size"":16,""fullName"":""Energistics.Etp.v12.Datatypes.Uuid"",""depends"":[]}}],""protocol"":""18"",""messageType"":""2"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.Transaction.StartTransactionResponse"",""depends"":[
   ""Energistics.Etp.v12.Datatypes.Uuid""
 ]}");
 		private Energistics.Etp.v12.Datatypes.Uuid _transactionUuid;
@@ -23,7 +23,7 @@ namespace Energistics.Etp.v12.Protocol.Transaction
 		{
 			get
 			{
-				return RollbackTransaction._SCHEMA;
+				return StartTransactionResponse._SCHEMA;
 			}
 		}
 		public Energistics.Etp.v12.Datatypes.Uuid TransactionUuid

@@ -5,7 +5,7 @@
 //    is regenerated
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Energistics.Etp.v12.Protocol.StoreNotification
+namespace Energistics.Etp.v12.Protocol.GrowingObjectNotification
 {
 	using System;
 	using System.Collections.Generic;
@@ -13,16 +13,17 @@ namespace Energistics.Etp.v12.Protocol.StoreNotification
 	using Avro;
 	using Avro.Specific;
 	
-	public partial class DeleteNotification : ISpecificRecord
+	public partial class PartDeleted : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""DeleteNotification"",""namespace"":""Energistics.Etp.v12.Protocol.StoreNotification"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""changeTime"",""type"":""long""}],""protocol"":""5"",""messageType"":""3"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.StoreNotification.DeleteNotification"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""PartDeleted"",""namespace"":""Energistics.Etp.v12.Protocol.GrowingObjectNotification"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""uid"",""type"":""string""},{""name"":""changeTime"",""type"":""long""}],""protocol"":""7"",""messageType"":""3"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.GrowingObjectNotification.PartDeleted"",""depends"":[]}");
 		private string _uri;
+		private string _uid;
 		private long _changeTime;
 		public virtual Schema Schema
 		{
 			get
 			{
-				return DeleteNotification._SCHEMA;
+				return PartDeleted._SCHEMA;
 			}
 		}
 		public string Uri
@@ -34,6 +35,17 @@ namespace Energistics.Etp.v12.Protocol.StoreNotification
 			set
 			{
 				this._uri = value;
+			}
+		}
+		public string Uid
+		{
+			get
+			{
+				return this._uid;
+			}
+			set
+			{
+				this._uid = value;
 			}
 		}
 		public long ChangeTime
@@ -52,7 +64,8 @@ namespace Energistics.Etp.v12.Protocol.StoreNotification
 			switch (fieldPos)
 			{
 			case 0: return this._uri;
-			case 1: return this._changeTime;
+			case 1: return this._uid;
+			case 2: return this._changeTime;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -61,7 +74,8 @@ namespace Energistics.Etp.v12.Protocol.StoreNotification
 			switch (fieldPos)
 			{
 			case 0: this._uri = (System.String)fieldValue; break;
-			case 1: this._changeTime = (System.Int64)fieldValue; break;
+			case 1: this._uid = (System.String)fieldValue; break;
+			case 2: this._changeTime = (System.Int64)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

@@ -61,7 +61,7 @@ namespace Energistics.Etp.v12
             UnsubscribeChannels = 7,
             SubscriptionStopped = 8,
             GetRange = 9,
-            GetRangeReponse = 10
+            GetRangeResponse = 10
         }
 
         /// <summary>
@@ -94,7 +94,9 @@ namespace Energistics.Etp.v12
         public enum Discovery
         {
             GetResources = 1,
-            GetResourcesResponse
+            GetResourcesResponse,
+            GetResources2,
+            GetResourcesResponse2
         }
 
         /// <summary>
@@ -131,10 +133,12 @@ namespace Energistics.Etp.v12
         /// </summary>
         public enum StoreNotification
         {
-            NotificationRequest = 1,
-            ChangeNotification,
-            DeleteNotification,
-            CancelNotification
+            SubscribeNotification = 1,
+            ObjectChanged,
+            ObjectDeleted,
+            UnsubscribeNotification,
+            ObjectAccessRevoked,
+            SubscribeNotification2
         }
 
         /// <summary>
@@ -149,8 +153,8 @@ namespace Energistics.Etp.v12
             PutPart,
             ObjectPart,
             ReplacePartsByRange,
-            DescribeParts,
-            PartsMetadata
+            GetPartsMetadata,
+            GetPartsMetadataResponse
         }
 
         /// <summary>
@@ -158,12 +162,13 @@ namespace Energistics.Etp.v12
         /// </summary>
         public enum GrowingObjectNotification
         {
-            RequestPartNotification = 1,
-            PartChangeNotification,
-            PartDeleteNotification,
-            CancelPartNotification,
-            DeletePartsByRangeNotification,
-            ReplacePartsByRangeNotification
+            SubscribePartNotification = 1,
+            PartChanged,
+            PartDeleted,
+            UnsubscribePartNotification,
+            PartsDeletedByRange,
+            PartsReplacedByRange,
+            SubscribePartNotification2
         }
 
         /// <summary>

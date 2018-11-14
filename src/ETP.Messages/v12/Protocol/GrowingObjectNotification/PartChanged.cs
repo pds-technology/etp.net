@@ -13,9 +13,9 @@ namespace Energistics.Etp.v12.Protocol.GrowingObjectNotification
 	using Avro;
 	using Avro.Specific;
 	
-	public partial class PartChangeNotification : ISpecificRecord
+	public partial class PartChanged : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""PartChangeNotification"",""namespace"":""Energistics.Etp.v12.Protocol.GrowingObjectNotification"",""fields"":[{""name"":""changeKind"",""type"":{""type"":""enum"",""name"":""ObjectChangeKind"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""symbols"":[""insert"",""update"",""authorized""],""fullName"":""Energistics.Etp.v12.Datatypes.Object.ObjectChangeKind"",""depends"":[]}},{""name"":""changeTime"",""type"":""long""},{""name"":""uri"",""type"":""string""},{""name"":""contentType"",""type"":""string""},{""name"":""uid"",""type"":""string""},{""name"":""data"",""type"":""bytes""}],""protocol"":""7"",""messageType"":""2"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.GrowingObjectNotification.PartChangeNotification"",""depends"":[
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""PartChanged"",""namespace"":""Energistics.Etp.v12.Protocol.GrowingObjectNotification"",""fields"":[{""name"":""changeKind"",""type"":{""type"":""enum"",""name"":""ObjectChangeKind"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""symbols"":[""insert"",""update"",""authorized""],""fullName"":""Energistics.Etp.v12.Datatypes.Object.ObjectChangeKind"",""depends"":[]}},{""name"":""changeTime"",""type"":""long""},{""name"":""uri"",""type"":""string""},{""name"":""contentType"",""type"":""string""},{""name"":""uid"",""type"":""string""},{""name"":""data"",""type"":""bytes""}],""protocol"":""7"",""messageType"":""2"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.GrowingObjectNotification.PartChanged"",""depends"":[
   ""Energistics.Etp.v12.Datatypes.Object.ObjectChangeKind""
 ]}");
 		private Energistics.Etp.v12.Datatypes.Object.ObjectChangeKind _changeKind;
@@ -28,7 +28,7 @@ namespace Energistics.Etp.v12.Protocol.GrowingObjectNotification
 		{
 			get
 			{
-				return PartChangeNotification._SCHEMA;
+				return PartChanged._SCHEMA;
 			}
 		}
 		public Energistics.Etp.v12.Datatypes.Object.ObjectChangeKind ChangeKind
