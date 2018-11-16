@@ -19,7 +19,7 @@ namespace Energistics.Etp.v12.Protocol.Store
   ""Energistics.Etp.v12.Datatypes.Object.ResourceKind""
 ]}},{""name"":""data"",""type"":""bytes""}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.DataObject"",""depends"":[
   ""Energistics.Etp.v12.Datatypes.Object.Resource""
-]}}],""protocol"":""4"",""messageType"":""2"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":true,""fullName"":""Energistics.Etp.v12.Protocol.Store.PutObject"",""depends"":[
+]}}],""protocol"":""4"",""messageType"":""2"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.Store.PutObject"",""depends"":[
   ""Energistics.Etp.v12.Datatypes.Object.DataObject""
 ]}");
 		private Energistics.Etp.v12.Datatypes.Object.DataObject _dataObject;
