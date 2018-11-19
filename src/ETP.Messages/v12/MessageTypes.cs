@@ -61,7 +61,8 @@ namespace Energistics.Etp.v12
             UnsubscribeChannels = 7,
             SubscriptionStopped = 8,
             GetRange = 9,
-            GetRangeResponse = 10
+            GetRangeResponse = 10,
+            CancelGetRange = 11
         }
 
         /// <summary>
