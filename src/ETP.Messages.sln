@@ -1,9 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2026
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ETP.Messages", "ETP.Messages\ETP.Messages.csproj", "{1A788A14-70D7-4B2B-96A3-086C86D0C925}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{F2A5F0A9-DA71-46CA-B7EB-ADC7A6FDAD62}"
+	ProjectSection(SolutionItems) = preProject
+		tools\UpdatePackageHintPaths.ps1 = tools\UpdatePackageHintPaths.ps1
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
