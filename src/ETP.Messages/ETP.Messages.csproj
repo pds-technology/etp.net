@@ -279,7 +279,6 @@
     <Compile Include="v12\Protocol\Store\PutObject.cs" />
     <Compile Include="v12\Protocol\Transaction\CommitTransaction.cs" />
     <Compile Include="v12\Protocol\Transaction\CommitTransactionResponse.cs" />
-    <Compile Include="v12\Protocol\Transaction\EndSessionTransaction.cs" />
     <Compile Include="v12\Protocol\Transaction\RollbackTransaction.cs" />
     <Compile Include="v12\Protocol\Transaction\StartTransaction.cs" />
     <Compile Include="v12\Protocol\Transaction\StartTransactionResponse.cs" />
