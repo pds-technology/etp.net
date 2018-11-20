@@ -84,9 +84,9 @@ namespace Energistics.Etp.v12
         public enum ChannelDataFrame
         {
             RequestChannelData = 1,
-            ChannelNotUsed,
-            ChannelMetadata,
-            ChannelDataFrameSet
+            //NotUsed = 2,
+            ChannelMetadata = 3,
+            ChannelDataFrameSet = 4
         }
 
         /// <summary>
@@ -200,20 +200,43 @@ namespace Energistics.Etp.v12
         /// </summary>
         public enum WitsmlSoap
         {
-            AddToStore = 1,
-            AddToStoreResponse,
-            DeleteFromStore,
-            DeleteFromStoreResponse,
-            GetBaseMsg,
-            GetBaseMsgResponse,
-            GetCap,
-            GetCapResponse,
-            GetFromStore,
-            GetFromStoreResponse,
-            GetVersion,
-            GetVersionResponse,
-            UpdateInStore,
-            UpdateInStoreResponse
+            WMLS_AddToStore = 1,
+            WMLS_AddToStoreResponse,
+            WMLS_DeleteFromStore,
+            WMLS_DeleteFromStoreResponse,
+            WMLS_GetBaseMsg,
+            WMLS_GetBaseMsgResponse,
+            WMLS_GetCap,
+            WMLS_GetCapResponse,
+            WMLS_GetFromStore,
+            WMLS_GetFromStoreResponse,
+            WMLS_GetVersion,
+            WMLS_GetVersionResponse,
+            WMLS_UpdateInStore,
+            WMLS_UpdateInStoreResponse
+        }
+
+        /// <summary>
+        /// An enumeration of Transaction protocol message types.
+        /// </summary>
+        public enum Transaction
+        {
+            StartTransaction = 1,
+            StartTransactionResponse = 2,
+            CommitTransaction = 3,
+            CommitTransactionResponse = 5,
+            RollbackTransaction = 4,
+        }
+
+        /// <summary>
+        /// An enumeration of Directed Discovery protocol message types.
+        /// </summary>
+        public enum DirectedDiscovery
+        {
+            GetContent = 1,
+            GetResourcesResponse,
+            GetSources,
+            GetTargets,
         }
     }
 }

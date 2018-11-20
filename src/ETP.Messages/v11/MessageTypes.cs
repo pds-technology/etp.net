@@ -60,9 +60,9 @@ namespace Energistics.Etp.v11
         public enum ChannelDataFrame
         {
             RequestChannelData = 1,
-            ChannelNotUsed,
-            ChannelMetadata,
-            ChannelDataFrameSet
+            //NotUsed = 2,
+            ChannelMetadata = 3,
+            ChannelDataFrameSet = 4
         }
 
         /// <summary>
@@ -126,20 +126,20 @@ namespace Energistics.Etp.v11
         /// </summary>
         public enum WitsmlSoap
         {
-            AddToStore = 1,
-            AddToStoreResponse,
-            DeleteFromStore,
-            DeleteFromStoreResponse,
-            GetBaseMsg,
-            GetBaseMsgResponse,
-            GetCap,
-            GetCapResponse,
-            GetFromStore,
-            GetFromStoreResponse,
-            GetVersion,
-            GetVersionResponse,
-            UpdateInStore,
-            UpdateInStoreResponse
+            WMLS_AddToStore = 1,
+            WMSL_AddToStoreResponse,
+            WMLS_DeleteFromStore,
+            WMSL_DeleteFromStoreResponse,
+            WMLS_GetBaseMsg,
+            WMSL_GetBaseMsgResponse,
+            WMLS_GetCap,
+            WMSL_GetCapResponse,
+            WMLS_GetFromStore,
+            WMSL_GetFromStoreResponse,
+            WMLS_GetVersion,
+            WMSL_GetVersionResponse,
+            WMLS_UpdateInStore,
+            WMSL_UpdateInStoreResponse
         }
     }
 }
