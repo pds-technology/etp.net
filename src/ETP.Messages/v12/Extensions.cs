@@ -23,6 +23,7 @@ using Energistics.Etp.Common.Datatypes;
 using Energistics.Etp.Common.Datatypes.ChannelData;
 using Energistics.Etp.Common.Datatypes.Object;
 using Energistics.Etp.Common.Protocol.Core;
+using Energistics.Etp.v12.Datatypes.Object;
 using Newtonsoft.Json;
 
 namespace Energistics.Etp.v12
@@ -119,29 +120,43 @@ namespace Energistics.Etp.v12
                 [JsonIgnore]
                 public object StartIndex
                 {
-                    get { return Interval.StartIndex?.Item; }
-                    set { Interval.StartIndex = new IndexValue { Item = value }; }
+                    get { return EnsureInterval().StartIndex.Item; }
+                    set { EnsureInterval().StartIndex.Item = value; }
                 }
 
                 [JsonIgnore]
                 public object EndIndex
                 {
-                    get { return Interval.EndIndex?.Item; }
-                    set { Interval.EndIndex = new IndexValue { Item = value }; }
+                    get { return EnsureInterval().EndIndex.Item; }
+                    set { EnsureInterval().EndIndex.Item = value; }
                 }
 
                 [JsonIgnore]
                 public string Uom
                 {
-                    get { return Interval.Uom; }
-                    set { Interval.Uom = value; }
+                    get { return EnsureInterval().Uom; }
+                    set { EnsureInterval().Uom = value; }
                 }
 
                 [JsonIgnore]
                 public string DepthDatum
                 {
-                    get { return Interval.DepthDatum; }
-                    set { Interval.DepthDatum = value; }
+                    get { return EnsureInterval().DepthDatum; }
+                    set { EnsureInterval().DepthDatum = value; }
+                }
+
+                private IndexInterval EnsureInterval()
+                {
+                    if (Interval == null)
+                        Interval = new IndexInterval();
+
+                    if (Interval.StartIndex == null)
+                        Interval.StartIndex = new IndexValue();
+
+                    if (Interval.EndIndex == null)
+                        Interval.EndIndex = new IndexValue();
+
+                    return Interval;
                 }
             }
 
@@ -190,29 +205,29 @@ namespace Energistics.Etp.v12
                 [JsonIgnore]
                 public object StartIndex
                 {
-                    get { return Interval.StartIndex?.Item; }
-                    set { Interval.StartIndex = new IndexValue { Item = value }; }
+                    get { return EnsureInterval().StartIndex.Item; }
+                    set { EnsureInterval().StartIndex.Item = value; }
                 }
 
                 [JsonIgnore]
                 public object EndIndex
                 {
-                    get { return Interval.EndIndex?.Item; }
-                    set { Interval.EndIndex = new IndexValue { Item = value }; }
+                    get { return EnsureInterval().EndIndex.Item; }
+                    set { EnsureInterval().EndIndex.Item = value; }
                 }
 
                 [JsonIgnore]
                 public string Uom
                 {
-                    get { return Interval.Uom; }
-                    set { Interval.Uom = value; }
+                    get { return EnsureInterval().Uom; }
+                    set { EnsureInterval().Uom = value; }
                 }
 
                 [JsonIgnore]
                 public string DepthDatum
                 {
-                    get { return Interval.DepthDatum; }
-                    set { Interval.DepthDatum = value; }
+                    get { return EnsureInterval().DepthDatum; }
+                    set { EnsureInterval().DepthDatum = value; }
                 }
 
                 [JsonIgnore]
@@ -248,6 +263,20 @@ namespace Energistics.Etp.v12
                 {
                     get { return null; }
                     set { }
+                }
+
+                private IndexInterval EnsureInterval()
+                {
+                    if (Interval == null)
+                        Interval = new IndexInterval();
+
+                    if (Interval.StartIndex == null)
+                        Interval.StartIndex = new IndexValue();
+
+                    if (Interval.EndIndex == null)
+                        Interval.EndIndex = new IndexValue();
+
+                    return Interval;
                 }
             }
         }
