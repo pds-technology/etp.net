@@ -15,11 +15,11 @@ namespace Energistics.Etp.v12.Protocol.DataArray
 	
 	public partial class GetDataArraySlice : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""GetDataArraySlice"",""namespace"":""Energistics.Etp.v12.Protocol.DataArray"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""pathInResource"",""type"":""string""},{""name"":""start"",""type"":{""type"":""array"",""items"":""long""}},{""name"":""count"",""type"":{""type"":""array"",""items"":""long""}}],""protocol"":""9"",""messageType"":""3"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.DataArray.GetDataArraySlice"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""GetDataArraySlice"",""namespace"":""Energistics.Etp.v12.Protocol.DataArray"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""pathInResource"",""type"":""string""},{""name"":""starts"",""type"":{""type"":""array"",""items"":""long""}},{""name"":""counts"",""type"":{""type"":""array"",""items"":""long""}}],""protocol"":""9"",""messageType"":""3"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.DataArray.GetDataArraySlice"",""depends"":[]}");
 		private string _uri;
 		private string _pathInResource;
-		private IList<System.Int64> _start;
-		private IList<System.Int64> _count;
+		private IList<System.Int64> _starts;
+		private IList<System.Int64> _counts;
 		public virtual Schema Schema
 		{
 			get
@@ -49,26 +49,26 @@ namespace Energistics.Etp.v12.Protocol.DataArray
 				this._pathInResource = value;
 			}
 		}
-		public IList<System.Int64> Start
+		public IList<System.Int64> Starts
 		{
 			get
 			{
-				return this._start;
+				return this._starts;
 			}
 			set
 			{
-				this._start = value;
+				this._starts = value;
 			}
 		}
-		public IList<System.Int64> Count
+		public IList<System.Int64> Counts
 		{
 			get
 			{
-				return this._count;
+				return this._counts;
 			}
 			set
 			{
-				this._count = value;
+				this._counts = value;
 			}
 		}
 		public virtual object Get(int fieldPos)
@@ -77,8 +77,8 @@ namespace Energistics.Etp.v12.Protocol.DataArray
 			{
 			case 0: return this._uri;
 			case 1: return this._pathInResource;
-			case 2: return this._start;
-			case 3: return this._count;
+			case 2: return this._starts;
+			case 3: return this._counts;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -88,8 +88,8 @@ namespace Energistics.Etp.v12.Protocol.DataArray
 			{
 			case 0: this._uri = (System.String)fieldValue; break;
 			case 1: this._pathInResource = (System.String)fieldValue; break;
-			case 2: this._start = (IList<System.Int64>)fieldValue; break;
-			case 3: this._count = (IList<System.Int64>)fieldValue; break;
+			case 2: this._starts = (IList<System.Int64>)fieldValue; break;
+			case 3: this._counts = (IList<System.Int64>)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

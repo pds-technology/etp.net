@@ -13,11 +13,9 @@ namespace Energistics.Etp.v12.Protocol.Discovery
 	using Avro;
 	using Avro.Specific;
 	
-	public partial class GetResources2 : ISpecificRecord
+	public partial class GetTreeResources : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""GetResources2"",""namespace"":""Energistics.Etp.v12.Protocol.Discovery"",""fields"":[{""name"":""context"",""type"":{""type"":""record"",""name"":""ContextInfo"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""scope"",""type"":{""type"":""enum"",""name"":""ContextScopeKind"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""symbols"":[""self"",""sources"",""targets"",""sourcesOrSelf"",""targetsOrSelf""],""fullName"":""Energistics.Etp.v12.Datatypes.Object.ContextScopeKind"",""depends"":[]}},{""name"":""depth"",""type"":""int""},{""name"":""contentTypes"",""type"":{""type"":""array"",""items"":""string""}}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.ContextInfo"",""depends"":[
-  ""Energistics.Etp.v12.Datatypes.Object.ContextScopeKind""
-]}}],""protocol"":""3"",""messageType"":""3"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.Discovery.GetResources2"",""depends"":[
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""GetTreeResources"",""namespace"":""Energistics.Etp.v12.Protocol.Discovery"",""fields"":[{""name"":""context"",""type"":{""type"":""record"",""name"":""ContextInfo"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""depth"",""type"":""int""},{""name"":""contentTypes"",""type"":{""type"":""array"",""items"":""string""}}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.ContextInfo"",""depends"":[]}}],""protocol"":""3"",""messageType"":""5"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.Discovery.GetTreeResources"",""depends"":[
   ""Energistics.Etp.v12.Datatypes.Object.ContextInfo""
 ]}");
 		private Energistics.Etp.v12.Datatypes.Object.ContextInfo _context;
@@ -25,7 +23,7 @@ namespace Energistics.Etp.v12.Protocol.Discovery
 		{
 			get
 			{
-				return GetResources2._SCHEMA;
+				return GetTreeResources._SCHEMA;
 			}
 		}
 		public Energistics.Etp.v12.Datatypes.Object.ContextInfo Context

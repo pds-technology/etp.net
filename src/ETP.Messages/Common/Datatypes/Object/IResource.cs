@@ -1,7 +1,7 @@
 ﻿//----------------------------------------------------------------------- 
 // ETP DevKit, 1.2
 //
-// Copyright 2018 Energistics
+// Copyright 2019 Energistics
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -34,7 +34,7 @@ namespace Energistics.Etp.Common.Datatypes.Object
 
         string ResourceType { get; set; }
 
-        int? ChildCount { get; set; }
+        int? TargetCount { get; set; }
 
         string Uuid { get; set; }
 

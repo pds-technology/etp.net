@@ -15,14 +15,16 @@ namespace Energistics.Etp.v12.Datatypes.Object
 	
 	public partial class SubscriptionInfo : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""SubscriptionInfo"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""requestUuid"",""type"":{""type"":""fixed"",""name"":""Uuid"",""namespace"":""Energistics.Etp.v12.Datatypes"",""size"":16,""fullName"":""Energistics.Etp.v12.Datatypes.Uuid"",""depends"":[]}},{""name"":""includeObjectData"",""type"":""boolean""},{""name"":""startTime"",""type"":""long""},{""name"":""contentTypes"",""type"":{""type"":""array"",""items"":""string""}}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.SubscriptionInfo"",""depends"":[
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""SubscriptionInfo"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""context"",""type"":{""type"":""record"",""name"":""ContextInfo"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""depth"",""type"":""int""},{""name"":""contentTypes"",""type"":{""type"":""array"",""items"":""string""}}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.ContextInfo"",""depends"":[]}},{""name"":""scope"",""type"":{""type"":""enum"",""name"":""ContextScopeKind"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""symbols"":[""self"",""sources"",""targets"",""sourcesOrSelf"",""targetsOrSelf""],""fullName"":""Energistics.Etp.v12.Datatypes.Object.ContextScopeKind"",""depends"":[]}},{""name"":""requestUuid"",""type"":{""type"":""fixed"",""name"":""Uuid"",""namespace"":""Energistics.Etp.v12.Datatypes"",""size"":16,""fullName"":""Energistics.Etp.v12.Datatypes.Uuid"",""depends"":[]}},{""name"":""startTime"",""type"":""long""},{""name"":""includeObjectData"",""type"":""boolean""}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.SubscriptionInfo"",""depends"":[
+  ""Energistics.Etp.v12.Datatypes.Object.ContextInfo"",
+  ""Energistics.Etp.v12.Datatypes.Object.ContextScopeKind"",
   ""Energistics.Etp.v12.Datatypes.Uuid""
 ]}");
-		private string _uri;
+		private Energistics.Etp.v12.Datatypes.Object.ContextInfo _context;
+		private Energistics.Etp.v12.Datatypes.Object.ContextScopeKind _scope;
 		private Energistics.Etp.v12.Datatypes.Uuid _requestUuid;
-		private bool _includeObjectData;
 		private long _startTime;
-		private IList<System.String> _contentTypes;
+		private bool _includeObjectData;
 		public virtual Schema Schema
 		{
 			get
@@ -30,15 +32,26 @@ namespace Energistics.Etp.v12.Datatypes.Object
 				return SubscriptionInfo._SCHEMA;
 			}
 		}
-		public string Uri
+		public Energistics.Etp.v12.Datatypes.Object.ContextInfo Context
 		{
 			get
 			{
-				return this._uri;
+				return this._context;
 			}
 			set
 			{
-				this._uri = value;
+				this._context = value;
+			}
+		}
+		public Energistics.Etp.v12.Datatypes.Object.ContextScopeKind Scope
+		{
+			get
+			{
+				return this._scope;
+			}
+			set
+			{
+				this._scope = value;
 			}
 		}
 		public Energistics.Etp.v12.Datatypes.Uuid RequestUuid
@@ -52,17 +65,6 @@ namespace Energistics.Etp.v12.Datatypes.Object
 				this._requestUuid = value;
 			}
 		}
-		public bool IncludeObjectData
-		{
-			get
-			{
-				return this._includeObjectData;
-			}
-			set
-			{
-				this._includeObjectData = value;
-			}
-		}
 		public long StartTime
 		{
 			get
@@ -74,26 +76,26 @@ namespace Energistics.Etp.v12.Datatypes.Object
 				this._startTime = value;
 			}
 		}
-		public IList<System.String> ContentTypes
+		public bool IncludeObjectData
 		{
 			get
 			{
-				return this._contentTypes;
+				return this._includeObjectData;
 			}
 			set
 			{
-				this._contentTypes = value;
+				this._includeObjectData = value;
 			}
 		}
 		public virtual object Get(int fieldPos)
 		{
 			switch (fieldPos)
 			{
-			case 0: return this._uri;
-			case 1: return this._requestUuid;
-			case 2: return this._includeObjectData;
+			case 0: return this._context;
+			case 1: return this._scope;
+			case 2: return this._requestUuid;
 			case 3: return this._startTime;
-			case 4: return this._contentTypes;
+			case 4: return this._includeObjectData;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -101,11 +103,11 @@ namespace Energistics.Etp.v12.Datatypes.Object
 		{
 			switch (fieldPos)
 			{
-			case 0: this._uri = (System.String)fieldValue; break;
-			case 1: this._requestUuid = (Energistics.Etp.v12.Datatypes.Uuid)fieldValue; break;
-			case 2: this._includeObjectData = (System.Boolean)fieldValue; break;
+			case 0: this._context = (Energistics.Etp.v12.Datatypes.Object.ContextInfo)fieldValue; break;
+			case 1: this._scope = (Energistics.Etp.v12.Datatypes.Object.ContextScopeKind)fieldValue; break;
+			case 2: this._requestUuid = (Energistics.Etp.v12.Datatypes.Uuid)fieldValue; break;
 			case 3: this._startTime = (System.Int64)fieldValue; break;
-			case 4: this._contentTypes = (IList<System.String>)fieldValue; break;
+			case 4: this._includeObjectData = (System.Boolean)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

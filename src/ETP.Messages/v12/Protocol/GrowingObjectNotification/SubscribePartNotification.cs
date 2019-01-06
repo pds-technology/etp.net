@@ -15,11 +15,27 @@ namespace Energistics.Etp.v12.Protocol.GrowingObjectNotification
 	
 	public partial class SubscribePartNotification : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""SubscribePartNotification"",""namespace"":""Energistics.Etp.v12.Protocol.GrowingObjectNotification"",""fields"":[{""name"":""request"",""type"":{""type"":""record"",""name"":""SubscriptionInfo"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""requestUuid"",""type"":{""type"":""fixed"",""name"":""Uuid"",""namespace"":""Energistics.Etp.v12.Datatypes"",""size"":16,""fullName"":""Energistics.Etp.v12.Datatypes.Uuid"",""depends"":[]}},{""name"":""includeObjectData"",""type"":""boolean""},{""name"":""startTime"",""type"":""long""},{""name"":""contentTypes"",""type"":{""type"":""array"",""items"":""string""}}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.SubscriptionInfo"",""depends"":[
-  ""Energistics.Etp.v12.Datatypes.Uuid""
-]}}],""protocol"":""7"",""messageType"":""1"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.GrowingObjectNotification.SubscribePartNotification"",""depends"":[
-  ""Energistics.Etp.v12.Datatypes.Object.SubscriptionInfo""
-]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse("{\"type\":\"record\",\"name\":\"SubscribePartNotification\",\"namespace\":\"Energistics.Etp." +
+				"v12.Protocol.GrowingObjectNotification\",\"fields\":[{\"name\":\"request\",\"type\":{\"typ" +
+				"e\":\"record\",\"name\":\"SubscriptionInfo\",\"namespace\":\"Energistics.Etp.v12.Datatypes" +
+				".Object\",\"fields\":[{\"name\":\"context\",\"type\":{\"type\":\"record\",\"name\":\"ContextInfo" +
+				"\",\"namespace\":\"Energistics.Etp.v12.Datatypes.Object\",\"fields\":[{\"name\":\"uri\",\"ty" +
+				"pe\":\"string\"},{\"name\":\"depth\",\"type\":\"int\"},{\"name\":\"contentTypes\",\"type\":{\"type" +
+				"\":\"array\",\"items\":\"string\"}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.Object.C" +
+				"ontextInfo\",\"depends\":[]}},{\"name\":\"scope\",\"type\":{\"type\":\"enum\",\"name\":\"Context" +
+				"ScopeKind\",\"namespace\":\"Energistics.Etp.v12.Datatypes.Object\",\"symbols\":[\"self\"," +
+				"\"sources\",\"targets\",\"sourcesOrSelf\",\"targetsOrSelf\"],\"fullName\":\"Energistics.Etp" +
+				".v12.Datatypes.Object.ContextScopeKind\",\"depends\":[]}},{\"name\":\"requestUuid\",\"ty" +
+				"pe\":{\"type\":\"fixed\",\"name\":\"Uuid\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"s" +
+				"ize\":16,\"fullName\":\"Energistics.Etp.v12.Datatypes.Uuid\",\"depends\":[]}},{\"name\":\"" +
+				"startTime\",\"type\":\"long\"},{\"name\":\"includeObjectData\",\"type\":\"boolean\"}],\"fullNa" +
+				"me\":\"Energistics.Etp.v12.Datatypes.Object.SubscriptionInfo\",\"depends\":[\r\n  \"Ener" +
+				"gistics.Etp.v12.Datatypes.Object.ContextInfo\",\r\n  \"Energistics.Etp.v12.Datatypes" +
+				".Object.ContextScopeKind\",\r\n  \"Energistics.Etp.v12.Datatypes.Uuid\"\r\n]}}],\"protoc" +
+				"ol\":\"7\",\"messageType\":\"7\",\"senderRole\":\"customer\",\"protocolRoles\":\"store,custome" +
+				"r\",\"multipartFlag\":false,\"fullName\":\"Energistics.Etp.v12.Protocol.GrowingObjectN" +
+				"otification.SubscribePartNotification\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datat" +
+				"ypes.Object.SubscriptionInfo\"\r\n]}");
 		private Energistics.Etp.v12.Datatypes.Object.SubscriptionInfo _request;
 		public virtual Schema Schema
 		{

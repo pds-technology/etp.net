@@ -5,7 +5,7 @@
 //    is regenerated
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Energistics.Etp.v12.Protocol.DirectedDiscovery
+namespace Energistics.Etp.v12.Protocol.Store
 {
 	using System;
 	using System.Collections.Generic;
@@ -13,33 +13,33 @@ namespace Energistics.Etp.v12.Protocol.DirectedDiscovery
 	using Avro;
 	using Avro.Specific;
 	
-	public partial class GetSources : ISpecificRecord
+	public partial class GetDataObjects : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""GetSources"",""namespace"":""Energistics.Etp.v12.Protocol.DirectedDiscovery"",""fields"":[{""name"":""uri"",""type"":""string""}],""protocol"":""30"",""messageType"":""3"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.DirectedDiscovery.GetSources"",""depends"":[]}");
-		private string _uri;
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""GetDataObjects"",""namespace"":""Energistics.Etp.v12.Protocol.Store"",""fields"":[{""name"":""uris"",""type"":{""type"":""array"",""items"":""string""}}],""protocol"":""4"",""messageType"":""1"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":true,""fullName"":""Energistics.Etp.v12.Protocol.Store.GetDataObjects"",""depends"":[]}");
+		private IList<System.String> _uris;
 		public virtual Schema Schema
 		{
 			get
 			{
-				return GetSources._SCHEMA;
+				return GetDataObjects._SCHEMA;
 			}
 		}
-		public string Uri
+		public IList<System.String> Uris
 		{
 			get
 			{
-				return this._uri;
+				return this._uris;
 			}
 			set
 			{
-				this._uri = value;
+				this._uris = value;
 			}
 		}
 		public virtual object Get(int fieldPos)
 		{
 			switch (fieldPos)
 			{
-			case 0: return this._uri;
+			case 0: return this._uris;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -47,7 +47,7 @@ namespace Energistics.Etp.v12.Protocol.DirectedDiscovery
 		{
 			switch (fieldPos)
 			{
-			case 0: this._uri = (System.String)fieldValue; break;
+			case 0: this._uris = (IList<System.String>)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

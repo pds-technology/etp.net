@@ -1,7 +1,7 @@
 ﻿//----------------------------------------------------------------------- 
 // ETP DevKit, 1.2
 //
-// Copyright 2018 Energistics
+// Copyright 2019 Energistics
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ namespace Energistics.Etp.Common.Datatypes.ChannelData
 {
     public interface IChannelRangeInfo : Avro.Specific.ISpecificRecord
     {
-        IList<long> ChannelId { get; set; }
+        IList<long> ChannelIds { get; set; }
 
         object StartIndex { get; set; }
 

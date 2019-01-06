@@ -15,11 +15,8 @@ namespace Energistics.Etp.v12.Datatypes.Object
 	
 	public partial class ContextInfo : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""ContextInfo"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""scope"",""type"":{""type"":""enum"",""name"":""ContextScopeKind"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""symbols"":[""self"",""sources"",""targets"",""sourcesOrSelf"",""targetsOrSelf""],""fullName"":""Energistics.Etp.v12.Datatypes.Object.ContextScopeKind"",""depends"":[]}},{""name"":""depth"",""type"":""int""},{""name"":""contentTypes"",""type"":{""type"":""array"",""items"":""string""}}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.ContextInfo"",""depends"":[
-  ""Energistics.Etp.v12.Datatypes.Object.ContextScopeKind""
-]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""ContextInfo"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""depth"",""type"":""int""},{""name"":""contentTypes"",""type"":{""type"":""array"",""items"":""string""}}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.ContextInfo"",""depends"":[]}");
 		private string _uri;
-		private Energistics.Etp.v12.Datatypes.Object.ContextScopeKind _scope;
 		private int _depth;
 		private IList<System.String> _contentTypes;
 		public virtual Schema Schema
@@ -38,17 +35,6 @@ namespace Energistics.Etp.v12.Datatypes.Object
 			set
 			{
 				this._uri = value;
-			}
-		}
-		public Energistics.Etp.v12.Datatypes.Object.ContextScopeKind Scope
-		{
-			get
-			{
-				return this._scope;
-			}
-			set
-			{
-				this._scope = value;
 			}
 		}
 		public int Depth
@@ -78,9 +64,8 @@ namespace Energistics.Etp.v12.Datatypes.Object
 			switch (fieldPos)
 			{
 			case 0: return this._uri;
-			case 1: return this._scope;
-			case 2: return this._depth;
-			case 3: return this._contentTypes;
+			case 1: return this._depth;
+			case 2: return this._contentTypes;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -89,9 +74,8 @@ namespace Energistics.Etp.v12.Datatypes.Object
 			switch (fieldPos)
 			{
 			case 0: this._uri = (System.String)fieldValue; break;
-			case 1: this._scope = (Energistics.Etp.v12.Datatypes.Object.ContextScopeKind)fieldValue; break;
-			case 2: this._depth = (System.Int32)fieldValue; break;
-			case 3: this._contentTypes = (IList<System.String>)fieldValue; break;
+			case 1: this._depth = (System.Int32)fieldValue; break;
+			case 2: this._contentTypes = (IList<System.String>)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

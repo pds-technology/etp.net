@@ -1,7 +1,7 @@
 ﻿//----------------------------------------------------------------------- 
 // ETP DevKit, 1.2
 //
-// Copyright 2018 Energistics
+// Copyright 2019 Energistics
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -66,6 +66,12 @@ namespace Energistics.Etp.v11
 
             public partial class ChannelRangeInfo : IChannelRangeInfo
             {
+                IList<long> IChannelRangeInfo.ChannelIds
+                {
+                    get { return ChannelId; }
+                    set { ChannelId = value; }
+                }
+
                 object IChannelRangeInfo.StartIndex
                 {
                     get { return StartIndex; }
@@ -176,7 +182,7 @@ namespace Energistics.Etp.v11
             public partial class Resource : IResource
             {
                 [JsonIgnore]
-                public int? ChildCount
+                public int? TargetCount
                 {
                     get { return HasChildren < 0 ? (int?) null : HasChildren; }
                     set { HasChildren = value ?? -1; }
