@@ -94,10 +94,9 @@ namespace Energistics.Etp.v12
         /// </summary>
         public enum Discovery
         {
-            GetResources = 1,
-            GetResourcesResponse,
-            GetResources2,
-            GetResourcesResponse2
+            GetResourcesResponse = 4,
+            GetTreeResources = 5,
+            GetGraphResources = 6
         }
 
         /// <summary>
@@ -114,10 +113,10 @@ namespace Energistics.Etp.v12
         /// </summary>
         public enum Store
         {
-            GetObject = 1,
-            PutObject,
-            DeleteObject,
-            Object
+            GetDataObjects = 1,
+            PutDataObjects,
+            DeleteDataObjects,
+            GetDataObjectsResponse
         }
 
         /// <summary>
@@ -138,8 +137,7 @@ namespace Energistics.Etp.v12
             ObjectChanged,
             ObjectDeleted,
             UnsubscribeNotification,
-            ObjectAccessRevoked,
-            SubscribeNotification2
+            ObjectAccessRevoked
         }
 
         /// <summary>
@@ -168,8 +166,7 @@ namespace Energistics.Etp.v12
             PartDeleted,
             UnsubscribePartNotification,
             PartsDeletedByRange,
-            PartsReplacedByRange,
-            SubscribePartNotification2
+            PartsReplacedByRange
         }
 
         /// <summary>
@@ -226,17 +223,6 @@ namespace Energistics.Etp.v12
             CommitTransaction = 3,
             CommitTransactionResponse = 5,
             RollbackTransaction = 4,
-        }
-
-        /// <summary>
-        /// An enumeration of Directed Discovery protocol message types.
-        /// </summary>
-        public enum DirectedDiscovery
-        {
-            GetContent = 1,
-            GetResourcesResponse,
-            GetSources,
-            GetTargets,
         }
     }
 }

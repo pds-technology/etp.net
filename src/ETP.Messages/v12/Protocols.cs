@@ -42,7 +42,6 @@ namespace Energistics.Etp.v12
 	    DataArrayQuery,
 	    DataArrayNotificationQuery,
 	    ChannelSubscribe,
-	    ChannelDataLoad,
-		DirectedDiscovery = 30
+	    ChannelDataLoad
 	}
 }
