@@ -5,7 +5,7 @@
 //    is regenerated
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Energistics.Etp.v12.Protocol.GrowingObject
+namespace Energistics.Etp.v12.Datatypes.Object
 {
 	using System;
 	using System.Collections.Generic;
@@ -15,10 +15,10 @@ namespace Energistics.Etp.v12.Protocol.GrowingObject
 	
 	public partial class ObjectPart : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""ObjectPart"",""namespace"":""Energistics.Etp.v12.Protocol.GrowingObject"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""contentType"",""type"":""string""},{""name"":""uid"",""type"":""string""},{""name"":""data"",""type"":""bytes""}],""protocol"":""6"",""messageType"":""6"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":true,""fullName"":""Energistics.Etp.v12.Protocol.GrowingObject.ObjectPart"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""ObjectPart"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""uid"",""type"":""string""},{""name"":""contentType"",""type"":""string""},{""name"":""data"",""type"":""bytes""}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.ObjectPart"",""depends"":[]}");
 		private string _uri;
-		private string _contentType;
 		private string _uid;
+		private string _contentType;
 		private byte[] _data;
 		public virtual Schema Schema
 		{
@@ -38,17 +38,6 @@ namespace Energistics.Etp.v12.Protocol.GrowingObject
 				this._uri = value;
 			}
 		}
-		public string ContentType
-		{
-			get
-			{
-				return this._contentType;
-			}
-			set
-			{
-				this._contentType = value;
-			}
-		}
 		public string Uid
 		{
 			get
@@ -58,6 +47,17 @@ namespace Energistics.Etp.v12.Protocol.GrowingObject
 			set
 			{
 				this._uid = value;
+			}
+		}
+		public string ContentType
+		{
+			get
+			{
+				return this._contentType;
+			}
+			set
+			{
+				this._contentType = value;
 			}
 		}
 		public byte[] Data
@@ -76,8 +76,8 @@ namespace Energistics.Etp.v12.Protocol.GrowingObject
 			switch (fieldPos)
 			{
 			case 0: return this._uri;
-			case 1: return this._contentType;
-			case 2: return this._uid;
+			case 1: return this._uid;
+			case 2: return this._contentType;
 			case 3: return this._data;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
@@ -87,8 +87,8 @@ namespace Energistics.Etp.v12.Protocol.GrowingObject
 			switch (fieldPos)
 			{
 			case 0: this._uri = (System.String)fieldValue; break;
-			case 1: this._contentType = (System.String)fieldValue; break;
-			case 2: this._uid = (System.String)fieldValue; break;
+			case 1: this._uid = (System.String)fieldValue; break;
+			case 2: this._contentType = (System.String)fieldValue; break;
 			case 3: this._data = (System.Byte[])fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};

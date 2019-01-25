@@ -16,26 +16,26 @@ namespace Energistics.Etp.v12.Datatypes
 	public partial class ersatzUri : ISpecificRecord
 	{
 		public static Schema _SCHEMA = Avro.Schema.Parse("{\"type\":\"record\",\"name\":\"ersatzUri\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"" +
-				"fields\":[{\"name\":\"dataspace\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"ArrayOfStri" +
-				"ng\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"values\",\"type" +
-				"\":{\"type\":\"array\",\"items\":\"string\"}}],\"fullName\":\"Energistics.Etp.v12.Datatypes." +
-				"ArrayOfString\",\"depends\":[]}]},{\"name\":\"contentType\",\"type\":{\"type\":\"record\",\"na" +
-				"me\":\"ersatzContentType\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"" +
-				"name\":\"format\",\"default\":\"XML\",\"type\":\"string\"},{\"name\":\"family\",\"type\":\"string\"" +
-				"},{\"name\":\"familyVersion\",\"type\":{\"type\":\"record\",\"name\":\"Version\",\"namespace\":\"" +
-				"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"major\",\"default\":0,\"type\":\"int" +
-				"\"},{\"name\":\"minor\",\"default\":0,\"type\":\"int\"},{\"name\":\"revision\",\"default\":0,\"typ" +
-				"e\":\"int\"},{\"name\":\"patch\",\"default\":0,\"type\":\"int\"}],\"fullName\":\"Energistics.Etp" +
-				".v12.Datatypes.Version\",\"depends\":[]}},{\"name\":\"objectType\",\"type\":\"string\"}],\"f" +
-				"ullName\":\"Energistics.Etp.v12.Datatypes.ersatzContentType\",\"depends\":[\r\n  \"Energ" +
-				"istics.Etp.v12.Datatypes.Version\"\r\n]}},{\"name\":\"uuid\",\"type\":{\"type\":\"fixed\",\"na" +
-				"me\":\"Uuid\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"size\":16,\"fullName\":\"Ene" +
-				"rgistics.Etp.v12.Datatypes.Uuid\",\"depends\":[]}},{\"name\":\"objectVersion\",\"default" +
-				"\":\"\",\"type\":\"string\"},{\"name\":\"queryString\",\"default\":\"\",\"type\":\"string\"}],\"full" +
-				"Name\":\"Energistics.Etp.v12.Datatypes.ersatzUri\",\"depends\":[\r\n  \"Energistics.Etp." +
-				"v12.Datatypes.ArrayOfString\",\r\n  \"Energistics.Etp.v12.Datatypes.ersatzContentTyp" +
-				"e\",\r\n  \"Energistics.Etp.v12.Datatypes.Uuid\"\r\n]}");
-		private Energistics.Etp.v12.Datatypes.ArrayOfString _dataspace;
+				"fields\":[{\"name\":\"dataspace\",\"default\":[],\"type\":{\"type\":\"array\",\"items\":{\"type\"" +
+				":\"record\",\"name\":\"ArrayOfString\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fi" +
+				"elds\":[{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":\"string\"}}],\"fullName\":\"E" +
+				"nergistics.Etp.v12.Datatypes.ArrayOfString\",\"depends\":[]}}},{\"name\":\"contentType" +
+				"\",\"type\":{\"type\":\"record\",\"name\":\"ersatzContentType\",\"namespace\":\"Energistics.Et" +
+				"p.v12.Datatypes\",\"fields\":[{\"name\":\"format\",\"default\":\"XML\",\"type\":\"string\"},{\"n" +
+				"ame\":\"family\",\"type\":\"string\"},{\"name\":\"familyVersion\",\"type\":{\"type\":\"record\",\"" +
+				"name\":\"Version\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"m" +
+				"ajor\",\"default\":0,\"type\":\"int\"},{\"name\":\"minor\",\"default\":0,\"type\":\"int\"},{\"name" +
+				"\":\"revision\",\"default\":0,\"type\":\"int\"},{\"name\":\"patch\",\"default\":0,\"type\":\"int\"}" +
+				"],\"fullName\":\"Energistics.Etp.v12.Datatypes.Version\",\"depends\":[]}},{\"name\":\"obj" +
+				"ectType\",\"type\":\"string\"}],\"fullName\":\"Energistics.Etp.v12.Datatypes.ersatzConte" +
+				"ntType\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.Version\"\r\n]}},{\"name\":\"uui" +
+				"d\",\"type\":{\"type\":\"fixed\",\"name\":\"Uuid\",\"namespace\":\"Energistics.Etp.v12.Datatyp" +
+				"es\",\"size\":16,\"fullName\":\"Energistics.Etp.v12.Datatypes.Uuid\",\"depends\":[]}},{\"n" +
+				"ame\":\"objectVersion\",\"default\":\"\",\"type\":\"string\"},{\"name\":\"queryString\",\"defaul" +
+				"t\":\"\",\"type\":\"string\"}],\"fullName\":\"Energistics.Etp.v12.Datatypes.ersatzUri\",\"de" +
+				"pends\":[\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfString\",\r\n  \"Energistics.Etp.v" +
+				"12.Datatypes.ersatzContentType\",\r\n  \"Energistics.Etp.v12.Datatypes.Uuid\"\r\n]}");
+		private IList<Energistics.Etp.v12.Datatypes.ArrayOfString> _dataspace;
 		private Energistics.Etp.v12.Datatypes.ersatzContentType _contentType;
 		private Energistics.Etp.v12.Datatypes.Uuid _uuid;
 		private string _objectVersion;
@@ -47,7 +47,7 @@ namespace Energistics.Etp.v12.Datatypes
 				return ersatzUri._SCHEMA;
 			}
 		}
-		public Energistics.Etp.v12.Datatypes.ArrayOfString Dataspace
+		public IList<Energistics.Etp.v12.Datatypes.ArrayOfString> Dataspace
 		{
 			get
 			{
@@ -118,7 +118,7 @@ namespace Energistics.Etp.v12.Datatypes
 		{
 			switch (fieldPos)
 			{
-			case 0: this._dataspace = (Energistics.Etp.v12.Datatypes.ArrayOfString)fieldValue; break;
+			case 0: this._dataspace = (IList<Energistics.Etp.v12.Datatypes.ArrayOfString>)fieldValue; break;
 			case 1: this._contentType = (Energistics.Etp.v12.Datatypes.ersatzContentType)fieldValue; break;
 			case 2: this._uuid = (Energistics.Etp.v12.Datatypes.Uuid)fieldValue; break;
 			case 3: this._objectVersion = (System.String)fieldValue; break;

@@ -15,11 +15,10 @@ namespace Energistics.Etp.v12.Protocol.GrowingObjectQuery
 	
 	public partial class FindPartsResponse : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""FindPartsResponse"",""namespace"":""Energistics.Etp.v12.Protocol.GrowingObjectQuery"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""uid"",""type"":""string""},{""name"":""contentType"",""type"":""string""},{""name"":""data"",""type"":""bytes""},{""name"":""serverSortOrder"",""type"":""string""}],""protocol"":""16"",""messageType"":""2"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":true,""fullName"":""Energistics.Etp.v12.Protocol.GrowingObjectQuery.FindPartsResponse"",""depends"":[]}");
-		private string _uri;
-		private string _uid;
-		private string _contentType;
-		private byte[] _data;
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""FindPartsResponse"",""namespace"":""Energistics.Etp.v12.Protocol.GrowingObjectQuery"",""fields"":[{""name"":""objectParts"",""type"":{""type"":""array"",""items"":{""type"":""record"",""name"":""ObjectPart"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""uid"",""type"":""string""},{""name"":""contentType"",""type"":""string""},{""name"":""data"",""type"":""bytes""}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.ObjectPart"",""depends"":[]}}},{""name"":""serverSortOrder"",""type"":""string""}],""protocol"":""16"",""messageType"":""2"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":true,""fullName"":""Energistics.Etp.v12.Protocol.GrowingObjectQuery.FindPartsResponse"",""depends"":[
+  ""Energistics.Etp.v12.Datatypes.Object.ObjectPart""
+]}");
+		private IList<Energistics.Etp.v12.Datatypes.Object.ObjectPart> _objectParts;
 		private string _serverSortOrder;
 		public virtual Schema Schema
 		{
@@ -28,48 +27,15 @@ namespace Energistics.Etp.v12.Protocol.GrowingObjectQuery
 				return FindPartsResponse._SCHEMA;
 			}
 		}
-		public string Uri
+		public IList<Energistics.Etp.v12.Datatypes.Object.ObjectPart> ObjectParts
 		{
 			get
 			{
-				return this._uri;
+				return this._objectParts;
 			}
 			set
 			{
-				this._uri = value;
-			}
-		}
-		public string Uid
-		{
-			get
-			{
-				return this._uid;
-			}
-			set
-			{
-				this._uid = value;
-			}
-		}
-		public string ContentType
-		{
-			get
-			{
-				return this._contentType;
-			}
-			set
-			{
-				this._contentType = value;
-			}
-		}
-		public byte[] Data
-		{
-			get
-			{
-				return this._data;
-			}
-			set
-			{
-				this._data = value;
+				this._objectParts = value;
 			}
 		}
 		public string ServerSortOrder
@@ -87,11 +53,8 @@ namespace Energistics.Etp.v12.Protocol.GrowingObjectQuery
 		{
 			switch (fieldPos)
 			{
-			case 0: return this._uri;
-			case 1: return this._uid;
-			case 2: return this._contentType;
-			case 3: return this._data;
-			case 4: return this._serverSortOrder;
+			case 0: return this._objectParts;
+			case 1: return this._serverSortOrder;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -99,11 +62,8 @@ namespace Energistics.Etp.v12.Protocol.GrowingObjectQuery
 		{
 			switch (fieldPos)
 			{
-			case 0: this._uri = (System.String)fieldValue; break;
-			case 1: this._uid = (System.String)fieldValue; break;
-			case 2: this._contentType = (System.String)fieldValue; break;
-			case 3: this._data = (System.Byte[])fieldValue; break;
-			case 4: this._serverSortOrder = (System.String)fieldValue; break;
+			case 0: this._objectParts = (IList<Energistics.Etp.v12.Datatypes.Object.ObjectPart>)fieldValue; break;
+			case 1: this._serverSortOrder = (System.String)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

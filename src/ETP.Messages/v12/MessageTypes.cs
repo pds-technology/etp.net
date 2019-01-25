@@ -150,7 +150,7 @@ namespace Energistics.Etp.v12
             GetPart,
             GetPartsByRange,
             PutPart,
-            ObjectPart,
+            GetPartsResponse,
             ReplacePartsByRange,
             GetPartsMetadata,
             GetPartsMetadataResponse

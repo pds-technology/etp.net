@@ -15,12 +15,12 @@ namespace Energistics.Etp.v12.Protocol.DiscoveryQuery
 	
 	public partial class FindResourcesResponse : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""FindResourcesResponse"",""namespace"":""Energistics.Etp.v12.Protocol.DiscoveryQuery"",""fields"":[{""name"":""resource"",""type"":{""type"":""record"",""name"":""Resource"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""contentType"",""type"":""string""},{""name"":""name"",""type"":""string""},{""name"":""objectNotifiable"",""default"":true,""type"":""boolean""},{""name"":""resourceType"",""type"":{""type"":""enum"",""name"":""ResourceKind"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""symbols"":[""DataObject"",""Folder"",""UriProtocol"",""DataSpace""],""fullName"":""Energistics.Etp.v12.Datatypes.Object.ResourceKind"",""depends"":[]}},{""name"":""sourceCount"",""default"":null,""type"":[""null"",""int""]},{""name"":""targetCount"",""default"":null,""type"":[""null"",""int""]},{""name"":""contentCount"",""default"":null,""type"":[""null"",""int""]},{""name"":""lastChanged"",""type"":[""null"",""long""]},{""name"":""customData"",""type"":{""type"":""map"",""values"":""string""}}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.Resource"",""depends"":[
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""FindResourcesResponse"",""namespace"":""Energistics.Etp.v12.Protocol.DiscoveryQuery"",""fields"":[{""name"":""resources"",""type"":{""type"":""array"",""items"":{""type"":""record"",""name"":""Resource"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""contentType"",""type"":""string""},{""name"":""name"",""type"":""string""},{""name"":""objectNotifiable"",""default"":true,""type"":""boolean""},{""name"":""resourceType"",""type"":{""type"":""enum"",""name"":""ResourceKind"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""symbols"":[""DataObject"",""Folder"",""UriProtocol"",""DataSpace""],""fullName"":""Energistics.Etp.v12.Datatypes.Object.ResourceKind"",""depends"":[]}},{""name"":""sourceCount"",""default"":null,""type"":[""null"",""int""]},{""name"":""targetCount"",""default"":null,""type"":[""null"",""int""]},{""name"":""contentCount"",""default"":null,""type"":[""null"",""int""]},{""name"":""lastChanged"",""type"":[""null"",""long""]},{""name"":""customData"",""type"":{""type"":""map"",""values"":""string""}}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.Resource"",""depends"":[
   ""Energistics.Etp.v12.Datatypes.Object.ResourceKind""
-]}},{""name"":""serverSortOrder"",""type"":""string""}],""protocol"":""13"",""messageType"":""2"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":true,""fullName"":""Energistics.Etp.v12.Protocol.DiscoveryQuery.FindResourcesResponse"",""depends"":[
+]}}},{""name"":""serverSortOrder"",""type"":""string""}],""protocol"":""13"",""messageType"":""2"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":true,""fullName"":""Energistics.Etp.v12.Protocol.DiscoveryQuery.FindResourcesResponse"",""depends"":[
   ""Energistics.Etp.v12.Datatypes.Object.Resource""
 ]}");
-		private Energistics.Etp.v12.Datatypes.Object.Resource _resource;
+		private IList<Energistics.Etp.v12.Datatypes.Object.Resource> _resources;
 		private string _serverSortOrder;
 		public virtual Schema Schema
 		{
@@ -29,15 +29,15 @@ namespace Energistics.Etp.v12.Protocol.DiscoveryQuery
 				return FindResourcesResponse._SCHEMA;
 			}
 		}
-		public Energistics.Etp.v12.Datatypes.Object.Resource Resource
+		public IList<Energistics.Etp.v12.Datatypes.Object.Resource> Resources
 		{
 			get
 			{
-				return this._resource;
+				return this._resources;
 			}
 			set
 			{
-				this._resource = value;
+				this._resources = value;
 			}
 		}
 		public string ServerSortOrder
@@ -55,7 +55,7 @@ namespace Energistics.Etp.v12.Protocol.DiscoveryQuery
 		{
 			switch (fieldPos)
 			{
-			case 0: return this._resource;
+			case 0: return this._resources;
 			case 1: return this._serverSortOrder;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
@@ -64,7 +64,7 @@ namespace Energistics.Etp.v12.Protocol.DiscoveryQuery
 		{
 			switch (fieldPos)
 			{
-			case 0: this._resource = (Energistics.Etp.v12.Datatypes.Object.Resource)fieldValue; break;
+			case 0: this._resources = (IList<Energistics.Etp.v12.Datatypes.Object.Resource>)fieldValue; break;
 			case 1: this._serverSortOrder = (System.String)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};

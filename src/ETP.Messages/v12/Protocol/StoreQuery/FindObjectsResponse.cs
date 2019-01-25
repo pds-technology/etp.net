@@ -16,27 +16,27 @@ namespace Energistics.Etp.v12.Protocol.StoreQuery
 	public partial class FindObjectsResponse : ISpecificRecord
 	{
 		public static Schema _SCHEMA = Avro.Schema.Parse("{\"type\":\"record\",\"name\":\"FindObjectsResponse\",\"namespace\":\"Energistics.Etp.v12.Pr" +
-				"otocol.StoreQuery\",\"fields\":[{\"name\":\"dataObject\",\"type\":{\"type\":\"array\",\"items\"" +
-				":{\"type\":\"record\",\"name\":\"DataObject\",\"namespace\":\"Energistics.Etp.v12.Datatypes" +
-				".Object\",\"fields\":[{\"name\":\"resource\",\"type\":{\"type\":\"record\",\"name\":\"Resource\"," +
-				"\"namespace\":\"Energistics.Etp.v12.Datatypes.Object\",\"fields\":[{\"name\":\"uri\",\"type" +
-				"\":\"string\"},{\"name\":\"contentType\",\"type\":\"string\"},{\"name\":\"name\",\"type\":\"string" +
-				"\"},{\"name\":\"objectNotifiable\",\"default\":true,\"type\":\"boolean\"},{\"name\":\"resource" +
-				"Type\",\"type\":{\"type\":\"enum\",\"name\":\"ResourceKind\",\"namespace\":\"Energistics.Etp.v" +
-				"12.Datatypes.Object\",\"symbols\":[\"DataObject\",\"Folder\",\"UriProtocol\",\"DataSpace\"]" +
-				",\"fullName\":\"Energistics.Etp.v12.Datatypes.Object.ResourceKind\",\"depends\":[]}},{" +
-				"\"name\":\"sourceCount\",\"default\":null,\"type\":[\"null\",\"int\"]},{\"name\":\"targetCount\"" +
-				",\"default\":null,\"type\":[\"null\",\"int\"]},{\"name\":\"contentCount\",\"default\":null,\"ty" +
-				"pe\":[\"null\",\"int\"]},{\"name\":\"lastChanged\",\"type\":[\"null\",\"long\"]},{\"name\":\"custo" +
-				"mData\",\"type\":{\"type\":\"map\",\"values\":\"string\"}}],\"fullName\":\"Energistics.Etp.v12" +
-				".Datatypes.Object.Resource\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.Object" +
-				".ResourceKind\"\r\n]}},{\"name\":\"data\",\"type\":\"bytes\"}],\"fullName\":\"Energistics.Etp." +
-				"v12.Datatypes.Object.DataObject\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.O" +
-				"bject.Resource\"\r\n]}}},{\"name\":\"serverSortOrder\",\"type\":\"string\"}],\"protocol\":\"14" +
-				"\",\"messageType\":\"2\",\"senderRole\":\"store\",\"protocolRoles\":\"store,customer\",\"multi" +
-				"partFlag\":true,\"fullName\":\"Energistics.Etp.v12.Protocol.StoreQuery.FindObjectsRe" +
-				"sponse\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.Object.DataObject\"\r\n]}");
-		private IList<Energistics.Etp.v12.Datatypes.Object.DataObject> _dataObject;
+				"otocol.StoreQuery\",\"fields\":[{\"name\":\"dataObjects\",\"type\":{\"type\":\"array\",\"items" +
+				"\":{\"type\":\"record\",\"name\":\"DataObject\",\"namespace\":\"Energistics.Etp.v12.Datatype" +
+				"s.Object\",\"fields\":[{\"name\":\"resource\",\"type\":{\"type\":\"record\",\"name\":\"Resource\"" +
+				",\"namespace\":\"Energistics.Etp.v12.Datatypes.Object\",\"fields\":[{\"name\":\"uri\",\"typ" +
+				"e\":\"string\"},{\"name\":\"contentType\",\"type\":\"string\"},{\"name\":\"name\",\"type\":\"strin" +
+				"g\"},{\"name\":\"objectNotifiable\",\"default\":true,\"type\":\"boolean\"},{\"name\":\"resourc" +
+				"eType\",\"type\":{\"type\":\"enum\",\"name\":\"ResourceKind\",\"namespace\":\"Energistics.Etp." +
+				"v12.Datatypes.Object\",\"symbols\":[\"DataObject\",\"Folder\",\"UriProtocol\",\"DataSpace\"" +
+				"],\"fullName\":\"Energistics.Etp.v12.Datatypes.Object.ResourceKind\",\"depends\":[]}}," +
+				"{\"name\":\"sourceCount\",\"default\":null,\"type\":[\"null\",\"int\"]},{\"name\":\"targetCount" +
+				"\",\"default\":null,\"type\":[\"null\",\"int\"]},{\"name\":\"contentCount\",\"default\":null,\"t" +
+				"ype\":[\"null\",\"int\"]},{\"name\":\"lastChanged\",\"type\":[\"null\",\"long\"]},{\"name\":\"cust" +
+				"omData\",\"type\":{\"type\":\"map\",\"values\":\"string\"}}],\"fullName\":\"Energistics.Etp.v1" +
+				"2.Datatypes.Object.Resource\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.Objec" +
+				"t.ResourceKind\"\r\n]}},{\"name\":\"data\",\"type\":\"bytes\"}],\"fullName\":\"Energistics.Etp" +
+				".v12.Datatypes.Object.DataObject\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes." +
+				"Object.Resource\"\r\n]}}},{\"name\":\"serverSortOrder\",\"type\":\"string\"}],\"protocol\":\"1" +
+				"4\",\"messageType\":\"2\",\"senderRole\":\"store\",\"protocolRoles\":\"store,customer\",\"mult" +
+				"ipartFlag\":true,\"fullName\":\"Energistics.Etp.v12.Protocol.StoreQuery.FindObjectsR" +
+				"esponse\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.Object.DataObject\"\r\n]}");
+		private IList<Energistics.Etp.v12.Datatypes.Object.DataObject> _dataObjects;
 		private string _serverSortOrder;
 		public virtual Schema Schema
 		{
@@ -45,15 +45,15 @@ namespace Energistics.Etp.v12.Protocol.StoreQuery
 				return FindObjectsResponse._SCHEMA;
 			}
 		}
-		public IList<Energistics.Etp.v12.Datatypes.Object.DataObject> DataObject
+		public IList<Energistics.Etp.v12.Datatypes.Object.DataObject> DataObjects
 		{
 			get
 			{
-				return this._dataObject;
+				return this._dataObjects;
 			}
 			set
 			{
-				this._dataObject = value;
+				this._dataObjects = value;
 			}
 		}
 		public string ServerSortOrder
@@ -71,7 +71,7 @@ namespace Energistics.Etp.v12.Protocol.StoreQuery
 		{
 			switch (fieldPos)
 			{
-			case 0: return this._dataObject;
+			case 0: return this._dataObjects;
 			case 1: return this._serverSortOrder;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
@@ -80,7 +80,7 @@ namespace Energistics.Etp.v12.Protocol.StoreQuery
 		{
 			switch (fieldPos)
 			{
-			case 0: this._dataObject = (IList<Energistics.Etp.v12.Datatypes.Object.DataObject>)fieldValue; break;
+			case 0: this._dataObjects = (IList<Energistics.Etp.v12.Datatypes.Object.DataObject>)fieldValue; break;
 			case 1: this._serverSortOrder = (System.String)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};

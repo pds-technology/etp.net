@@ -75,6 +75,7 @@
     <Compile Include="v12\Datatypes\Object\ContextInfo.cs" />
     <Compile Include="v12\Datatypes\Object\ContextScopeKind.cs" />
     <Compile Include="v12\Datatypes\Object\ObjectChangeKind.cs" />
+    <Compile Include="v12\Datatypes\Object\ObjectPart.cs" />
     <Compile Include="v12\Datatypes\Object\PartsMetadataInfo.cs" />
     <Compile Include="v12\Datatypes\Object\ResourceKind.cs" />
     <Compile Include="v12\Datatypes\Object\SubscriptionInfo.cs" />
@@ -254,7 +255,7 @@
     <Compile Include="v12\Protocol\GrowingObject\GetPartsByRange.cs" />
     <Compile Include="v12\Protocol\GrowingObject\GetPartsMetadata.cs" />
     <Compile Include="v12\Protocol\GrowingObject\GetPartsMetadataResponse.cs" />
-    <Compile Include="v12\Protocol\GrowingObject\ObjectPart.cs" />
+    <Compile Include="v12\Protocol\GrowingObject\GetPartsResponse.cs" />
     <Compile Include="v12\Protocol\GrowingObject\PutPart.cs" />
     <Compile Include="v12\Protocol\GrowingObject\ReplacePartsByRange.cs" />
     <Compile Include="v12\Protocol\StoreNotification\ObjectAccessRevoked.cs" />

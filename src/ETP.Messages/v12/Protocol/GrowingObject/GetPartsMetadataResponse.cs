@@ -58,14 +58,15 @@ namespace Energistics.Etp.v12.Protocol.GrowingObject
 				",\"fullName\":\"Energistics.Etp.v12.Datatypes.Object.PartsMetadataInfo\",\"depends\":[" +
 				"\r\n  \"Energistics.Etp.v12.Datatypes.ChannelData.ChannelIndexKind\",\r\n  \"Energistic" +
 				"s.Etp.v12.Datatypes.Object.IndexInterval\",\r\n  \"Energistics.Etp.v12.Datatypes.Dat" +
-				"aValue\"\r\n]}}},{\"name\":\"errors\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"" +
-				"name\":\"ErrorInfo\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":" +
-				"\"uri\",\"type\":\"string\"},{\"name\":\"message\",\"type\":\"string\"},{\"name\":\"code\",\"type\":" +
-				"\"int\"}],\"fullName\":\"Energistics.Etp.v12.Datatypes.ErrorInfo\",\"depends\":[]}}}],\"p" +
-				"rotocol\":\"6\",\"messageType\":\"9\",\"senderRole\":\"store\",\"protocolRoles\":\"store,custo" +
-				"mer\",\"multipartFlag\":true,\"fullName\":\"Energistics.Etp.v12.Protocol.GrowingObject" +
-				".GetPartsMetadataResponse\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.Object." +
-				"PartsMetadataInfo\",\r\n  \"Energistics.Etp.v12.Datatypes.ErrorInfo\"\r\n]}");
+				"aValue\"\r\n]}}},{\"name\":\"errors\",\"default\":[],\"type\":{\"type\":\"array\",\"items\":{\"typ" +
+				"e\":\"record\",\"name\":\"ErrorInfo\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fiel" +
+				"ds\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"message\",\"type\":\"string\"},{\"name\":\"" +
+				"code\",\"type\":\"int\"}],\"fullName\":\"Energistics.Etp.v12.Datatypes.ErrorInfo\",\"depen" +
+				"ds\":[]}}}],\"protocol\":\"6\",\"messageType\":\"9\",\"senderRole\":\"store\",\"protocolRoles\"" +
+				":\"store,customer\",\"multipartFlag\":true,\"fullName\":\"Energistics.Etp.v12.Protocol." +
+				"GrowingObject.GetPartsMetadataResponse\",\"depends\":[\r\n  \"Energistics.Etp.v12.Data" +
+				"types.Object.PartsMetadataInfo\",\r\n  \"Energistics.Etp.v12.Datatypes.ErrorInfo\"\r\n]" +
+				"}");
 		private IList<Energistics.Etp.v12.Datatypes.Object.PartsMetadataInfo> _metadata;
 		private IList<Energistics.Etp.v12.Datatypes.ErrorInfo> _errors;
 		public virtual Schema Schema

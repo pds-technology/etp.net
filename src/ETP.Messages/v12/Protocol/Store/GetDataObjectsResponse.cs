@@ -32,11 +32,16 @@ namespace Energistics.Etp.v12.Protocol.Store
 				"Datatypes.Object.Resource\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.Object." +
 				"ResourceKind\"\r\n]}},{\"name\":\"data\",\"type\":\"bytes\"}],\"fullName\":\"Energistics.Etp.v" +
 				"12.Datatypes.Object.DataObject\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.Ob" +
-				"ject.Resource\"\r\n]}}}],\"protocol\":\"4\",\"messageType\":\"4\",\"senderRole\":\"store\",\"pro" +
-				"tocolRoles\":\"store,customer\",\"multipartFlag\":true,\"fullName\":\"Energistics.Etp.v1" +
-				"2.Protocol.Store.GetDataObjectsResponse\",\"depends\":[\r\n  \"Energistics.Etp.v12.Dat" +
-				"atypes.Object.DataObject\"\r\n]}");
+				"ject.Resource\"\r\n]}}},{\"name\":\"errors\",\"default\":[],\"type\":{\"type\":\"array\",\"items" +
+				"\":{\"type\":\"record\",\"name\":\"ErrorInfo\",\"namespace\":\"Energistics.Etp.v12.Datatypes" +
+				"\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"message\",\"type\":\"string\"},{\"" +
+				"name\":\"code\",\"type\":\"int\"}],\"fullName\":\"Energistics.Etp.v12.Datatypes.ErrorInfo\"" +
+				",\"depends\":[]}}}],\"protocol\":\"4\",\"messageType\":\"4\",\"senderRole\":\"store\",\"protoco" +
+				"lRoles\":\"store,customer\",\"multipartFlag\":true,\"fullName\":\"Energistics.Etp.v12.Pr" +
+				"otocol.Store.GetDataObjectsResponse\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatyp" +
+				"es.Object.DataObject\",\r\n  \"Energistics.Etp.v12.Datatypes.ErrorInfo\"\r\n]}");
 		private IList<Energistics.Etp.v12.Datatypes.Object.DataObject> _dataObjects;
+		private IList<Energistics.Etp.v12.Datatypes.ErrorInfo> _errors;
 		public virtual Schema Schema
 		{
 			get
@@ -55,11 +60,23 @@ namespace Energistics.Etp.v12.Protocol.Store
 				this._dataObjects = value;
 			}
 		}
+		public IList<Energistics.Etp.v12.Datatypes.ErrorInfo> Errors
+		{
+			get
+			{
+				return this._errors;
+			}
+			set
+			{
+				this._errors = value;
+			}
+		}
 		public virtual object Get(int fieldPos)
 		{
 			switch (fieldPos)
 			{
 			case 0: return this._dataObjects;
+			case 1: return this._errors;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -68,6 +85,7 @@ namespace Energistics.Etp.v12.Protocol.Store
 			switch (fieldPos)
 			{
 			case 0: this._dataObjects = (IList<Energistics.Etp.v12.Datatypes.Object.DataObject>)fieldValue; break;
+			case 1: this._errors = (IList<Energistics.Etp.v12.Datatypes.ErrorInfo>)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

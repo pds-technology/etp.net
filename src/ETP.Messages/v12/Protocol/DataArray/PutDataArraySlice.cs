@@ -41,11 +41,11 @@ namespace Energistics.Etp.v12.Protocol.DataArray
 				"ics.Etp.v12.Datatypes.ArrayOfLong\",\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfFlo" +
 				"at\",\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfDouble\",\r\n  \"Energistics.Etp.v12.D" +
 				"atatypes.ArrayOfString\"\r\n]}},{\"name\":\"dimensions\",\"type\":{\"type\":\"array\",\"items\"" +
-				":\"long\"}},{\"name\":\"start\",\"type\":{\"type\":\"array\",\"items\":\"long\"}},{\"name\":\"count" +
-				"\",\"type\":{\"type\":\"array\",\"items\":\"long\"}}],\"protocol\":\"9\",\"messageType\":\"5\",\"sen" +
-				"derRole\":\"customer\",\"protocolRoles\":\"store,customer\",\"multipartFlag\":false,\"full" +
-				"Name\":\"Energistics.Etp.v12.Protocol.DataArray.PutDataArraySlice\",\"depends\":[\r\n  " +
-				"\"Energistics.Etp.v12.Datatypes.AnyArray\"\r\n]}");
+				":\"long\"}},{\"name\":\"start\",\"default\":[],\"type\":{\"type\":\"array\",\"items\":\"long\"}},{" +
+				"\"name\":\"count\",\"default\":[],\"type\":{\"type\":\"array\",\"items\":\"long\"}}],\"protocol\":" +
+				"\"9\",\"messageType\":\"5\",\"senderRole\":\"customer\",\"protocolRoles\":\"store,customer\",\"" +
+				"multipartFlag\":false,\"fullName\":\"Energistics.Etp.v12.Protocol.DataArray.PutDataA" +
+				"rraySlice\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.AnyArray\"\r\n]}");
 		private string _uri;
 		private string _pathInResource;
 		private Energistics.Etp.v12.Datatypes.AnyArray _data;
