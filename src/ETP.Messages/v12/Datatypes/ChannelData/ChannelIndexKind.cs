@@ -17,5 +17,7 @@ namespace Energistics.Etp.v12.Datatypes.ChannelData
 	{
 		Time,
 		Depth,
+		Scalar,
+		ElapsedTime,
 	}
 }

@@ -17,50 +17,59 @@ namespace Energistics.Etp.v12.Protocol.Core
 	{
 		public static Schema _SCHEMA = Avro.Schema.Parse("{\"type\":\"record\",\"name\":\"RequestSession\",\"namespace\":\"Energistics.Etp.v12.Protoco" +
 				"l.Core\",\"fields\":[{\"name\":\"applicationName\",\"type\":\"string\"},{\"name\":\"applicatio" +
-				"nVersion\",\"type\":\"string\"},{\"name\":\"requestedProtocols\",\"type\":{\"type\":\"array\",\"" +
-				"items\":{\"type\":\"record\",\"name\":\"SupportedProtocol\",\"namespace\":\"Energistics.Etp." +
-				"v12.Datatypes\",\"fields\":[{\"name\":\"protocol\",\"type\":\"int\"},{\"name\":\"protocolVersi" +
-				"on\",\"type\":{\"type\":\"record\",\"name\":\"Version\",\"namespace\":\"Energistics.Etp.v12.Da" +
-				"tatypes\",\"fields\":[{\"name\":\"major\",\"default\":0,\"type\":\"int\"},{\"name\":\"minor\",\"de" +
-				"fault\":0,\"type\":\"int\"},{\"name\":\"revision\",\"default\":0,\"type\":\"int\"},{\"name\":\"pat" +
-				"ch\",\"default\":0,\"type\":\"int\"}],\"fullName\":\"Energistics.Etp.v12.Datatypes.Version" +
-				"\",\"depends\":[]}},{\"name\":\"role\",\"type\":\"string\"},{\"name\":\"protocolCapabilities\"," +
-				"\"type\":{\"type\":\"map\",\"values\":{\"type\":\"record\",\"name\":\"DataValue\",\"namespace\":\"E" +
-				"nergistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"item\",\"type\":[\"null\",\"boolean\"," +
-				"\"int\",\"long\",\"float\",\"double\",\"string\",{\"type\":\"record\",\"name\":\"ArrayOfBoolean\"," +
-				"\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"values\",\"type\":{\"" +
-				"type\":\"array\",\"items\":\"boolean\"}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.Arr" +
-				"ayOfBoolean\",\"depends\":[]},{\"type\":\"record\",\"name\":\"ArrayOfInt\",\"namespace\":\"Ene" +
-				"rgistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"values\",\"type\":{\"type\":\"array\",\"i" +
-				"tems\":\"int\"}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.ArrayOfInt\",\"depends\":[" +
-				"]},{\"type\":\"record\",\"name\":\"ArrayOfLong\",\"namespace\":\"Energistics.Etp.v12.Dataty" +
-				"pes\",\"fields\":[{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":\"long\"}}],\"fullNa" +
-				"me\":\"Energistics.Etp.v12.Datatypes.ArrayOfLong\",\"depends\":[]},{\"type\":\"record\",\"" +
-				"name\":\"ArrayOfFloat\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"nam" +
-				"e\":\"values\",\"type\":{\"type\":\"array\",\"items\":\"float\"}}],\"fullName\":\"Energistics.Et" +
-				"p.v12.Datatypes.ArrayOfFloat\",\"depends\":[]},{\"type\":\"record\",\"name\":\"ArrayOfDoub" +
-				"le\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"values\",\"type" +
-				"\":{\"type\":\"array\",\"items\":\"double\"}}],\"fullName\":\"Energistics.Etp.v12.Datatypes." +
-				"ArrayOfDouble\",\"depends\":[]},{\"type\":\"record\",\"name\":\"ArrayOfString\",\"namespace\"" +
-				":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"values\",\"type\":{\"type\":\"arra" +
-				"y\",\"items\":\"string\"}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.ArrayOfString\"," +
-				"\"depends\":[]},\"bytes\"]}],\"fullName\":\"Energistics.Etp.v12.Datatypes.DataValue\",\"d" +
-				"epends\":[\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfBoolean\",\r\n  \"Energistics.Etp" +
-				".v12.Datatypes.ArrayOfInt\",\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfLong\",\r\n  \"" +
-				"Energistics.Etp.v12.Datatypes.ArrayOfFloat\",\r\n  \"Energistics.Etp.v12.Datatypes.A" +
-				"rrayOfDouble\",\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfString\"\r\n]}}}],\"fullName" +
-				"\":\"Energistics.Etp.v12.Datatypes.SupportedProtocol\",\"depends\":[\r\n  \"Energistics." +
-				"Etp.v12.Datatypes.Version\",\r\n  \"Energistics.Etp.v12.Datatypes.DataValue\"\r\n]}}},{" +
-				"\"name\":\"supportedObjects\",\"type\":{\"type\":\"array\",\"items\":\"string\"}},{\"name\":\"sup" +
-				"portedCompression\",\"type\":\"string\"}],\"protocol\":\"0\",\"messageType\":\"1\",\"senderRol" +
-				"e\":\"client\",\"protocolRoles\":\"client, server\",\"multipartFlag\":false,\"fullName\":\"E" +
-				"nergistics.Etp.v12.Protocol.Core.RequestSession\",\"depends\":[\r\n  \"Energistics.Etp" +
-				".v12.Datatypes.SupportedProtocol\"\r\n]}");
+				"nVersion\",\"type\":\"string\"},{\"name\":\"clientInstanceId\",\"type\":{\"type\":\"fixed\",\"na" +
+				"me\":\"Uuid\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"size\":16,\"fullName\":\"Ene" +
+				"rgistics.Etp.v12.Datatypes.Uuid\",\"depends\":[]}},{\"name\":\"requestedProtocols\",\"ty" +
+				"pe\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"SupportedProtocol\",\"namespa" +
+				"ce\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"protocol\",\"type\":\"int\"},{" +
+				"\"name\":\"protocolVersion\",\"type\":{\"type\":\"record\",\"name\":\"Version\",\"namespace\":\"E" +
+				"nergistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"major\",\"default\":0,\"type\":\"int\"" +
+				"},{\"name\":\"minor\",\"default\":0,\"type\":\"int\"},{\"name\":\"revision\",\"default\":0,\"type" +
+				"\":\"int\"},{\"name\":\"patch\",\"default\":0,\"type\":\"int\"}],\"fullName\":\"Energistics.Etp." +
+				"v12.Datatypes.Version\",\"depends\":[]}},{\"name\":\"role\",\"type\":\"string\"},{\"name\":\"p" +
+				"rotocolCapabilities\",\"default\":{},\"type\":{\"type\":\"map\",\"values\":{\"type\":\"record\"" +
+				",\"name\":\"DataValue\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name" +
+				"\":\"item\",\"type\":[\"null\",\"boolean\",\"int\",\"long\",\"float\",\"double\",\"string\",{\"type\"" +
+				":\"record\",\"name\":\"ArrayOfBoolean\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"f" +
+				"ields\":[{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":\"boolean\"}}],\"fullName\":" +
+				"\"Energistics.Etp.v12.Datatypes.ArrayOfBoolean\",\"depends\":[]},{\"type\":\"record\",\"n" +
+				"ame\":\"ArrayOfInt\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":" +
+				"\"values\",\"type\":{\"type\":\"array\",\"items\":\"int\"}}],\"fullName\":\"Energistics.Etp.v12" +
+				".Datatypes.ArrayOfInt\",\"depends\":[]},{\"type\":\"record\",\"name\":\"ArrayOfLong\",\"name" +
+				"space\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"values\",\"type\":{\"type\"" +
+				":\"array\",\"items\":\"long\"}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.ArrayOfLong" +
+				"\",\"depends\":[]},{\"type\":\"record\",\"name\":\"ArrayOfFloat\",\"namespace\":\"Energistics." +
+				"Etp.v12.Datatypes\",\"fields\":[{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":\"fl" +
+				"oat\"}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.ArrayOfFloat\",\"depends\":[]},{\"" +
+				"type\":\"record\",\"name\":\"ArrayOfDouble\",\"namespace\":\"Energistics.Etp.v12.Datatypes" +
+				"\",\"fields\":[{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":\"double\"}}],\"fullNam" +
+				"e\":\"Energistics.Etp.v12.Datatypes.ArrayOfDouble\",\"depends\":[]},{\"type\":\"record\"," +
+				"\"name\":\"ArrayOfString\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"n" +
+				"ame\":\"values\",\"type\":{\"type\":\"array\",\"items\":\"string\"}}],\"fullName\":\"Energistics" +
+				".Etp.v12.Datatypes.ArrayOfString\",\"depends\":[]},\"bytes\"]}],\"fullName\":\"Energisti" +
+				"cs.Etp.v12.Datatypes.DataValue\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.Ar" +
+				"rayOfBoolean\",\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfInt\",\r\n  \"Energistics.Et" +
+				"p.v12.Datatypes.ArrayOfLong\",\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfFloat\",\r\n" +
+				"  \"Energistics.Etp.v12.Datatypes.ArrayOfDouble\",\r\n  \"Energistics.Etp.v12.Datatyp" +
+				"es.ArrayOfString\"\r\n]}}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.SupportedProt" +
+				"ocol\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.Version\",\r\n  \"Energistics.Et" +
+				"p.v12.Datatypes.DataValue\"\r\n]}}},{\"name\":\"supportedObjects\",\"type\":{\"type\":\"arra" +
+				"y\",\"items\":\"string\"}},{\"name\":\"supportedCompression\",\"type\":\"string\"},{\"name\":\"s" +
+				"upportedFormats\",\"default\":[\"xml\"],\"type\":{\"type\":\"array\",\"items\":\"string\"}},{\"n" +
+				"ame\":\"endpointCapabilities\",\"default\":{},\"type\":{\"type\":\"map\",\"values\":\"Energist" +
+				"ics.Etp.v12.Datatypes.DataValue\"}}],\"protocol\":\"0\",\"messageType\":\"1\",\"senderRole" +
+				"\":\"client\",\"protocolRoles\":\"client, server\",\"multipartFlag\":false,\"fullName\":\"En" +
+				"ergistics.Etp.v12.Protocol.Core.RequestSession\",\"depends\":[\r\n  \"Energistics.Etp." +
+				"v12.Datatypes.Uuid\",\r\n  \"Energistics.Etp.v12.Datatypes.SupportedProtocol\",\r\n  \"E" +
+				"nergistics.Etp.v12.Datatypes.DataValue\"\r\n]}");
 		private string _applicationName;
 		private string _applicationVersion;
+		private Energistics.Etp.v12.Datatypes.Uuid _clientInstanceId;
 		private IList<Energistics.Etp.v12.Datatypes.SupportedProtocol> _requestedProtocols;
 		private IList<System.String> _supportedObjects;
 		private string _supportedCompression;
+		private IList<System.String> _supportedFormats;
+		private IDictionary<string,Energistics.Etp.v12.Datatypes.DataValue> _endpointCapabilities;
 		public virtual Schema Schema
 		{
 			get
@@ -88,6 +97,17 @@ namespace Energistics.Etp.v12.Protocol.Core
 			set
 			{
 				this._applicationVersion = value;
+			}
+		}
+		public Energistics.Etp.v12.Datatypes.Uuid ClientInstanceId
+		{
+			get
+			{
+				return this._clientInstanceId;
+			}
+			set
+			{
+				this._clientInstanceId = value;
 			}
 		}
 		public IList<Energistics.Etp.v12.Datatypes.SupportedProtocol> RequestedProtocols
@@ -123,15 +143,40 @@ namespace Energistics.Etp.v12.Protocol.Core
 				this._supportedCompression = value;
 			}
 		}
+		public IList<System.String> SupportedFormats
+		{
+			get
+			{
+				return this._supportedFormats;
+			}
+			set
+			{
+				this._supportedFormats = value;
+			}
+		}
+		public IDictionary<string,Energistics.Etp.v12.Datatypes.DataValue> EndpointCapabilities
+		{
+			get
+			{
+				return this._endpointCapabilities;
+			}
+			set
+			{
+				this._endpointCapabilities = value;
+			}
+		}
 		public virtual object Get(int fieldPos)
 		{
 			switch (fieldPos)
 			{
 			case 0: return this._applicationName;
 			case 1: return this._applicationVersion;
-			case 2: return this._requestedProtocols;
-			case 3: return this._supportedObjects;
-			case 4: return this._supportedCompression;
+			case 2: return this._clientInstanceId;
+			case 3: return this._requestedProtocols;
+			case 4: return this._supportedObjects;
+			case 5: return this._supportedCompression;
+			case 6: return this._supportedFormats;
+			case 7: return this._endpointCapabilities;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -141,9 +186,12 @@ namespace Energistics.Etp.v12.Protocol.Core
 			{
 			case 0: this._applicationName = (System.String)fieldValue; break;
 			case 1: this._applicationVersion = (System.String)fieldValue; break;
-			case 2: this._requestedProtocols = (IList<Energistics.Etp.v12.Datatypes.SupportedProtocol>)fieldValue; break;
-			case 3: this._supportedObjects = (IList<System.String>)fieldValue; break;
-			case 4: this._supportedCompression = (System.String)fieldValue; break;
+			case 2: this._clientInstanceId = (Energistics.Etp.v12.Datatypes.Uuid)fieldValue; break;
+			case 3: this._requestedProtocols = (IList<Energistics.Etp.v12.Datatypes.SupportedProtocol>)fieldValue; break;
+			case 4: this._supportedObjects = (IList<System.String>)fieldValue; break;
+			case 5: this._supportedCompression = (System.String)fieldValue; break;
+			case 6: this._supportedFormats = (IList<System.String>)fieldValue; break;
+			case 7: this._endpointCapabilities = (IDictionary<string,Energistics.Etp.v12.Datatypes.DataValue>)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Datatypes.Object
 	
 	public partial class SubscriptionInfo : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""SubscriptionInfo"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""context"",""type"":{""type"":""record"",""name"":""ContextInfo"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""depth"",""type"":""int""},{""name"":""contentTypes"",""type"":{""type"":""array"",""items"":""string""}}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.ContextInfo"",""depends"":[]}},{""name"":""scope"",""type"":{""type"":""enum"",""name"":""ContextScopeKind"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""symbols"":[""self"",""sources"",""targets"",""sourcesOrSelf"",""targetsOrSelf""],""fullName"":""Energistics.Etp.v12.Datatypes.Object.ContextScopeKind"",""depends"":[]}},{""name"":""requestUuid"",""type"":{""type"":""fixed"",""name"":""Uuid"",""namespace"":""Energistics.Etp.v12.Datatypes"",""size"":16,""fullName"":""Energistics.Etp.v12.Datatypes.Uuid"",""depends"":[]}},{""name"":""startTime"",""type"":""long""},{""name"":""includeObjectData"",""type"":""boolean""}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.SubscriptionInfo"",""depends"":[
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""SubscriptionInfo"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""context"",""type"":{""type"":""record"",""name"":""ContextInfo"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""depth"",""type"":""int""},{""name"":""dataObjectTypes"",""default"":[],""type"":{""type"":""array"",""items"":""string""}}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.ContextInfo"",""depends"":[]}},{""name"":""scope"",""type"":{""type"":""enum"",""name"":""ContextScopeKind"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""symbols"":[""self"",""sources"",""targets"",""sourcesOrSelf"",""targetsOrSelf""],""fullName"":""Energistics.Etp.v12.Datatypes.Object.ContextScopeKind"",""depends"":[]}},{""name"":""requestUuid"",""type"":{""type"":""fixed"",""name"":""Uuid"",""namespace"":""Energistics.Etp.v12.Datatypes"",""size"":16,""fullName"":""Energistics.Etp.v12.Datatypes.Uuid"",""depends"":[]}},{""name"":""startTime"",""type"":""long""},{""name"":""includeObjectData"",""type"":""boolean""},{""name"":""format"",""default"":""xml"",""type"":""string""}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.SubscriptionInfo"",""depends"":[
   ""Energistics.Etp.v12.Datatypes.Object.ContextInfo"",
   ""Energistics.Etp.v12.Datatypes.Object.ContextScopeKind"",
   ""Energistics.Etp.v12.Datatypes.Uuid""
@@ -25,6 +25,7 @@ namespace Energistics.Etp.v12.Datatypes.Object
 		private Energistics.Etp.v12.Datatypes.Uuid _requestUuid;
 		private long _startTime;
 		private bool _includeObjectData;
+		private string _format;
 		public virtual Schema Schema
 		{
 			get
@@ -87,6 +88,17 @@ namespace Energistics.Etp.v12.Datatypes.Object
 				this._includeObjectData = value;
 			}
 		}
+		public string Format
+		{
+			get
+			{
+				return this._format;
+			}
+			set
+			{
+				this._format = value;
+			}
+		}
 		public virtual object Get(int fieldPos)
 		{
 			switch (fieldPos)
@@ -96,6 +108,7 @@ namespace Energistics.Etp.v12.Datatypes.Object
 			case 2: return this._requestUuid;
 			case 3: return this._startTime;
 			case 4: return this._includeObjectData;
+			case 5: return this._format;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -108,6 +121,7 @@ namespace Energistics.Etp.v12.Datatypes.Object
 			case 2: this._requestUuid = (Energistics.Etp.v12.Datatypes.Uuid)fieldValue; break;
 			case 3: this._startTime = (System.Int64)fieldValue; break;
 			case 4: this._includeObjectData = (System.Boolean)fieldValue; break;
+			case 5: this._format = (System.String)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

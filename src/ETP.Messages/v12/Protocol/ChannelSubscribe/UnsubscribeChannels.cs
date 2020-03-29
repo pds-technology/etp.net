@@ -15,8 +15,8 @@ namespace Energistics.Etp.v12.Protocol.ChannelSubscribe
 	
 	public partial class UnsubscribeChannels : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""UnsubscribeChannels"",""namespace"":""Energistics.Etp.v12.Protocol.ChannelSubscribe"",""fields"":[{""name"":""channelIds"",""type"":{""type"":""array"",""items"":""long""}}],""protocol"":""21"",""messageType"":""7"",""senderRole"":""consumer"",""protocolRoles"":""producer,consumer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.ChannelSubscribe.UnsubscribeChannels"",""depends"":[]}");
-		private IList<System.Int64> _channelIds;
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""UnsubscribeChannels"",""namespace"":""Energistics.Etp.v12.Protocol.ChannelSubscribe"",""fields"":[{""name"":""channelIds"",""type"":{""type"":""map"",""values"":""long""}}],""protocol"":""21"",""messageType"":""7"",""senderRole"":""consumer"",""protocolRoles"":""producer,consumer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.ChannelSubscribe.UnsubscribeChannels"",""depends"":[]}");
+		private IDictionary<string,System.Int64> _channelIds;
 		public virtual Schema Schema
 		{
 			get
@@ -24,7 +24,7 @@ namespace Energistics.Etp.v12.Protocol.ChannelSubscribe
 				return UnsubscribeChannels._SCHEMA;
 			}
 		}
-		public IList<System.Int64> ChannelIds
+		public IDictionary<string,System.Int64> ChannelIds
 		{
 			get
 			{
@@ -47,7 +47,7 @@ namespace Energistics.Etp.v12.Protocol.ChannelSubscribe
 		{
 			switch (fieldPos)
 			{
-			case 0: this._channelIds = (IList<System.Int64>)fieldValue; break;
+			case 0: this._channelIds = (IDictionary<string,System.Int64>)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

@@ -15,10 +15,12 @@ namespace Energistics.Etp.v12.Protocol.GrowingObject
 	
 	public partial class GetPartsResponse : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""GetPartsResponse"",""namespace"":""Energistics.Etp.v12.Protocol.GrowingObject"",""fields"":[{""name"":""objectPart"",""type"":{""type"":""record"",""name"":""ObjectPart"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""uid"",""type"":""string""},{""name"":""contentType"",""type"":""string""},{""name"":""data"",""type"":""bytes""}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.ObjectPart"",""depends"":[]}}],""protocol"":""6"",""messageType"":""6"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":true,""fullName"":""Energistics.Etp.v12.Protocol.GrowingObject.GetPartsResponse"",""depends"":[
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""GetPartsResponse"",""namespace"":""Energistics.Etp.v12.Protocol.GrowingObject"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""format"",""default"":""xml"",""type"":""string""},{""name"":""parts"",""type"":{""type"":""map"",""values"":{""type"":""record"",""name"":""ObjectPart"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""uid"",""type"":""string""},{""name"":""data"",""type"":""bytes""}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.ObjectPart"",""depends"":[]}}}],""protocol"":""6"",""messageType"":""6"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":true,""fullName"":""Energistics.Etp.v12.Protocol.GrowingObject.GetPartsResponse"",""depends"":[
   ""Energistics.Etp.v12.Datatypes.Object.ObjectPart""
 ]}");
-		private Energistics.Etp.v12.Datatypes.Object.ObjectPart _objectPart;
+		private string _uri;
+		private string _format;
+		private IDictionary<string,Energistics.Etp.v12.Datatypes.Object.ObjectPart> _parts;
 		public virtual Schema Schema
 		{
 			get
@@ -26,22 +28,46 @@ namespace Energistics.Etp.v12.Protocol.GrowingObject
 				return GetPartsResponse._SCHEMA;
 			}
 		}
-		public Energistics.Etp.v12.Datatypes.Object.ObjectPart ObjectPart
+		public string Uri
 		{
 			get
 			{
-				return this._objectPart;
+				return this._uri;
 			}
 			set
 			{
-				this._objectPart = value;
+				this._uri = value;
+			}
+		}
+		public string Format
+		{
+			get
+			{
+				return this._format;
+			}
+			set
+			{
+				this._format = value;
+			}
+		}
+		public IDictionary<string,Energistics.Etp.v12.Datatypes.Object.ObjectPart> Parts
+		{
+			get
+			{
+				return this._parts;
+			}
+			set
+			{
+				this._parts = value;
 			}
 		}
 		public virtual object Get(int fieldPos)
 		{
 			switch (fieldPos)
 			{
-			case 0: return this._objectPart;
+			case 0: return this._uri;
+			case 1: return this._format;
+			case 2: return this._parts;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -49,7 +75,9 @@ namespace Energistics.Etp.v12.Protocol.GrowingObject
 		{
 			switch (fieldPos)
 			{
-			case 0: this._objectPart = (Energistics.Etp.v12.Datatypes.Object.ObjectPart)fieldValue; break;
+			case 0: this._uri = (System.String)fieldValue; break;
+			case 1: this._format = (System.String)fieldValue; break;
+			case 2: this._parts = (IDictionary<string,Energistics.Etp.v12.Datatypes.Object.ObjectPart>)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

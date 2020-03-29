@@ -15,8 +15,9 @@ namespace Energistics.Etp.v12.Protocol.StoreQuery
 	
 	public partial class FindObjects : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""FindObjects"",""namespace"":""Energistics.Etp.v12.Protocol.StoreQuery"",""fields"":[{""name"":""uri"",""type"":""string""}],""protocol"":""14"",""messageType"":""1"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.StoreQuery.FindObjects"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""FindObjects"",""namespace"":""Energistics.Etp.v12.Protocol.StoreQuery"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""format"",""default"":""xml"",""type"":""string""}],""protocol"":""14"",""messageType"":""1"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.StoreQuery.FindObjects"",""depends"":[]}");
 		private string _uri;
+		private string _format;
 		public virtual Schema Schema
 		{
 			get
@@ -35,11 +36,23 @@ namespace Energistics.Etp.v12.Protocol.StoreQuery
 				this._uri = value;
 			}
 		}
+		public string Format
+		{
+			get
+			{
+				return this._format;
+			}
+			set
+			{
+				this._format = value;
+			}
+		}
 		public virtual object Get(int fieldPos)
 		{
 			switch (fieldPos)
 			{
 			case 0: return this._uri;
+			case 1: return this._format;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -48,6 +61,7 @@ namespace Energistics.Etp.v12.Protocol.StoreQuery
 			switch (fieldPos)
 			{
 			case 0: this._uri = (System.String)fieldValue; break;
+			case 1: this._format = (System.String)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

@@ -15,12 +15,13 @@ namespace Energistics.Etp.v12.Datatypes.Object
 	
 	public partial class DataObject : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""DataObject"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""resource"",""type"":{""type"":""record"",""name"":""Resource"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""contentType"",""type"":""string""},{""name"":""name"",""type"":""string""},{""name"":""objectNotifiable"",""default"":true,""type"":""boolean""},{""name"":""resourceType"",""type"":{""type"":""enum"",""name"":""ResourceKind"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""symbols"":[""DataObject"",""Folder"",""UriProtocol"",""DataSpace""],""fullName"":""Energistics.Etp.v12.Datatypes.Object.ResourceKind"",""depends"":[]}},{""name"":""sourceCount"",""default"":null,""type"":[""null"",""int""]},{""name"":""targetCount"",""default"":null,""type"":[""null"",""int""]},{""name"":""contentCount"",""default"":null,""type"":[""null"",""int""]},{""name"":""lastChanged"",""type"":[""null"",""long""]},{""name"":""customData"",""type"":{""type"":""map"",""values"":""string""}}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.Resource"",""depends"":[
-  ""Energistics.Etp.v12.Datatypes.Object.ResourceKind""
-]}},{""name"":""data"",""type"":""bytes""}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.DataObject"",""depends"":[
-  ""Energistics.Etp.v12.Datatypes.Object.Resource""
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""DataObject"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""resource"",""type"":{""type"":""record"",""name"":""Resource"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""alternateUris"",""default"":[],""type"":{""type"":""array"",""items"":""string""}},{""name"":""dataObjectType"",""type"":""string""},{""name"":""name"",""type"":""string""},{""name"":""sourceCount"",""default"":null,""type"":[""null"",""int""]},{""name"":""targetCount"",""default"":null,""type"":[""null"",""int""]},{""name"":""lastChanged"",""type"":""long""},{""name"":""customData"",""default"":{},""type"":{""type"":""map"",""values"":""string""}}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.Resource"",""depends"":[]}},{""name"":""format"",""default"":""xml"",""type"":""string""},{""name"":""blobId"",""type"":[""null"",{""type"":""fixed"",""name"":""Uuid"",""namespace"":""Energistics.Etp.v12.Datatypes"",""size"":16,""fullName"":""Energistics.Etp.v12.Datatypes.Uuid"",""depends"":[]}]},{""name"":""data"",""default"":"""",""type"":""bytes""}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.DataObject"",""depends"":[
+  ""Energistics.Etp.v12.Datatypes.Object.Resource"",
+  ""Energistics.Etp.v12.Datatypes.Uuid""
 ]}");
 		private Energistics.Etp.v12.Datatypes.Object.Resource _resource;
+		private string _format;
+		private Energistics.Etp.v12.Datatypes.Uuid _blobId;
 		private byte[] _data;
 		public virtual Schema Schema
 		{
@@ -40,6 +41,28 @@ namespace Energistics.Etp.v12.Datatypes.Object
 				this._resource = value;
 			}
 		}
+		public string Format
+		{
+			get
+			{
+				return this._format;
+			}
+			set
+			{
+				this._format = value;
+			}
+		}
+		public Energistics.Etp.v12.Datatypes.Uuid BlobId
+		{
+			get
+			{
+				return this._blobId;
+			}
+			set
+			{
+				this._blobId = value;
+			}
+		}
 		public byte[] Data
 		{
 			get
@@ -56,7 +79,9 @@ namespace Energistics.Etp.v12.Datatypes.Object
 			switch (fieldPos)
 			{
 			case 0: return this._resource;
-			case 1: return this._data;
+			case 1: return this._format;
+			case 2: return this._blobId;
+			case 3: return this._data;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -65,7 +90,9 @@ namespace Energistics.Etp.v12.Datatypes.Object
 			switch (fieldPos)
 			{
 			case 0: this._resource = (Energistics.Etp.v12.Datatypes.Object.Resource)fieldValue; break;
-			case 1: this._data = (System.Byte[])fieldValue; break;
+			case 1: this._format = (System.String)fieldValue; break;
+			case 2: this._blobId = (Energistics.Etp.v12.Datatypes.Uuid)fieldValue; break;
+			case 3: this._data = (System.Byte[])fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

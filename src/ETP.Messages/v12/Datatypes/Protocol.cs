@@ -23,7 +23,7 @@ namespace Energistics.Etp.v12.Datatypes
 		StoreNotification,
 		GrowingObject,
 		GrowingObjectNotification,
-		WitsmlSoap,
+		DEPRECATEDWitsmlSoap,
 		DataArray,
 		DataArrayNotification,
 		ChannelStreamingQuery,
@@ -38,6 +38,9 @@ namespace Energistics.Etp.v12.Datatypes
 		DataArrayNotificationQuery,
 		ChannelSubscribe,
 		ChannelDataLoad,
-		DirectedDiscovery,
+		ChannelView,
+		Dataspace,
+		SupportedTypes,
+		WitsmlSoap,
 	}
 }

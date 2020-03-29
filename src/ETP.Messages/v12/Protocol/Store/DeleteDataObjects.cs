@@ -15,8 +15,8 @@ namespace Energistics.Etp.v12.Protocol.Store
 	
 	public partial class DeleteDataObjects : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""DeleteDataObjects"",""namespace"":""Energistics.Etp.v12.Protocol.Store"",""fields"":[{""name"":""uris"",""type"":{""type"":""array"",""items"":""string""}}],""protocol"":""4"",""messageType"":""3"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":true,""fullName"":""Energistics.Etp.v12.Protocol.Store.DeleteDataObjects"",""depends"":[]}");
-		private IList<System.String> _uris;
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""DeleteDataObjects"",""namespace"":""Energistics.Etp.v12.Protocol.Store"",""fields"":[{""name"":""uris"",""type"":{""type"":""map"",""values"":""string""}}],""protocol"":""4"",""messageType"":""3"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.Store.DeleteDataObjects"",""depends"":[]}");
+		private IDictionary<string,System.String> _uris;
 		public virtual Schema Schema
 		{
 			get
@@ -24,7 +24,7 @@ namespace Energistics.Etp.v12.Protocol.Store
 				return DeleteDataObjects._SCHEMA;
 			}
 		}
-		public IList<System.String> Uris
+		public IDictionary<string,System.String> Uris
 		{
 			get
 			{
@@ -47,7 +47,7 @@ namespace Energistics.Etp.v12.Protocol.Store
 		{
 			switch (fieldPos)
 			{
-			case 0: this._uris = (IList<System.String>)fieldValue; break;
+			case 0: this._uris = (IDictionary<string,System.String>)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

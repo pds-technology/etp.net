@@ -15,27 +15,16 @@ namespace Energistics.Etp.v12.Datatypes.Object
 	
 	public partial class ObjectPart : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""ObjectPart"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""uid"",""type"":""string""},{""name"":""contentType"",""type"":""string""},{""name"":""data"",""type"":""bytes""}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.ObjectPart"",""depends"":[]}");
-		private string _uri;
+		public static Schema _SCHEMA = Avro.Schema.Parse("{\"type\":\"record\",\"name\":\"ObjectPart\",\"namespace\":\"Energistics.Etp.v12.Datatypes.O" +
+				"bject\",\"fields\":[{\"name\":\"uid\",\"type\":\"string\"},{\"name\":\"data\",\"type\":\"bytes\"}]," +
+				"\"fullName\":\"Energistics.Etp.v12.Datatypes.Object.ObjectPart\",\"depends\":[]}");
 		private string _uid;
-		private string _contentType;
 		private byte[] _data;
 		public virtual Schema Schema
 		{
 			get
 			{
 				return ObjectPart._SCHEMA;
-			}
-		}
-		public string Uri
-		{
-			get
-			{
-				return this._uri;
-			}
-			set
-			{
-				this._uri = value;
 			}
 		}
 		public string Uid
@@ -47,17 +36,6 @@ namespace Energistics.Etp.v12.Datatypes.Object
 			set
 			{
 				this._uid = value;
-			}
-		}
-		public string ContentType
-		{
-			get
-			{
-				return this._contentType;
-			}
-			set
-			{
-				this._contentType = value;
 			}
 		}
 		public byte[] Data
@@ -75,10 +53,8 @@ namespace Energistics.Etp.v12.Datatypes.Object
 		{
 			switch (fieldPos)
 			{
-			case 0: return this._uri;
-			case 1: return this._uid;
-			case 2: return this._contentType;
-			case 3: return this._data;
+			case 0: return this._uid;
+			case 1: return this._data;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -86,10 +62,8 @@ namespace Energistics.Etp.v12.Datatypes.Object
 		{
 			switch (fieldPos)
 			{
-			case 0: this._uri = (System.String)fieldValue; break;
-			case 1: this._uid = (System.String)fieldValue; break;
-			case 2: this._contentType = (System.String)fieldValue; break;
-			case 3: this._data = (System.Byte[])fieldValue; break;
+			case 0: this._uid = (System.String)fieldValue; break;
+			case 1: this._data = (System.Byte[])fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

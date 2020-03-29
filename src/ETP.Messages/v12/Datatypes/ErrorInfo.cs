@@ -16,10 +16,8 @@ namespace Energistics.Etp.v12.Datatypes
 	public partial class ErrorInfo : ISpecificRecord
 	{
 		public static Schema _SCHEMA = Avro.Schema.Parse("{\"type\":\"record\",\"name\":\"ErrorInfo\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"" +
-				"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"message\",\"type\":\"string\"},{\"nam" +
-				"e\":\"code\",\"type\":\"int\"}],\"fullName\":\"Energistics.Etp.v12.Datatypes.ErrorInfo\",\"d" +
-				"epends\":[]}");
-		private string _uri;
+				"fields\":[{\"name\":\"message\",\"type\":\"string\"},{\"name\":\"code\",\"type\":\"int\"}],\"fullN" +
+				"ame\":\"Energistics.Etp.v12.Datatypes.ErrorInfo\",\"depends\":[]}");
 		private string _message;
 		private int _code;
 		public virtual Schema Schema
@@ -27,17 +25,6 @@ namespace Energistics.Etp.v12.Datatypes
 			get
 			{
 				return ErrorInfo._SCHEMA;
-			}
-		}
-		public string Uri
-		{
-			get
-			{
-				return this._uri;
-			}
-			set
-			{
-				this._uri = value;
 			}
 		}
 		public string Message
@@ -66,9 +53,8 @@ namespace Energistics.Etp.v12.Datatypes
 		{
 			switch (fieldPos)
 			{
-			case 0: return this._uri;
-			case 1: return this._message;
-			case 2: return this._code;
+			case 0: return this._message;
+			case 1: return this._code;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -76,9 +62,8 @@ namespace Energistics.Etp.v12.Datatypes
 		{
 			switch (fieldPos)
 			{
-			case 0: this._uri = (System.String)fieldValue; break;
-			case 1: this._message = (System.String)fieldValue; break;
-			case 2: this._code = (System.Int32)fieldValue; break;
+			case 0: this._message = (System.String)fieldValue; break;
+			case 1: this._code = (System.Int32)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

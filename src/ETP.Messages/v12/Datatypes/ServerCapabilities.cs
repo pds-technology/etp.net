@@ -17,57 +17,62 @@ namespace Energistics.Etp.v12.Datatypes
 	{
 		public static Schema _SCHEMA = Avro.Schema.Parse("{\"type\":\"record\",\"name\":\"ServerCapabilities\",\"namespace\":\"Energistics.Etp.v12.Dat" +
 				"atypes\",\"fields\":[{\"name\":\"applicationName\",\"type\":\"string\"},{\"name\":\"applicatio" +
-				"nVersion\",\"type\":\"string\"},{\"name\":\"supportedProtocols\",\"type\":{\"type\":\"array\",\"" +
-				"items\":{\"type\":\"record\",\"name\":\"SupportedProtocol\",\"namespace\":\"Energistics.Etp." +
-				"v12.Datatypes\",\"fields\":[{\"name\":\"protocol\",\"type\":\"int\"},{\"name\":\"protocolVersi" +
-				"on\",\"type\":{\"type\":\"record\",\"name\":\"Version\",\"namespace\":\"Energistics.Etp.v12.Da" +
-				"tatypes\",\"fields\":[{\"name\":\"major\",\"default\":0,\"type\":\"int\"},{\"name\":\"minor\",\"de" +
-				"fault\":0,\"type\":\"int\"},{\"name\":\"revision\",\"default\":0,\"type\":\"int\"},{\"name\":\"pat" +
-				"ch\",\"default\":0,\"type\":\"int\"}],\"fullName\":\"Energistics.Etp.v12.Datatypes.Version" +
-				"\",\"depends\":[]}},{\"name\":\"role\",\"type\":\"string\"},{\"name\":\"protocolCapabilities\"," +
-				"\"type\":{\"type\":\"map\",\"values\":{\"type\":\"record\",\"name\":\"DataValue\",\"namespace\":\"E" +
-				"nergistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"item\",\"type\":[\"null\",\"boolean\"," +
-				"\"int\",\"long\",\"float\",\"double\",\"string\",{\"type\":\"record\",\"name\":\"ArrayOfBoolean\"," +
-				"\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"values\",\"type\":{\"" +
-				"type\":\"array\",\"items\":\"boolean\"}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.Arr" +
-				"ayOfBoolean\",\"depends\":[]},{\"type\":\"record\",\"name\":\"ArrayOfInt\",\"namespace\":\"Ene" +
-				"rgistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"values\",\"type\":{\"type\":\"array\",\"i" +
-				"tems\":\"int\"}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.ArrayOfInt\",\"depends\":[" +
-				"]},{\"type\":\"record\",\"name\":\"ArrayOfLong\",\"namespace\":\"Energistics.Etp.v12.Dataty" +
-				"pes\",\"fields\":[{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":\"long\"}}],\"fullNa" +
-				"me\":\"Energistics.Etp.v12.Datatypes.ArrayOfLong\",\"depends\":[]},{\"type\":\"record\",\"" +
-				"name\":\"ArrayOfFloat\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"nam" +
-				"e\":\"values\",\"type\":{\"type\":\"array\",\"items\":\"float\"}}],\"fullName\":\"Energistics.Et" +
-				"p.v12.Datatypes.ArrayOfFloat\",\"depends\":[]},{\"type\":\"record\",\"name\":\"ArrayOfDoub" +
-				"le\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"values\",\"type" +
-				"\":{\"type\":\"array\",\"items\":\"double\"}}],\"fullName\":\"Energistics.Etp.v12.Datatypes." +
-				"ArrayOfDouble\",\"depends\":[]},{\"type\":\"record\",\"name\":\"ArrayOfString\",\"namespace\"" +
-				":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"values\",\"type\":{\"type\":\"arra" +
-				"y\",\"items\":\"string\"}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.ArrayOfString\"," +
-				"\"depends\":[]},\"bytes\"]}],\"fullName\":\"Energistics.Etp.v12.Datatypes.DataValue\",\"d" +
-				"epends\":[\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfBoolean\",\r\n  \"Energistics.Etp" +
-				".v12.Datatypes.ArrayOfInt\",\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfLong\",\r\n  \"" +
-				"Energistics.Etp.v12.Datatypes.ArrayOfFloat\",\r\n  \"Energistics.Etp.v12.Datatypes.A" +
-				"rrayOfDouble\",\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfString\"\r\n]}}}],\"fullName" +
-				"\":\"Energistics.Etp.v12.Datatypes.SupportedProtocol\",\"depends\":[\r\n  \"Energistics." +
-				"Etp.v12.Datatypes.Version\",\r\n  \"Energistics.Etp.v12.Datatypes.DataValue\"\r\n]}}},{" +
-				"\"name\":\"supportedObjects\",\"type\":{\"type\":\"array\",\"items\":\"string\"}},{\"name\":\"con" +
-				"tactInformation\",\"type\":{\"type\":\"record\",\"name\":\"Contact\",\"namespace\":\"Energisti" +
-				"cs.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"organizationName\",\"default\":\"\",\"type\":\"" +
-				"string\"},{\"name\":\"contactName\",\"default\":\"\",\"type\":\"string\"},{\"name\":\"contactPho" +
-				"ne\",\"default\":\"\",\"type\":\"string\"},{\"name\":\"contactEmail\",\"default\":\"\",\"type\":\"st" +
-				"ring\"}],\"fullName\":\"Energistics.Etp.v12.Datatypes.Contact\",\"depends\":[]}},{\"name" +
-				"\":\"supportedEncodings\",\"type\":\"string\"},{\"name\":\"supportedCompression\",\"default\"" +
-				":[],\"type\":{\"type\":\"array\",\"items\":\"string\"}}],\"fullName\":\"Energistics.Etp.v12.D" +
-				"atatypes.ServerCapabilities\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.Suppo" +
-				"rtedProtocol\",\r\n  \"Energistics.Etp.v12.Datatypes.Contact\"\r\n]}");
+				"nVersion\",\"type\":\"string\"},{\"name\":\"contactInformation\",\"type\":{\"type\":\"record\"," +
+				"\"name\":\"Contact\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"" +
+				"organizationName\",\"default\":\"\",\"type\":\"string\"},{\"name\":\"contactName\",\"default\":" +
+				"\"\",\"type\":\"string\"},{\"name\":\"contactPhone\",\"default\":\"\",\"type\":\"string\"},{\"name\"" +
+				":\"contactEmail\",\"default\":\"\",\"type\":\"string\"}],\"fullName\":\"Energistics.Etp.v12.D" +
+				"atatypes.Contact\",\"depends\":[]}},{\"name\":\"supportedCompression\",\"default\":[],\"ty" +
+				"pe\":{\"type\":\"array\",\"items\":\"string\"}},{\"name\":\"supportedEncodings\",\"type\":\"stri" +
+				"ng\"},{\"name\":\"supportedFormats\",\"default\":[\"xml\"],\"type\":{\"type\":\"array\",\"items\"" +
+				":\"string\"}},{\"name\":\"supportedObjects\",\"type\":{\"type\":\"array\",\"items\":\"string\"}}" +
+				",{\"name\":\"supportedProtocols\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"n" +
+				"ame\":\"SupportedProtocol\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{" +
+				"\"name\":\"protocol\",\"type\":\"int\"},{\"name\":\"protocolVersion\",\"type\":{\"type\":\"record" +
+				"\",\"name\":\"Version\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\"" +
+				":\"major\",\"default\":0,\"type\":\"int\"},{\"name\":\"minor\",\"default\":0,\"type\":\"int\"},{\"n" +
+				"ame\":\"revision\",\"default\":0,\"type\":\"int\"},{\"name\":\"patch\",\"default\":0,\"type\":\"in" +
+				"t\"}],\"fullName\":\"Energistics.Etp.v12.Datatypes.Version\",\"depends\":[]}},{\"name\":\"" +
+				"role\",\"type\":\"string\"},{\"name\":\"protocolCapabilities\",\"default\":{},\"type\":{\"type" +
+				"\":\"map\",\"values\":{\"type\":\"record\",\"name\":\"DataValue\",\"namespace\":\"Energistics.Et" +
+				"p.v12.Datatypes\",\"fields\":[{\"name\":\"item\",\"type\":[\"null\",\"boolean\",\"int\",\"long\"," +
+				"\"float\",\"double\",\"string\",{\"type\":\"record\",\"name\":\"ArrayOfBoolean\",\"namespace\":\"" +
+				"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"values\",\"type\":{\"type\":\"array\"" +
+				",\"items\":\"boolean\"}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.ArrayOfBoolean\"," +
+				"\"depends\":[]},{\"type\":\"record\",\"name\":\"ArrayOfInt\",\"namespace\":\"Energistics.Etp." +
+				"v12.Datatypes\",\"fields\":[{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":\"int\"}}" +
+				"],\"fullName\":\"Energistics.Etp.v12.Datatypes.ArrayOfInt\",\"depends\":[]},{\"type\":\"r" +
+				"ecord\",\"name\":\"ArrayOfLong\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fields\"" +
+				":[{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":\"long\"}}],\"fullName\":\"Energist" +
+				"ics.Etp.v12.Datatypes.ArrayOfLong\",\"depends\":[]},{\"type\":\"record\",\"name\":\"ArrayO" +
+				"fFloat\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"values\",\"" +
+				"type\":{\"type\":\"array\",\"items\":\"float\"}}],\"fullName\":\"Energistics.Etp.v12.Datatyp" +
+				"es.ArrayOfFloat\",\"depends\":[]},{\"type\":\"record\",\"name\":\"ArrayOfDouble\",\"namespac" +
+				"e\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"values\",\"type\":{\"type\":\"ar" +
+				"ray\",\"items\":\"double\"}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.ArrayOfDouble" +
+				"\",\"depends\":[]},{\"type\":\"record\",\"name\":\"ArrayOfString\",\"namespace\":\"Energistics" +
+				".Etp.v12.Datatypes\",\"fields\":[{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":\"s" +
+				"tring\"}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.ArrayOfString\",\"depends\":[]}" +
+				",\"bytes\"]}],\"fullName\":\"Energistics.Etp.v12.Datatypes.DataValue\",\"depends\":[\r\n  " +
+				"\"Energistics.Etp.v12.Datatypes.ArrayOfBoolean\",\r\n  \"Energistics.Etp.v12.Datatype" +
+				"s.ArrayOfInt\",\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfLong\",\r\n  \"Energistics.E" +
+				"tp.v12.Datatypes.ArrayOfFloat\",\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfDouble\"" +
+				",\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfString\"\r\n]}}}],\"fullName\":\"Energistic" +
+				"s.Etp.v12.Datatypes.SupportedProtocol\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datat" +
+				"ypes.Version\",\r\n  \"Energistics.Etp.v12.Datatypes.DataValue\"\r\n]}}},{\"name\":\"endpo" +
+				"intCapabilities\",\"default\":{},\"type\":{\"type\":\"map\",\"values\":\"DataValue\"}}],\"full" +
+				"Name\":\"Energistics.Etp.v12.Datatypes.ServerCapabilities\",\"depends\":[\r\n  \"Energis" +
+				"tics.Etp.v12.Datatypes.Contact\",\r\n  \"Energistics.Etp.v12.Datatypes.SupportedProt" +
+				"ocol\",\r\n  \"Energistics.Etp.v12.Datatypes.DataValue\"\r\n]}");
 		private string _applicationName;
 		private string _applicationVersion;
-		private IList<Energistics.Etp.v12.Datatypes.SupportedProtocol> _supportedProtocols;
-		private IList<System.String> _supportedObjects;
 		private Energistics.Etp.v12.Datatypes.Contact _contactInformation;
-		private string _supportedEncodings;
 		private IList<System.String> _supportedCompression;
+		private string _supportedEncodings;
+		private IList<System.String> _supportedFormats;
+		private IList<System.String> _supportedObjects;
+		private IList<Energistics.Etp.v12.Datatypes.SupportedProtocol> _supportedProtocols;
+		private IDictionary<string,Energistics.Etp.v12.Datatypes.DataValue> _endpointCapabilities;
 		public virtual Schema Schema
 		{
 			get
@@ -97,28 +102,6 @@ namespace Energistics.Etp.v12.Datatypes
 				this._applicationVersion = value;
 			}
 		}
-		public IList<Energistics.Etp.v12.Datatypes.SupportedProtocol> SupportedProtocols
-		{
-			get
-			{
-				return this._supportedProtocols;
-			}
-			set
-			{
-				this._supportedProtocols = value;
-			}
-		}
-		public IList<System.String> SupportedObjects
-		{
-			get
-			{
-				return this._supportedObjects;
-			}
-			set
-			{
-				this._supportedObjects = value;
-			}
-		}
 		public Energistics.Etp.v12.Datatypes.Contact ContactInformation
 		{
 			get
@@ -128,17 +111,6 @@ namespace Energistics.Etp.v12.Datatypes
 			set
 			{
 				this._contactInformation = value;
-			}
-		}
-		public string SupportedEncodings
-		{
-			get
-			{
-				return this._supportedEncodings;
-			}
-			set
-			{
-				this._supportedEncodings = value;
 			}
 		}
 		public IList<System.String> SupportedCompression
@@ -152,17 +124,74 @@ namespace Energistics.Etp.v12.Datatypes
 				this._supportedCompression = value;
 			}
 		}
+		public string SupportedEncodings
+		{
+			get
+			{
+				return this._supportedEncodings;
+			}
+			set
+			{
+				this._supportedEncodings = value;
+			}
+		}
+		public IList<System.String> SupportedFormats
+		{
+			get
+			{
+				return this._supportedFormats;
+			}
+			set
+			{
+				this._supportedFormats = value;
+			}
+		}
+		public IList<System.String> SupportedObjects
+		{
+			get
+			{
+				return this._supportedObjects;
+			}
+			set
+			{
+				this._supportedObjects = value;
+			}
+		}
+		public IList<Energistics.Etp.v12.Datatypes.SupportedProtocol> SupportedProtocols
+		{
+			get
+			{
+				return this._supportedProtocols;
+			}
+			set
+			{
+				this._supportedProtocols = value;
+			}
+		}
+		public IDictionary<string,Energistics.Etp.v12.Datatypes.DataValue> EndpointCapabilities
+		{
+			get
+			{
+				return this._endpointCapabilities;
+			}
+			set
+			{
+				this._endpointCapabilities = value;
+			}
+		}
 		public virtual object Get(int fieldPos)
 		{
 			switch (fieldPos)
 			{
 			case 0: return this._applicationName;
 			case 1: return this._applicationVersion;
-			case 2: return this._supportedProtocols;
-			case 3: return this._supportedObjects;
-			case 4: return this._contactInformation;
-			case 5: return this._supportedEncodings;
-			case 6: return this._supportedCompression;
+			case 2: return this._contactInformation;
+			case 3: return this._supportedCompression;
+			case 4: return this._supportedEncodings;
+			case 5: return this._supportedFormats;
+			case 6: return this._supportedObjects;
+			case 7: return this._supportedProtocols;
+			case 8: return this._endpointCapabilities;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -172,11 +201,13 @@ namespace Energistics.Etp.v12.Datatypes
 			{
 			case 0: this._applicationName = (System.String)fieldValue; break;
 			case 1: this._applicationVersion = (System.String)fieldValue; break;
-			case 2: this._supportedProtocols = (IList<Energistics.Etp.v12.Datatypes.SupportedProtocol>)fieldValue; break;
-			case 3: this._supportedObjects = (IList<System.String>)fieldValue; break;
-			case 4: this._contactInformation = (Energistics.Etp.v12.Datatypes.Contact)fieldValue; break;
-			case 5: this._supportedEncodings = (System.String)fieldValue; break;
-			case 6: this._supportedCompression = (IList<System.String>)fieldValue; break;
+			case 2: this._contactInformation = (Energistics.Etp.v12.Datatypes.Contact)fieldValue; break;
+			case 3: this._supportedCompression = (IList<System.String>)fieldValue; break;
+			case 4: this._supportedEncodings = (System.String)fieldValue; break;
+			case 5: this._supportedFormats = (IList<System.String>)fieldValue; break;
+			case 6: this._supportedObjects = (IList<System.String>)fieldValue; break;
+			case 7: this._supportedProtocols = (IList<Energistics.Etp.v12.Datatypes.SupportedProtocol>)fieldValue; break;
+			case 8: this._endpointCapabilities = (IDictionary<string,Energistics.Etp.v12.Datatypes.DataValue>)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

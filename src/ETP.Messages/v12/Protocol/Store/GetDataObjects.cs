@@ -15,8 +15,9 @@ namespace Energistics.Etp.v12.Protocol.Store
 	
 	public partial class GetDataObjects : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""GetDataObjects"",""namespace"":""Energistics.Etp.v12.Protocol.Store"",""fields"":[{""name"":""uris"",""type"":{""type"":""array"",""items"":""string""}}],""protocol"":""4"",""messageType"":""1"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":true,""fullName"":""Energistics.Etp.v12.Protocol.Store.GetDataObjects"",""depends"":[]}");
-		private IList<System.String> _uris;
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""GetDataObjects"",""namespace"":""Energistics.Etp.v12.Protocol.Store"",""fields"":[{""name"":""uris"",""type"":{""type"":""map"",""values"":""string""}},{""name"":""format"",""default"":""xml"",""type"":""string""}],""protocol"":""4"",""messageType"":""1"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.Store.GetDataObjects"",""depends"":[]}");
+		private IDictionary<string,System.String> _uris;
+		private string _format;
 		public virtual Schema Schema
 		{
 			get
@@ -24,7 +25,7 @@ namespace Energistics.Etp.v12.Protocol.Store
 				return GetDataObjects._SCHEMA;
 			}
 		}
-		public IList<System.String> Uris
+		public IDictionary<string,System.String> Uris
 		{
 			get
 			{
@@ -35,11 +36,23 @@ namespace Energistics.Etp.v12.Protocol.Store
 				this._uris = value;
 			}
 		}
+		public string Format
+		{
+			get
+			{
+				return this._format;
+			}
+			set
+			{
+				this._format = value;
+			}
+		}
 		public virtual object Get(int fieldPos)
 		{
 			switch (fieldPos)
 			{
 			case 0: return this._uris;
+			case 1: return this._format;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -47,7 +60,8 @@ namespace Energistics.Etp.v12.Protocol.Store
 		{
 			switch (fieldPos)
 			{
-			case 0: this._uris = (IList<System.String>)fieldValue; break;
+			case 0: this._uris = (IDictionary<string,System.String>)fieldValue; break;
+			case 1: this._format = (System.String)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

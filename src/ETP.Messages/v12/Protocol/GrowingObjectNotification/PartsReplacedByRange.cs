@@ -15,19 +15,36 @@ namespace Energistics.Etp.v12.Protocol.GrowingObjectNotification
 	
 	public partial class PartsReplacedByRange : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""PartsReplacedByRange"",""namespace"":""Energistics.Etp.v12.Protocol.GrowingObjectNotification"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""deletedInterval"",""type"":{""type"":""record"",""name"":""IndexInterval"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""startIndex"",""type"":{""type"":""record"",""name"":""IndexValue"",""namespace"":""Energistics.Etp.v12.Datatypes"",""fields"":[{""name"":""item"",""type"":[""null"",""long"",""double""]}],""fullName"":""Energistics.Etp.v12.Datatypes.IndexValue"",""depends"":[]}},{""name"":""endIndex"",""type"":""Energistics.Etp.v12.Datatypes.IndexValue""},{""name"":""uom"",""type"":""string""},{""name"":""depthDatum"",""default"":"""",""type"":""string""}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.IndexInterval"",""depends"":[
-  ""Energistics.Etp.v12.Datatypes.IndexValue"",
-  ""Energistics.Etp.v12.Datatypes.IndexValue""
-]}},{""name"":""includeOverlappingIntervals"",""type"":""boolean""},{""name"":""contentType"",""type"":""string""},{""name"":""uid"",""type"":""string""},{""name"":""data"",""type"":""bytes""},{""name"":""changeTime"",""type"":""long""}],""protocol"":""7"",""messageType"":""6"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":true,""fullName"":""Energistics.Etp.v12.Protocol.GrowingObjectNotification.PartsReplacedByRange"",""depends"":[
-  ""Energistics.Etp.v12.Datatypes.Object.IndexInterval""
-]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse("{\"type\":\"record\",\"name\":\"PartsReplacedByRange\",\"namespace\":\"Energistics.Etp.v12.P" +
+				"rotocol.GrowingObjectNotification\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"na" +
+				"me\":\"requestUuid\",\"type\":{\"type\":\"fixed\",\"name\":\"Uuid\",\"namespace\":\"Energistics." +
+				"Etp.v12.Datatypes\",\"size\":16,\"fullName\":\"Energistics.Etp.v12.Datatypes.Uuid\",\"de" +
+				"pends\":[]}},{\"name\":\"changeTime\",\"type\":\"long\"},{\"name\":\"deletedInterval\",\"type\"" +
+				":{\"type\":\"record\",\"name\":\"IndexInterval\",\"namespace\":\"Energistics.Etp.v12.Dataty" +
+				"pes.Object\",\"fields\":[{\"name\":\"startIndex\",\"type\":{\"type\":\"record\",\"name\":\"Index" +
+				"Value\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"item\",\"typ" +
+				"e\":[\"null\",\"long\",\"double\"]}],\"fullName\":\"Energistics.Etp.v12.Datatypes.IndexVal" +
+				"ue\",\"depends\":[]}},{\"name\":\"endIndex\",\"type\":\"Energistics.Etp.v12.Datatypes.Inde" +
+				"xValue\"},{\"name\":\"uom\",\"type\":\"string\"},{\"name\":\"depthDatum\",\"default\":\"\",\"type\"" +
+				":\"string\"}],\"fullName\":\"Energistics.Etp.v12.Datatypes.Object.IndexInterval\",\"dep" +
+				"ends\":[\r\n  \"Energistics.Etp.v12.Datatypes.IndexValue\",\r\n  \"Energistics.Etp.v12.D" +
+				"atatypes.IndexValue\"\r\n]}},{\"name\":\"includeOverlappingIntervals\",\"type\":\"boolean\"" +
+				"},{\"name\":\"format\",\"default\":\"\",\"type\":\"string\"},{\"name\":\"parts\",\"type\":{\"type\":" +
+				"\"array\",\"items\":{\"type\":\"record\",\"name\":\"ObjectPart\",\"namespace\":\"Energistics.Et" +
+				"p.v12.Datatypes.Object\",\"fields\":[{\"name\":\"uid\",\"type\":\"string\"},{\"name\":\"data\"," +
+				"\"type\":\"bytes\"}],\"fullName\":\"Energistics.Etp.v12.Datatypes.Object.ObjectPart\",\"d" +
+				"epends\":[]}}}],\"protocol\":\"7\",\"messageType\":\"6\",\"senderRole\":\"store\",\"protocolRo" +
+				"les\":\"store,customer\",\"multipartFlag\":true,\"fullName\":\"Energistics.Etp.v12.Proto" +
+				"col.GrowingObjectNotification.PartsReplacedByRange\",\"depends\":[\r\n  \"Energistics." +
+				"Etp.v12.Datatypes.Uuid\",\r\n  \"Energistics.Etp.v12.Datatypes.Object.IndexInterval\"" +
+				",\r\n  \"Energistics.Etp.v12.Datatypes.Object.ObjectPart\"\r\n]}");
 		private string _uri;
+		private Energistics.Etp.v12.Datatypes.Uuid _requestUuid;
+		private long _changeTime;
 		private Energistics.Etp.v12.Datatypes.Object.IndexInterval _deletedInterval;
 		private bool _includeOverlappingIntervals;
-		private string _contentType;
-		private string _uid;
-		private byte[] _data;
-		private long _changeTime;
+		private string _format;
+		private IList<Energistics.Etp.v12.Datatypes.Object.ObjectPart> _parts;
 		public virtual Schema Schema
 		{
 			get
@@ -44,6 +61,28 @@ namespace Energistics.Etp.v12.Protocol.GrowingObjectNotification
 			set
 			{
 				this._uri = value;
+			}
+		}
+		public Energistics.Etp.v12.Datatypes.Uuid RequestUuid
+		{
+			get
+			{
+				return this._requestUuid;
+			}
+			set
+			{
+				this._requestUuid = value;
+			}
+		}
+		public long ChangeTime
+		{
+			get
+			{
+				return this._changeTime;
+			}
+			set
+			{
+				this._changeTime = value;
 			}
 		}
 		public Energistics.Etp.v12.Datatypes.Object.IndexInterval DeletedInterval
@@ -68,48 +107,26 @@ namespace Energistics.Etp.v12.Protocol.GrowingObjectNotification
 				this._includeOverlappingIntervals = value;
 			}
 		}
-		public string ContentType
+		public string Format
 		{
 			get
 			{
-				return this._contentType;
+				return this._format;
 			}
 			set
 			{
-				this._contentType = value;
+				this._format = value;
 			}
 		}
-		public string Uid
+		public IList<Energistics.Etp.v12.Datatypes.Object.ObjectPart> Parts
 		{
 			get
 			{
-				return this._uid;
+				return this._parts;
 			}
 			set
 			{
-				this._uid = value;
-			}
-		}
-		public byte[] Data
-		{
-			get
-			{
-				return this._data;
-			}
-			set
-			{
-				this._data = value;
-			}
-		}
-		public long ChangeTime
-		{
-			get
-			{
-				return this._changeTime;
-			}
-			set
-			{
-				this._changeTime = value;
+				this._parts = value;
 			}
 		}
 		public virtual object Get(int fieldPos)
@@ -117,12 +134,12 @@ namespace Energistics.Etp.v12.Protocol.GrowingObjectNotification
 			switch (fieldPos)
 			{
 			case 0: return this._uri;
-			case 1: return this._deletedInterval;
-			case 2: return this._includeOverlappingIntervals;
-			case 3: return this._contentType;
-			case 4: return this._uid;
-			case 5: return this._data;
-			case 6: return this._changeTime;
+			case 1: return this._requestUuid;
+			case 2: return this._changeTime;
+			case 3: return this._deletedInterval;
+			case 4: return this._includeOverlappingIntervals;
+			case 5: return this._format;
+			case 6: return this._parts;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -131,12 +148,12 @@ namespace Energistics.Etp.v12.Protocol.GrowingObjectNotification
 			switch (fieldPos)
 			{
 			case 0: this._uri = (System.String)fieldValue; break;
-			case 1: this._deletedInterval = (Energistics.Etp.v12.Datatypes.Object.IndexInterval)fieldValue; break;
-			case 2: this._includeOverlappingIntervals = (System.Boolean)fieldValue; break;
-			case 3: this._contentType = (System.String)fieldValue; break;
-			case 4: this._uid = (System.String)fieldValue; break;
-			case 5: this._data = (System.Byte[])fieldValue; break;
-			case 6: this._changeTime = (System.Int64)fieldValue; break;
+			case 1: this._requestUuid = (Energistics.Etp.v12.Datatypes.Uuid)fieldValue; break;
+			case 2: this._changeTime = (System.Int64)fieldValue; break;
+			case 3: this._deletedInterval = (Energistics.Etp.v12.Datatypes.Object.IndexInterval)fieldValue; break;
+			case 4: this._includeOverlappingIntervals = (System.Boolean)fieldValue; break;
+			case 5: this._format = (System.String)fieldValue; break;
+			case 6: this._parts = (IList<Energistics.Etp.v12.Datatypes.Object.ObjectPart>)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

@@ -15,13 +15,13 @@ namespace Energistics.Etp.v12.Datatypes.ChannelData
 	
 	public partial class OpenChannelInfo : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""OpenChannelInfo"",""namespace"":""Energistics.Etp.v12.Datatypes.ChannelData"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""id"",""type"":""long""},{""name"":""lastIndex"",""type"":{""type"":""record"",""name"":""IndexValue"",""namespace"":""Energistics.Etp.v12.Datatypes"",""fields"":[{""name"":""item"",""type"":[""null"",""long"",""double""]}],""fullName"":""Energistics.Etp.v12.Datatypes.IndexValue"",""depends"":[]}},{""name"":""infill"",""default"":true,""type"":""boolean""},{""name"":""dataChanges"",""default"":true,""type"":""boolean""}],""fullName"":""Energistics.Etp.v12.Datatypes.ChannelData.OpenChannelInfo"",""depends"":[
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""OpenChannelInfo"",""namespace"":""Energistics.Etp.v12.Datatypes.ChannelData"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""id"",""type"":""long""},{""name"":""lastIndex"",""type"":{""type"":""record"",""name"":""IndexValue"",""namespace"":""Energistics.Etp.v12.Datatypes"",""fields"":[{""name"":""item"",""type"":[""null"",""long"",""double""]}],""fullName"":""Energistics.Etp.v12.Datatypes.IndexValue"",""depends"":[]}},{""name"":""preferRealtime"",""default"":true,""type"":""boolean""},{""name"":""dataChanges"",""default"":true,""type"":""boolean""}],""fullName"":""Energistics.Etp.v12.Datatypes.ChannelData.OpenChannelInfo"",""depends"":[
   ""Energistics.Etp.v12.Datatypes.IndexValue""
 ]}");
 		private string _uri;
 		private long _id;
 		private Energistics.Etp.v12.Datatypes.IndexValue _lastIndex;
-		private bool _infill;
+		private bool _preferRealtime;
 		private bool _dataChanges;
 		public virtual Schema Schema
 		{
@@ -63,15 +63,15 @@ namespace Energistics.Etp.v12.Datatypes.ChannelData
 				this._lastIndex = value;
 			}
 		}
-		public bool Infill
+		public bool PreferRealtime
 		{
 			get
 			{
-				return this._infill;
+				return this._preferRealtime;
 			}
 			set
 			{
-				this._infill = value;
+				this._preferRealtime = value;
 			}
 		}
 		public bool DataChanges
@@ -92,7 +92,7 @@ namespace Energistics.Etp.v12.Datatypes.ChannelData
 			case 0: return this._uri;
 			case 1: return this._id;
 			case 2: return this._lastIndex;
-			case 3: return this._infill;
+			case 3: return this._preferRealtime;
 			case 4: return this._dataChanges;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
@@ -104,7 +104,7 @@ namespace Energistics.Etp.v12.Datatypes.ChannelData
 			case 0: this._uri = (System.String)fieldValue; break;
 			case 1: this._id = (System.Int64)fieldValue; break;
 			case 2: this._lastIndex = (Energistics.Etp.v12.Datatypes.IndexValue)fieldValue; break;
-			case 3: this._infill = (System.Boolean)fieldValue; break;
+			case 3: this._preferRealtime = (System.Boolean)fieldValue; break;
 			case 4: this._dataChanges = (System.Boolean)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};

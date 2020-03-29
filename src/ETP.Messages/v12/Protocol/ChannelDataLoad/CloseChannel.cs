@@ -15,9 +15,8 @@ namespace Energistics.Etp.v12.Protocol.ChannelDataLoad
 	
 	public partial class CloseChannel : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""CloseChannel"",""namespace"":""Energistics.Etp.v12.Protocol.ChannelDataLoad"",""fields"":[{""name"":""id"",""type"":""long""},{""name"":""closeReason"",""default"":"""",""type"":""string""}],""protocol"":""22"",""messageType"":""3"",""senderRole"":""producer,consumer"",""protocolRoles"":""producer,consumer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.ChannelDataLoad.CloseChannel"",""depends"":[]}");
-		private long _id;
-		private string _closeReason;
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""CloseChannel"",""namespace"":""Energistics.Etp.v12.Protocol.ChannelDataLoad"",""fields"":[{""name"":""id"",""type"":{""type"":""map"",""values"":""long""}}],""protocol"":""22"",""messageType"":""3"",""senderRole"":""producer"",""protocolRoles"":""producer,consumer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.ChannelDataLoad.CloseChannel"",""depends"":[]}");
+		private IDictionary<string,System.Int64> _id;
 		public virtual Schema Schema
 		{
 			get
@@ -25,7 +24,7 @@ namespace Energistics.Etp.v12.Protocol.ChannelDataLoad
 				return CloseChannel._SCHEMA;
 			}
 		}
-		public long Id
+		public IDictionary<string,System.Int64> Id
 		{
 			get
 			{
@@ -36,23 +35,11 @@ namespace Energistics.Etp.v12.Protocol.ChannelDataLoad
 				this._id = value;
 			}
 		}
-		public string CloseReason
-		{
-			get
-			{
-				return this._closeReason;
-			}
-			set
-			{
-				this._closeReason = value;
-			}
-		}
 		public virtual object Get(int fieldPos)
 		{
 			switch (fieldPos)
 			{
 			case 0: return this._id;
-			case 1: return this._closeReason;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -60,8 +47,7 @@ namespace Energistics.Etp.v12.Protocol.ChannelDataLoad
 		{
 			switch (fieldPos)
 			{
-			case 0: this._id = (System.Int64)fieldValue; break;
-			case 1: this._closeReason = (System.String)fieldValue; break;
+			case 0: this._id = (IDictionary<string,System.Int64>)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

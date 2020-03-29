@@ -15,10 +15,10 @@ namespace Energistics.Etp.v12.Datatypes.Object
 	
 	public partial class ContextInfo : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""ContextInfo"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""depth"",""type"":""int""},{""name"":""contentTypes"",""type"":{""type"":""array"",""items"":""string""}}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.ContextInfo"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""ContextInfo"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""depth"",""type"":""int""},{""name"":""dataObjectTypes"",""default"":[],""type"":{""type"":""array"",""items"":""string""}}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.ContextInfo"",""depends"":[]}");
 		private string _uri;
 		private int _depth;
-		private IList<System.String> _contentTypes;
+		private IList<System.String> _dataObjectTypes;
 		public virtual Schema Schema
 		{
 			get
@@ -48,15 +48,15 @@ namespace Energistics.Etp.v12.Datatypes.Object
 				this._depth = value;
 			}
 		}
-		public IList<System.String> ContentTypes
+		public IList<System.String> DataObjectTypes
 		{
 			get
 			{
-				return this._contentTypes;
+				return this._dataObjectTypes;
 			}
 			set
 			{
-				this._contentTypes = value;
+				this._dataObjectTypes = value;
 			}
 		}
 		public virtual object Get(int fieldPos)
@@ -65,7 +65,7 @@ namespace Energistics.Etp.v12.Datatypes.Object
 			{
 			case 0: return this._uri;
 			case 1: return this._depth;
-			case 2: return this._contentTypes;
+			case 2: return this._dataObjectTypes;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -75,7 +75,7 @@ namespace Energistics.Etp.v12.Datatypes.Object
 			{
 			case 0: this._uri = (System.String)fieldValue; break;
 			case 1: this._depth = (System.Int32)fieldValue; break;
-			case 2: this._contentTypes = (IList<System.String>)fieldValue; break;
+			case 2: this._dataObjectTypes = (IList<System.String>)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

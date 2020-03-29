@@ -15,12 +15,12 @@ namespace Energistics.Etp.v12.Protocol.ChannelSubscribe
 	
 	public partial class SubscribeChannels : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""SubscribeChannels"",""namespace"":""Energistics.Etp.v12.Protocol.ChannelSubscribe"",""fields"":[{""name"":""channels"",""type"":{""type"":""array"",""items"":{""type"":""record"",""name"":""ChannelSubscribeInfo"",""namespace"":""Energistics.Etp.v12.Datatypes.ChannelData"",""fields"":[{""name"":""channelId"",""type"":""long""},{""name"":""lastIndex"",""type"":{""type"":""record"",""name"":""IndexValue"",""namespace"":""Energistics.Etp.v12.Datatypes"",""fields"":[{""name"":""item"",""type"":[""null"",""long"",""double""]}],""fullName"":""Energistics.Etp.v12.Datatypes.IndexValue"",""depends"":[]}},{""name"":""infill"",""default"":true,""type"":""boolean""},{""name"":""dataChanges"",""default"":true,""type"":""boolean""}],""fullName"":""Energistics.Etp.v12.Datatypes.ChannelData.ChannelSubscribeInfo"",""depends"":[
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""SubscribeChannels"",""namespace"":""Energistics.Etp.v12.Protocol.ChannelSubscribe"",""fields"":[{""name"":""channels"",""type"":{""type"":""map"",""values"":{""type"":""record"",""name"":""ChannelSubscribeInfo"",""namespace"":""Energistics.Etp.v12.Datatypes.ChannelData"",""fields"":[{""name"":""channelId"",""type"":""long""},{""name"":""startIndex"",""type"":{""type"":""record"",""name"":""IndexValue"",""namespace"":""Energistics.Etp.v12.Datatypes"",""fields"":[{""name"":""item"",""type"":[""null"",""long"",""double""]}],""fullName"":""Energistics.Etp.v12.Datatypes.IndexValue"",""depends"":[]}},{""name"":""dataChanges"",""default"":true,""type"":""boolean""},{""name"":""requestLatestIndexCount"",""type"":[""null"",""int""]}],""fullName"":""Energistics.Etp.v12.Datatypes.ChannelData.ChannelSubscribeInfo"",""depends"":[
   ""Energistics.Etp.v12.Datatypes.IndexValue""
 ]}}}],""protocol"":""21"",""messageType"":""3"",""senderRole"":""consumer"",""protocolRoles"":""producer,consumer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.ChannelSubscribe.SubscribeChannels"",""depends"":[
   ""Energistics.Etp.v12.Datatypes.ChannelData.ChannelSubscribeInfo""
 ]}");
-		private IList<Energistics.Etp.v12.Datatypes.ChannelData.ChannelSubscribeInfo> _channels;
+		private IDictionary<string,Energistics.Etp.v12.Datatypes.ChannelData.ChannelSubscribeInfo> _channels;
 		public virtual Schema Schema
 		{
 			get
@@ -28,7 +28,7 @@ namespace Energistics.Etp.v12.Protocol.ChannelSubscribe
 				return SubscribeChannels._SCHEMA;
 			}
 		}
-		public IList<Energistics.Etp.v12.Datatypes.ChannelData.ChannelSubscribeInfo> Channels
+		public IDictionary<string,Energistics.Etp.v12.Datatypes.ChannelData.ChannelSubscribeInfo> Channels
 		{
 			get
 			{
@@ -51,7 +51,7 @@ namespace Energistics.Etp.v12.Protocol.ChannelSubscribe
 		{
 			switch (fieldPos)
 			{
-			case 0: this._channels = (IList<Energistics.Etp.v12.Datatypes.ChannelData.ChannelSubscribeInfo>)fieldValue; break;
+			case 0: this._channels = (IDictionary<string,Energistics.Etp.v12.Datatypes.ChannelData.ChannelSubscribeInfo>)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

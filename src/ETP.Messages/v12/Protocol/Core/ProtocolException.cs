@@ -15,9 +15,12 @@ namespace Energistics.Etp.v12.Protocol.Core
 	
 	public partial class ProtocolException : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""ProtocolException"",""namespace"":""Energistics.Etp.v12.Protocol.Core"",""fields"":[{""name"":""errorCode"",""type"":""int""},{""name"":""errorMessage"",""type"":""string""}],""protocol"":""0"",""messageType"":""1000"",""senderRole"":""*"",""protocolRoles"":""client, server"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.Core.ProtocolException"",""depends"":[]}");
-		private int _errorCode;
-		private string _errorMessage;
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""ProtocolException"",""namespace"":""Energistics.Etp.v12.Protocol.Core"",""fields"":[{""name"":""error"",""type"":[""null"",{""type"":""record"",""name"":""ErrorInfo"",""namespace"":""Energistics.Etp.v12.Datatypes"",""fields"":[{""name"":""message"",""type"":""string""},{""name"":""code"",""type"":""int""}],""fullName"":""Energistics.Etp.v12.Datatypes.ErrorInfo"",""depends"":[]}]},{""name"":""errors"",""default"":{},""type"":{""type"":""map"",""values"":""Energistics.Etp.v12.Datatypes.ErrorInfo""}}],""protocol"":""0"",""messageType"":""1000"",""senderRole"":""*"",""protocolRoles"":""client, server"",""multipartFlag"":true,""fullName"":""Energistics.Etp.v12.Protocol.Core.ProtocolException"",""depends"":[
+  ""Energistics.Etp.v12.Datatypes.ErrorInfo"",
+  ""Energistics.Etp.v12.Datatypes.ErrorInfo""
+]}");
+		private Energistics.Etp.v12.Datatypes.ErrorInfo _error;
+		private IDictionary<string,Energistics.Etp.v12.Datatypes.ErrorInfo> _errors;
 		public virtual Schema Schema
 		{
 			get
@@ -25,34 +28,34 @@ namespace Energistics.Etp.v12.Protocol.Core
 				return ProtocolException._SCHEMA;
 			}
 		}
-		public int ErrorCode
+		public Energistics.Etp.v12.Datatypes.ErrorInfo Error
 		{
 			get
 			{
-				return this._errorCode;
+				return this._error;
 			}
 			set
 			{
-				this._errorCode = value;
+				this._error = value;
 			}
 		}
-		public string ErrorMessage
+		public IDictionary<string,Energistics.Etp.v12.Datatypes.ErrorInfo> Errors
 		{
 			get
 			{
-				return this._errorMessage;
+				return this._errors;
 			}
 			set
 			{
-				this._errorMessage = value;
+				this._errors = value;
 			}
 		}
 		public virtual object Get(int fieldPos)
 		{
 			switch (fieldPos)
 			{
-			case 0: return this._errorCode;
-			case 1: return this._errorMessage;
+			case 0: return this._error;
+			case 1: return this._errors;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -60,10 +63,10 @@ namespace Energistics.Etp.v12.Protocol.Core
 		{
 			switch (fieldPos)
 			{
-			case 0: this._errorCode = (System.Int32)fieldValue; break;
-			case 1: this._errorMessage = (System.String)fieldValue; break;
+			case 0: this._error = (Energistics.Etp.v12.Datatypes.ErrorInfo)fieldValue; break;
+			case 1: this._errors = (IDictionary<string,Energistics.Etp.v12.Datatypes.ErrorInfo>)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
-		}
-	}
+		}        
+    }
 }

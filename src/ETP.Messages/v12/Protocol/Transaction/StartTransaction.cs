@@ -15,8 +15,9 @@ namespace Energistics.Etp.v12.Protocol.Transaction
 	
 	public partial class StartTransaction : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""StartTransaction"",""namespace"":""Energistics.Etp.v12.Protocol.Transaction"",""fields"":[{""name"":""readOnly"",""type"":""boolean""}],""protocol"":""18"",""messageType"":""1"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.Transaction.StartTransaction"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""StartTransaction"",""namespace"":""Energistics.Etp.v12.Protocol.Transaction"",""fields"":[{""name"":""readOnly"",""type"":""boolean""},{""name"":""message"",""default"":"""",""type"":""string""}],""protocol"":""18"",""messageType"":""1"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.Transaction.StartTransaction"",""depends"":[]}");
 		private bool _readOnly;
+		private string _message;
 		public virtual Schema Schema
 		{
 			get
@@ -35,11 +36,23 @@ namespace Energistics.Etp.v12.Protocol.Transaction
 				this._readOnly = value;
 			}
 		}
+		public string Message
+		{
+			get
+			{
+				return this._message;
+			}
+			set
+			{
+				this._message = value;
+			}
+		}
 		public virtual object Get(int fieldPos)
 		{
 			switch (fieldPos)
 			{
 			case 0: return this._readOnly;
+			case 1: return this._message;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -48,6 +61,7 @@ namespace Energistics.Etp.v12.Protocol.Transaction
 			switch (fieldPos)
 			{
 			case 0: this._readOnly = (System.Boolean)fieldValue; break;
+			case 1: this._message = (System.String)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

@@ -21,27 +21,20 @@ namespace Energistics.Etp.v12
 	public enum Protocols
 	{
 		Core = 0,
-		ChannelStreaming,
-		ChannelDataFrame,
-		Discovery,
-		Store,
-		StoreNotification,
-		GrowingObject,
-		GrowingObjectNotification,
-		WitsmlSoap,
-		DataArray,
-		DataArrayNotification,
-		ChannelStreamingQuery,
-		ChannelDataFrameQuery,
-		DiscoveryQuery,
-		StoreQuery,
-		StoreNotificationQuery,
-		GrowingObjectQuery,
-		GrowingObjectNotificationQuery,
-		Transaction,
-	    DataArrayQuery,
-	    DataArrayNotificationQuery,
-	    ChannelSubscribe,
-	    ChannelDataLoad
-	}
+		ChannelStreaming = 1,		
+		Discovery = 3,
+		Store = 4,
+		StoreNotification = 5,
+		GrowingObject = 6,
+        GrowingObjectNotification = 7,
+        DataArray = 9,
+        DiscoveryQuery = 13,
+        StoreQuery = 14,
+        GrowingObjectQuery = 16,
+        Transaction = 18,
+        ChannelSubscribe = 21,
+        ChannelDataLoad = 22,
+        Dataspaces = 24,
+		SupportedTypes = 25
+    }
 }

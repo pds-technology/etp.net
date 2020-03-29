@@ -23,21 +23,20 @@ namespace Energistics.Etp.v12.Datatypes.Object
 				",\"type\":{\"type\":\"record\",\"name\":\"DataObject\",\"namespace\":\"Energistics.Etp.v12.Da" +
 				"tatypes.Object\",\"fields\":[{\"name\":\"resource\",\"type\":{\"type\":\"record\",\"name\":\"Res" +
 				"ource\",\"namespace\":\"Energistics.Etp.v12.Datatypes.Object\",\"fields\":[{\"name\":\"uri" +
-				"\",\"type\":\"string\"},{\"name\":\"contentType\",\"type\":\"string\"},{\"name\":\"name\",\"type\":" +
-				"\"string\"},{\"name\":\"objectNotifiable\",\"default\":true,\"type\":\"boolean\"},{\"name\":\"r" +
-				"esourceType\",\"type\":{\"type\":\"enum\",\"name\":\"ResourceKind\",\"namespace\":\"Energistic" +
-				"s.Etp.v12.Datatypes.Object\",\"symbols\":[\"DataObject\",\"Folder\",\"UriProtocol\",\"Data" +
-				"Space\"],\"fullName\":\"Energistics.Etp.v12.Datatypes.Object.ResourceKind\",\"depends\"" +
-				":[]}},{\"name\":\"sourceCount\",\"default\":null,\"type\":[\"null\",\"int\"]},{\"name\":\"targe" +
-				"tCount\",\"default\":null,\"type\":[\"null\",\"int\"]},{\"name\":\"contentCount\",\"default\":n" +
-				"ull,\"type\":[\"null\",\"int\"]},{\"name\":\"lastChanged\",\"type\":[\"null\",\"long\"]},{\"name\"" +
-				":\"customData\",\"type\":{\"type\":\"map\",\"values\":\"string\"}}],\"fullName\":\"Energistics." +
-				"Etp.v12.Datatypes.Object.Resource\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes" +
-				".Object.ResourceKind\"\r\n]}},{\"name\":\"data\",\"type\":\"bytes\"}],\"fullName\":\"Energisti" +
-				"cs.Etp.v12.Datatypes.Object.DataObject\",\"depends\":[\r\n  \"Energistics.Etp.v12.Data" +
-				"types.Object.Resource\"\r\n]}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.Object.Ob" +
-				"jectChange\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.Object.ObjectChangeKin" +
-				"d\",\r\n  \"Energistics.Etp.v12.Datatypes.Object.DataObject\"\r\n]}");
+				"\",\"type\":\"string\"},{\"name\":\"alternateUris\",\"default\":[],\"type\":{\"type\":\"array\",\"" +
+				"items\":\"string\"}},{\"name\":\"dataObjectType\",\"type\":\"string\"},{\"name\":\"name\",\"type" +
+				"\":\"string\"},{\"name\":\"sourceCount\",\"default\":null,\"type\":[\"null\",\"int\"]},{\"name\":" +
+				"\"targetCount\",\"default\":null,\"type\":[\"null\",\"int\"]},{\"name\":\"lastChanged\",\"type\"" +
+				":\"long\"},{\"name\":\"customData\",\"default\":{},\"type\":{\"type\":\"map\",\"values\":\"string" +
+				"\"}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.Object.Resource\",\"depends\":[]}},{" +
+				"\"name\":\"format\",\"default\":\"xml\",\"type\":\"string\"},{\"name\":\"blobId\",\"type\":[\"null\"" +
+				",{\"type\":\"fixed\",\"name\":\"Uuid\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"size" +
+				"\":16,\"fullName\":\"Energistics.Etp.v12.Datatypes.Uuid\",\"depends\":[]}]},{\"name\":\"da" +
+				"ta\",\"default\":\"\",\"type\":\"bytes\"}],\"fullName\":\"Energistics.Etp.v12.Datatypes.Obje" +
+				"ct.DataObject\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.Object.Resource\",\r\n" +
+				"  \"Energistics.Etp.v12.Datatypes.Uuid\"\r\n]}}],\"fullName\":\"Energistics.Etp.v12.Dat" +
+				"atypes.Object.ObjectChange\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.Object" +
+				".ObjectChangeKind\",\r\n  \"Energistics.Etp.v12.Datatypes.Object.DataObject\"\r\n]}");
 		private Energistics.Etp.v12.Datatypes.Object.ObjectChangeKind _changeKind;
 		private long _changeTime;
 		private Energistics.Etp.v12.Datatypes.Object.DataObject _dataObject;

@@ -45,18 +45,18 @@ namespace Energistics.Etp.v12.Protocol.ChannelSubscribe
 				"gistics.Etp.v12.Datatypes.ArrayOfBoolean\",\r\n  \"Energistics.Etp.v12.Datatypes.Arr" +
 				"ayOfInt\",\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfLong\",\r\n  \"Energistics.Etp.v1" +
 				"2.Datatypes.ArrayOfFloat\",\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfDouble\",\r\n  " +
-				"\"Energistics.Etp.v12.Datatypes.ArrayOfString\"\r\n]}},{\"name\":\"valueAttributes\",\"ty" +
-				"pe\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"DataAttribute\",\"namespace\":" +
-				"\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"attributeId\",\"type\":\"int\"},{\"" +
-				"name\":\"attributeValue\",\"type\":\"DataValue\"}],\"fullName\":\"Energistics.Etp.v12.Data" +
-				"types.DataAttribute\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.DataValue\"\r\n]" +
-				"}}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.ChannelData.DataItem\",\"depends\":[" +
-				"\r\n  \"Energistics.Etp.v12.Datatypes.IndexValue\",\r\n  \"Energistics.Etp.v12.Datatype" +
-				"s.DataValue\",\r\n  \"Energistics.Etp.v12.Datatypes.DataAttribute\"\r\n]}}}],\"protocol\"" +
-				":\"21\",\"messageType\":\"4\",\"senderRole\":\"producer\",\"protocolRoles\":\"producer,consum" +
-				"er\",\"multipartFlag\":true,\"fullName\":\"Energistics.Etp.v12.Protocol.ChannelSubscri" +
-				"be.RealtimeData\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.ChannelData.DataI" +
-				"tem\"\r\n]}");
+				"\"Energistics.Etp.v12.Datatypes.ArrayOfString\"\r\n]}},{\"name\":\"valueAttributes\",\"de" +
+				"fault\":[],\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"DataAttribute\"" +
+				",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"attributeId\",\"ty" +
+				"pe\":\"int\"},{\"name\":\"attributeValue\",\"type\":\"DataValue\"}],\"fullName\":\"Energistics" +
+				".Etp.v12.Datatypes.DataAttribute\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes." +
+				"DataValue\"\r\n]}}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.ChannelData.DataItem" +
+				"\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.IndexValue\",\r\n  \"Energistics.Etp" +
+				".v12.Datatypes.DataValue\",\r\n  \"Energistics.Etp.v12.Datatypes.DataAttribute\"\r\n]}}" +
+				"}],\"protocol\":\"21\",\"messageType\":\"4\",\"senderRole\":\"producer\",\"protocolRoles\":\"pr" +
+				"oducer,consumer\",\"multipartFlag\":false,\"fullName\":\"Energistics.Etp.v12.Protocol." +
+				"ChannelSubscribe.RealtimeData\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.Cha" +
+				"nnelData.DataItem\"\r\n]}");
 		private IList<Energistics.Etp.v12.Datatypes.ChannelData.DataItem> _data;
 		public virtual Schema Schema
 		{
