@@ -288,11 +288,11 @@ namespace Energistics.Etp.v12
                 IResource IDataObject.Resource
                 {
                     get { return Resource; }
-                    set { Resource = (Resource) value; }
+                    set { Resource = (Resource)value; }
                 }
 
                 [JsonIgnore]
-                public string ContentEncoding
+                string IDataObject.ContentEncoding
                 {
                     get { return null; }
                     set { }
@@ -302,30 +302,53 @@ namespace Energistics.Etp.v12
             public partial class Resource : IResource
             {
                 [JsonIgnore]
-                public string Uuid
+                string IResource.Uuid
                 {
                     get { return null; }
                     set { }
                 }
 
+                [JsonIgnore]
+                string IResource.ContentType
+                {
+                    get { return DataObjectType; }
+                    set { DataObjectType = value; }
+                }
+
                 string IResource.ResourceType
                 {
-                    get { return ResourceType.ToString(); }
+                    get { return "DataObject"; }
                     set
                     {
-                        ResourceKind enumValue;
-                        Enum.TryParse(value, out enumValue);
-                        ResourceType = enumValue;
                     }
                 }
 
                 [JsonIgnore]
-                public bool ChannelSubscribable
+                bool IResource.ChannelSubscribable
                 {
                     get { return false; }
                     set { }
                 }
+
+                [JsonIgnore]
+                bool IResource.ObjectNotifiable
+                {
+                    get { return false; }
+                    set { }
+                }
+
+                [JsonIgnore]
+                long? IResource.LastChanged
+                {
+                    get { return LastChanged; }
+                    set { LastChanged = value ?? 0L; }
+                }
             }
+        }
+
+        public partial class ErrorInfo : IErrorInfo
+        {
+
         }
 
         public partial class AnyArray : IAnyArray { }
@@ -373,7 +396,32 @@ namespace Energistics.Etp.v12
         {
             public partial class Acknowledge : IAcknowledge { }
 
-            public partial class ProtocolException : IProtocolException { }
+            public partial class ProtocolException : IProtocolException
+            {
+                public int ErrorCode
+                {
+                    get { return Error?.Code ?? 0; }
+                    set
+                    {
+                        if (Error == null)
+                            Error = new Datatypes.ErrorInfo();
+
+                        Error.Code = value;
+                    }
+                }
+
+                public string ErrorMessage
+                {
+                    get { return Error?.Message; }
+                    set
+                    {
+                        if (Error == null)
+                            Error = new Datatypes.ErrorInfo();
+
+                        Error.Message = value;
+                    }
+                }
+            }
         }
     }
 }

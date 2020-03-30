@@ -237,7 +237,22 @@ namespace Energistics.Etp.v11
         {
             public partial class Acknowledge : IAcknowledge { }
 
-            public partial class ProtocolException : IProtocolException { }
+            public partial class ProtocolException : IProtocolException, IErrorInfo
+            {
+                [JsonIgnore]
+                int IErrorInfo.Code
+                {
+                    get { return ErrorCode; }
+                    set { ErrorCode = value; }
+                }
+
+                [JsonIgnore]
+                string IErrorInfo.Message
+                {
+                    get { return ErrorMessage; }
+                    set { ErrorMessage = value; }
+                }
+            }
         }
     }
 }

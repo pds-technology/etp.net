@@ -54,6 +54,7 @@
     <Compile Include="Common\Datatypes\ChannelData\IIndexMetadataRecord.cs" />
     <Compile Include="Common\Datatypes\ChannelData\IStreamingStartIndex.cs" />
     <Compile Include="Common\Datatypes\IDataAttribute.cs" />
+    <Compile Include="Common\Datatypes\IErrorInfo.cs" />
     <Compile Include="Common\Datatypes\IIndexValue.cs" />
     <Compile Include="Common\Datatypes\IDataValue.cs" />
     <Compile Include="Common\Datatypes\IAnyArray.cs" />
