@@ -193,6 +193,11 @@ namespace Energistics.Etp.v11
                     get { return LastChanged < 0 ? (long?) null : LastChanged; }
                     set { LastChanged = value ?? -1; }
                 }
+
+                string IDataObjectType.DataObjectType
+                {
+                    get { return new EtpContentType(ContentType).ToDataObjectType(); }
+                }
             }
         }
 

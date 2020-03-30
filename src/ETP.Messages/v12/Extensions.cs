@@ -19,6 +19,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using Energistics.Etp.Common.Datatypes;
 using Energistics.Etp.Common.Datatypes.ChannelData;
 using Energistics.Etp.Common.Datatypes.Object;
@@ -301,18 +302,33 @@ namespace Energistics.Etp.v12
 
             public partial class Resource : IResource
             {
+                private static readonly Regex _UuidRegex = new Regex(@"[^(]*\(([^)]*)\)", RegexOptions.Compiled | RegexOptions.CultureInvariant);
+
                 [JsonIgnore]
                 string IResource.Uuid
                 {
-                    get { return null; }
+                    get
+                    {
+                        if (Uri == null) return null;
+
+                        var match = _UuidRegex.Match(Uri);
+                        if (!match.Success)
+                            return null;
+
+                        return match.Groups[1].Value;
+                    }
                     set { }
                 }
 
                 [JsonIgnore]
-                string IResource.ContentType
+                string IDataObjectType.ContentType
+                {
+                    get { return new EtpDataObjectType(DataObjectType).ToContentType(); }
+                }
+
+                string IDataObjectType.DataObjectType
                 {
                     get { return DataObjectType; }
-                    set { DataObjectType = value; }
                 }
 
                 string IResource.ResourceType
@@ -398,7 +414,7 @@ namespace Energistics.Etp.v12
 
             public partial class ProtocolException : IProtocolException
             {
-                public int ErrorCode
+                int IProtocolException.ErrorCode
                 {
                     get { return Error?.Code ?? 0; }
                     set
@@ -410,7 +426,7 @@ namespace Energistics.Etp.v12
                     }
                 }
 
-                public string ErrorMessage
+                string IProtocolException.ErrorMessage
                 {
                     get { return Error?.Message; }
                     set
