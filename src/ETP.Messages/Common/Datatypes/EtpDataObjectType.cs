@@ -29,7 +29,6 @@ namespace Energistics.Etp.Common.Datatypes
     public struct EtpDataObjectType : IDataObjectType
     {
         private static readonly Regex Pattern = new Regex(@"^(witsml|resqml|prodml|eml)([0-9]{2})\.((obj_|cs_|part_)?(\w+))?$", RegexOptions.CultureInvariant | RegexOptions.Compiled);
-        private static readonly string[] PartSchemas = { "TrajectoryStation", "MudlogReportInterval", "WellboreGeometrySection" };
         private const string Format = "{0}{1}.{2}";
         private readonly string _dataType;
 
@@ -305,7 +304,7 @@ namespace Energistics.Etp.Common.Datatypes
         /// </summary>
         /// <param name="family">The candidate family.</param>
         /// <returns>The canonical family name or <c>null</c> if the candidate is not recongized.</returns>
-        private static string TryGetFamily(string family)
+        public static string TryGetFamily(string family)
         {
             if (string.IsNullOrEmpty(family))
                 return null;
@@ -322,9 +321,9 @@ namespace Energistics.Etp.Common.Datatypes
         /// <param name="family">The family.</param>
         /// <param name="shortVersion">The candidate short version.</param>
         /// <returns>The canonical family short version or <c>null</c> if the candidate is not recongized.</returns>
-        private static string TryGetFamilyShortVersion(string family, string shortVersion)
+        public static string TryGetFamilyShortVersion(string family, string shortVersion)
         {
-            if (string.IsNullOrEmpty(family) || !_familyVersionLookup.ContainsKey(family))
+            if (string.IsNullOrEmpty(family) || string.IsNullOrEmpty(shortVersion) || !_familyVersionLookup.ContainsKey(family))
                 return null;
 
             if (_familyVersionLookup[family].ContainsKey(shortVersion))
@@ -339,9 +338,9 @@ namespace Energistics.Etp.Common.Datatypes
         /// <param name="family">The family.</param>
         /// <param name="shortVersion">The short version.</param>
         /// <returns>The canonical family version name or <c>null</c> if the candidate is not recongized.</returns>
-        private static string TryGetFamilyVersionFromShortVersion(string family, string shortVersion)
+        public static string TryGetFamilyVersionFromShortVersion(string family, string shortVersion)
         {
-            if (string.IsNullOrEmpty(family))
+            if (string.IsNullOrEmpty(family) || string.IsNullOrEmpty(shortVersion) || !_familyVersionLookup.ContainsKey(family))
                 return null;
 
             string version;
@@ -357,9 +356,9 @@ namespace Energistics.Etp.Common.Datatypes
         /// <param name="family">The family.</param>
         /// <param name="version">The version.</param>
         /// <returns>The canonical family version name or <c>null</c> if the candidate is not recongized.</returns>
-        private static string TryGetFamilyVersion(string family, string version)
+        public static string TryGetFamilyVersion(string family, string version)
         {
-            if (string.IsNullOrEmpty(family) || !_familyShortVersionLookup.ContainsKey(family))
+            if (string.IsNullOrEmpty(family) || string.IsNullOrEmpty(version) || !_familyShortVersionLookup.ContainsKey(family))
                 return null;
 
             if (_familyShortVersionLookup[family].ContainsKey(version))
@@ -374,9 +373,9 @@ namespace Energistics.Etp.Common.Datatypes
         /// <param name="family">The family.</param>
         /// <param name="version">The version.</param>
         /// <returns>The canonical family short version name or <c>null</c> if the candidate is not recongized.</returns>
-        private static string TryGetFamilyShortVersionFromVersion(string family, string version)
+        public static string TryGetFamilyShortVersionFromVersion(string family, string version)
         {
-            if (string.IsNullOrEmpty(family))
+            if (string.IsNullOrEmpty(family) || string.IsNullOrEmpty(version) || !_familyShortVersionLookup.ContainsKey(family))
                 return null;
 
             string shortVersion;
