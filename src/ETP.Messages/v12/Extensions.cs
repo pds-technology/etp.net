@@ -360,6 +360,10 @@ namespace Energistics.Etp.v12
                     set { LastChanged = value ?? 0L; }
                 }
             }
+
+            public partial class ObjectPart : IObjectPart
+            {
+            }
         }
 
         public partial class ErrorInfo : IErrorInfo

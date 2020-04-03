@@ -259,5 +259,13 @@ namespace Energistics.Etp.v11
                 }
             }
         }
+        namespace GrowingObject
+        {
+            public partial class GrowingObjectPut : IObjectPart
+            {
+                [JsonIgnore]
+                string IObjectPart.Uid { get { return null;  } set { } }
+            }
+        }
     }
 }

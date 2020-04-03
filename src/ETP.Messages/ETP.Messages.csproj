@@ -64,6 +64,7 @@
     <Compile Include="Common\Datatypes\IEtpArray.cs" />
     <Compile Include="Common\Datatypes\IMessageHeader.cs" />
     <Compile Include="Common\Datatypes\ISupportedProtocol.cs" />
+    <Compile Include="Common\Datatypes\Object\IObjectPart.cs" />
     <Compile Include="Common\Datatypes\Object\IResource.cs" />
     <Compile Include="Common\Datatypes\Object\IDataObject.cs" />
     <Compile Include="v12\Datatypes\AnyArrayType.cs" />
