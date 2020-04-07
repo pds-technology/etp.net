@@ -34,7 +34,8 @@ namespace Energistics.Etp.v12
         Transaction = 18,
         ChannelSubscribe = 21,
         ChannelDataLoad = 22,
-        Dataspaces = 24,
-		SupportedTypes = 25
+        Dataspace = 24,
+		SupportedTypes = 25,
+        WitsmlSoap = 2100,
     }
 }

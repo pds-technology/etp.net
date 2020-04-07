@@ -55,8 +55,6 @@ namespace Energistics.Etp.v12
         {
             GetResources = 1,
             GetResourcesResponse = 4,
-            GetSupportedTypes = 9,
-            GetSupportedTypesResponse = 12
         }
 
         /// <summary>
@@ -150,9 +148,9 @@ namespace Energistics.Etp.v12
         }
 
         /// <summary>
-        /// An enumeration of DataSpace protocol message types.
+        /// An enumeration of Dataspace protocol message types.
         /// </summary>
-        public enum DataSpace
+        public enum Dataspace
         {
             GetDataspaces = 1,
             GetDataspacesResponse = 2,
@@ -204,6 +202,15 @@ namespace Energistics.Etp.v12
         }
 
         /// <summary>
+        /// An enumeration of SupportedTypes protocol message types.
+        /// </summary>
+        public enum SupportedTypes
+        {
+            GetSupportedTypes = 1,
+            GetSupportedTypesResponse = 2
+        }
+
+        /// <summary>
         /// An enumeration of Transaction protocol message types.
         /// </summary>
         public enum Transaction
@@ -221,19 +228,19 @@ namespace Energistics.Etp.v12
         public enum WitsmlSoap
         {
             WMLS_AddToStore = 1,
-            WMSL_AddToStoreResponse,
+            WMLS_AddToStoreResponse,
             WMLS_DeleteFromStore,
-            WMSL_DeleteFromStoreResponse,
+            WMLS_DeleteFromStoreResponse,
             WMLS_GetBaseMsg,
-            WMSL_GetBaseMsgResponse,
+            WMLS_GetBaseMsgResponse,
             WMLS_GetCap,
-            WMSL_GetCapResponse,
+            WMLS_GetCapResponse,
             WMLS_GetFromStore,
-            WMSL_GetFromStoreResponse,
+            WMLS_GetFromStoreResponse,
             WMLS_GetVersion,
-            WMSL_GetVersionResponse,
+            WMLS_GetVersionResponse,
             WMLS_UpdateInStore,
-            WMSL_UpdateInStoreResponse
+            WMLS_UpdateInStoreResponse
         }
     }
 }
