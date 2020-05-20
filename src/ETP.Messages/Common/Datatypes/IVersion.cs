@@ -16,20 +16,16 @@
 // limitations under the License.
 //-----------------------------------------------------------------------
 
-using System.Collections;
-
 namespace Energistics.Etp.Common.Datatypes
 {
-    public interface ISupportedProtocol
+    public interface IVersion
     {
-        int Protocol { get; set; }
+        int Major { get; set; }
 
-        string Role { get; set; }
+        int Minor { get; set; }
 
-        IVersion ProtocolVersion { get; set; }
+        int Revision { get; set; }
 
-        string VersionString { get; }
-
-        IDictionary ProtocolCapabilities { get; set; }
+        int Patch { get; set; }
     }
 }

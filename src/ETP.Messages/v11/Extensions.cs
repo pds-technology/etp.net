@@ -194,10 +194,29 @@ namespace Energistics.Etp.v11
                     set { LastChanged = value ?? -1; }
                 }
 
-                string IDataObjectType.DataObjectType
-                {
-                    get { return new EtpContentType(ContentType).ToDataObjectType(); }
-                }
+                [JsonIgnore]
+                EtpContentType IDataObjectType.ContentType => new EtpContentType(ContentType);
+
+                [JsonIgnore]
+                EtpDataObjectType IDataObjectType.DataObjectType => new EtpContentType(ContentType).ToDataObjectType();
+
+                [JsonIgnore]
+                bool IDataObjectType.IsValid => ((IDataObjectType)this).ContentType.IsValid;
+
+                [JsonIgnore]
+                bool IDataObjectType.IsBaseType => ((IDataObjectType)this).ContentType.IsBaseType;
+
+                [JsonIgnore]
+                bool IDataObjectType.IsWildcard => ((IDataObjectType)this).ContentType.IsWildcard;
+
+                [JsonIgnore]
+                string IDataObjectType.Family => ((IDataObjectType)this).ContentType.Family;
+
+                [JsonIgnore]
+                string IDataObjectType.Version => ((IDataObjectType)this).ContentType.Version;
+
+                [JsonIgnore]
+                string IDataObjectType.ObjectType => ((IDataObjectType)this).ContentType.ObjectType;
             }
         }
 
@@ -228,12 +247,22 @@ namespace Energistics.Etp.v11
 
         public partial class SupportedProtocol : ISupportedProtocol
         {
+            IVersion ISupportedProtocol.ProtocolVersion
+            {
+                get { return ProtocolVersion; }
+                set { ProtocolVersion = new Version { Major = value.Major, Minor = value.Minor, Revision = value.Revision, Patch = value.Patch }; }
+            }
+
+            string ISupportedProtocol.VersionString => $"{ProtocolVersion.Major}.{ProtocolVersion.Minor}.{ProtocolVersion.Revision}.{ProtocolVersion.Patch}";
+
             IDictionary ISupportedProtocol.ProtocolCapabilities
             {
                 get { return ProtocolCapabilities as IDictionary; }
                 set { ProtocolCapabilities = value as IDictionary<string, DataValue>; }
             }
         }
+
+        public partial class Version : IVersion { }
     }
 
     namespace Protocol

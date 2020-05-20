@@ -141,7 +141,7 @@ namespace Energistics.Etp.Common.Datatypes
         /// <summary>
         /// Returns this as a data type string.
         /// </summary>
-        string IDataObjectType.DataObjectType
+        EtpDataObjectType IDataObjectType.DataObjectType
         {
             get { return this; }
         }
@@ -149,7 +149,7 @@ namespace Energistics.Etp.Common.Datatypes
         /// <summary>
         /// Returns this as a content type string.
         /// </summary>
-        string IDataObjectType.ContentType
+        EtpContentType IDataObjectType.ContentType
         {
             get { return ToContentType(); }
         }
@@ -191,6 +191,15 @@ namespace Energistics.Etp.Common.Datatypes
         public bool IsBaseType
         {
             get { return string.IsNullOrWhiteSpace(ObjectType); }
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether this instance is a wildcard content type.
+        /// </summary>
+        /// <value><c>true</c> if this instance is a wildcard content type; otherwise, <c>false</c>.</value>
+        public bool IsWildcard
+        {
+            get { return ObjectType == "*"; }
         }
 
         /// <summary>

@@ -321,15 +321,29 @@ namespace Energistics.Etp.v12
                 }
 
                 [JsonIgnore]
-                string IDataObjectType.ContentType
-                {
-                    get { return new EtpDataObjectType(DataObjectType).ToContentType(); }
-                }
+                EtpContentType IDataObjectType.ContentType => new EtpDataObjectType(DataObjectType).ToContentType();
 
-                string IDataObjectType.DataObjectType
-                {
-                    get { return DataObjectType; }
-                }
+                [JsonIgnore]
+                EtpDataObjectType IDataObjectType.DataObjectType => new EtpDataObjectType(DataObjectType);
+
+                [JsonIgnore]
+                bool IDataObjectType.IsValid => ((IDataObjectType)this).DataObjectType.IsValid;
+
+                [JsonIgnore]
+                bool IDataObjectType.IsBaseType => ((IDataObjectType)this).DataObjectType.IsBaseType;
+
+                [JsonIgnore]
+                bool IDataObjectType.IsWildcard => ((IDataObjectType)this).DataObjectType.IsWildcard;
+
+                [JsonIgnore]
+                string IDataObjectType.Family => ((IDataObjectType)this).DataObjectType.Family;
+
+                [JsonIgnore]
+                string IDataObjectType.Version => ((IDataObjectType)this).DataObjectType.Version;
+
+                [JsonIgnore]
+                string IDataObjectType.ObjectType => ((IDataObjectType)this).DataObjectType.ObjectType;
+
 
                 string IResource.ResourceType
                 {
@@ -402,12 +416,22 @@ namespace Energistics.Etp.v12
 
         public partial class SupportedProtocol : ISupportedProtocol
         {
+            IVersion ISupportedProtocol.ProtocolVersion
+            {
+                get { return ProtocolVersion; }
+                set { ProtocolVersion = new Version { Major = value.Major, Minor = value.Minor, Revision = value.Revision, Patch = value.Patch }; }
+            }
+
+            string ISupportedProtocol.VersionString => $"{ProtocolVersion.Major}.{ProtocolVersion.Minor}.{ProtocolVersion.Revision}.{ProtocolVersion.Patch}";
+
             IDictionary ISupportedProtocol.ProtocolCapabilities
             {
                 get { return ProtocolCapabilities as IDictionary; }
                 set { ProtocolCapabilities = value as IDictionary<string, DataValue>; }
             }
         }
+
+        public partial class Version : IVersion { }
     }
 
     namespace Protocol

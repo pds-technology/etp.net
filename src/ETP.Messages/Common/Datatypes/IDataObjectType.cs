@@ -20,8 +20,50 @@ namespace Energistics.Etp.Common.Datatypes
 {
     public interface IDataObjectType
     {
-        string DataObjectType { get; }
+        /// <summary>
+        /// Returns true if a valid content type was specified.
+        /// </summary>
+        /// <value><c>true</c> if this instance is valid; otherwise, <c>false</c>.</value>
+        bool IsValid { get; }
 
-        string ContentType { get; }
+        /// <summary>
+        /// Gets a value indicating whether this instance is a base content type.
+        /// </summary>
+        /// <value><c>true</c> if this instance is a base content type; otherwise, <c>false</c>.</value>
+        bool IsBaseType { get; }
+
+        /// <summary>
+        /// Gets a value indicating whether this instance is a wildcard content type.
+        /// </summary>
+        /// <value><c>true</c> if this instance is a wildcard content type; otherwise, <c>false</c>.</value>
+        bool IsWildcard { get; }
+
+        /// <summary>
+        /// Gets the ML family name.
+        /// </summary>
+        /// <value>The ML family.</value>
+        string Family { get; }
+
+        /// <summary>
+        /// Gets the version.
+        /// </summary>
+        /// <value>The version.</value>
+        string Version { get; }
+
+        /// <summary>
+        /// Gets the type of the object.
+        /// </summary>
+        /// <value>The type of the object.</value>
+        string ObjectType { get; }
+
+        /// <summary>
+        /// Gets this as an <see cref="EtpDataObjectType"/> instance.
+        /// </summary>
+        EtpDataObjectType DataObjectType { get; }
+
+        /// <summary>
+        /// Gets this as an <see cref="EtpContentType"/> instance.
+        /// </summary>
+        EtpContentType ContentType { get; }
     }
 }

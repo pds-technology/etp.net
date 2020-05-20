@@ -57,6 +57,7 @@
     <Compile Include="Common\Datatypes\EtpDataObjectType.cs" />
     <Compile Include="Common\Datatypes\IDataObjectType.cs" />
     <Compile Include="Common\Datatypes\IDataAttribute.cs" />
+    <Compile Include="Common\Datatypes\IVersion.cs" />
     <Compile Include="Common\Datatypes\IErrorInfo.cs" />
     <Compile Include="Common\Datatypes\IIndexValue.cs" />
     <Compile Include="Common\Datatypes\IDataValue.cs" />
