@@ -15,9 +15,10 @@ namespace Energistics.Etp.v12.Protocol.Transaction
 	
 	public partial class StartTransaction : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""StartTransaction"",""namespace"":""Energistics.Etp.v12.Protocol.Transaction"",""fields"":[{""name"":""readOnly"",""type"":""boolean""},{""name"":""message"",""default"":"""",""type"":""string""}],""protocol"":""18"",""messageType"":""1"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.Transaction.StartTransaction"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""StartTransaction"",""namespace"":""Energistics.Etp.v12.Protocol.Transaction"",""fields"":[{""name"":""readOnly"",""type"":""boolean""},{""name"":""message"",""default"":"""",""type"":""string""},{""name"":""dataspaceUris"",""default"":[""""],""type"":{""type"":""array"",""items"":""string""}}],""protocol"":""18"",""messageType"":""1"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.Transaction.StartTransaction"",""depends"":[]}");
 		private bool _readOnly;
 		private string _message;
+		private IList<System.String> _dataspaceUris;
 		public virtual Schema Schema
 		{
 			get
@@ -47,12 +48,24 @@ namespace Energistics.Etp.v12.Protocol.Transaction
 				this._message = value;
 			}
 		}
+		public IList<System.String> DataspaceUris
+		{
+			get
+			{
+				return this._dataspaceUris;
+			}
+			set
+			{
+				this._dataspaceUris = value;
+			}
+		}
 		public virtual object Get(int fieldPos)
 		{
 			switch (fieldPos)
 			{
 			case 0: return this._readOnly;
 			case 1: return this._message;
+			case 2: return this._dataspaceUris;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -62,6 +75,7 @@ namespace Energistics.Etp.v12.Protocol.Transaction
 			{
 			case 0: this._readOnly = (System.Boolean)fieldValue; break;
 			case 1: this._message = (System.String)fieldValue; break;
+			case 2: this._dataspaceUris = (IList<System.String>)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

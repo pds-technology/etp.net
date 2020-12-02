@@ -1,14 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30523.141
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ETP.Messages", "ETP.Messages\ETP.Messages.csproj", "{1A788A14-70D7-4B2B-96A3-086C86D0C925}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ETP.Messages", "ETP.Messages\ETP.Messages.csproj", "{1A788A14-70D7-4B2B-96A3-086C86D0C925}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{F2A5F0A9-DA71-46CA-B7EB-ADC7A6FDAD62}"
 	ProjectSection(SolutionItems) = preProject
 		tools\UpdatePackageHintPaths.ps1 = tools\UpdatePackageHintPaths.ps1
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ETP.Messages.Generator", "ETP.Messages.Generator\ETP.Messages.Generator.csproj", "{10D8E6E4-D267-4EE7-B908-8DFD87D4A83B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +22,10 @@ Global
 		{1A788A14-70D7-4B2B-96A3-086C86D0C925}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A788A14-70D7-4B2B-96A3-086C86D0C925}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A788A14-70D7-4B2B-96A3-086C86D0C925}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10D8E6E4-D267-4EE7-B908-8DFD87D4A83B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10D8E6E4-D267-4EE7-B908-8DFD87D4A83B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10D8E6E4-D267-4EE7-B908-8DFD87D4A83B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10D8E6E4-D267-4EE7-B908-8DFD87D4A83B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

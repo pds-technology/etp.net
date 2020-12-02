@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Protocol.ChannelSubscribe
 	
 	public partial class UnsubscribeChannels : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""UnsubscribeChannels"",""namespace"":""Energistics.Etp.v12.Protocol.ChannelSubscribe"",""fields"":[{""name"":""channelIds"",""type"":{""type"":""map"",""values"":""long""}}],""protocol"":""21"",""messageType"":""7"",""senderRole"":""consumer"",""protocolRoles"":""producer,consumer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.ChannelSubscribe.UnsubscribeChannels"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""UnsubscribeChannels"",""namespace"":""Energistics.Etp.v12.Protocol.ChannelSubscribe"",""fields"":[{""name"":""channelIds"",""type"":{""type"":""map"",""values"":""long""}}],""protocol"":""21"",""messageType"":""7"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.ChannelSubscribe.UnsubscribeChannels"",""depends"":[]}");
 		private IDictionary<string,System.Int64> _channelIds;
 		public virtual Schema Schema
 		{

@@ -15,8 +15,9 @@ namespace Energistics.Etp.v12.Protocol.Store
 	
 	public partial class DeleteDataObjects : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""DeleteDataObjects"",""namespace"":""Energistics.Etp.v12.Protocol.Store"",""fields"":[{""name"":""uris"",""type"":{""type"":""map"",""values"":""string""}}],""protocol"":""4"",""messageType"":""3"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.Store.DeleteDataObjects"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""DeleteDataObjects"",""namespace"":""Energistics.Etp.v12.Protocol.Store"",""fields"":[{""name"":""uris"",""type"":{""type"":""map"",""values"":""string""}},{""name"":""pruneContainedObjects"",""default"":false,""type"":""boolean""}],""protocol"":""4"",""messageType"":""3"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.Store.DeleteDataObjects"",""depends"":[]}");
 		private IDictionary<string,System.String> _uris;
+		private bool _pruneContainedObjects;
 		public virtual Schema Schema
 		{
 			get
@@ -35,11 +36,23 @@ namespace Energistics.Etp.v12.Protocol.Store
 				this._uris = value;
 			}
 		}
+		public bool PruneContainedObjects
+		{
+			get
+			{
+				return this._pruneContainedObjects;
+			}
+			set
+			{
+				this._pruneContainedObjects = value;
+			}
+		}
 		public virtual object Get(int fieldPos)
 		{
 			switch (fieldPos)
 			{
 			case 0: return this._uris;
+			case 1: return this._pruneContainedObjects;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -48,6 +61,7 @@ namespace Energistics.Etp.v12.Protocol.Store
 			switch (fieldPos)
 			{
 			case 0: this._uris = (IDictionary<string,System.String>)fieldValue; break;
+			case 1: this._pruneContainedObjects = (System.Boolean)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

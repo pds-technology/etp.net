@@ -18,6 +18,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Energistics.Etp.Common.Datatypes;
 using Energistics.Etp.Common.Datatypes.ChannelData;
 using Energistics.Etp.Common.Datatypes.Object;
@@ -217,6 +218,12 @@ namespace Energistics.Etp.v11
 
                 [JsonIgnore]
                 string IDataObjectType.ObjectType => ((IDataObjectType)this).ContentType.ObjectType;
+
+                IDictionary<string, IDataValue> IResource.CustomData
+                {
+                    get { return this.CustomData?.Select(kvp => new KeyValuePair<string, IDataValue>(kvp.Key, new DataValue { Item = kvp.Value })).ToDictionary(kvp => kvp.Key, kvp => kvp.Value); }
+                    set { CustomData = value == null ? null : value.Select(kvp => new KeyValuePair<string, string>(kvp.Key, $"{kvp.Value}")).ToDictionary(kvp => kvp.Key, kvp => kvp.Value); }
+                }
             }
         }
 

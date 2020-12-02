@@ -18,5 +18,7 @@ namespace Energistics.Etp.v12.Datatypes.Object
 		insert,
 		update,
 		authorized,
+		joined,
+		unjoined,
 	}
 }

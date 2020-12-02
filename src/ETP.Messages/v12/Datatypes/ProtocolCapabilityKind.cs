@@ -20,10 +20,12 @@ namespace Energistics.Etp.v12.Datatypes
 		MaxResponseCount,
 		ChangeDetectionPeriod,
 		ChangeNotificationRetentionPeriod,
-		DeleteNotificationRetentionPeriod,
-		TransactionTimeout,
-		StreamingTimeoutPeriod,
 		GrowingTimeoutPeriod,
+		TransactionTimeout,
 		MaxDataArraySize,
+		StreamingTimeoutPeriod,
+		CascadeOnDataObjectTypes,
+		FrameChangeDetectionPeriod,
+		DeleteRetentionTime,
 	}
 }

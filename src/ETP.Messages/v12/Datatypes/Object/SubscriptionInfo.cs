@@ -15,11 +15,28 @@ namespace Energistics.Etp.v12.Datatypes.Object
 	
 	public partial class SubscriptionInfo : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""SubscriptionInfo"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""context"",""type"":{""type"":""record"",""name"":""ContextInfo"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""depth"",""type"":""int""},{""name"":""dataObjectTypes"",""default"":[],""type"":{""type"":""array"",""items"":""string""}}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.ContextInfo"",""depends"":[]}},{""name"":""scope"",""type"":{""type"":""enum"",""name"":""ContextScopeKind"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""symbols"":[""self"",""sources"",""targets"",""sourcesOrSelf"",""targetsOrSelf""],""fullName"":""Energistics.Etp.v12.Datatypes.Object.ContextScopeKind"",""depends"":[]}},{""name"":""requestUuid"",""type"":{""type"":""fixed"",""name"":""Uuid"",""namespace"":""Energistics.Etp.v12.Datatypes"",""size"":16,""fullName"":""Energistics.Etp.v12.Datatypes.Uuid"",""depends"":[]}},{""name"":""startTime"",""type"":""long""},{""name"":""includeObjectData"",""type"":""boolean""},{""name"":""format"",""default"":""xml"",""type"":""string""}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.SubscriptionInfo"",""depends"":[
-  ""Energistics.Etp.v12.Datatypes.Object.ContextInfo"",
-  ""Energistics.Etp.v12.Datatypes.Object.ContextScopeKind"",
-  ""Energistics.Etp.v12.Datatypes.Uuid""
-]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse("{\"type\":\"record\",\"name\":\"SubscriptionInfo\",\"namespace\":\"Energistics.Etp.v12.Datat" +
+				"ypes.Object\",\"fields\":[{\"name\":\"context\",\"type\":{\"type\":\"record\",\"name\":\"Context" +
+				"Info\",\"namespace\":\"Energistics.Etp.v12.Datatypes.Object\",\"fields\":[{\"name\":\"uri\"" +
+				",\"type\":\"string\"},{\"name\":\"depth\",\"type\":\"int\"},{\"name\":\"dataObjectTypes\",\"defau" +
+				"lt\":[],\"type\":{\"type\":\"array\",\"items\":\"string\"}},{\"name\":\"navigableEdges\",\"type\"" +
+				":{\"type\":\"enum\",\"name\":\"RelationshipKind\",\"namespace\":\"Energistics.Etp.v12.Datat" +
+				"ypes.Object\",\"symbols\":[\"Primary\",\"Secondary\",\"Both\"],\"fullName\":\"Energistics.Et" +
+				"p.v12.Datatypes.Object.RelationshipKind\",\"depends\":[]}},{\"name\":\"includeSecondar" +
+				"yTargets\",\"default\":false,\"type\":\"boolean\"},{\"name\":\"includeSecondarySources\",\"d" +
+				"efault\":false,\"type\":\"boolean\"}],\"fullName\":\"Energistics.Etp.v12.Datatypes.Objec" +
+				"t.ContextInfo\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.Object.Relationship" +
+				"Kind\"\r\n]}},{\"name\":\"scope\",\"type\":{\"type\":\"enum\",\"name\":\"ContextScopeKind\",\"name" +
+				"space\":\"Energistics.Etp.v12.Datatypes.Object\",\"symbols\":[\"self\",\"sources\",\"targe" +
+				"ts\",\"sourcesOrSelf\",\"targetsOrSelf\"],\"fullName\":\"Energistics.Etp.v12.Datatypes.O" +
+				"bject.ContextScopeKind\",\"depends\":[]}},{\"name\":\"requestUuid\",\"type\":{\"type\":\"fix" +
+				"ed\",\"name\":\"Uuid\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"size\":16,\"fullNam" +
+				"e\":\"Energistics.Etp.v12.Datatypes.Uuid\",\"depends\":[]}},{\"name\":\"startTime\",\"type" +
+				"\":\"long\"},{\"name\":\"includeObjectData\",\"type\":\"boolean\"},{\"name\":\"format\",\"defaul" +
+				"t\":\"xml\",\"type\":\"string\"}],\"fullName\":\"Energistics.Etp.v12.Datatypes.Object.Subs" +
+				"criptionInfo\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.Object.ContextInfo\"," +
+				"\r\n  \"Energistics.Etp.v12.Datatypes.Object.ContextScopeKind\",\r\n  \"Energistics.Etp" +
+				".v12.Datatypes.Uuid\"\r\n]}");
 		private Energistics.Etp.v12.Datatypes.Object.ContextInfo _context;
 		private Energistics.Etp.v12.Datatypes.Object.ContextScopeKind _scope;
 		private Energistics.Etp.v12.Datatypes.Uuid _requestUuid;

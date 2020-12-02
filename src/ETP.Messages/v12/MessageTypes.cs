@@ -32,21 +32,37 @@ namespace Energistics.Etp.v12
             OpenSession = 2,
             CloseSession = 5,
             RenewSecurityToken = 6,
+            RenewSecurityTokenResponse = 7,
+            Ping = 8,
+            Pong = 9,
             ProtocolException = 1000,
-            Acknowledge = 1001
+            Acknowledge = 1001,
         }
 
         /// <summary>
-        /// An enumeration of Channel Streaming protocol message types.
+        /// An enumeration of ChannelStreaming protocol message types.
         /// </summary>
         public enum ChannelStreaming
-        {           
+        {
             ChannelMetadata = 1,
             ChannelData = 2,
             StartStreaming = 3,
-            StopStreaming = 4
+            StopStreaming = 4,
+            TruncateChannels = 5,
         }
-        
+
+        /// <summary>
+        /// An enumeration of ChannelDataFrame protocol message types.
+        /// </summary>
+        public enum ChannelDataFrame
+        {
+            GetFrameMetadata = 1,
+            GetFrameMetadataResponse = 2,
+            GetFrame = 3,
+            GetFrameResponseHeader = 4,
+            CancelGetFrame = 5,
+            GetFrameResponseRows = 6,
+        }
 
         /// <summary>
         /// An enumeration of Discovery protocol message types.
@@ -55,54 +71,82 @@ namespace Energistics.Etp.v12
         {
             GetResources = 1,
             GetResourcesResponse = 4,
+            GetDeletedResources = 5,
+            GetDeletedResourcesResponse = 6,
+            GetResourcesEdgesResponse = 7,
         }
 
         /// <summary>
         /// An enumeration of Store protocol message types.
         /// </summary>
         public enum Store
-        {            
-            GetDataObjects = 1,            
+        {
+            GetDataObjects = 1,
             PutDataObjects = 2,
             DeleteDataObjects = 3,
             GetDataObjectsResponse = 4,
-            Chunk = 8
+            Chunk = 8,
+            PutDataObjectsResponse = 9,
+            DeleteDataObjectsResponse = 10,
         }
 
         /// <summary>
-        /// An enumeration of Store Notification protocol message types.
+        /// An enumeration of StoreNotification protocol message types.
         /// </summary>
         public enum StoreNotification
         {
-            ObjectChanged= 2,
+            ObjectChanged = 2,
             ObjectDeleted = 3,
             UnsubscribeNotifications = 4,
             ObjectAccessRevoked = 5,
             SubscribeNotifications = 6,
             SubscriptionEnded = 7,
             UnsolicitedStoreNotifications = 8,
-            Chunk = 9
+            Chunk = 9,
+            SubscribeNotificationsResponse = 10,
+            ObjectActiveStatusChanged = 11,
         }
 
         /// <summary>
-        /// An enumeration of Growing Object protocol message types.
+        /// An enumeration of GrowingObject protocol message types.
         /// </summary>
         public enum GrowingObject
         {
             DeleteParts = 1,
-            DeletePartsByRange = 2,
             GetParts = 3,
             GetPartsByRange = 4,
             PutParts = 5,
             GetPartsResponse = 6,
             ReplacePartsByRange = 7,
             GetPartsMetadata = 8,
-            GetPartsMetadataResponse = 9,            
-            GetPartsByRangeResponse = 10
+            GetPartsMetadataResponse = 9,
+            GetPartsByRangeResponse = 10,
+            DeletePartsResponse = 11,
+            PutPartsResponse = 13,
+            GetGrowingDataObjectsHeader = 14,
+            GetGrowingDataObjectsHeaderResponse = 15,
+            PutGrowingDataObjectsHeader = 16,
+            PutGrowingDataObjectsHeaderResponse = 17,
+            ReplacePartsByRangeResponse = 18,
         }
 
         /// <summary>
-        /// An enumeration of Data Array protocol message types.
+        /// An enumeration of GrowingObjectNotification protocol message types.
+        /// </summary>
+        public enum GrowingObjectNotification
+        {
+            PartsChanged = 2,
+            PartsDeleted = 3,
+            UnsubscribePartNotification = 4,
+            PartsReplacedByRange = 6,
+            SubscribePartNotifications = 7,
+            PartSubscriptionEnded = 8,
+            UnsolicitedPartNotifications = 9,
+            SubscribePartNotificationsResponse = 10,
+        }
+
+        /// <summary>
+        /// An enumeration of DataArray protocol message types.
         /// </summary>
         public enum DataArray
         {
@@ -114,48 +158,10 @@ namespace Energistics.Etp.v12
             GetDataArrayMetadata = 6,
             GetDataArrayMetadataResponse = 7,
             GetDataSubarraysResponse = 8,
-            PutUninitializedDataArray = 9            
-        }
-
-        /// <summary>
-        /// An enumeration of ChannelDataLoad protocol message types.
-        /// </summary>
-        public enum ChannelDataLoad
-        {
-            OpenChannels = 1,
-            OpenChannelsResponse = 2,
-            CloseChannel = 3,
-            RealtimeData = 4,
-            ReplaceRange = 6,
-            ChannelClosed = 7
-        }
-
-        /// <summary>
-        /// An enumeration of ChannelSubscribe protocol message types.
-        /// </summary>
-        public enum ChannelSubscribe
-        {         
-            GetChannelMetadata = 1,
-            GetChannelMetadataResponse = 2,
-            SubscribeChannels = 3,
-            RealtimeData = 4,
-            ReplaceRange = 6,
-            UnsubscribeChannels = 7,
-            SubscriptionsStopped = 8,
-            GetRanges = 9,
-            GetRangesResponse = 10,
-            CancelGetRanges = 11,
-        }
-
-        /// <summary>
-        /// An enumeration of Dataspace protocol message types.
-        /// </summary>
-        public enum Dataspace
-        {
-            GetDataspaces = 1,
-            GetDataspacesResponse = 2,
-            PutDataspaces = 3,
-            DeleteDataspaces = 4,            
+            PutUninitializedDataArrays = 9,
+            PutDataArraysResponse = 10,
+            PutDataSubarraysResponse = 11,
+            PutUninitializedDataArraysResponse = 12,
         }
 
         /// <summary>
@@ -164,22 +170,17 @@ namespace Energistics.Etp.v12
         public enum DiscoveryQuery
         {
             FindResources = 1,
-            FindResourcesResponse = 2
+            FindResourcesResponse = 2,
         }
 
         /// <summary>
-        /// An enumeration of GrowingObjectNotification protocol message types.
+        /// An enumeration of StoreQuery protocol message types.
         /// </summary>
-        public enum GrowingObjectNotification
+        public enum StoreQuery
         {
-            PartsChanged = 2,
-            PartsDeleted = 3,
-            UnsubscribePartNotification = 4,
-            PartsDeletedByRange = 5,
-            PartsReplacedByRange = 6,
-            SubscribePartNotification = 7,
-            PartSubscriptionEnded = 8,
-            UnsolicitedPartNotifications = 9
+            FindDataObjects = 1,
+            FindDataObjectsResponse = 2,
+            Chunk = 3,
         }
 
         /// <summary>
@@ -188,26 +189,7 @@ namespace Energistics.Etp.v12
         public enum GrowingObjectQuery
         {
             FindParts = 1,
-            FindPartsResponse = 2
-        }
-
-        /// <summary>
-        /// An enumeration of StoreQuery protocol message types.
-        /// </summary>
-        public enum StoreQuery
-        {
-            FindObjects = 1,
-            FindObjectsResponse = 2,
-            Chunk = 3
-        }
-
-        /// <summary>
-        /// An enumeration of SupportedTypes protocol message types.
-        /// </summary>
-        public enum SupportedTypes
-        {
-            GetSupportedTypes = 1,
-            GetSupportedTypesResponse = 2
+            FindPartsResponse = 2,
         }
 
         /// <summary>
@@ -219,28 +201,88 @@ namespace Energistics.Etp.v12
             StartTransactionResponse = 2,
             CommitTransaction = 3,
             RollbackTransaction = 4,
-            CommitTransactionResponse = 5
+            CommitTransactionResponse = 5,
+            RollbackTransactionResponse = 6,
         }
 
         /// <summary>
-        /// An enumeration of Witsml Soap protocol message types.
+        /// An enumeration of ChannelSubscribe protocol message types.
+        /// </summary>
+        public enum ChannelSubscribe
+        {
+            GetChannelMetadata = 1,
+            GetChannelMetadataResponse = 2,
+            SubscribeChannels = 3,
+            ChannelData = 4,
+            RangeReplaced = 6,
+            UnsubscribeChannels = 7,
+            SubscriptionsStopped = 8,
+            GetRanges = 9,
+            GetRangesResponse = 10,
+            CancelGetRanges = 11,
+            SubscribeChannelsResponse = 12,
+            ChannelsTruncated = 13,
+            GetChangeAnnotations = 14,
+            GetChangeAnnotationsResponse = 15,
+        }
+
+        /// <summary>
+        /// An enumeration of ChannelDataLoad protocol message types.
+        /// </summary>
+        public enum ChannelDataLoad
+        {
+            OpenChannels = 1,
+            OpenChannelsResponse = 2,
+            CloseChannels = 3,
+            ChannelData = 4,
+            ReplaceRange = 6,
+            ChannelsClosed = 7,
+            ReplaceRangeResponse = 8,
+            TruncateChannels = 9,
+            TruncateChannelsResponse = 10,
+        }
+
+        /// <summary>
+        /// An enumeration of Dataspace protocol message types.
+        /// </summary>
+        public enum Dataspace
+        {
+            GetDataspaces = 1,
+            GetDataspacesResponse = 2,
+            PutDataspaces = 3,
+            DeleteDataspaces = 4,
+            DeleteDataspacesResponse = 5,
+            PutDataspacesResponse = 6,
+        }
+
+        /// <summary>
+        /// An enumeration of SupportedTypes protocol message types.
+        /// </summary>
+        public enum SupportedTypes
+        {
+            GetSupportedTypes = 1,
+            GetSupportedTypesResponse = 2,
+        }
+
+        /// <summary>
+        /// An enumeration of WitsmlSoap protocol message types.
         /// </summary>
         public enum WitsmlSoap
         {
             WMLS_AddToStore = 1,
-            WMLS_AddToStoreResponse,
-            WMLS_DeleteFromStore,
-            WMLS_DeleteFromStoreResponse,
-            WMLS_GetBaseMsg,
-            WMLS_GetBaseMsgResponse,
-            WMLS_GetCap,
-            WMLS_GetCapResponse,
-            WMLS_GetFromStore,
-            WMLS_GetFromStoreResponse,
-            WMLS_GetVersion,
-            WMLS_GetVersionResponse,
-            WMLS_UpdateInStore,
-            WMLS_UpdateInStoreResponse
+            WMLS_AddToStoreResponse = 2,
+            WMLS_DeleteFromStore = 3,
+            WMLS_DeleteFromStoreResponse = 4,
+            WMLS_GetBaseMsg = 5,
+            WMLS_GetBaseMsgResponse = 6,
+            WMLS_GetCap = 7,
+            WMLS_GetCapResponse = 8,
+            WMLS_GetFromStore = 9,
+            WMLS_GetFromStoreResponse = 10,
+            WMLS_GetVersion = 11,
+            WMLS_GetVersionResponse = 12,
+            WMLS_UpdateInStore = 13,
+            WMLS_UpdateInStoreResponse = 14,
         }
     }
 }

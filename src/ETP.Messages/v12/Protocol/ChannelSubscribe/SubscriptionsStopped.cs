@@ -15,7 +15,7 @@ namespace Energistics.Etp.v12.Protocol.ChannelSubscribe
 	
 	public partial class SubscriptionsStopped : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""SubscriptionsStopped"",""namespace"":""Energistics.Etp.v12.Protocol.ChannelSubscribe"",""fields"":[{""name"":""channelIds"",""default"":{},""type"":{""type"":""map"",""values"":""long""}}],""protocol"":""21"",""messageType"":""8"",""senderRole"":""producer"",""protocolRoles"":""producer,consumer"",""multipartFlag"":true,""fullName"":""Energistics.Etp.v12.Protocol.ChannelSubscribe.SubscriptionsStopped"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""SubscriptionsStopped"",""namespace"":""Energistics.Etp.v12.Protocol.ChannelSubscribe"",""fields"":[{""name"":""channelIds"",""default"":{},""type"":{""type"":""map"",""values"":""long""}}],""protocol"":""21"",""messageType"":""8"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":true,""fullName"":""Energistics.Etp.v12.Protocol.ChannelSubscribe.SubscriptionsStopped"",""depends"":[]}");
 		private IDictionary<string,System.Int64> _channelIds;
 		public virtual Schema Schema
 		{

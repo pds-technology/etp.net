@@ -15,10 +15,15 @@ namespace Energistics.Etp.v12.Datatypes.Object
 	
 	public partial class ContextInfo : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""ContextInfo"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""depth"",""type"":""int""},{""name"":""dataObjectTypes"",""default"":[],""type"":{""type"":""array"",""items"":""string""}}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.ContextInfo"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""ContextInfo"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""depth"",""type"":""int""},{""name"":""dataObjectTypes"",""default"":[],""type"":{""type"":""array"",""items"":""string""}},{""name"":""navigableEdges"",""type"":{""type"":""enum"",""name"":""RelationshipKind"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""symbols"":[""Primary"",""Secondary"",""Both""],""fullName"":""Energistics.Etp.v12.Datatypes.Object.RelationshipKind"",""depends"":[]}},{""name"":""includeSecondaryTargets"",""default"":false,""type"":""boolean""},{""name"":""includeSecondarySources"",""default"":false,""type"":""boolean""}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.ContextInfo"",""depends"":[
+  ""Energistics.Etp.v12.Datatypes.Object.RelationshipKind""
+]}");
 		private string _uri;
 		private int _depth;
 		private IList<System.String> _dataObjectTypes;
+		private Energistics.Etp.v12.Datatypes.Object.RelationshipKind _navigableEdges;
+		private bool _includeSecondaryTargets;
+		private bool _includeSecondarySources;
 		public virtual Schema Schema
 		{
 			get
@@ -59,6 +64,39 @@ namespace Energistics.Etp.v12.Datatypes.Object
 				this._dataObjectTypes = value;
 			}
 		}
+		public Energistics.Etp.v12.Datatypes.Object.RelationshipKind NavigableEdges
+		{
+			get
+			{
+				return this._navigableEdges;
+			}
+			set
+			{
+				this._navigableEdges = value;
+			}
+		}
+		public bool IncludeSecondaryTargets
+		{
+			get
+			{
+				return this._includeSecondaryTargets;
+			}
+			set
+			{
+				this._includeSecondaryTargets = value;
+			}
+		}
+		public bool IncludeSecondarySources
+		{
+			get
+			{
+				return this._includeSecondarySources;
+			}
+			set
+			{
+				this._includeSecondarySources = value;
+			}
+		}
 		public virtual object Get(int fieldPos)
 		{
 			switch (fieldPos)
@@ -66,6 +104,9 @@ namespace Energistics.Etp.v12.Datatypes.Object
 			case 0: return this._uri;
 			case 1: return this._depth;
 			case 2: return this._dataObjectTypes;
+			case 3: return this._navigableEdges;
+			case 4: return this._includeSecondaryTargets;
+			case 5: return this._includeSecondarySources;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -76,6 +117,9 @@ namespace Energistics.Etp.v12.Datatypes.Object
 			case 0: this._uri = (System.String)fieldValue; break;
 			case 1: this._depth = (System.Int32)fieldValue; break;
 			case 2: this._dataObjectTypes = (IList<System.String>)fieldValue; break;
+			case 3: this._navigableEdges = (Energistics.Etp.v12.Datatypes.Object.RelationshipKind)fieldValue; break;
+			case 4: this._includeSecondaryTargets = (System.Boolean)fieldValue; break;
+			case 5: this._includeSecondarySources = (System.Boolean)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

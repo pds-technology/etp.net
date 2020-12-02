@@ -32,10 +32,10 @@ namespace Energistics.Etp.v12.Protocol.ChannelSubscribe
 				"12.Datatypes.IndexValue\",\r\n  \"Energistics.Etp.v12.Datatypes.IndexValue\"\r\n]}}],\"f" +
 				"ullName\":\"Energistics.Etp.v12.Datatypes.ChannelData.ChannelRangeInfo\",\"depends\":" +
 				"[\r\n  \"Energistics.Etp.v12.Datatypes.Object.IndexInterval\"\r\n]}}}],\"protocol\":\"21\"" +
-				",\"messageType\":\"9\",\"senderRole\":\"consumer\",\"protocolRoles\":\"producer,consumer\",\"" +
-				"multipartFlag\":false,\"fullName\":\"Energistics.Etp.v12.Protocol.ChannelSubscribe.G" +
-				"etRanges\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.Uuid\",\r\n  \"Energistics.E" +
-				"tp.v12.Datatypes.ChannelData.ChannelRangeInfo\"\r\n]}");
+				",\"messageType\":\"9\",\"senderRole\":\"customer\",\"protocolRoles\":\"store,customer\",\"mul" +
+				"tipartFlag\":false,\"fullName\":\"Energistics.Etp.v12.Protocol.ChannelSubscribe.GetR" +
+				"anges\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.Uuid\",\r\n  \"Energistics.Etp." +
+				"v12.Datatypes.ChannelData.ChannelRangeInfo\"\r\n]}");
 		private Energistics.Etp.v12.Datatypes.Uuid _requestUuid;
 		private IList<Energistics.Etp.v12.Datatypes.ChannelData.ChannelRangeInfo> _channelRanges;
 		public virtual Schema Schema

@@ -19,6 +19,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using Energistics.Etp.Common.Datatypes;
 using Energistics.Etp.Common.Datatypes.ChannelData;
@@ -59,7 +60,7 @@ namespace Energistics.Etp.v12
                 int IChannelMetadataRecord.Status
                 {
                     get { return (int)Status; }
-                    set { Status = (ChannelStatusKind)value; }
+                    set { Status = (ActiveStatusKind)value; }
                 }
 
                 [JsonIgnore]
@@ -113,6 +114,16 @@ namespace Energistics.Etp.v12
                 {
                     get { return AttributeMetadata as IList; }
                     set { AttributeMetadata = value as IList<AttributeMetadataRecord>; }
+                }
+
+                string IChannelMetadataRecord.DataType
+                {
+                    get { return this.DataType.ToString("F"); }
+                    set
+                    {
+                        Enum.TryParse<DataValueType>(value, out var dataType);
+                        this.DataType = dataType;
+                    }
                 }
             }
 
@@ -372,6 +383,12 @@ namespace Energistics.Etp.v12
                 {
                     get { return LastChanged; }
                     set { LastChanged = value ?? 0L; }
+                }
+
+                IDictionary<string, IDataValue> IResource.CustomData
+                {
+                    get { return this.CustomData?.Select(kvp => new KeyValuePair<string, IDataValue>(kvp.Key, kvp.Value)).ToDictionary(kvp => kvp.Key, kvp => kvp.Value); }
+                    set { CustomData = value == null ? null : value.Select(kvp => new KeyValuePair<string, DataValue>(kvp.Key, new DataValue { Item = kvp.Value.Item })).ToDictionary(kvp => kvp.Key, kvp => kvp.Value); }
                 }
             }
 

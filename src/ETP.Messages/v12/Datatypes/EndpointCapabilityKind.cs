@@ -19,9 +19,9 @@ namespace Energistics.Etp.v12.Datatypes
 		MaxPartSize,
 		MaxConcurrentMultipart,
 		MaxMultipartMessageTimeInterval,
-		MaxMultipartTotalSize,
 		MaxWebSocketFramePayloadSize,
 		MaxWebSocketMessagePayloadSize,
 		SupportsAlternateRequestUris,
+		SupportsMessageHeaderExtension,
 	}
 }

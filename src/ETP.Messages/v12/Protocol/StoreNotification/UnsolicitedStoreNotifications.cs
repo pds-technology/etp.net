@@ -21,22 +21,28 @@ namespace Energistics.Etp.v12.Protocol.StoreNotification
 				"rgistics.Etp.v12.Datatypes.Object\",\"fields\":[{\"name\":\"context\",\"type\":{\"type\":\"r" +
 				"ecord\",\"name\":\"ContextInfo\",\"namespace\":\"Energistics.Etp.v12.Datatypes.Object\",\"" +
 				"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"depth\",\"type\":\"int\"},{\"name\":\"d" +
-				"ataObjectTypes\",\"default\":[],\"type\":{\"type\":\"array\",\"items\":\"string\"}}],\"fullNam" +
-				"e\":\"Energistics.Etp.v12.Datatypes.Object.ContextInfo\",\"depends\":[]}},{\"name\":\"sc" +
-				"ope\",\"type\":{\"type\":\"enum\",\"name\":\"ContextScopeKind\",\"namespace\":\"Energistics.Et" +
-				"p.v12.Datatypes.Object\",\"symbols\":[\"self\",\"sources\",\"targets\",\"sourcesOrSelf\",\"t" +
-				"argetsOrSelf\"],\"fullName\":\"Energistics.Etp.v12.Datatypes.Object.ContextScopeKind" +
-				"\",\"depends\":[]}},{\"name\":\"requestUuid\",\"type\":{\"type\":\"fixed\",\"name\":\"Uuid\",\"nam" +
-				"espace\":\"Energistics.Etp.v12.Datatypes\",\"size\":16,\"fullName\":\"Energistics.Etp.v1" +
-				"2.Datatypes.Uuid\",\"depends\":[]}},{\"name\":\"startTime\",\"type\":\"long\"},{\"name\":\"inc" +
-				"ludeObjectData\",\"type\":\"boolean\"},{\"name\":\"format\",\"default\":\"xml\",\"type\":\"strin" +
-				"g\"}],\"fullName\":\"Energistics.Etp.v12.Datatypes.Object.SubscriptionInfo\",\"depends" +
-				"\":[\r\n  \"Energistics.Etp.v12.Datatypes.Object.ContextInfo\",\r\n  \"Energistics.Etp.v" +
-				"12.Datatypes.Object.ContextScopeKind\",\r\n  \"Energistics.Etp.v12.Datatypes.Uuid\"\r\n" +
-				"]}}}],\"protocol\":\"5\",\"messageType\":\"8\",\"senderRole\":\"store\",\"protocolRoles\":\"sto" +
-				"re,customer\",\"multipartFlag\":false,\"fullName\":\"Energistics.Etp.v12.Protocol.Stor" +
-				"eNotification.UnsolicitedStoreNotifications\",\"depends\":[\r\n  \"Energistics.Etp.v12" +
-				".Datatypes.Object.SubscriptionInfo\"\r\n]}");
+				"ataObjectTypes\",\"default\":[],\"type\":{\"type\":\"array\",\"items\":\"string\"}},{\"name\":\"" +
+				"navigableEdges\",\"type\":{\"type\":\"enum\",\"name\":\"RelationshipKind\",\"namespace\":\"Ene" +
+				"rgistics.Etp.v12.Datatypes.Object\",\"symbols\":[\"Primary\",\"Secondary\",\"Both\"],\"ful" +
+				"lName\":\"Energistics.Etp.v12.Datatypes.Object.RelationshipKind\",\"depends\":[]}},{\"" +
+				"name\":\"includeSecondaryTargets\",\"default\":false,\"type\":\"boolean\"},{\"name\":\"inclu" +
+				"deSecondarySources\",\"default\":false,\"type\":\"boolean\"}],\"fullName\":\"Energistics.E" +
+				"tp.v12.Datatypes.Object.ContextInfo\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatyp" +
+				"es.Object.RelationshipKind\"\r\n]}},{\"name\":\"scope\",\"type\":{\"type\":\"enum\",\"name\":\"C" +
+				"ontextScopeKind\",\"namespace\":\"Energistics.Etp.v12.Datatypes.Object\",\"symbols\":[\"" +
+				"self\",\"sources\",\"targets\",\"sourcesOrSelf\",\"targetsOrSelf\"],\"fullName\":\"Energisti" +
+				"cs.Etp.v12.Datatypes.Object.ContextScopeKind\",\"depends\":[]}},{\"name\":\"requestUui" +
+				"d\",\"type\":{\"type\":\"fixed\",\"name\":\"Uuid\",\"namespace\":\"Energistics.Etp.v12.Datatyp" +
+				"es\",\"size\":16,\"fullName\":\"Energistics.Etp.v12.Datatypes.Uuid\",\"depends\":[]}},{\"n" +
+				"ame\":\"startTime\",\"type\":\"long\"},{\"name\":\"includeObjectData\",\"type\":\"boolean\"},{\"" +
+				"name\":\"format\",\"default\":\"xml\",\"type\":\"string\"}],\"fullName\":\"Energistics.Etp.v12" +
+				".Datatypes.Object.SubscriptionInfo\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatype" +
+				"s.Object.ContextInfo\",\r\n  \"Energistics.Etp.v12.Datatypes.Object.ContextScopeKind" +
+				"\",\r\n  \"Energistics.Etp.v12.Datatypes.Uuid\"\r\n]}}}],\"protocol\":\"5\",\"messageType\":\"" +
+				"8\",\"senderRole\":\"store\",\"protocolRoles\":\"store,customer\",\"multipartFlag\":false,\"" +
+				"fullName\":\"Energistics.Etp.v12.Protocol.StoreNotification.UnsolicitedStoreNotifi" +
+				"cations\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.Object.SubscriptionInfo\"\r" +
+				"\n]}");
 		private IList<Energistics.Etp.v12.Datatypes.Object.SubscriptionInfo> _subscriptions;
 		public virtual Schema Schema
 		{

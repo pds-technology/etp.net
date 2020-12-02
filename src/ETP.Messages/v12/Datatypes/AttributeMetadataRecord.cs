@@ -15,10 +15,12 @@ namespace Energistics.Etp.v12.Datatypes
 	
 	public partial class AttributeMetadataRecord : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""AttributeMetadataRecord"",""namespace"":""Energistics.Etp.v12.Datatypes"",""fields"":[{""name"":""attributeId"",""type"":""int""},{""name"":""attributeName"",""type"":""string""},{""name"":""dataType"",""type"":""string""},{""name"":""description"",""type"":""string""}],""fullName"":""Energistics.Etp.v12.Datatypes.AttributeMetadataRecord"",""depends"":[]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""AttributeMetadataRecord"",""namespace"":""Energistics.Etp.v12.Datatypes"",""fields"":[{""name"":""attributeId"",""type"":""int""},{""name"":""attributeName"",""type"":""string""},{""name"":""dataType"",""type"":{""type"":""enum"",""name"":""DataValueType"",""namespace"":""Energistics.Etp.v12.Datatypes"",""symbols"":[""typeBoolean"",""typeInt"",""typeLong"",""typeFloat"",""typeDouble"",""typeString"",""typeArrayOfBoolean"",""typeArrayOfInt"",""typeArrayOfLong"",""typeArrayOfFloat"",""typeArrayOfDouble"",""typeArrayOfString"",""typeBytes""],""fullName"":""Energistics.Etp.v12.Datatypes.DataValueType"",""depends"":[]}},{""name"":""description"",""type"":""string""}],""fullName"":""Energistics.Etp.v12.Datatypes.AttributeMetadataRecord"",""depends"":[
+  ""Energistics.Etp.v12.Datatypes.DataValueType""
+]}");
 		private int _attributeId;
 		private string _attributeName;
-		private string _dataType;
+		private Energistics.Etp.v12.Datatypes.DataValueType _dataType;
 		private string _description;
 		public virtual Schema Schema
 		{
@@ -49,7 +51,7 @@ namespace Energistics.Etp.v12.Datatypes
 				this._attributeName = value;
 			}
 		}
-		public string DataType
+		public Energistics.Etp.v12.Datatypes.DataValueType DataType
 		{
 			get
 			{
@@ -88,7 +90,7 @@ namespace Energistics.Etp.v12.Datatypes
 			{
 			case 0: this._attributeId = (System.Int32)fieldValue; break;
 			case 1: this._attributeName = (System.String)fieldValue; break;
-			case 2: this._dataType = (System.String)fieldValue; break;
+			case 2: this._dataType = (Energistics.Etp.v12.Datatypes.DataValueType)fieldValue; break;
 			case 3: this._description = (System.String)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};

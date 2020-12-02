@@ -18,14 +18,18 @@
 
 namespace Energistics.Etp.v12
 {
-	public enum Protocols
-	{
-		Core = 0,
-		ChannelStreaming = 1,		
-		Discovery = 3,
-		Store = 4,
-		StoreNotification = 5,
-		GrowingObject = 6,
+    /// <summary>
+    /// An enumeration of ETP protocols.
+    /// </summary>
+    public enum Protocols
+    {
+        Core = 0,
+        ChannelStreaming = 1,
+        ChannelDataFrame = 2,
+        Discovery = 3,
+        Store = 4,
+        StoreNotification = 5,
+        GrowingObject = 6,
         GrowingObjectNotification = 7,
         DataArray = 9,
         DiscoveryQuery = 13,
@@ -35,7 +39,7 @@ namespace Energistics.Etp.v12
         ChannelSubscribe = 21,
         ChannelDataLoad = 22,
         Dataspace = 24,
-		SupportedTypes = 25,
+        SupportedTypes = 25,
         WitsmlSoap = 2100,
     }
 }

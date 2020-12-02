@@ -24,18 +24,70 @@ namespace Energistics.Etp.v12.Protocol.Store
 				",{\"name\":\"dataObjectType\",\"type\":\"string\"},{\"name\":\"name\",\"type\":\"string\"},{\"nam" +
 				"e\":\"sourceCount\",\"default\":null,\"type\":[\"null\",\"int\"]},{\"name\":\"targetCount\",\"de" +
 				"fault\":null,\"type\":[\"null\",\"int\"]},{\"name\":\"lastChanged\",\"type\":\"long\"},{\"name\":" +
-				"\"customData\",\"default\":{},\"type\":{\"type\":\"map\",\"values\":\"string\"}}],\"fullName\":\"" +
-				"Energistics.Etp.v12.Datatypes.Object.Resource\",\"depends\":[]}},{\"name\":\"format\",\"" +
-				"default\":\"xml\",\"type\":\"string\"},{\"name\":\"blobId\",\"type\":[\"null\",{\"type\":\"fixed\"," +
-				"\"name\":\"Uuid\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"size\":16,\"fullName\":\"" +
-				"Energistics.Etp.v12.Datatypes.Uuid\",\"depends\":[]}]},{\"name\":\"data\",\"default\":\"\"," +
-				"\"type\":\"bytes\"}],\"fullName\":\"Energistics.Etp.v12.Datatypes.Object.DataObject\",\"d" +
-				"epends\":[\r\n  \"Energistics.Etp.v12.Datatypes.Object.Resource\",\r\n  \"Energistics.Et" +
-				"p.v12.Datatypes.Uuid\"\r\n]}}}],\"protocol\":\"4\",\"messageType\":\"2\",\"senderRole\":\"cust" +
-				"omer\",\"protocolRoles\":\"store,customer\",\"multipartFlag\":false,\"fullName\":\"Energis" +
-				"tics.Etp.v12.Protocol.Store.PutDataObjects\",\"depends\":[\r\n  \"Energistics.Etp.v12." +
-				"Datatypes.Object.DataObject\"\r\n]}");
+				"\"storeLastWrite\",\"type\":\"long\"},{\"name\":\"customData\",\"default\":{},\"type\":{\"type\"" +
+				":\"map\",\"values\":{\"type\":\"record\",\"name\":\"DataValue\",\"namespace\":\"Energistics.Etp" +
+				".v12.Datatypes\",\"fields\":[{\"name\":\"item\",\"type\":[\"null\",\"boolean\",\"int\",\"long\",\"" +
+				"float\",\"double\",\"string\",{\"type\":\"record\",\"name\":\"ArrayOfBoolean\",\"namespace\":\"E" +
+				"nergistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"values\",\"type\":{\"type\":\"array\"," +
+				"\"items\":\"boolean\"}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.ArrayOfBoolean\",\"" +
+				"depends\":[]},{\"type\":\"record\",\"name\":\"ArrayOfNullableBoolean\",\"namespace\":\"Energ" +
+				"istics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"values\",\"type\":{\"type\":\"array\",\"ite" +
+				"ms\":[\"null\",\"boolean\"]}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.ArrayOfNulla" +
+				"bleBoolean\",\"depends\":[]},{\"type\":\"record\",\"name\":\"ArrayOfInt\",\"namespace\":\"Ener" +
+				"gistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"values\",\"type\":{\"type\":\"array\",\"it" +
+				"ems\":\"int\"}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.ArrayOfInt\",\"depends\":[]" +
+				"},{\"type\":\"record\",\"name\":\"ArrayOfNullableInt\",\"namespace\":\"Energistics.Etp.v12." +
+				"Datatypes\",\"fields\":[{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":[\"null\",\"in" +
+				"t\"]}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.ArrayOfNullableInt\",\"depends\":[" +
+				"]},{\"type\":\"record\",\"name\":\"ArrayOfLong\",\"namespace\":\"Energistics.Etp.v12.Dataty" +
+				"pes\",\"fields\":[{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":\"long\"}}],\"fullNa" +
+				"me\":\"Energistics.Etp.v12.Datatypes.ArrayOfLong\",\"depends\":[]},{\"type\":\"record\",\"" +
+				"name\":\"ArrayOfNullableLong\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fields\"" +
+				":[{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":[\"null\",\"long\"]}}],\"fullName\":" +
+				"\"Energistics.Etp.v12.Datatypes.ArrayOfNullableLong\",\"depends\":[]},{\"type\":\"recor" +
+				"d\",\"name\":\"ArrayOfFloat\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{" +
+				"\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":\"float\"}}],\"fullName\":\"Energistic" +
+				"s.Etp.v12.Datatypes.ArrayOfFloat\",\"depends\":[]},{\"type\":\"record\",\"name\":\"ArrayOf" +
+				"Double\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"values\",\"" +
+				"type\":{\"type\":\"array\",\"items\":\"double\"}}],\"fullName\":\"Energistics.Etp.v12.Dataty" +
+				"pes.ArrayOfDouble\",\"depends\":[]},{\"type\":\"record\",\"name\":\"ArrayOfString\",\"namesp" +
+				"ace\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"values\",\"type\":{\"type\":\"" +
+				"array\",\"items\":\"string\"}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.ArrayOfStri" +
+				"ng\",\"depends\":[]},\"bytes\",{\"type\":\"record\",\"name\":\"AnySparseArray\",\"namespace\":\"" +
+				"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"slices\",\"type\":{\"type\":\"array\"" +
+				",\"items\":{\"type\":\"record\",\"name\":\"AnySubarray\",\"namespace\":\"Energistics.Etp.v12." +
+				"Datatypes\",\"fields\":[{\"name\":\"start\",\"type\":\"long\"},{\"name\":\"slice\",\"type\":{\"typ" +
+				"e\":\"record\",\"name\":\"AnyArray\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"field" +
+				"s\":[{\"name\":\"item\",\"type\":[\"ArrayOfBoolean\",\"ArrayOfInt\",\"ArrayOfLong\",\"ArrayOfF" +
+				"loat\",\"ArrayOfDouble\",\"ArrayOfString\",\"bytes\"]}],\"fullName\":\"Energistics.Etp.v12" +
+				".Datatypes.AnyArray\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfBoolea" +
+				"n\",\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfInt\",\r\n  \"Energistics.Etp.v12.Datat" +
+				"ypes.ArrayOfLong\",\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfFloat\",\r\n  \"Energist" +
+				"ics.Etp.v12.Datatypes.ArrayOfDouble\",\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfS" +
+				"tring\"\r\n]}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.AnySubarray\",\"depends\":[\r" +
+				"\n  \"Energistics.Etp.v12.Datatypes.AnyArray\"\r\n]}}}],\"fullName\":\"Energistics.Etp.v" +
+				"12.Datatypes.AnySparseArray\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.AnySu" +
+				"barray\"\r\n]}]}],\"fullName\":\"Energistics.Etp.v12.Datatypes.DataValue\",\"depends\":[\r" +
+				"\n  \"Energistics.Etp.v12.Datatypes.ArrayOfBoolean\",\r\n  \"Energistics.Etp.v12.Datat" +
+				"ypes.ArrayOfNullableBoolean\",\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfInt\",\r\n  " +
+				"\"Energistics.Etp.v12.Datatypes.ArrayOfNullableInt\",\r\n  \"Energistics.Etp.v12.Data" +
+				"types.ArrayOfLong\",\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfNullableLong\",\r\n  \"" +
+				"Energistics.Etp.v12.Datatypes.ArrayOfFloat\",\r\n  \"Energistics.Etp.v12.Datatypes.A" +
+				"rrayOfDouble\",\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfString\",\r\n  \"Energistics" +
+				".Etp.v12.Datatypes.AnySparseArray\"\r\n]}}}],\"fullName\":\"Energistics.Etp.v12.Dataty" +
+				"pes.Object.Resource\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.DataValue\"\r\n]" +
+				"}},{\"name\":\"format\",\"default\":\"xml\",\"type\":\"string\"},{\"name\":\"blobId\",\"type\":[\"n" +
+				"ull\",{\"type\":\"fixed\",\"name\":\"Uuid\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"" +
+				"size\":16,\"fullName\":\"Energistics.Etp.v12.Datatypes.Uuid\",\"depends\":[]}]},{\"name\"" +
+				":\"data\",\"default\":\"\",\"type\":\"bytes\"}],\"fullName\":\"Energistics.Etp.v12.Datatypes." +
+				"Object.DataObject\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.Object.Resource" +
+				"\",\r\n  \"Energistics.Etp.v12.Datatypes.Uuid\"\r\n]}}},{\"name\":\"pruneContainedObjects\"" +
+				",\"default\":false,\"type\":\"boolean\"}],\"protocol\":\"4\",\"messageType\":\"2\",\"senderRole" +
+				"\":\"customer\",\"protocolRoles\":\"store,customer\",\"multipartFlag\":true,\"fullName\":\"E" +
+				"nergistics.Etp.v12.Protocol.Store.PutDataObjects\",\"depends\":[\r\n  \"Energistics.Et" +
+				"p.v12.Datatypes.Object.DataObject\"\r\n]}");
 		private IDictionary<string,Energistics.Etp.v12.Datatypes.Object.DataObject> _dataObjects;
+		private bool _pruneContainedObjects;
 		public virtual Schema Schema
 		{
 			get
@@ -54,11 +106,23 @@ namespace Energistics.Etp.v12.Protocol.Store
 				this._dataObjects = value;
 			}
 		}
+		public bool PruneContainedObjects
+		{
+			get
+			{
+				return this._pruneContainedObjects;
+			}
+			set
+			{
+				this._pruneContainedObjects = value;
+			}
+		}
 		public virtual object Get(int fieldPos)
 		{
 			switch (fieldPos)
 			{
 			case 0: return this._dataObjects;
+			case 1: return this._pruneContainedObjects;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -67,6 +131,7 @@ namespace Energistics.Etp.v12.Protocol.Store
 			switch (fieldPos)
 			{
 			case 0: this._dataObjects = (IDictionary<string,Energistics.Etp.v12.Datatypes.Object.DataObject>)fieldValue; break;
+			case 1: this._pruneContainedObjects = (System.Boolean)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

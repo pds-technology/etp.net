@@ -1,39 +1,39 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1A788A14-70D7-4B2B-96A3-086C86D0C925}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Energistics.Etp</RootNamespace>
-    <AssemblyName>ETP.Messages</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <TargetFrameworks>netstandard2.0;net40</TargetFrameworks>
+    <AssemblyTitle>Energistics Transfer Protocol for .NET</AssemblyTitle>
+    <Company>Energistics</Company>
+    <Product>Energistics Transfer Protocol</Product>
+    <Description>The Energistics Transfer Protocol (ETP) is a specification for an asynchronous message-based data transfer standard used by the Energistics family data formats.</Description>
+    <Copyright>Copyright © 2019</Copyright>
+    <Version>1.6.0-dev20</Version>
+    <AssemblyVersion>1.6.0.0</AssemblyVersion>
+    <FileVersion>1.6.0.0</FileVersion>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <Authors>Welly Tambunan, William McKenzie, Bobby Diaz</Authors>
+    <PackageIconUrl>https://bitbucket.org/account/energistics/avatar/</PackageIconUrl>
+    <PackageId>ETP</PackageId>
+    <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0.html</PackageLicenseUrl>
+    <PackageProjectUrl>https://bitbucket.org/energistics/etp.net</PackageProjectUrl>
+    <PackageTags>Library</PackageTags>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
     <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
     <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Avro, Version=0.9.0.0, Culture=neutral, PublicKeyToken=b1248d7eeb9d0814, processorArchitecture=MSIL">
-      <HintPath>$(SolutionDir)\packages\Apache.Avro.1.7.7.2\lib\Avro.dll</HintPath>
+    <PackageReference Include="Apache.Avro" Version="1.9.0" />
+    <PackageReference Include="log4net" Version="2.0.8" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Avro, Version=1.9.0.0, Culture=neutral, PublicKeyToken=b1248d7eeb9d0814, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)\packages\Apache.Avro.1.9.0\lib\net40\Avro.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>$(SolutionDir)\packages\log4net.2.0.8\lib\net40-full\log4net.dll</HintPath>
@@ -42,287 +42,17 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>$(SolutionDir)\packages\Newtonsoft.Json.12.0.2\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Common\Datatypes\ChannelData\IChannelMetadataRecord.cs" />
-    <Compile Include="Common\Datatypes\ChannelData\IChannelRangeInfo.cs" />
-    <Compile Include="Common\Datatypes\ChannelData\IChannelStreamingInfo.cs" />
-    <Compile Include="Common\Datatypes\ChannelData\IDataItem.cs" />
-    <Compile Include="Common\Datatypes\ChannelData\IIndexMetadataRecord.cs" />
-    <Compile Include="Common\Datatypes\ChannelData\IStreamingStartIndex.cs" />
-    <Compile Include="Common\Datatypes\EtpContentType.cs" />
-    <Compile Include="Common\Datatypes\EtpDataObjectType.cs" />
-    <Compile Include="Common\Datatypes\IDataObjectType.cs" />
-    <Compile Include="Common\Datatypes\IDataAttribute.cs" />
-    <Compile Include="Common\Datatypes\IVersion.cs" />
-    <Compile Include="Common\Datatypes\IErrorInfo.cs" />
-    <Compile Include="Common\Datatypes\IIndexValue.cs" />
-    <Compile Include="Common\Datatypes\IDataValue.cs" />
-    <Compile Include="Common\Datatypes\IAnyArray.cs" />
-    <Compile Include="Common\Datatypes\IEtpArray.cs" />
-    <Compile Include="Common\Datatypes\IMessageHeader.cs" />
-    <Compile Include="Common\Datatypes\ISupportedProtocol.cs" />
-    <Compile Include="Common\Datatypes\Object\IObjectPart.cs" />
-    <Compile Include="Common\Datatypes\Object\IResource.cs" />
-    <Compile Include="Common\Datatypes\Object\IDataObject.cs" />
-    <Compile Include="v12\Datatypes\AnyArrayType.cs" />
-    <Compile Include="v12\Datatypes\ArrayOfString.cs" />
-    <Compile Include="v12\Datatypes\ChannelData\ChannelIndexKind.cs" />
-    <Compile Include="v12\Datatypes\ChannelData\ChannelStatusKind.cs" />
-    <Compile Include="v12\Datatypes\ChannelData\ChannelSubscribeInfo.cs" />
-    <Compile Include="v12\Datatypes\ChannelData\IndexDirection.cs" />
-    <Compile Include="v12\Datatypes\ChannelData\OpenChannelInfo.cs" />
-    <Compile Include="v12\Datatypes\ChannelData\Role.cs" />
-    <Compile Include="v12\Datatypes\DataArrayTypes\DataArray.cs" />
-    <Compile Include="v12\Datatypes\DataArrayTypes\DataArrayIdentifier.cs" />
-    <Compile Include="v12\Datatypes\DataArrayTypes\DataArrayMetadata.cs" />
-    <Compile Include="v12\Datatypes\DataArrayTypes\GetDataSubarraysType.cs" />
-    <Compile Include="v12\Datatypes\DataArrayTypes\PutDataArraysType.cs" />
-    <Compile Include="v12\Datatypes\DataArrayTypes\PutDataSubarraysType.cs" />
-    <Compile Include="v12\Datatypes\DataArrayTypes\PutUninitializedDataArrayType.cs" />
-    <Compile Include="v12\Datatypes\EndpointCapabilityKind.cs" />
-    <Compile Include="v12\Datatypes\ErrorInfo.cs" />
-    <Compile Include="v12\Datatypes\Object\ContextInfo.cs" />
-    <Compile Include="v12\Datatypes\Object\ContextScopeKind.cs" />
-    <Compile Include="v12\Datatypes\Object\Dataspace.cs" />
-    <Compile Include="v12\Datatypes\Object\ObjectChangeKind.cs" />
-    <Compile Include="v12\Datatypes\Object\ObjectPart.cs" />
-    <Compile Include="v12\Datatypes\Object\PartsMetadataInfo.cs" />
-    <Compile Include="v12\Datatypes\Object\SubscriptionInfo.cs" />
-    <Compile Include="v12\Datatypes\Object\SupportedType.cs" />
-    <Compile Include="v12\Datatypes\ProtocolCapabilityKind.cs" />
-    <Compile Include="v12\Datatypes\Uuid.cs" />
-    <Compile Include="Common\Protocol\Core\IProtocolException.cs" />
-    <Compile Include="Common\Protocol\Core\IAcknowledge.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="v11\Datatypes\AnyArray.cs" />
-    <Compile Include="v11\Datatypes\ArrayOfBoolean.cs" />
-    <Compile Include="v11\Datatypes\ArrayOfDouble.cs" />
-    <Compile Include="v11\Datatypes\ArrayOfFloat.cs" />
-    <Compile Include="v11\Datatypes\ArrayOfInt.cs" />
-    <Compile Include="v11\Datatypes\ArrayOfLong.cs" />
-    <Compile Include="v11\Datatypes\ChannelData\ChannelIndexTypes.cs" />
-    <Compile Include="v11\Datatypes\ChannelData\ChannelMetadataRecord.cs" />
-    <Compile Include="v11\Datatypes\ChannelData\ChannelRangeInfo.cs" />
-    <Compile Include="v11\Datatypes\ChannelData\ChannelStatuses.cs" />
-    <Compile Include="v11\Datatypes\ChannelData\ChannelStreamingInfo.cs" />
-    <Compile Include="v11\Datatypes\ChannelData\DataFrame.cs" />
-    <Compile Include="v11\Datatypes\ChannelData\DataItem.cs" />
-    <Compile Include="v11\Datatypes\ChannelData\IndexDirections.cs" />
-    <Compile Include="v11\Datatypes\ChannelData\IndexMetadataRecord.cs" />
-    <Compile Include="v11\Datatypes\ChannelData\Roles.cs" />
-    <Compile Include="v11\Datatypes\ChannelData\StreamingStartIndex.cs" />
-    <Compile Include="v11\Datatypes\Contact.cs" />
-    <Compile Include="v11\Datatypes\DataAttribute.cs" />
-    <Compile Include="v11\Datatypes\DataValue.cs" />
-    <Compile Include="v11\Datatypes\MessageHeader.cs" />
-    <Compile Include="v11\Extensions.cs" />
-    <Compile Include="v11\Datatypes\Object\DataObject.cs" />
-    <Compile Include="v11\Datatypes\Object\GrowingObjectIndex.cs" />
-    <Compile Include="v11\Datatypes\Object\NotificationRequestRecord.cs" />
-    <Compile Include="v11\Datatypes\Object\ObjectChange.cs" />
-    <Compile Include="v11\Datatypes\Object\ObjectChangeTypes.cs" />
-    <Compile Include="v11\Datatypes\Object\Resource.cs" />
-    <Compile Include="v11\Datatypes\ServerCapabilities.cs" />
-    <Compile Include="v11\Datatypes\SupportedProtocol.cs" />
-    <Compile Include="v11\Datatypes\Version.cs" />
-    <Compile Include="v11\MessageTypes.cs" />
-    <Compile Include="v11\Protocols.cs" />
-    <Compile Include="v11\Protocol\ChannelDataFrame\ChannelDataFrameSet.cs" />
-    <Compile Include="v11\Protocol\ChannelDataFrame\ChannelMetadata.cs" />
-    <Compile Include="v11\Protocol\ChannelDataFrame\RequestChannelData.cs" />
-    <Compile Include="v11\Protocol\ChannelStreaming\ChannelData.cs" />
-    <Compile Include="v11\Protocol\ChannelStreaming\ChannelDataChange.cs" />
-    <Compile Include="v11\Protocol\ChannelStreaming\ChannelDescribe.cs" />
-    <Compile Include="v11\Protocol\ChannelStreaming\ChannelMetadata.cs" />
-    <Compile Include="v11\Protocol\ChannelStreaming\ChannelRangeRequest.cs" />
-    <Compile Include="v11\Protocol\ChannelStreaming\ChannelRemove.cs" />
-    <Compile Include="v11\Protocol\ChannelStreaming\ChannelStatusChange.cs" />
-    <Compile Include="v11\Protocol\ChannelStreaming\ChannelStreamingStart.cs" />
-    <Compile Include="v11\Protocol\ChannelStreaming\ChannelStreamingStop.cs" />
-    <Compile Include="v11\Protocol\ChannelStreaming\Start.cs" />
-    <Compile Include="v11\Protocol\Core\Acknowledge.cs" />
-    <Compile Include="v11\Protocol\Core\CloseSession.cs" />
-    <Compile Include="v11\Protocol\Core\OpenSession.cs" />
-    <Compile Include="v11\Protocol\Core\ProtocolException.cs" />
-    <Compile Include="v11\Protocol\Core\RenewSecurityToken.cs" />
-    <Compile Include="v11\Protocol\Core\RequestSession.cs" />
-    <Compile Include="v11\Protocol\DataArray\DataArray.cs" />
-    <Compile Include="v11\Protocol\DataArray\GetDataArray.cs" />
-    <Compile Include="v11\Protocol\DataArray\GetDataArraySlice.cs" />
-    <Compile Include="v11\Protocol\DataArray\PutDataArray.cs" />
-    <Compile Include="v11\Protocol\DataArray\PutDataArraySlice.cs" />
-    <Compile Include="v11\Protocol\Discovery\GetResources.cs" />
-    <Compile Include="v11\Protocol\Discovery\GetResourcesResponse.cs" />
-    <Compile Include="v11\Protocol\GrowingObject\GrowingObjectDelete.cs" />
-    <Compile Include="v11\Protocol\GrowingObject\GrowingObjectDeleteRange.cs" />
-    <Compile Include="v11\Protocol\GrowingObject\GrowingObjectGet.cs" />
-    <Compile Include="v11\Protocol\GrowingObject\GrowingObjectGetRange.cs" />
-    <Compile Include="v11\Protocol\GrowingObject\GrowingObjectPut.cs" />
-    <Compile Include="v11\Protocol\GrowingObject\ObjectFragment.cs" />
-    <Compile Include="v11\Protocol\StoreNotification\CancelNotification.cs" />
-    <Compile Include="v11\Protocol\StoreNotification\ChangeNotification.cs" />
-    <Compile Include="v11\Protocol\StoreNotification\DeleteNotification.cs" />
-    <Compile Include="v11\Protocol\StoreNotification\NotificationRequest.cs" />
-    <Compile Include="v11\Protocol\Store\DeleteObject.cs" />
-    <Compile Include="v11\Protocol\Store\GetObject.cs" />
-    <Compile Include="v11\Protocol\Store\Object.cs" />
-    <Compile Include="v11\Protocol\Store\PutObject.cs" />
-    <Compile Include="v11\Protocol\WitsmlSoap\WMLS_AddToStore.cs" />
-    <Compile Include="v11\Protocol\WitsmlSoap\WMLS_DeleteFromStore.cs" />
-    <Compile Include="v11\Protocol\WitsmlSoap\WMLS_GetBaseMsg.cs" />
-    <Compile Include="v11\Protocol\WitsmlSoap\WMLS_GetCap.cs" />
-    <Compile Include="v11\Protocol\WitsmlSoap\WMLS_GetFromStore.cs" />
-    <Compile Include="v11\Protocol\WitsmlSoap\WMLS_GetVersion.cs" />
-    <Compile Include="v11\Protocol\WitsmlSoap\WMLS_UpdateInStore.cs" />
-    <Compile Include="v11\Protocol\WitsmlSoap\WMSL_AddToStoreResponse.cs" />
-    <Compile Include="v11\Protocol\WitsmlSoap\WMSL_DeleteFromStoreResponse.cs" />
-    <Compile Include="v11\Protocol\WitsmlSoap\WMSL_GetBaseMsgResponse.cs" />
-    <Compile Include="v11\Protocol\WitsmlSoap\WMSL_GetCapResponse.cs" />
-    <Compile Include="v11\Protocol\WitsmlSoap\WMSL_GetFromStoreResponse.cs" />
-    <Compile Include="v11\Protocol\WitsmlSoap\WMSL_GetVersionResponse.cs" />
-    <Compile Include="v11\Protocol\WitsmlSoap\WMSL_UpdateInStoreResponse.cs" />
-    <Compile Include="v12\Datatypes\AnyArray.cs" />
-    <Compile Include="v12\Datatypes\ArrayOfBoolean.cs" />
-    <Compile Include="v12\Datatypes\ArrayOfDouble.cs" />
-    <Compile Include="v12\Datatypes\ArrayOfFloat.cs" />
-    <Compile Include="v12\Datatypes\ArrayOfInt.cs" />
-    <Compile Include="v12\Datatypes\ArrayOfLong.cs" />
-    <Compile Include="v12\Datatypes\AttributeMetadataRecord.cs" />
-    <Compile Include="v12\Datatypes\ChannelData\ChannelMetadataRecord.cs" />
-    <Compile Include="v12\Datatypes\ChannelData\ChannelRangeInfo.cs" />
-    <Compile Include="v12\Datatypes\ChannelData\DataItem.cs" />
-    <Compile Include="v12\Datatypes\ChannelData\IndexMetadataRecord.cs" />
-    <Compile Include="v12\Datatypes\Contact.cs" />
-    <Compile Include="v12\Datatypes\DataAttribute.cs" />
-    <Compile Include="v12\Datatypes\DataValue.cs" />
-    <Compile Include="v12\Datatypes\IndexValue.cs" />
-    <Compile Include="v12\Datatypes\MessageHeader.cs" />
-    <Compile Include="v12\Datatypes\Object\DataObject.cs" />
-    <Compile Include="v12\Datatypes\Object\IndexInterval.cs" />
-    <Compile Include="v12\Datatypes\Object\ObjectChange.cs" />
-    <Compile Include="v12\Datatypes\Object\Resource.cs" />
-    <Compile Include="v12\Datatypes\ServerCapabilities.cs" />
-    <Compile Include="v12\Datatypes\SupportedProtocol.cs" />
-    <Compile Include="v12\Datatypes\Version.cs" />
-    <Compile Include="v12\Extensions.cs" />
-    <Compile Include="v12\MessageTypes.cs" />
-    <Compile Include="v12\PrivateProtocols\WitsmlSoap\WMLS_AddToStore.cs" />
-    <Compile Include="v12\PrivateProtocols\WitsmlSoap\WMLS_AddToStoreResponse.cs" />
-    <Compile Include="v12\PrivateProtocols\WitsmlSoap\WMLS_DeleteFromStore.cs" />
-    <Compile Include="v12\PrivateProtocols\WitsmlSoap\WMLS_DeleteFromStoreResponse.cs" />
-    <Compile Include="v12\PrivateProtocols\WitsmlSoap\WMLS_GetBaseMsg.cs" />
-    <Compile Include="v12\PrivateProtocols\WitsmlSoap\WMLS_GetBaseMsgResponse.cs" />
-    <Compile Include="v12\PrivateProtocols\WitsmlSoap\WMLS_GetCap.cs" />
-    <Compile Include="v12\PrivateProtocols\WitsmlSoap\WMLS_GetCapResponse.cs" />
-    <Compile Include="v12\PrivateProtocols\WitsmlSoap\WMLS_GetFromStore.cs" />
-    <Compile Include="v12\PrivateProtocols\WitsmlSoap\WMLS_GetFromStoreResponse.cs" />
-    <Compile Include="v12\PrivateProtocols\WitsmlSoap\WMLS_GetVersion.cs" />
-    <Compile Include="v12\PrivateProtocols\WitsmlSoap\WMLS_GetVersionResponse.cs" />
-    <Compile Include="v12\PrivateProtocols\WitsmlSoap\WMLS_UpdateInStore.cs" />
-    <Compile Include="v12\PrivateProtocols\WitsmlSoap\WMLS_UpdateInStoreResponse.cs" />
-    <Compile Include="v12\Protocols.cs" />
-    <Compile Include="v12\Protocol\ChannelDataLoad\ChannelClosed.cs" />
-    <Compile Include="v12\Protocol\ChannelDataLoad\CloseChannel.cs" />
-    <Compile Include="v12\Protocol\ChannelDataLoad\OpenChannels.cs" />
-    <Compile Include="v12\Protocol\ChannelDataLoad\OpenChannelsResponse.cs" />
-    <Compile Include="v12\Protocol\ChannelDataLoad\RealtimeData.cs" />
-    <Compile Include="v12\Protocol\ChannelDataLoad\ReplaceRange.cs" />
-    <Compile Include="v12\Protocol\ChannelStreaming\ChannelData.cs" />
-    <Compile Include="v12\Protocol\ChannelStreaming\ChannelMetadata.cs" />
-    <Compile Include="v12\Protocol\ChannelStreaming\StartStreaming.cs" />
-    <Compile Include="v12\Protocol\ChannelStreaming\StopStreaming.cs" />
-    <Compile Include="v12\Protocol\ChannelSubscribe\CancelGetRanges.cs" />
-    <Compile Include="v12\Protocol\ChannelSubscribe\GetChannelMetadata.cs" />
-    <Compile Include="v12\Protocol\ChannelSubscribe\GetChannelMetadataResponse.cs" />
-    <Compile Include="v12\Protocol\ChannelSubscribe\GetRanges.cs" />
-    <Compile Include="v12\Protocol\ChannelSubscribe\GetRangesResponse.cs" />
-    <Compile Include="v12\Protocol\ChannelSubscribe\RealtimeData.cs" />
-    <Compile Include="v12\Protocol\ChannelSubscribe\ReplaceRange.cs" />
-    <Compile Include="v12\Protocol\ChannelSubscribe\SubscribeChannels.cs" />
-    <Compile Include="v12\Protocol\ChannelSubscribe\SubscriptionsStopped.cs" />
-    <Compile Include="v12\Protocol\ChannelSubscribe\UnsubscribeChannels.cs" />
-    <Compile Include="v12\Protocol\Core\Acknowledge.cs" />
-    <Compile Include="v12\Protocol\Core\CloseSession.cs" />
-    <Compile Include="v12\Protocol\Core\OpenSession.cs" />
-    <Compile Include="v12\Protocol\Core\ProtocolException.cs" />
-    <Compile Include="v12\Protocol\Core\RenewSecurityToken.cs" />
-    <Compile Include="v12\Protocol\Core\RequestSession.cs" />
-    <Compile Include="v12\Protocol\DataArray\GetDataArrayMetadata.cs" />
-    <Compile Include="v12\Protocol\DataArray\GetDataArrayMetadataResponse.cs" />
-    <Compile Include="v12\Protocol\DataArray\GetDataArrays.cs" />
-    <Compile Include="v12\Protocol\DataArray\GetDataArraysResponse.cs" />
-    <Compile Include="v12\Protocol\DataArray\GetDataSubarrays.cs" />
-    <Compile Include="v12\Protocol\DataArray\GetDataSubarraysResponse.cs" />
-    <Compile Include="v12\Protocol\DataArray\PutDataArrays.cs" />
-    <Compile Include="v12\Protocol\DataArray\PutDataSubarrays.cs" />
-    <Compile Include="v12\Protocol\DataArray\PutUninitializedDataArray.cs" />
-    <Compile Include="v12\Protocol\Dataspace\DeleteDataspaces.cs" />
-    <Compile Include="v12\Protocol\Dataspace\GetDataspaces.cs" />
-    <Compile Include="v12\Protocol\Dataspace\GetDataspacesResponse.cs" />
-    <Compile Include="v12\Protocol\Dataspace\PutDataspaces.cs" />
-    <Compile Include="v12\Protocol\DiscoveryQuery\FindResources.cs" />
-    <Compile Include="v12\Protocol\DiscoveryQuery\FindResourcesResponse.cs" />
-    <Compile Include="v12\Protocol\Discovery\GetResources.cs" />
-    <Compile Include="v12\Protocol\Discovery\GetResourcesResponse.cs" />
-    <Compile Include="v12\Protocol\GrowingObjectNotification\PartsChanged.cs" />
-    <Compile Include="v12\Protocol\GrowingObjectNotification\PartsDeleted.cs" />
-    <Compile Include="v12\Protocol\GrowingObjectNotification\PartsDeletedByRange.cs" />
-    <Compile Include="v12\Protocol\GrowingObjectNotification\PartsReplacedByRange.cs" />
-    <Compile Include="v12\Protocol\GrowingObjectNotification\PartSubscriptionEnded.cs" />
-    <Compile Include="v12\Protocol\GrowingObjectNotification\SubscribePartNotification.cs" />
-    <Compile Include="v12\Protocol\GrowingObjectNotification\UnsolicitedPartNotifications.cs" />
-    <Compile Include="v12\Protocol\GrowingObjectNotification\UnsubscribePartNotification.cs" />
-    <Compile Include="v12\Protocol\GrowingObjectQuery\FindParts.cs" />
-    <Compile Include="v12\Protocol\GrowingObjectQuery\FindPartsResponse.cs" />
-    <Compile Include="v12\Protocol\GrowingObject\DeleteParts.cs" />
-    <Compile Include="v12\Protocol\GrowingObject\DeletePartsByRange.cs" />
-    <Compile Include="v12\Protocol\GrowingObject\GetParts.cs" />
-    <Compile Include="v12\Protocol\GrowingObject\GetPartsByRange.cs" />
-    <Compile Include="v12\Protocol\GrowingObject\GetPartsByRangeResponse.cs" />
-    <Compile Include="v12\Protocol\GrowingObject\GetPartsMetadata.cs" />
-    <Compile Include="v12\Protocol\GrowingObject\GetPartsMetadataResponse.cs" />
-    <Compile Include="v12\Protocol\GrowingObject\GetPartsResponse.cs" />
-    <Compile Include="v12\Protocol\GrowingObject\PutParts.cs" />
-    <Compile Include="v12\Protocol\GrowingObject\ReplacePartsByRange.cs" />
-    <Compile Include="v12\Protocol\StoreNotification\Chunk.cs" />
-    <Compile Include="v12\Protocol\StoreNotification\ObjectAccessRevoked.cs" />
-    <Compile Include="v12\Protocol\StoreNotification\ObjectChanged.cs" />
-    <Compile Include="v12\Protocol\StoreNotification\ObjectDeleted.cs" />
-    <Compile Include="v12\Protocol\StoreNotification\SubscribeNotifications.cs" />
-    <Compile Include="v12\Protocol\StoreNotification\SubscriptionEnded.cs" />
-    <Compile Include="v12\Protocol\StoreNotification\UnsolicitedStoreNotifications.cs" />
-    <Compile Include="v12\Protocol\StoreNotification\UnsubscribeNotifications.cs" />
-    <Compile Include="v12\Protocol\StoreQuery\Chunk.cs" />
-    <Compile Include="v12\Protocol\StoreQuery\FindObjects.cs" />
-    <Compile Include="v12\Protocol\StoreQuery\FindObjectsResponse.cs" />
-    <Compile Include="v12\Protocol\Store\Chunk.cs" />
-    <Compile Include="v12\Protocol\Store\DeleteDataObjects.cs" />
-    <Compile Include="v12\Protocol\Store\GetDataObjects.cs" />
-    <Compile Include="v12\Protocol\Store\GetDataObjectsResponse.cs" />
-    <Compile Include="v12\Protocol\Store\PutDataObjects.cs" />
-    <Compile Include="v12\Protocol\SupportedTypes\GetSupportedTypes.cs" />
-    <Compile Include="v12\Protocol\SupportedTypes\GetSupportedTypesResponse.cs" />
-    <Compile Include="v12\Protocol\Transaction\CommitTransaction.cs" />
-    <Compile Include="v12\Protocol\Transaction\CommitTransactionResponse.cs" />
-    <Compile Include="v12\Protocol\Transaction\RollbackTransaction.cs" />
-    <Compile Include="v12\Protocol\Transaction\StartTransaction.cs" />
-    <Compile Include="v12\Protocol\Transaction\StartTransactionResponse.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="ETP.Messages.nuspec" />
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="..\..\License.txt">
       <Link>License.txt</Link>
     </Resource>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Remove="v11\Datatypes\Protocols.cs" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+  </ItemGroup>
 </Project>

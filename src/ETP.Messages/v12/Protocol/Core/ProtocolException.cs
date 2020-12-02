@@ -67,6 +67,6 @@ namespace Energistics.Etp.v12.Protocol.Core
 			case 1: this._errors = (IDictionary<string,Energistics.Etp.v12.Datatypes.ErrorInfo>)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
-		}        
-    }
+		}
+	}
 }

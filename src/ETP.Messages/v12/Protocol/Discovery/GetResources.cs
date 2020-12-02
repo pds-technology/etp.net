@@ -15,14 +15,37 @@ namespace Energistics.Etp.v12.Protocol.Discovery
 	
 	public partial class GetResources : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""GetResources"",""namespace"":""Energistics.Etp.v12.Protocol.Discovery"",""fields"":[{""name"":""context"",""type"":{""type"":""record"",""name"":""ContextInfo"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""depth"",""type"":""int""},{""name"":""dataObjectTypes"",""default"":[],""type"":{""type"":""array"",""items"":""string""}}],""fullName"":""Energistics.Etp.v12.Datatypes.Object.ContextInfo"",""depends"":[]}},{""name"":""scope"",""type"":{""type"":""enum"",""name"":""ContextScopeKind"",""namespace"":""Energistics.Etp.v12.Datatypes.Object"",""symbols"":[""self"",""sources"",""targets"",""sourcesOrSelf"",""targetsOrSelf""],""fullName"":""Energistics.Etp.v12.Datatypes.Object.ContextScopeKind"",""depends"":[]}},{""name"":""countObjects"",""default"":false,""type"":""boolean""},{""name"":""lastChangedFilter"",""type"":[""null"",""long""]}],""protocol"":""3"",""messageType"":""1"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.Discovery.GetResources"",""depends"":[
-  ""Energistics.Etp.v12.Datatypes.Object.ContextInfo"",
-  ""Energistics.Etp.v12.Datatypes.Object.ContextScopeKind""
-]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse("{\"type\":\"record\",\"name\":\"GetResources\",\"namespace\":\"Energistics.Etp.v12.Protocol." +
+				"Discovery\",\"fields\":[{\"name\":\"context\",\"type\":{\"type\":\"record\",\"name\":\"ContextIn" +
+				"fo\",\"namespace\":\"Energistics.Etp.v12.Datatypes.Object\",\"fields\":[{\"name\":\"uri\",\"" +
+				"type\":\"string\"},{\"name\":\"depth\",\"type\":\"int\"},{\"name\":\"dataObjectTypes\",\"default" +
+				"\":[],\"type\":{\"type\":\"array\",\"items\":\"string\"}},{\"name\":\"navigableEdges\",\"type\":{" +
+				"\"type\":\"enum\",\"name\":\"RelationshipKind\",\"namespace\":\"Energistics.Etp.v12.Datatyp" +
+				"es.Object\",\"symbols\":[\"Primary\",\"Secondary\",\"Both\"],\"fullName\":\"Energistics.Etp." +
+				"v12.Datatypes.Object.RelationshipKind\",\"depends\":[]}},{\"name\":\"includeSecondaryT" +
+				"argets\",\"default\":false,\"type\":\"boolean\"},{\"name\":\"includeSecondarySources\",\"def" +
+				"ault\":false,\"type\":\"boolean\"}],\"fullName\":\"Energistics.Etp.v12.Datatypes.Object." +
+				"ContextInfo\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.Object.RelationshipKi" +
+				"nd\"\r\n]}},{\"name\":\"scope\",\"type\":{\"type\":\"enum\",\"name\":\"ContextScopeKind\",\"namesp" +
+				"ace\":\"Energistics.Etp.v12.Datatypes.Object\",\"symbols\":[\"self\",\"sources\",\"targets" +
+				"\",\"sourcesOrSelf\",\"targetsOrSelf\"],\"fullName\":\"Energistics.Etp.v12.Datatypes.Obj" +
+				"ect.ContextScopeKind\",\"depends\":[]}},{\"name\":\"countObjects\",\"default\":false,\"typ" +
+				"e\":\"boolean\"},{\"name\":\"storeLastWriteFilter\",\"type\":[\"null\",\"long\"]},{\"name\":\"ac" +
+				"tiveStatusFilter\",\"type\":[\"null\",{\"type\":\"enum\",\"name\":\"ActiveStatusKind\",\"names" +
+				"pace\":\"Energistics.Etp.v12.Datatypes.Object\",\"symbols\":[\"Active\",\"Inactive\"],\"fu" +
+				"llName\":\"Energistics.Etp.v12.Datatypes.Object.ActiveStatusKind\",\"depends\":[]}]}," +
+				"{\"name\":\"includeEdges\",\"default\":false,\"type\":\"boolean\"}],\"protocol\":\"3\",\"messag" +
+				"eType\":\"1\",\"senderRole\":\"customer\",\"protocolRoles\":\"store,customer\",\"multipartFl" +
+				"ag\":false,\"fullName\":\"Energistics.Etp.v12.Protocol.Discovery.GetResources\",\"depe" +
+				"nds\":[\r\n  \"Energistics.Etp.v12.Datatypes.Object.ContextInfo\",\r\n  \"Energistics.Et" +
+				"p.v12.Datatypes.Object.ContextScopeKind\",\r\n  \"Energistics.Etp.v12.Datatypes.Obje" +
+				"ct.ActiveStatusKind\"\r\n]}");
 		private Energistics.Etp.v12.Datatypes.Object.ContextInfo _context;
 		private Energistics.Etp.v12.Datatypes.Object.ContextScopeKind _scope;
 		private bool _countObjects;
-		private System.Nullable<long> _lastChangedFilter;
+		private System.Nullable<long> _storeLastWriteFilter;
+		private System.Nullable<Energistics.Etp.v12.Datatypes.Object.ActiveStatusKind> _activeStatusFilter;
+		private bool _includeEdges;
 		public virtual Schema Schema
 		{
 			get
@@ -63,15 +86,37 @@ namespace Energistics.Etp.v12.Protocol.Discovery
 				this._countObjects = value;
 			}
 		}
-		public System.Nullable<long> LastChangedFilter
+		public System.Nullable<long> StoreLastWriteFilter
 		{
 			get
 			{
-				return this._lastChangedFilter;
+				return this._storeLastWriteFilter;
 			}
 			set
 			{
-				this._lastChangedFilter = value;
+				this._storeLastWriteFilter = value;
+			}
+		}
+		public System.Nullable<Energistics.Etp.v12.Datatypes.Object.ActiveStatusKind> ActiveStatusFilter
+		{
+			get
+			{
+				return this._activeStatusFilter;
+			}
+			set
+			{
+				this._activeStatusFilter = value;
+			}
+		}
+		public bool IncludeEdges
+		{
+			get
+			{
+				return this._includeEdges;
+			}
+			set
+			{
+				this._includeEdges = value;
 			}
 		}
 		public virtual object Get(int fieldPos)
@@ -81,7 +126,9 @@ namespace Energistics.Etp.v12.Protocol.Discovery
 			case 0: return this._context;
 			case 1: return this._scope;
 			case 2: return this._countObjects;
-			case 3: return this._lastChangedFilter;
+			case 3: return this._storeLastWriteFilter;
+			case 4: return this._activeStatusFilter;
+			case 5: return this._includeEdges;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -92,7 +139,9 @@ namespace Energistics.Etp.v12.Protocol.Discovery
 			case 0: this._context = (Energistics.Etp.v12.Datatypes.Object.ContextInfo)fieldValue; break;
 			case 1: this._scope = (Energistics.Etp.v12.Datatypes.Object.ContextScopeKind)fieldValue; break;
 			case 2: this._countObjects = (System.Boolean)fieldValue; break;
-			case 3: this._lastChangedFilter = (System.Nullable<long>)fieldValue; break;
+			case 3: this._storeLastWriteFilter = (System.Nullable<long>)fieldValue; break;
+			case 4: this._activeStatusFilter = fieldValue == null ? (System.Nullable<Energistics.Etp.v12.Datatypes.Object.ActiveStatusKind>)null : (Energistics.Etp.v12.Datatypes.Object.ActiveStatusKind)fieldValue; break;
+			case 5: this._includeEdges = (System.Boolean)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

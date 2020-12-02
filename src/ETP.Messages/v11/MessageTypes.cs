@@ -33,11 +33,11 @@ namespace Energistics.Etp.v11
             CloseSession = 5,
             RenewSecurityToken = 6,
             ProtocolException = 1000,
-            Acknowledge = 1001
+            Acknowledge = 1001,
         }
 
         /// <summary>
-        /// An enumeration of Channel Streaming protocol message types.
+        /// An enumeration of ChannelStreaming protocol message types.
         /// </summary>
         public enum ChannelStreaming
         {
@@ -48,21 +48,19 @@ namespace Energistics.Etp.v11
             ChannelStreamingStart = 4,
             ChannelStreamingStop = 5,
             ChannelDataChange = 6,
-            //NotUsed = 7,
             ChannelRemove = 8,
             ChannelRangeRequest = 9,
-            ChannelStatusChange = 10
+            ChannelStatusChange = 10,
         }
 
         /// <summary>
-        /// An enumeration of Channel Data Frame protocol message types.
+        /// An enumeration of ChannelDataFrame protocol message types.
         /// </summary>
         public enum ChannelDataFrame
         {
             RequestChannelData = 1,
-            //NotUsed = 2,
             ChannelMetadata = 3,
-            ChannelDataFrameSet = 4
+            ChannelDataFrameSet = 4,
         }
 
         /// <summary>
@@ -71,7 +69,7 @@ namespace Energistics.Etp.v11
         public enum Discovery
         {
             GetResources = 1,
-            GetResourcesResponse
+            GetResourcesResponse = 2,
         }
 
         /// <summary>
@@ -80,66 +78,66 @@ namespace Energistics.Etp.v11
         public enum Store
         {
             GetObject = 1,
-            PutObject,
-            DeleteObject,
-            Object
+            PutObject = 2,
+            DeleteObject = 3,
+            Object = 4,
         }
 
         /// <summary>
-        /// An enumeration of Store Notification protocol message types.
+        /// An enumeration of StoreNotification protocol message types.
         /// </summary>
         public enum StoreNotification
         {
             NotificationRequest = 1,
-            ChangeNotification,
-            DeleteNotification,
-            CancelNotification
+            ChangeNotification = 2,
+            DeleteNotification = 3,
+            CancelNotification = 4,
         }
 
         /// <summary>
-        /// An enumeration of Growing Object protocol message types.
+        /// An enumeration of GrowingObject protocol message types.
         /// </summary>
         public enum GrowingObject
         {
             GrowingObjectDelete = 1,
-            GrowingObjectDeleteRange,
-            GrowingObjectGet,
-            GrowingObjectGetRange,
-            GrowingObjectPut,
-            ObjectFragment
+            GrowingObjectDeleteRange = 2,
+            GrowingObjectGet = 3,
+            GrowingObjectGetRange = 4,
+            GrowingObjectPut = 5,
+            ObjectFragment = 6,
         }
 
         /// <summary>
-        /// An enumeration of Data Array protocol message types.
+        /// An enumeration of DataArray protocol message types.
         /// </summary>
         public enum DataArray
         {
             DataArray = 1,
-            GetDataArray,
-            GetDataArraySlice,
-            PutDataArray,
-            PutDataArraySlice
+            GetDataArray = 2,
+            GetDataArraySlice = 3,
+            PutDataArray = 4,
+            PutDataArraySlice = 5,
         }
 
         /// <summary>
-        /// An enumeration of Witsml Soap protocol message types.
+        /// An enumeration of WitsmlSoap protocol message types.
         /// </summary>
         public enum WitsmlSoap
         {
             WMLS_AddToStore = 1,
-            WMSL_AddToStoreResponse,
-            WMLS_DeleteFromStore,
-            WMSL_DeleteFromStoreResponse,
-            WMLS_GetBaseMsg,
-            WMSL_GetBaseMsgResponse,
-            WMLS_GetCap,
-            WMSL_GetCapResponse,
-            WMLS_GetFromStore,
-            WMSL_GetFromStoreResponse,
-            WMLS_GetVersion,
-            WMSL_GetVersionResponse,
-            WMLS_UpdateInStore,
-            WMSL_UpdateInStoreResponse
+            WMSL_AddToStoreResponse = 2,
+            WMLS_DeleteFromStore = 3,
+            WMSL_DeleteFromStoreResponse = 4,
+            WMLS_GetBaseMsg = 5,
+            WMSL_GetBaseMsgResponse = 6,
+            WMLS_GetCap = 7,
+            WMSL_GetCapResponse = 8,
+            WMLS_GetFromStore = 9,
+            WMSL_GetFromStoreResponse = 10,
+            WMLS_GetVersion = 11,
+            WMSL_GetVersionResponse = 12,
+            WMLS_UpdateInStore = 13,
+            WMSL_UpdateInStoreResponse = 14,
         }
     }
 }

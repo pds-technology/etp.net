@@ -15,11 +15,112 @@ namespace Energistics.Etp.v12.Protocol.ChannelDataLoad
 	
 	public partial class OpenChannelsResponse : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""OpenChannelsResponse"",""namespace"":""Energistics.Etp.v12.Protocol.ChannelDataLoad"",""fields"":[{""name"":""channels"",""default"":{},""type"":{""type"":""map"",""values"":{""type"":""record"",""name"":""OpenChannelInfo"",""namespace"":""Energistics.Etp.v12.Datatypes.ChannelData"",""fields"":[{""name"":""uri"",""type"":""string""},{""name"":""id"",""type"":""long""},{""name"":""lastIndex"",""type"":{""type"":""record"",""name"":""IndexValue"",""namespace"":""Energistics.Etp.v12.Datatypes"",""fields"":[{""name"":""item"",""type"":[""null"",""long"",""double""]}],""fullName"":""Energistics.Etp.v12.Datatypes.IndexValue"",""depends"":[]}},{""name"":""preferRealtime"",""default"":true,""type"":""boolean""},{""name"":""dataChanges"",""default"":true,""type"":""boolean""}],""fullName"":""Energistics.Etp.v12.Datatypes.ChannelData.OpenChannelInfo"",""depends"":[
-  ""Energistics.Etp.v12.Datatypes.IndexValue""
-]}}}],""protocol"":""22"",""messageType"":""2"",""senderRole"":""consumer"",""protocolRoles"":""producer,consumer"",""multipartFlag"":true,""fullName"":""Energistics.Etp.v12.Protocol.ChannelDataLoad.OpenChannelsResponse"",""depends"":[
-  ""Energistics.Etp.v12.Datatypes.ChannelData.OpenChannelInfo""
-]}");
+		public static Schema _SCHEMA = Avro.Schema.Parse("{\"type\":\"record\",\"name\":\"OpenChannelsResponse\",\"namespace\":\"Energistics.Etp.v12.P" +
+				"rotocol.ChannelDataLoad\",\"fields\":[{\"name\":\"channels\",\"default\":{},\"type\":{\"type" +
+				"\":\"map\",\"values\":{\"type\":\"record\",\"name\":\"OpenChannelInfo\",\"namespace\":\"Energist" +
+				"ics.Etp.v12.Datatypes.ChannelData\",\"fields\":[{\"name\":\"metadata\",\"type\":{\"type\":\"" +
+				"record\",\"name\":\"ChannelMetadataRecord\",\"namespace\":\"Energistics.Etp.v12.Datatype" +
+				"s.ChannelData\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"id\",\"type\":\"lon" +
+				"g\"},{\"name\":\"indexes\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"In" +
+				"dexMetadataRecord\",\"namespace\":\"Energistics.Etp.v12.Datatypes.ChannelData\",\"fiel" +
+				"ds\":[{\"name\":\"indexKind\",\"default\":\"Time\",\"type\":{\"type\":\"enum\",\"name\":\"ChannelI" +
+				"ndexKind\",\"namespace\":\"Energistics.Etp.v12.Datatypes.ChannelData\",\"symbols\":[\"Ti" +
+				"me\",\"Depth\",\"Scalar\",\"ElapsedTime\"],\"fullName\":\"Energistics.Etp.v12.Datatypes.Ch" +
+				"annelData.ChannelIndexKind\",\"depends\":[]}},{\"name\":\"interval\",\"type\":{\"type\":\"re" +
+				"cord\",\"name\":\"IndexInterval\",\"namespace\":\"Energistics.Etp.v12.Datatypes.Object\"," +
+				"\"fields\":[{\"name\":\"startIndex\",\"type\":{\"type\":\"record\",\"name\":\"IndexValue\",\"name" +
+				"space\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"item\",\"type\":[\"null\",\"" +
+				"long\",\"double\"]}],\"fullName\":\"Energistics.Etp.v12.Datatypes.IndexValue\",\"depends" +
+				"\":[]}},{\"name\":\"endIndex\",\"type\":\"Energistics.Etp.v12.Datatypes.IndexValue\"},{\"n" +
+				"ame\":\"uom\",\"type\":\"string\"},{\"name\":\"depthDatum\",\"default\":\"\",\"type\":\"string\"}]," +
+				"\"fullName\":\"Energistics.Etp.v12.Datatypes.Object.IndexInterval\",\"depends\":[\r\n  \"" +
+				"Energistics.Etp.v12.Datatypes.IndexValue\",\r\n  \"Energistics.Etp.v12.Datatypes.Ind" +
+				"exValue\"\r\n]}},{\"name\":\"direction\",\"default\":\"Increasing\",\"type\":{\"type\":\"enum\",\"" +
+				"name\":\"IndexDirection\",\"namespace\":\"Energistics.Etp.v12.Datatypes.ChannelData\",\"" +
+				"symbols\":[\"Increasing\",\"Decreasing\"],\"fullName\":\"Energistics.Etp.v12.Datatypes.C" +
+				"hannelData.IndexDirection\",\"depends\":[]}},{\"name\":\"name\",\"default\":\"\",\"type\":\"st" +
+				"ring\"}],\"fullName\":\"Energistics.Etp.v12.Datatypes.ChannelData.IndexMetadataRecor" +
+				"d\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.ChannelData.ChannelIndexKind\",\r" +
+				"\n  \"Energistics.Etp.v12.Datatypes.Object.IndexInterval\",\r\n  \"Energistics.Etp.v12" +
+				".Datatypes.ChannelData.IndexDirection\"\r\n]}}},{\"name\":\"channelName\",\"type\":\"strin" +
+				"g\"},{\"name\":\"dataType\",\"type\":{\"type\":\"enum\",\"name\":\"DataValueType\",\"namespace\":" +
+				"\"Energistics.Etp.v12.Datatypes\",\"symbols\":[\"typeBoolean\",\"typeInt\",\"typeLong\",\"t" +
+				"ypeFloat\",\"typeDouble\",\"typeString\",\"typeArrayOfBoolean\",\"typeArrayOfInt\",\"typeA" +
+				"rrayOfLong\",\"typeArrayOfFloat\",\"typeArrayOfDouble\",\"typeArrayOfString\",\"typeByte" +
+				"s\"],\"fullName\":\"Energistics.Etp.v12.Datatypes.DataValueType\",\"depends\":[]}},{\"na" +
+				"me\":\"uom\",\"type\":\"string\"},{\"name\":\"measureClass\",\"type\":\"string\"},{\"name\":\"stat" +
+				"us\",\"type\":{\"type\":\"enum\",\"name\":\"ActiveStatusKind\",\"namespace\":\"Energistics.Etp" +
+				".v12.Datatypes.Object\",\"symbols\":[\"Active\",\"Inactive\"],\"fullName\":\"Energistics.E" +
+				"tp.v12.Datatypes.Object.ActiveStatusKind\",\"depends\":[]}},{\"name\":\"source\",\"type\"" +
+				":\"string\"},{\"name\":\"axisVectorLengths\",\"type\":{\"type\":\"array\",\"items\":\"int\"}},{\"" +
+				"name\":\"customData\",\"default\":{},\"type\":{\"type\":\"map\",\"values\":{\"type\":\"record\",\"" +
+				"name\":\"DataValue\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":" +
+				"\"item\",\"type\":[\"null\",\"boolean\",\"int\",\"long\",\"float\",\"double\",\"string\",{\"type\":\"" +
+				"record\",\"name\":\"ArrayOfBoolean\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fie" +
+				"lds\":[{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":\"boolean\"}}],\"fullName\":\"E" +
+				"nergistics.Etp.v12.Datatypes.ArrayOfBoolean\",\"depends\":[]},{\"type\":\"record\",\"nam" +
+				"e\":\"ArrayOfNullableBoolean\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fields\"" +
+				":[{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":[\"null\",\"boolean\"]}}],\"fullNam" +
+				"e\":\"Energistics.Etp.v12.Datatypes.ArrayOfNullableBoolean\",\"depends\":[]},{\"type\":" +
+				"\"record\",\"name\":\"ArrayOfInt\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fields" +
+				"\":[{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":\"int\"}}],\"fullName\":\"Energist" +
+				"ics.Etp.v12.Datatypes.ArrayOfInt\",\"depends\":[]},{\"type\":\"record\",\"name\":\"ArrayOf" +
+				"NullableInt\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"valu" +
+				"es\",\"type\":{\"type\":\"array\",\"items\":[\"null\",\"int\"]}}],\"fullName\":\"Energistics.Etp" +
+				".v12.Datatypes.ArrayOfNullableInt\",\"depends\":[]},{\"type\":\"record\",\"name\":\"ArrayO" +
+				"fLong\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"values\",\"t" +
+				"ype\":{\"type\":\"array\",\"items\":\"long\"}}],\"fullName\":\"Energistics.Etp.v12.Datatypes" +
+				".ArrayOfLong\",\"depends\":[]},{\"type\":\"record\",\"name\":\"ArrayOfNullableLong\",\"names" +
+				"pace\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"values\",\"type\":{\"type\":" +
+				"\"array\",\"items\":[\"null\",\"long\"]}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.Arr" +
+				"ayOfNullableLong\",\"depends\":[]},{\"type\":\"record\",\"name\":\"ArrayOfFloat\",\"namespac" +
+				"e\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"values\",\"type\":{\"type\":\"ar" +
+				"ray\",\"items\":\"float\"}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.ArrayOfFloat\"," +
+				"\"depends\":[]},{\"type\":\"record\",\"name\":\"ArrayOfDouble\",\"namespace\":\"Energistics.E" +
+				"tp.v12.Datatypes\",\"fields\":[{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":\"dou" +
+				"ble\"}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.ArrayOfDouble\",\"depends\":[]},{" +
+				"\"type\":\"record\",\"name\":\"ArrayOfString\",\"namespace\":\"Energistics.Etp.v12.Datatype" +
+				"s\",\"fields\":[{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":\"string\"}}],\"fullNa" +
+				"me\":\"Energistics.Etp.v12.Datatypes.ArrayOfString\",\"depends\":[]},\"bytes\",{\"type\":" +
+				"\"record\",\"name\":\"AnySparseArray\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fi" +
+				"elds\":[{\"name\":\"slices\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"" +
+				"AnySubarray\",\"namespace\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"star" +
+				"t\",\"type\":\"long\"},{\"name\":\"slice\",\"type\":{\"type\":\"record\",\"name\":\"AnyArray\",\"nam" +
+				"espace\":\"Energistics.Etp.v12.Datatypes\",\"fields\":[{\"name\":\"item\",\"type\":[\"ArrayO" +
+				"fBoolean\",\"ArrayOfInt\",\"ArrayOfLong\",\"ArrayOfFloat\",\"ArrayOfDouble\",\"ArrayOfStri" +
+				"ng\",\"bytes\"]}],\"fullName\":\"Energistics.Etp.v12.Datatypes.AnyArray\",\"depends\":[\r\n" +
+				"  \"Energistics.Etp.v12.Datatypes.ArrayOfBoolean\",\r\n  \"Energistics.Etp.v12.Dataty" +
+				"pes.ArrayOfInt\",\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfLong\",\r\n  \"Energistics" +
+				".Etp.v12.Datatypes.ArrayOfFloat\",\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfDoubl" +
+				"e\",\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfString\"\r\n]}}],\"fullName\":\"Energisti" +
+				"cs.Etp.v12.Datatypes.AnySubarray\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes." +
+				"AnyArray\"\r\n]}}}],\"fullName\":\"Energistics.Etp.v12.Datatypes.AnySparseArray\",\"depe" +
+				"nds\":[\r\n  \"Energistics.Etp.v12.Datatypes.AnySubarray\"\r\n]}]}],\"fullName\":\"Energis" +
+				"tics.Etp.v12.Datatypes.DataValue\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes." +
+				"ArrayOfBoolean\",\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfNullableBoolean\",\r\n  \"" +
+				"Energistics.Etp.v12.Datatypes.ArrayOfInt\",\r\n  \"Energistics.Etp.v12.Datatypes.Arr" +
+				"ayOfNullableInt\",\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfLong\",\r\n  \"Energistic" +
+				"s.Etp.v12.Datatypes.ArrayOfNullableLong\",\r\n  \"Energistics.Etp.v12.Datatypes.Arra" +
+				"yOfFloat\",\r\n  \"Energistics.Etp.v12.Datatypes.ArrayOfDouble\",\r\n  \"Energistics.Etp" +
+				".v12.Datatypes.ArrayOfString\",\r\n  \"Energistics.Etp.v12.Datatypes.AnySparseArray\"" +
+				"\r\n]}}},{\"name\":\"attributeMetadata\",\"default\":[],\"type\":{\"type\":\"array\",\"items\":{" +
+				"\"type\":\"record\",\"name\":\"AttributeMetadataRecord\",\"namespace\":\"Energistics.Etp.v1" +
+				"2.Datatypes\",\"fields\":[{\"name\":\"attributeId\",\"type\":\"int\"},{\"name\":\"attributeNam" +
+				"e\",\"type\":\"string\"},{\"name\":\"dataType\",\"type\":\"DataValueType\"},{\"name\":\"descript" +
+				"ion\",\"type\":\"string\"}],\"fullName\":\"Energistics.Etp.v12.Datatypes.AttributeMetada" +
+				"taRecord\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.DataValueType\"\r\n]}}}],\"f" +
+				"ullName\":\"Energistics.Etp.v12.Datatypes.ChannelData.ChannelMetadataRecord\",\"depe" +
+				"nds\":[\r\n  \"Energistics.Etp.v12.Datatypes.ChannelData.IndexMetadataRecord\",\r\n  \"E" +
+				"nergistics.Etp.v12.Datatypes.DataValueType\",\r\n  \"Energistics.Etp.v12.Datatypes.O" +
+				"bject.ActiveStatusKind\",\r\n  \"Energistics.Etp.v12.Datatypes.DataValue\",\r\n  \"Energ" +
+				"istics.Etp.v12.Datatypes.AttributeMetadataRecord\"\r\n]}},{\"name\":\"preferRealtime\"," +
+				"\"default\":true,\"type\":\"boolean\"},{\"name\":\"dataChanges\",\"default\":true,\"type\":\"bo" +
+				"olean\"}],\"fullName\":\"Energistics.Etp.v12.Datatypes.ChannelData.OpenChannelInfo\"," +
+				"\"depends\":[\r\n  \"Energistics.Etp.v12.Datatypes.ChannelData.ChannelMetadataRecord\"" +
+				"\r\n]}}}],\"protocol\":\"22\",\"messageType\":\"2\",\"senderRole\":\"store\",\"protocolRoles\":\"" +
+				"store,customer\",\"multipartFlag\":true,\"fullName\":\"Energistics.Etp.v12.Protocol.Ch" +
+				"annelDataLoad.OpenChannelsResponse\",\"depends\":[\r\n  \"Energistics.Etp.v12.Datatype" +
+				"s.ChannelData.OpenChannelInfo\"\r\n]}");
 		private IDictionary<string,Energistics.Etp.v12.Datatypes.ChannelData.OpenChannelInfo> _channels;
 		public virtual Schema Schema
 		{

@@ -15,8 +15,8 @@ namespace Energistics.Etp.v12.Protocol.Dataspace
 	
 	public partial class DeleteDataspaces : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""DeleteDataspaces"",""namespace"":""Energistics.Etp.v12.Protocol.Dataspace"",""fields"":[{""name"":""uids"",""type"":{""type"":""map"",""values"":""string""}}],""protocol"":""24"",""messageType"":""4"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.Dataspace.DeleteDataspaces"",""depends"":[]}");
-		private IDictionary<string,System.String> _uids;
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""DeleteDataspaces"",""namespace"":""Energistics.Etp.v12.Protocol.Dataspace"",""fields"":[{""name"":""uris"",""type"":{""type"":""map"",""values"":""string""}}],""protocol"":""24"",""messageType"":""4"",""senderRole"":""customer"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.Dataspace.DeleteDataspaces"",""depends"":[]}");
+		private IDictionary<string,System.String> _uris;
 		public virtual Schema Schema
 		{
 			get
@@ -24,22 +24,22 @@ namespace Energistics.Etp.v12.Protocol.Dataspace
 				return DeleteDataspaces._SCHEMA;
 			}
 		}
-		public IDictionary<string,System.String> Uids
+		public IDictionary<string,System.String> Uris
 		{
 			get
 			{
-				return this._uids;
+				return this._uris;
 			}
 			set
 			{
-				this._uids = value;
+				this._uris = value;
 			}
 		}
 		public virtual object Get(int fieldPos)
 		{
 			switch (fieldPos)
 			{
-			case 0: return this._uids;
+			case 0: return this._uris;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -47,7 +47,7 @@ namespace Energistics.Etp.v12.Protocol.Dataspace
 		{
 			switch (fieldPos)
 			{
-			case 0: this._uids = (IDictionary<string,System.String>)fieldValue; break;
+			case 0: this._uris = (IDictionary<string,System.String>)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

@@ -28,7 +28,7 @@ namespace Energistics.Etp.Common.Datatypes.Object
 
         bool ChannelSubscribable { get; set; }
 
-        IDictionary<string, string> CustomData { get; set; }
+        IDictionary<string, IDataValue> CustomData { get; set; }
 
         string ResourceType { get; set; }
 

@@ -18,16 +18,19 @@
 
 namespace Energistics.Etp.v11
 {
-	public enum Protocols
-	{
-		Core = 0,
-		ChannelStreaming,
-		ChannelDataFrame,
-		Discovery,
-		Store,
-		StoreNotification,
-		GrowingObject,
-		DataArray,
-		WitsmlSoap
-	}
+    /// <summary>
+    /// An enumeration of ETP protocols.
+    /// </summary>
+    public enum Protocols
+    {
+        Core = 0,
+        ChannelStreaming = 1,
+        ChannelDataFrame = 2,
+        Discovery = 3,
+        Store = 4,
+        StoreNotification = 5,
+        GrowingObject = 6,
+        DataArray = 7,
+        WitsmlSoap = 8,
+    }
 }

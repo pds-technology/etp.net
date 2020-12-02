@@ -15,10 +15,12 @@ namespace Energistics.Etp.v12.Protocol.Transaction
 	
 	public partial class StartTransactionResponse : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""StartTransactionResponse"",""namespace"":""Energistics.Etp.v12.Protocol.Transaction"",""fields"":[{""name"":""transactionUuid"",""type"":{""type"":""fixed"",""name"":""Uuid"",""namespace"":""Energistics.Etp.v12.Datatypes"",""size"":16,""fullName"":""Energistics.Etp.v12.Datatypes.Uuid"",""depends"":[]}}],""protocol"":""18"",""messageType"":""2"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.Transaction.StartTransactionResponse"",""depends"":[
+		public static Schema _SCHEMA = Avro.Schema.Parse(@"{""type"":""record"",""name"":""StartTransactionResponse"",""namespace"":""Energistics.Etp.v12.Protocol.Transaction"",""fields"":[{""name"":""transactionUuid"",""type"":{""type"":""fixed"",""name"":""Uuid"",""namespace"":""Energistics.Etp.v12.Datatypes"",""size"":16,""fullName"":""Energistics.Etp.v12.Datatypes.Uuid"",""depends"":[]}},{""name"":""successful"",""default"":true,""type"":""boolean""},{""name"":""failureReason"",""default"":"""",""type"":""string""}],""protocol"":""18"",""messageType"":""2"",""senderRole"":""store"",""protocolRoles"":""store,customer"",""multipartFlag"":false,""fullName"":""Energistics.Etp.v12.Protocol.Transaction.StartTransactionResponse"",""depends"":[
   ""Energistics.Etp.v12.Datatypes.Uuid""
 ]}");
 		private Energistics.Etp.v12.Datatypes.Uuid _transactionUuid;
+		private bool _successful;
+		private string _failureReason;
 		public virtual Schema Schema
 		{
 			get
@@ -37,11 +39,35 @@ namespace Energistics.Etp.v12.Protocol.Transaction
 				this._transactionUuid = value;
 			}
 		}
+		public bool Successful
+		{
+			get
+			{
+				return this._successful;
+			}
+			set
+			{
+				this._successful = value;
+			}
+		}
+		public string FailureReason
+		{
+			get
+			{
+				return this._failureReason;
+			}
+			set
+			{
+				this._failureReason = value;
+			}
+		}
 		public virtual object Get(int fieldPos)
 		{
 			switch (fieldPos)
 			{
 			case 0: return this._transactionUuid;
+			case 1: return this._successful;
+			case 2: return this._failureReason;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -50,6 +76,8 @@ namespace Energistics.Etp.v12.Protocol.Transaction
 			switch (fieldPos)
 			{
 			case 0: this._transactionUuid = (Energistics.Etp.v12.Datatypes.Uuid)fieldValue; break;
+			case 1: this._successful = (System.Boolean)fieldValue; break;
+			case 2: this._failureReason = (System.String)fieldValue; break;
 			default: throw new AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}
