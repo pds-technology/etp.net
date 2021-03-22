@@ -81,6 +81,15 @@ namespace Energistics.Etp.Common
         }
 
         /// <summary>
+        /// Gets whether the protocol role name has been registered.
+        /// </summary>
+        /// <param name="role">The role name.</param>
+        /// <returns><c>true</c> if the role name has been registered; <c>false</c> otherwise.</returns>
+        public static bool IsRoleRegistered(string role)
+        {
+            return RoleCounterparts.ContainsKey(role);
+        }
+        /// <summary>
         /// Registers custom roles.
         /// </summary>
         /// <param name="role">The role.</param>

@@ -45,6 +45,7 @@ namespace Energistics.Etp.Common.Datatypes
                 ["13"] = "1.3.1.1",
                 ["14"] = "1.4.1.1",
                 ["20"] = "2.0",
+                ["21"] = "2.1",
             },
             ["prodml"] = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
             {
@@ -75,6 +76,7 @@ namespace Energistics.Etp.Common.Datatypes
                 ["1.3.1.1"] = "13",
                 ["1.4.1.1"] = "14",
                 ["2.0"] = "20",
+                ["2.1"] = "21",
             },
             ["prodml"] = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
             {

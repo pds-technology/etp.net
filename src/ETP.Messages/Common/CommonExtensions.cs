@@ -407,7 +407,7 @@ namespace Energistics.Etp.Common
         /// <returns>The converted data object type.</returns>
         public static IDataObjectType ToWildCard(this IDataObjectType dataObjectType)
         {
-            if (dataObjectType == null || !dataObjectType.IsValid || dataObjectType.IsBaseType)
+            if (dataObjectType == null || !dataObjectType.IsValid || string.IsNullOrEmpty(dataObjectType.Family) || string.IsNullOrEmpty(dataObjectType.Version))
                 return null;
             if (dataObjectType.IsWildcard)
                 return dataObjectType;
