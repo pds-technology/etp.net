@@ -16,7 +16,7 @@
 // limitations under the License.
 //-----------------------------------------------------------------------
 
-using System.Collections;
+using System.Collections.Generic;
 
 namespace Energistics.Etp.Common.Datatypes
 {
@@ -26,10 +26,14 @@ namespace Energistics.Etp.Common.Datatypes
 
         string Role { get; set; }
 
-        IVersion ProtocolVersion { get; set; }
+        string CounterpartRole { get; }
 
-        string VersionString { get; }
+        EtpVersion EtpVersion { get; set; }
 
-        IDictionary ProtocolCapabilities { get; set; }
+        IReadOnlyDataValueDictionary ProtocolCapabilities { get; }
+
+        IDataValueDictionary GetOrCreateProtocolCapabilities();
+
+        void SetProtocolCapabilitiesFrom(IReadOnlyDictionary<string, IDataValue> dictionary);
     }
 }

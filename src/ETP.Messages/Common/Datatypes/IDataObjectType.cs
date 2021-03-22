@@ -28,6 +28,8 @@ namespace Energistics.Etp.Common.Datatypes
 
         /// <summary>
         /// Gets a value indicating whether this instance is a base content type.
+        /// Base types are derived from URIs that do not information about an object.
+        /// They only provide information about a family and version.
         /// </summary>
         /// <value><c>true</c> if this instance is a base content type; otherwise, <c>false</c>.</value>
         bool IsBaseType { get; }
@@ -37,6 +39,11 @@ namespace Energistics.Etp.Common.Datatypes
         /// </summary>
         /// <value><c>true</c> if this instance is a wildcard content type; otherwise, <c>false</c>.</value>
         bool IsWildcard { get; }
+
+        /// <summary>
+        /// Gets a consistent, version-indepentent key for this data object type.
+        /// </summary>
+        string Key { get; }
 
         /// <summary>
         /// Gets the ML family name.

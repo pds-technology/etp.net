@@ -26,7 +26,7 @@ namespace Energistics.Etp.Common.Datatypes
     /// <summary>
     /// Represents a content type supported by the Energistics Transfer Protocol (ETP).
     /// </summary>
-    public struct EtpDataObjectType : IDataObjectType
+    public sealed class EtpDataObjectType : IDataObjectType, IEquatable<EtpDataObjectType>
     {
         private static readonly Regex Pattern = new Regex(@"^(witsml|resqml|prodml|eml)([0-9]{2})\.((obj_|cs_|part_)?(\w+))?$", RegexOptions.CultureInvariant | RegexOptions.Compiled);
         private const string Format = "{0}{1}.{2}";
@@ -93,7 +93,7 @@ namespace Energistics.Etp.Common.Datatypes
         };
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EtpDataObjectType"/> struct.
+        /// Initializes a new instance of the <see cref="EtpDataObjectType"/> class.
         /// </summary>
         /// <param name="dataType">The data type.</param>
         public EtpDataObjectType(string dataType)
@@ -111,7 +111,7 @@ namespace Energistics.Etp.Common.Datatypes
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EtpDataObjectType"/> struct.
+        /// Initializes a new instance of the <see cref="EtpDataObjectType"/> class.
         /// </summary>
         /// <param name="family">The ML family name.</param>
         /// <param name="version">The version.</param>
@@ -120,12 +120,11 @@ namespace Energistics.Etp.Common.Datatypes
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EtpDataObjectType" /> struct.
+        /// Initializes a new instance of the <see cref="EtpDataObjectType" /> class.
         /// </summary>
         /// <param name="family">The ML family name.</param>
         /// <param name="version">The version.</param>
         /// <param name="objectType">The object type.</param>
-        /// <param name="format">The format.</param>
         public EtpDataObjectType(string family, string version, string objectType)
         {
             IsValid = true;
@@ -133,6 +132,42 @@ namespace Energistics.Etp.Common.Datatypes
             Family = TryGetFamily(family);
             Version = TryGetFamilyVersion(family, version);
             ShortVersion = TryGetFamilyShortVersionFromVersion(family, version);
+            ObjectType = GetObjectType(objectType, ShortVersion);
+
+            _dataType = string.Format(Format, Family, ShortVersion, ObjectType);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EtpDataObjectType" /> class
+        /// with the family and version of the specified type and the specified object type.
+        /// </summary>
+        /// <param name="dataObjectType">The type providing the family and version.</param>
+        /// <param name="objectType">The object type.</param>
+        public EtpDataObjectType(EtpDataObjectType dataObjectType, string objectType)
+        {
+            IsValid = true;
+
+            Family = dataObjectType.Family;
+            Version = dataObjectType.Version;
+            ShortVersion = TryGetFamilyShortVersionFromVersion(Family, Version);
+            ObjectType = GetObjectType(objectType, ShortVersion);
+
+            _dataType = string.Format(Format, Family, ShortVersion, ObjectType);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EtpDataObjectType" /> class
+        /// with the family and version of the specified type and the specified object type.
+        /// </summary>
+        /// <param name="contentType">The type providing the family and version.</param>
+        /// <param name="objectType">The object type.</param>
+        public EtpDataObjectType(EtpContentType contentType, string objectType)
+        {
+            IsValid = true;
+
+            Family = contentType.Family;
+            Version = contentType.Version;
+            ShortVersion = TryGetFamilyShortVersionFromVersion(Family, Version);
             ObjectType = GetObjectType(objectType, ShortVersion);
 
             _dataType = string.Format(Format, Family, ShortVersion, ObjectType);
@@ -153,6 +188,11 @@ namespace Energistics.Etp.Common.Datatypes
         {
             get { return ToContentType(); }
         }
+
+        /// <summary>
+        /// Gets a consistent, version-indepentent key for this data object type.
+        /// </summary>
+        public string Key => ToString();
 
         /// <summary>
         /// Gets the ML family name.
@@ -186,6 +226,8 @@ namespace Energistics.Etp.Common.Datatypes
 
         /// <summary>
         /// Gets a value indicating whether this instance is a base content type.
+        /// Base types are derived from URIs that do not information about an object.
+        /// They only provide information about a family and version.
         /// </summary>
         /// <value><c>true</c> if this instance is a base content type; otherwise, <c>false</c>.</value>
         public bool IsBaseType
@@ -212,8 +254,8 @@ namespace Energistics.Etp.Common.Datatypes
         /// </returns>
         public bool IsRelatedTo(EtpDataObjectType other)
         {
-            return string.Equals(Family, other.Family, StringComparison.InvariantCultureIgnoreCase)
-                && string.Equals(Version, other.Version, StringComparison.InvariantCultureIgnoreCase);
+            return string.Equals(Family, other.Family, StringComparison.OrdinalIgnoreCase)
+                && string.Equals(Version, other.Version, StringComparison.OrdinalIgnoreCase);
         }
 
         /// <summary>
@@ -246,20 +288,7 @@ namespace Energistics.Etp.Common.Datatypes
             return _dataType;
         }
 
-        /// <summary>
-        /// Determines whether the specified <see cref="System.Object" />, is equal to this instance.
-        /// </summary>
-        /// <param name="obj">The <see cref="System.Object" /> to compare with this instance.</param>
-        /// <returns>
-        ///   <c>true</c> if the specified <see cref="System.Object" /> is equal to this instance; otherwise, <c>false</c>.
-        /// </returns>
-        public override bool Equals(object obj)
-        {
-            if (!(obj is EtpDataObjectType))
-                return false;
-
-            return Equals((EtpDataObjectType)obj);
-        }
+        #region Equality and Inequality
 
         /// <summary>
         /// Determines whether the specified <see cref="EtpDataObjectType" />, is equal to this instance.
@@ -270,8 +299,41 @@ namespace Energistics.Etp.Common.Datatypes
         /// </returns>
         public bool Equals(EtpDataObjectType other)
         {
-            return string.Equals(other, this, StringComparison.InvariantCultureIgnoreCase);
+            if (other == null) return false;
+            var dataType = ToString() ?? string.Empty;
+            var otherDataType = other.ToString() ?? string.Empty;
+
+            return string.Equals(dataType, otherDataType, StringComparison.OrdinalIgnoreCase);
         }
+
+        /// <summary>
+        /// Determines whether the specified <see cref="System.Object" />, is equal to this instance.
+        /// </summary>
+        /// <param name="obj">The <see cref="System.Object" /> to compare with this instance.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified <see cref="System.Object" /> is equal to this instance; otherwise, <c>false</c>.
+        /// </returns>
+        public override bool Equals(object obj) => Equals(obj as EtpDataObjectType);
+
+        /// <summary>
+        /// Determines whether two <see cref="EtpDataObjectType" />s are equivalent.
+        /// </summary>
+        /// <param name="lhs">The <see cref="EtpDataObjectType" /> on the left-hand side of the operator.</param>
+        /// <param name="rhs">The <see cref="EtpDataObjectType" /> on the right-hand side of the operator.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified <see cref="EtpDataObjectType" /> instances are equivalent; otherwise, <c>false</c>.
+        /// </returns>
+        public static bool operator ==(EtpDataObjectType lhs, EtpDataObjectType rhs) => Equals(lhs, rhs);
+
+        /// <summary>
+        /// Determines whether two <see cref="EtpDataObjectType" />s are not equivalent.
+        /// </summary>
+        /// <param name="lhs">The <see cref="EtpDataObjectType" /> on the left-hand side of the operator.</param>
+        /// <param name="rhs">The <see cref="EtpDataObjectType" /> on the right-hand side of the operator.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified <see cref="EtpDataObjectType" /> instances are not equivalent; otherwise, <c>false</c>.
+        /// </returns>
+        public static bool operator !=(EtpDataObjectType lhs, EtpDataObjectType rhs) => !Equals(lhs, rhs);
 
         /// <summary>
         /// Returns a hash code for this instance.
@@ -283,6 +345,8 @@ namespace Energistics.Etp.Common.Datatypes
         {
             return _dataType.GetHashCode();
         }
+
+        #endregion
 
         /// <summary>
         /// Performs an implicit conversion from <see cref="EtpDataObjectType"/> to <see cref="System.String"/>.

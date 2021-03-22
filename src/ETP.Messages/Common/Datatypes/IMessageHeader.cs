@@ -16,10 +16,14 @@
 // limitations under the License.
 //-----------------------------------------------------------------------
 
+using System;
+
 namespace Energistics.Etp.Common.Datatypes
 {
     public interface IMessageHeader : Avro.Specific.ISpecificRecord
     {
+        EtpVersion EtpVersion { get; }
+
         int Protocol { get; set; }
 
         int MessageType { get; set; }
@@ -29,5 +33,7 @@ namespace Energistics.Etp.Common.Datatypes
         long MessageId { get; set; }
 
         int MessageFlags { get; set; }
+
+        DateTime Timestamp { get; set; }
     }
 }

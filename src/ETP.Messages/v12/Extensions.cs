@@ -21,10 +21,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Energistics.Etp.Common;
 using Energistics.Etp.Common.Datatypes;
 using Energistics.Etp.Common.Datatypes.ChannelData;
+using Energistics.Etp.Common.Datatypes.DataArrayTypes;
 using Energistics.Etp.Common.Datatypes.Object;
 using Energistics.Etp.Common.Protocol.Core;
+using Energistics.Etp.v12.Datatypes;
 using Energistics.Etp.v12.Datatypes.Object;
 using Newtonsoft.Json;
 
@@ -37,21 +40,21 @@ namespace Energistics.Etp.v12
             public partial class ChannelMetadataRecord : IChannelMetadataRecord
             {
                 [JsonIgnore]
-                public string Uuid
+                string IChannelMetadataRecord.Uuid
                 {
                     get { return null; }
                     set { }
                 }
 
                 [JsonIgnore]
-                public long ChannelId
+                long IChannelMetadataRecord.ChannelId
                 {
                     get { return Id; }
                     set { Id = value; }
                 }
 
                 [JsonIgnore]
-                public string ChannelUri
+                string IChannelMetadataRecord.ChannelUri
                 {
                     get { return Uri; }
                     set { Uri = value; }
@@ -64,28 +67,28 @@ namespace Energistics.Etp.v12
                 }
 
                 [JsonIgnore]
-                public long? StartIndex
+                long? IChannelMetadataRecord.StartIndex
                 {
                     get { return null; }
                     set { }
                 }
 
                 [JsonIgnore]
-                public long? EndIndex
+                long? IChannelMetadataRecord.EndIndex
                 {
                     get { return null; }
                     set { }
                 }
 
                 [JsonIgnore]
-                public string ContentType
+                string IChannelMetadataRecord.ContentType
                 {
                     get { return null; }
                     set { }
                 }
 
                 [JsonIgnore]
-                public string Description
+                string IChannelMetadataRecord.Description
                 {
                     get { return null; }
                     set { }
@@ -97,14 +100,26 @@ namespace Energistics.Etp.v12
                     set { Indexes = value as IList<IndexMetadataRecord>; }
                 }
 
-                IDictionary IChannelMetadataRecord.CustomData
+                IReadOnlyDataValueDictionary IChannelMetadataRecord.CustomData
                 {
-                    get { return CustomData as IDictionary; }
-                    set { CustomData = value as IDictionary<string, DataValue>; }
+                    get { return CustomData.ToDataValueDictionary(); }
+                }
+
+                IDataValueDictionary IChannelMetadataRecord.GetOrCreateCustomData()
+                {
+                    if (CustomData == null)
+                        CustomData = new Dictionary<string, DataValue>();
+
+                    return CustomData.ToDataValueDictionary();
+                }
+
+                void IChannelMetadataRecord.SetCustomDataFrom(IReadOnlyDictionary<string, IDataValue> dictionary)
+                {
+                    CustomData = dictionary.ToValueDictionary<DataValue>();
                 }
 
                 [JsonIgnore]
-                public IDataObject DomainObject
+                IDataObject IChannelMetadataRecord.DomainObject
                 {
                     get { return null; }
                     set { }
@@ -125,33 +140,46 @@ namespace Energistics.Etp.v12
                         this.DataType = dataType;
                     }
                 }
+
+                [JsonIgnore]
+                bool IUuidGuidSource.IsUuidValidGuid => CommonExtensions.IsValidGuid(((IChannelMetadataRecord)this).Uuid);
+
+                [JsonIgnore]
+                string IUuidGuidSource.RawUuid => ((IChannelMetadataRecord)this).Uuid;
+
+                [JsonIgnore]
+                Guid IUuidGuidSource.UuidGuid => CommonExtensions.ToGuid(((IChannelMetadataRecord)this).Uuid);
+
+                [JsonIgnore]
+
+                string IUuidGuidSource.DisplayUuid => ((IChannelMetadataRecord)this).Uuid;
             }
 
             public partial class ChannelRangeInfo : IChannelRangeInfo
             {
                 [JsonIgnore]
-                public object StartIndex
+                object IChannelRangeInfo.StartIndex
                 {
                     get { return EnsureInterval().StartIndex.Item; }
                     set { EnsureInterval().StartIndex.Item = value; }
                 }
 
                 [JsonIgnore]
-                public object EndIndex
+                object IChannelRangeInfo.EndIndex
                 {
                     get { return EnsureInterval().EndIndex.Item; }
                     set { EnsureInterval().EndIndex.Item = value; }
                 }
 
                 [JsonIgnore]
-                public string Uom
+                string IChannelRangeInfo.Uom
                 {
                     get { return EnsureInterval().Uom; }
                     set { EnsureInterval().Uom = value; }
                 }
 
                 [JsonIgnore]
-                public string DepthDatum
+                string IChannelRangeInfo.DepthDatum
                 {
                     get { return EnsureInterval().DepthDatum; }
                     set { EnsureInterval().DepthDatum = value; }
@@ -183,7 +211,7 @@ namespace Energistics.Etp.v12
                 IDataValue IDataItem.Value
                 {
                     get { return Value; }
-                    set { Value = value as DataValue; }
+                    set { Value = value.ToDataValue<DataValue>(); }
                 }
 
                 IList IDataItem.ValueAttributes
@@ -196,7 +224,7 @@ namespace Energistics.Etp.v12
             public partial class IndexMetadataRecord : IIndexMetadataRecord
             {
                 [JsonIgnore]
-                public string Mnemonic
+                string IIndexMetadataRecord.Mnemonic
                 {
                     get { return Name; }
                     set { Name = value; }
@@ -215,66 +243,73 @@ namespace Energistics.Etp.v12
                 }
 
                 [JsonIgnore]
-                public object StartIndex
+                object IIndexMetadataRecord.StartIndex
                 {
                     get { return EnsureInterval().StartIndex.Item; }
                     set { EnsureInterval().StartIndex.Item = value; }
                 }
 
                 [JsonIgnore]
-                public object EndIndex
+                object IIndexMetadataRecord.EndIndex
                 {
                     get { return EnsureInterval().EndIndex.Item; }
                     set { EnsureInterval().EndIndex.Item = value; }
                 }
 
                 [JsonIgnore]
-                public string Uom
+                string IIndexMetadataRecord.Uom
                 {
                     get { return EnsureInterval().Uom; }
                     set { EnsureInterval().Uom = value; }
                 }
 
                 [JsonIgnore]
-                public string DepthDatum
+                string IIndexMetadataRecord.DepthDatum
                 {
                     get { return EnsureInterval().DepthDatum; }
                     set { EnsureInterval().DepthDatum = value; }
                 }
 
                 [JsonIgnore]
-                public string Uri
+                string IIndexMetadataRecord.Uri
                 {
                     get { return null; }
                     set { }
                 }
 
                 [JsonIgnore]
-                public string Description
+                string IIndexMetadataRecord.Description
                 {
                     get { return null; }
                     set { }
                 }
 
                 [JsonIgnore]
-                public string TimeDatum
+                string IIndexMetadataRecord.TimeDatum
                 {
                     get { return null; }
                     set { }
                 }
 
                 [JsonIgnore]
-                public int Scale
+                int IIndexMetadataRecord.Scale
                 {
                     get { return 0; }
                     set { }
                 }
 
-                [JsonIgnore]
-                public IDictionary CustomData
+                IReadOnlyDataValueDictionary IIndexMetadataRecord.CustomData
                 {
                     get { return null; }
-                    set { }
+                }
+
+                IDataValueDictionary IIndexMetadataRecord.GetOrCreateCustomData()
+                {
+                    return null;
+                }
+
+                void IIndexMetadataRecord.SetCustomDataFrom(IReadOnlyDictionary<string, IDataValue> dictionary)
+                {
                 }
 
                 private IndexInterval EnsureInterval()
@@ -293,9 +328,21 @@ namespace Energistics.Etp.v12
             }
         }
 
+        namespace DataArrayTypes
+        {
+            public partial class DataArray : IDataArray
+            {
+                IAnyArray IDataArray.Data
+                {
+                    get { return Data; }
+                    set { Data = value.ToAnyArray<AnyArray>(); }
+                }
+            }
+        }
+
         namespace Object
         {
-            public partial class DataObject : IDataObject
+            public partial class DataObject : IDataObject, IBlobIdGuidSource
             {
                 IResource IDataObject.Resource
                 {
@@ -309,6 +356,9 @@ namespace Energistics.Etp.v12
                     get { return null; }
                     set { }
                 }
+
+                [JsonIgnore]
+                public IUuidGuidSource BlobIdGuid => new UuidGuidSource(BlobId);
             }
 
             public partial class Resource : IResource
@@ -332,30 +382,13 @@ namespace Energistics.Etp.v12
                 }
 
                 [JsonIgnore]
-                EtpContentType IDataObjectType.ContentType => new EtpDataObjectType(DataObjectType).ToContentType();
+                string IResource.ContentType
+                {
+                    get { return DataObjectType == null ? null : new EtpDataObjectType(DataObjectType).ToContentType(); }
+                    set { DataObjectType = value == null ? null : new EtpContentType(value).ToDataObjectType(); }
+                }
 
                 [JsonIgnore]
-                EtpDataObjectType IDataObjectType.DataObjectType => new EtpDataObjectType(DataObjectType);
-
-                [JsonIgnore]
-                bool IDataObjectType.IsValid => ((IDataObjectType)this).DataObjectType.IsValid;
-
-                [JsonIgnore]
-                bool IDataObjectType.IsBaseType => ((IDataObjectType)this).DataObjectType.IsBaseType;
-
-                [JsonIgnore]
-                bool IDataObjectType.IsWildcard => ((IDataObjectType)this).DataObjectType.IsWildcard;
-
-                [JsonIgnore]
-                string IDataObjectType.Family => ((IDataObjectType)this).DataObjectType.Family;
-
-                [JsonIgnore]
-                string IDataObjectType.Version => ((IDataObjectType)this).DataObjectType.Version;
-
-                [JsonIgnore]
-                string IDataObjectType.ObjectType => ((IDataObjectType)this).DataObjectType.ObjectType;
-
-
                 string IResource.ResourceType
                 {
                     get { return "DataObject"; }
@@ -365,17 +398,16 @@ namespace Energistics.Etp.v12
                 }
 
                 [JsonIgnore]
-                bool IResource.ChannelSubscribable
-                {
-                    get { return false; }
-                    set { }
-                }
+                bool? IResource.ChannelSubscribable { get { return null; } set { } }
 
                 [JsonIgnore]
-                bool IResource.ObjectNotifiable
+                bool? IResource.ObjectNotifiable { get { return null; } set { } }
+
+                [JsonIgnore]
+                int? IResource.HasChildren
                 {
-                    get { return false; }
-                    set { }
+                    get { return TargetCount == null ? -1 : TargetCount; }
+                    set { TargetCount = value < 0 ? null : value; }
                 }
 
                 [JsonIgnore]
@@ -385,21 +417,61 @@ namespace Energistics.Etp.v12
                     set { LastChanged = value ?? 0L; }
                 }
 
-                IDictionary<string, IDataValue> IResource.CustomData
+                [JsonIgnore]
+                long? IResource.StoreLastWrite
                 {
-                    get { return this.CustomData?.Select(kvp => new KeyValuePair<string, IDataValue>(kvp.Key, kvp.Value)).ToDictionary(kvp => kvp.Key, kvp => kvp.Value); }
-                    set { CustomData = value == null ? null : value.Select(kvp => new KeyValuePair<string, DataValue>(kvp.Key, new DataValue { Item = kvp.Value.Item })).ToDictionary(kvp => kvp.Key, kvp => kvp.Value); }
+                    get { return StoreLastWrite; }
+                    set { StoreLastWrite = value ?? 0L; }
+                }
+
+                [JsonIgnore]
+                bool IUuidGuidSource.IsUuidValidGuid => CommonExtensions.IsValidGuid(((IResource)this).Uuid);
+
+                [JsonIgnore]
+                string IUuidGuidSource.RawUuid => ((IResource)this).Uuid;
+
+                [JsonIgnore]
+                Guid IUuidGuidSource.UuidGuid => CommonExtensions.ToGuid(((IResource)this).Uuid);
+
+                [JsonIgnore]
+                public string DisplayUuid => ((IResource)this).Uuid;
+
+                IReadOnlyDataValueDictionary IResource.CustomData
+                {
+                    get { return CustomData.ToDataValueDictionary(); }
+                }
+
+                IDataValueDictionary IResource.GetOrCreateCustomData()
+                {
+                    if (CustomData == null)
+                        CustomData = new Dictionary<string, DataValue>();
+
+                    return CustomData.ToDataValueDictionary();
+                }
+
+                void IResource.SetCustomDataFrom(IReadOnlyDictionary<string, IDataValue> dictionary)
+                {
+                    CustomData = dictionary.ToValueDictionary<DataValue>();
                 }
             }
 
             public partial class ObjectPart : IObjectPart
             {
             }
+
+            public partial class SubscriptionInfo : IRequestUuidGuidSource
+            {
+                [JsonIgnore]
+                public IUuidGuidSource RequestUuidGuid => new UuidGuidSource(RequestUuid);
+            }
         }
+
+        public partial class Contact : IContact { }
 
         public partial class ErrorInfo : IErrorInfo
         {
-
+            [JsonIgnore]
+            EtpVersion IErrorInfo.EtpVersion => EtpVersion.v12;
         }
 
         public partial class AnyArray : IAnyArray { }
@@ -421,7 +493,7 @@ namespace Energistics.Etp.v12
             IDataValue IDataAttribute.AttributeValue
             {
                 get { return AttributeValue; }
-                set { AttributeValue = value as DataValue; }
+                set { AttributeValue = value.ToDataValue<DataValue>(); }
             }
         }
 
@@ -429,30 +501,147 @@ namespace Energistics.Etp.v12
 
         public partial class IndexValue : IIndexValue { }
 
-        public partial class MessageHeader : IMessageHeader { }
+        public partial class MessageHeader : IMessageHeader
+        {
+            EtpVersion IMessageHeader.EtpVersion => EtpVersion.v12;
+
+            [JsonIgnore]
+            DateTime IMessageHeader.Timestamp { get; set; }
+        }
+
+        public partial class MessageHeaderExtension : IMessageHeaderExtension
+        {
+            IReadOnlyDataValueDictionary IMessageHeaderExtension.Extension
+            {
+                get { return Extension.ToDataValueDictionary(); }
+            }
+
+            IDataValueDictionary IMessageHeaderExtension.GetOrCreateExtension()
+            {
+                if (Extension == null)
+                    Extension = new Dictionary<string, DataValue>();
+
+                return Extension.ToDataValueDictionary();
+            }
+
+            void IMessageHeaderExtension.SetExtensionFrom(IReadOnlyDictionary<string, IDataValue> dictionary)
+            {
+                Extension = dictionary.ToValueDictionary<DataValue>();
+            }
+        }
 
         public partial class SupportedProtocol : ISupportedProtocol
         {
-            IVersion ISupportedProtocol.ProtocolVersion
+            [JsonIgnore]
+            string ISupportedProtocol.CounterpartRole => Roles.GetCounterpartRole(Role);
+
+            [JsonIgnore]
+            EtpVersion ISupportedProtocol.EtpVersion
             {
-                get { return ProtocolVersion; }
-                set { ProtocolVersion = new Version { Major = value.Major, Minor = value.Minor, Revision = value.Revision, Patch = value.Patch }; }
+                get { return ProtocolVersion.ToEtpVersion(); }
+                set { ProtocolVersion = value.ToVersion<Version>(); }
             }
 
-            string ISupportedProtocol.VersionString => $"{ProtocolVersion.Major}.{ProtocolVersion.Minor}.{ProtocolVersion.Revision}.{ProtocolVersion.Patch}";
-
-            IDictionary ISupportedProtocol.ProtocolCapabilities
+            [JsonIgnore]
+            IReadOnlyDataValueDictionary ISupportedProtocol.ProtocolCapabilities
             {
-                get { return ProtocolCapabilities as IDictionary; }
-                set { ProtocolCapabilities = value as IDictionary<string, DataValue>; }
+                get { return ProtocolCapabilities.ToDataValueDictionary(); }
+            }
+
+            IDataValueDictionary ISupportedProtocol.GetOrCreateProtocolCapabilities()
+            {
+                if (ProtocolCapabilities == null)
+                    ProtocolCapabilities = new Dictionary<string, DataValue>();
+
+                return ProtocolCapabilities.ToDataValueDictionary();
+            }
+
+            void ISupportedProtocol.SetProtocolCapabilitiesFrom(IReadOnlyDictionary<string, IDataValue> dictionary)
+            {
+                ProtocolCapabilities = dictionary.ToValueDictionary<DataValue>();
             }
         }
 
         public partial class Version : IVersion { }
+
+        public partial class Uuid : IUuid { }
+
+        public partial class SupportedDataObject : ISupportedDataObject
+        {
+            IDataObjectType ISupportedDataObject.QualifiedType { get { return new EtpDataObjectType(QualifiedType); } set { QualifiedType = value.DataObjectType.ToString(); } }
+        }
+
+        public partial class ServerCapabilities : IServerCapabilities
+        {
+            IContact IServerCapabilities.ContactInformation { get { return ContactInformation; } set { ContactInformation = value.ToContact<Contact>(); } }
+
+            IReadOnlyList<ISupportedProtocol> IServerCapabilities.SupportedProtocols => new List<ISupportedProtocol>(SupportedProtocols);
+
+            void IServerCapabilities.SetSupportedProtocolsFrom(IEnumerable<ISupportedProtocol> supportedProtocols)
+            {
+                SupportedProtocols = new List<SupportedProtocol>(supportedProtocols.Select(p => p.ToSupportedProtocol<SupportedProtocol>()));
+            }
+
+            IReadOnlyList<ISupportedDataObject> IServerCapabilities.SupportedDataObjects => new List<ISupportedDataObject>(SupportedDataObjects);
+
+            void IServerCapabilities.SetSupportedDataObjectsFrom(IEnumerable<ISupportedDataObject> supportedDataObjects)
+            {
+                SupportedDataObjects = new List<SupportedDataObject>(supportedDataObjects.Select(d => d.ToSupportedDataObject<SupportedDataObject>()));
+            }
+
+            IReadOnlyDataValueDictionary IServerCapabilities.EndpointCapabilities
+            {
+                get { return EndpointCapabilities.ToDataValueDictionary(); }
+            }
+
+            IDataValueDictionary IServerCapabilities.GetOrCreateEndpointCapabilities()
+            {
+                if (EndpointCapabilities == null)
+                    EndpointCapabilities = new Dictionary<string, DataValue>();
+
+                return EndpointCapabilities.ToDataValueDictionary();
+            }
+
+            void IServerCapabilities.SetEndpointCapabilitiesFrom(IReadOnlyDictionary<string, IDataValue> dictionary)
+            {
+                EndpointCapabilities = dictionary.ToValueDictionary<DataValue>();
+            }
+        }
+
     }
 
     namespace Protocol
     {
+        namespace ChannelDataFrame
+        {
+            public partial class CancelGetFrame : IRequestUuidGuidSource
+            {
+                [JsonIgnore]
+                public IUuidGuidSource RequestUuidGuid => new UuidGuidSource(RequestUuid);
+            }
+
+            public partial class GetFrame : IRequestUuidGuidSource
+            {
+                [JsonIgnore]
+                public IUuidGuidSource RequestUuidGuid => new UuidGuidSource(RequestUuid);
+            }
+        }
+
+        namespace ChannelSubscribe
+        {
+            public partial class CancelGetRanges: IRequestUuidGuidSource
+            {
+                [JsonIgnore]
+                public IUuidGuidSource RequestUuidGuid => new UuidGuidSource(RequestUuid);
+            }
+
+            public partial class GetRanges : IRequestUuidGuidSource
+            {
+                [JsonIgnore]
+                public IUuidGuidSource RequestUuidGuid => new UuidGuidSource(RequestUuid);
+            }
+        }
+
         namespace Core
         {
             public partial class Acknowledge : IAcknowledge { }
@@ -482,6 +671,225 @@ namespace Energistics.Etp.v12
                         Error.Message = value;
                     }
                 }
+            }
+
+            public partial class RequestSession : IRequestSession
+            {
+                bool IRequestSession.IsClientInstanceIdValid => ClientInstanceId.IsValidGuid();
+
+                string IRequestSession.RawClientInstanceId => new UuidGuidSource(ClientInstanceId).RawUuid;
+
+                Guid IRequestSession.ClientInstanceId { get { return new UuidGuidSource(ClientInstanceId).UuidGuid; } set { ClientInstanceId = value.ToUuid<Uuid>(); } }
+
+                IReadOnlyList<ISupportedProtocol> IRequestSession.RequestedProtocols => new List<ISupportedProtocol>(RequestedProtocols);
+
+                void IRequestSession.SetRequestedProtocolsFrom(IEnumerable<ISupportedProtocol> requestedProtocols)
+                {
+                    RequestedProtocols = new List<SupportedProtocol>(requestedProtocols.Select(p => p.ToSupportedProtocol<SupportedProtocol>()));
+                }
+
+                IReadOnlyList<ISupportedDataObject> IRequestSession.SupportedDataObjects => new List<ISupportedDataObject>(SupportedDataObjects);
+
+                void IRequestSession.SetSupportedDataObjectsFrom(IEnumerable<ISupportedDataObject> supportedDataObjects)
+                {
+                    SupportedDataObjects = new List<SupportedDataObject>(supportedDataObjects.Select(d => d.ToSupportedDataObject<SupportedDataObject>()));
+                }
+
+                IReadOnlyDataValueDictionary IRequestSession.EndpointCapabilities
+                {
+                    get { return EndpointCapabilities.ToDataValueDictionary(); }
+                }
+
+                IDataValueDictionary IRequestSession.GetOrCreateEndpointCapabilities()
+                {
+                    if (EndpointCapabilities == null)
+                        EndpointCapabilities = new Dictionary<string, DataValue>();
+
+                    return EndpointCapabilities.ToDataValueDictionary();
+                }
+
+                void IRequestSession.SetEndpointCapabilitiesFrom(IReadOnlyDictionary<string, IDataValue> dictionary)
+                {
+                    EndpointCapabilities = dictionary.ToValueDictionary<DataValue>();
+                }
+            }
+
+            public partial class OpenSession : IOpenSession
+            {
+                bool IOpenSession.IsServerInstanceIdValid => ServerInstanceId.IsValidGuid();
+
+                string IOpenSession.RawServerInstanceId => new UuidGuidSource(ServerInstanceId).RawUuid;
+
+                Guid IOpenSession.ServerInstanceId { get { return new UuidGuidSource(ServerInstanceId).UuidGuid; } set { ServerInstanceId = value.ToUuid<Uuid>(); } }
+
+                IReadOnlyList<ISupportedProtocol> IOpenSession.SupportedProtocols => new List<ISupportedProtocol>(SupportedProtocols);
+
+                void IOpenSession.SetSupportedProtocolsFrom(IEnumerable<ISupportedProtocol> supportedProtocols)
+                {
+                    SupportedProtocols = new List<SupportedProtocol>(supportedProtocols.Select(p => p.ToSupportedProtocol<SupportedProtocol>()));
+                }
+
+                IReadOnlyList<ISupportedDataObject> IOpenSession.SupportedDataObjects => new List<ISupportedDataObject>(SupportedDataObjects);
+
+                void IOpenSession.SetSupportedDataObjectsFrom(IEnumerable<ISupportedDataObject> supportedDataObjects)
+                {
+                    SupportedDataObjects = new List<SupportedDataObject>(supportedDataObjects.Select(d => d.ToSupportedDataObject<SupportedDataObject>()));
+                }
+
+                string IOpenSession.RawSessionId => new UuidGuidSource(SessionId).RawUuid;
+
+                bool IOpenSession.IsSessionIdValid => new UuidGuidSource(SessionId).IsUuidValidGuid;
+
+                Guid IOpenSession.SessionId { get { return new UuidGuidSource(SessionId).UuidGuid; } set { SessionId = value.ToUuid<Uuid>(); } }
+
+                IReadOnlyDataValueDictionary IOpenSession.EndpointCapabilities
+                {
+                    get { return EndpointCapabilities.ToDataValueDictionary(); }
+                }
+
+                IDataValueDictionary IOpenSession.GetOrCreateEndpointCapabilities()
+                {
+                    if (EndpointCapabilities == null)
+                        EndpointCapabilities = new Dictionary<string, DataValue>();
+
+                    return EndpointCapabilities.ToDataValueDictionary();
+                }
+
+                void IOpenSession.SetEndpointCapabilitiesFrom(IReadOnlyDictionary<string, IDataValue> dictionary)
+                {
+                    EndpointCapabilities = dictionary.ToValueDictionary<DataValue>();
+                }
+            }
+
+            public partial class CloseSession : ICloseSession { }
+        }
+
+        namespace GrowingObjectNotification
+        {
+            public partial class PartsChanged : IRequestUuidGuidSource
+            {
+                [JsonIgnore]
+                public IUuidGuidSource RequestUuidGuid => new UuidGuidSource(RequestUuid);
+            }
+
+            public partial class PartsDeleted : IRequestUuidGuidSource
+            {
+                [JsonIgnore]
+                public IUuidGuidSource RequestUuidGuid => new UuidGuidSource(RequestUuid);
+            }
+
+            public partial class PartsReplacedByRange : IRequestUuidGuidSource
+            {
+                [JsonIgnore]
+                public IUuidGuidSource RequestUuidGuid => new UuidGuidSource(RequestUuid);
+            }
+
+            public partial class PartSubscriptionEnded : IRequestUuidGuidSource
+            {
+                [JsonIgnore]
+                public IUuidGuidSource RequestUuidGuid => new UuidGuidSource(RequestUuid);
+            }
+
+            public partial class UnsubscribePartNotification : IRequestUuidGuidSource
+            {
+                [JsonIgnore]
+                public IUuidGuidSource RequestUuidGuid => new UuidGuidSource(RequestUuid);
+            }
+        }
+
+        namespace Store
+        {
+            public partial class Chunk : IBlobIdGuidSource
+            {
+                [JsonIgnore]
+                public IUuidGuidSource BlobIdGuid => new UuidGuidSource(BlobId);
+            }
+        }
+
+        namespace StoreNotification
+        {
+            public partial class Chunk : IBlobIdGuidSource
+            {
+                [JsonIgnore]
+                public IUuidGuidSource BlobIdGuid => new UuidGuidSource(BlobId);
+            }
+
+            public partial class ObjectAccessRevoked : IRequestUuidGuidSource
+            {
+                [JsonIgnore]
+                public IUuidGuidSource RequestUuidGuid => new UuidGuidSource(RequestUuid);
+            }
+
+            public partial class ObjectActiveStatusChanged : IRequestUuidGuidSource
+            {
+                [JsonIgnore]
+                public IUuidGuidSource RequestUuidGuid => new UuidGuidSource(RequestUuid);
+            }
+
+            public partial class ObjectChanged : IRequestUuidGuidSource
+            {
+                [JsonIgnore]
+                public IUuidGuidSource RequestUuidGuid => new UuidGuidSource(RequestUuid);
+            }
+
+            public partial class ObjectDeleted : IRequestUuidGuidSource
+            {
+                [JsonIgnore]
+                public IUuidGuidSource RequestUuidGuid => new UuidGuidSource(RequestUuid);
+            }
+
+            public partial class SubscriptionEnded : IRequestUuidGuidSource
+            {
+                [JsonIgnore]
+                public IUuidGuidSource RequestUuidGuid => new UuidGuidSource(RequestUuid);
+            }
+
+            public partial class UnsubscribeNotifications : IRequestUuidGuidSource
+            {
+                [JsonIgnore]
+                public IUuidGuidSource RequestUuidGuid => new UuidGuidSource(RequestUuid);
+            }
+        }
+
+        namespace StoreQuery
+        {
+            public partial class Chunk : IBlobIdGuidSource
+            {
+                [JsonIgnore]
+                public IUuidGuidSource BlobIdGuid => new UuidGuidSource(BlobId);
+            }
+        }
+
+        namespace Transaction
+        {
+            public partial class CommitTransaction : ITransactionUuidGuidSource
+            {
+                [JsonIgnore]
+                public IUuidGuidSource TransactionUuidGuid => new UuidGuidSource(TransactionUuid);
+            }
+
+            public partial class CommitTransactionResponse : ITransactionUuidGuidSource
+            {
+                [JsonIgnore]
+                public IUuidGuidSource TransactionUuidGuid => new UuidGuidSource(TransactionUuid);
+            }
+
+            public partial class RollbackTransaction : ITransactionUuidGuidSource
+            {
+                [JsonIgnore]
+                public IUuidGuidSource TransactionUuidGuid => new UuidGuidSource(TransactionUuid);
+            }
+
+            public partial class RollbackTransactionResponse : ITransactionUuidGuidSource
+            {
+                [JsonIgnore]
+                public IUuidGuidSource TransactionUuidGuid => new UuidGuidSource(TransactionUuid);
+            }
+
+            public partial class StartTransactionResponse : ITransactionUuidGuidSource
+            {
+                [JsonIgnore]
+                public IUuidGuidSource TransactionUuidGuid => new UuidGuidSource(TransactionUuid);
             }
         }
     }

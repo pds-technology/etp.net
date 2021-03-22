@@ -18,7 +18,7 @@
 
 namespace Energistics.Etp.Common.Datatypes.ChannelData
 {
-    public interface IStreamingStartIndex : Avro.Specific.ISpecificRecord
+    public interface IStreamingStartIndex
     {
         object Item { get; set; }
     }

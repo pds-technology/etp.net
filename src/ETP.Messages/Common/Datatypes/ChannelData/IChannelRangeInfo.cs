@@ -20,7 +20,7 @@ using System.Collections.Generic;
 
 namespace Energistics.Etp.Common.Datatypes.ChannelData
 {
-    public interface IChannelRangeInfo : Avro.Specific.ISpecificRecord
+    public interface IChannelRangeInfo
     {
         IList<long> ChannelIds { get; set; }
 

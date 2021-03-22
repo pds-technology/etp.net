@@ -18,7 +18,7 @@
 
 namespace Energistics.Etp.Common.Datatypes
 {
-    public interface IIndexValue : Avro.Specific.ISpecificRecord
+    public interface IIndexValue
     {
         object Item { get; set; }
     }

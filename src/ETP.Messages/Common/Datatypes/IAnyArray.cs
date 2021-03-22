@@ -18,7 +18,7 @@
 
 namespace Energistics.Etp.Common.Datatypes
 {
-    public interface IAnyArray : Avro.Specific.ISpecificRecord
+    public interface IAnyArray
     {
         object Item { get; set; }
     }

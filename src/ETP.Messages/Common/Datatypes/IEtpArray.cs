@@ -20,7 +20,7 @@ using System.Collections.Generic;
 
 namespace Energistics.Etp.Common.Datatypes
 {
-    public interface IEtpArray<T> : Avro.Specific.ISpecificRecord
+    public interface IEtpArray<T>
     {
         IList<T> Values { get; set; }
     }

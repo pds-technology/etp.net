@@ -12,16 +12,17 @@ namespace ETP.Messages.Generator
         {
 
             Console.WriteLine("ETP v1.1");
-            GenerateProtocolsAndMessages(@"v11\etp.avpr");
+            GenerateProtocolsAndMessages("EtpVersion.v11", @"v11\etp.avpr", "Energistics.", "Energistics.Etp.v11.");
             Console.WriteLine("ETP v1.2");
-            GenerateProtocolsAndMessages(@"v12\etp.avpr");
+            GenerateProtocolsAndMessages("EtpVersion.v12", @"v12\etp.avpr");
         }
 
-        private static void GenerateProtocolsAndMessages(string fileName)
+        private static void GenerateProtocolsAndMessages(string etpVersion, string fileName, string namespacePrefix = null, string namespacePrefixReplacement = null)
         {
             var json = JObject.Parse(File.ReadAllText(fileName));
             var protocols = new Dictionary<string, int>();
             var messagesByProtocol = new Dictionary<string, Dictionary<string, int>>();
+            var messagesNamespaces = new Dictionary<string, Dictionary<string, string>>();
 
             foreach (var type in json["types"].Where(x => x.Value<string>("protocol") != null))
             {
@@ -34,11 +35,26 @@ namespace ETP.Messages.Generator
                 {
                     messages = new Dictionary<string, int>();
                     messagesByProtocol[protocolName] = messages;
+                    messagesNamespaces[protocolName] = new Dictionary<string, string>();
                 }
 
                 messages[type.Value<string>("name")] = type.Value<int>("messageType");
+                messagesNamespaces[protocolName][type.Value<string>("name")] = string.IsNullOrEmpty(namespacePrefix) ? @namespace : @namespace.Replace(namespacePrefix, namespacePrefixReplacement);
             }
 
+            PrintProtocols(protocols);
+
+            PrintMessageTypes(protocols, messagesByProtocol);
+
+            PrintProtocolNames(protocols);
+
+            PrintMessageNames(protocols, messagesByProtocol);
+
+            PrintMessageReflectionDefinitions(protocols, messagesByProtocol, messagesNamespaces);
+        }
+
+        private static void PrintProtocols(Dictionary<string, int> protocols)
+        {
             Console.WriteLine("-----------------------------------------------------------------------");
 
             Console.WriteLine($"/// <summary>");
@@ -53,6 +69,10 @@ namespace ETP.Messages.Generator
             }
 
             Console.WriteLine($"}}");
+        }
+
+        private static void PrintMessageTypes(Dictionary<string, int> protocols, Dictionary<string, Dictionary<string, int>> messagesByProtocol)
+        {
             Console.WriteLine("-----------------------------------------------------------------------");
 
             Console.WriteLine($"/// <summary>");
@@ -89,7 +109,115 @@ namespace ETP.Messages.Generator
             }
 
             Console.WriteLine($"}}");
+        }
 
+        private static void PrintProtocolNames(Dictionary<string, int> protocols)
+        {
+            Console.WriteLine("-----------------------------------------------------------------------");
+
+            Console.WriteLine($"/// <summary>");
+            Console.WriteLine($"/// Provides string representations of ETP protocol names.");
+            Console.WriteLine($"/// </summary>");
+            Console.WriteLine($"public static partial class ProtocolNames");
+            Console.WriteLine($"{{");
+            Console.WriteLine($"    /// <summary>");
+            Console.WriteLine($"    /// The dictionary of protocol names.");
+            Console.WriteLine($"    /// </summary>");
+            Console.WriteLine($"    private static Dictionary<int, string> Names {{ get; }} = new Dictionary<int, string>");
+            Console.WriteLine($"    {{");
+
+            foreach (var protocol in protocols.Keys.OrderBy(k => protocols[k]))
+            {
+                Console.WriteLine($"        [{protocols[protocol]}] = \"{protocol}\",");
+            }
+            Console.WriteLine($"    }};");
+
+            Console.WriteLine($"}}");
+        }
+
+        private static void PrintMessageNames(Dictionary<string, int> protocols, Dictionary<string, Dictionary<string, int>> messagesByProtocol)
+        {
+            Console.WriteLine("-----------------------------------------------------------------------");
+
+            Console.WriteLine($"/// <summary>");
+            Console.WriteLine($"/// Provides string representations of protocol message names.");
+            Console.WriteLine($"/// </summary>");
+            Console.WriteLine($"public static partial class MessageNames");
+            Console.WriteLine($"{{");
+            Console.WriteLine($"    /// <summary>");
+            Console.WriteLine($"    /// The dictionary of protocol names.");
+            Console.WriteLine($"    /// </summary>");
+            Console.WriteLine($"    private static Dictionary<int, Dictionary<int, string>> Names {{ get; }} = new Dictionary<int, Dictionary<int, string>>");
+            Console.WriteLine($"    {{");
+
+            foreach (var protocol in protocols.Keys.OrderBy(k => protocols[k]))
+            {
+                Console.WriteLine($"        [{protocols[protocol]}] = new Dictionary<int, string>");
+                Console.WriteLine($"        {{");
+
+                var messages = messagesByProtocol[protocol];
+
+                foreach (var message in messages.Keys.OrderBy(k => messages[k]))
+                {
+                    Console.WriteLine($"            [{messages[message]}] = \"{message}\",");
+                }
+
+                Console.WriteLine($"        }},");
+
+            }
+            Console.WriteLine($"    }};");
+
+            Console.WriteLine($"}}");
+        }
+
+        private static void PrintMessageReflectionDefinitions(Dictionary<string, int> protocols, Dictionary<string, Dictionary<string, int>> messagesByProtocol, Dictionary<string, Dictionary<string, string>> messageNamespaces)
+        {
+            Console.WriteLine("-----------------------------------------------------------------------");
+
+            Console.WriteLine($"/// <summary>");
+            Console.WriteLine($"/// Provides ETP message information by message type.");
+            Console.WriteLine($"/// </summary>");
+            Console.WriteLine($"public static partial class MessageReflection");
+            Console.WriteLine($"{{");
+            Console.WriteLine($"    /// <summary>");
+            Console.WriteLine($"    /// The hash set of ETP messages.");
+            Console.WriteLine($"    /// </summary>");
+            Console.WriteLine($"    private static Dictionary<Type, int> ProtocolByMessage {{ get; }} = new Dictionary<Type, int>");
+            Console.WriteLine($"    {{");
+
+            foreach (var protocol in protocols.Keys.OrderBy(k => protocols[k]))
+            {
+                var messages = messagesByProtocol[protocol];
+                var namespaces = messageNamespaces[protocol];
+                foreach (var message in messages.Keys.OrderBy(k => messages[k]))
+                {
+                    Console.WriteLine($"        [typeof({namespaces[message]}.{message})] = {protocols[protocol]},");
+                }
+            }
+
+            Console.WriteLine($"    }};");
+
+            Console.WriteLine($"    ");
+
+            Console.WriteLine($"    /// <summary>");
+            Console.WriteLine($"    /// The hash set of ETP messages.");
+            Console.WriteLine($"    /// </summary>");
+            Console.WriteLine($"    private static Dictionary<Type, int> MessageTypeByMessage {{ get; }} = new Dictionary<Type, int>");
+            Console.WriteLine($"    {{");
+
+            foreach (var protocol in protocols.Keys.OrderBy(k => protocols[k]))
+            {
+                var messages = messagesByProtocol[protocol];
+                var namespaces = messageNamespaces[protocol];
+                foreach (var message in messages.Keys.OrderBy(k => messages[k]))
+                {
+                    Console.WriteLine($"        [typeof({namespaces[message]}.{message})] = {messages[message]},");
+                }
+            }
+
+            Console.WriteLine($"    }};");
+
+            Console.WriteLine($"}}");
         }
     }
 }

@@ -17,11 +17,12 @@
 //-----------------------------------------------------------------------
 
 using System.Collections;
+using System.Collections.Generic;
 using Energistics.Etp.Common.Datatypes.Object;
 
 namespace Energistics.Etp.Common.Datatypes.ChannelData
 {
-    public interface IChannelMetadataRecord : Avro.Specific.ISpecificRecord
+    public interface IChannelMetadataRecord : IUuidGuidSource
     {
 	    string ChannelUri { get; set; }
 
@@ -53,8 +54,11 @@ namespace Energistics.Etp.Common.Datatypes.ChannelData
 
         string Uuid { get; set; }
 
-        //IDictionary<string, IDataValue> CustomData { get; set; }
-        IDictionary CustomData { get; set; }
+        IReadOnlyDataValueDictionary CustomData { get; }
+
+        IDataValueDictionary GetOrCreateCustomData();
+
+        void SetCustomDataFrom(IReadOnlyDictionary<string, IDataValue> dictionary);
 
         IDataObject DomainObject { get; set; }
 

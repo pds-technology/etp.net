@@ -18,7 +18,7 @@
 
 namespace Energistics.Etp.Common.Datatypes.ChannelData
 {
-    public interface IChannelStreamingInfo : Avro.Specific.ISpecificRecord
+    public interface IChannelStreamingInfo
     {
         long ChannelId { get; set; }
 

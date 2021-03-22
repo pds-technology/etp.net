@@ -18,8 +18,10 @@
 
 namespace Energistics.Etp.Common.Datatypes
 {
-    public interface IErrorInfo : Avro.Specific.ISpecificRecord
+    public interface IErrorInfo
     {
+        EtpVersion EtpVersion { get; }
+
         int Code { get; set; }
 
         string Message { get; set; }

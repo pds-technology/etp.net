@@ -17,10 +17,11 @@
 //-----------------------------------------------------------------------
 
 using System.Collections;
+using System.Collections.Generic;
 
 namespace Energistics.Etp.Common.Datatypes.ChannelData
 {
-    public interface IIndexMetadataRecord : Avro.Specific.ISpecificRecord
+    public interface IIndexMetadataRecord
     {
         string Mnemonic { get; set; }
 
@@ -44,6 +45,10 @@ namespace Energistics.Etp.Common.Datatypes.ChannelData
 
         string TimeDatum { get; set; }
 
-        IDictionary CustomData { get; set; }
+        IReadOnlyDataValueDictionary CustomData { get; }
+
+        IDataValueDictionary GetOrCreateCustomData();
+
+        void SetCustomDataFrom(IReadOnlyDictionary<string, IDataValue> dictionary);
     }
 }

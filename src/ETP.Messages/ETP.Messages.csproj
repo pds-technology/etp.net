@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <RootNamespace>Energistics.Etp</RootNamespace>
-    <TargetFrameworks>netstandard2.0;net40</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net452</TargetFrameworks>
     <AssemblyTitle>Energistics Transfer Protocol for .NET</AssemblyTitle>
     <Company>Energistics</Company>
     <Product>Energistics Transfer Protocol</Product>
@@ -11,7 +11,7 @@
     <AssemblyVersion>1.6.0.0</AssemblyVersion>
     <FileVersion>1.6.0.0</FileVersion>
     <OutputPath>bin\$(Configuration)\</OutputPath>
-    <Authors>Welly Tambunan, William McKenzie, Bobby Diaz</Authors>
+    <Authors>Welly Tambunan, William McKenzie, Bobby Diaz, Eric Griffith</Authors>
     <PackageIconUrl>https://bitbucket.org/account/energistics/avatar/</PackageIconUrl>
     <PackageId>ETP</PackageId>
     <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0.html</PackageLicenseUrl>

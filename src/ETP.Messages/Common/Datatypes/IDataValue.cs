@@ -18,7 +18,7 @@
 
 namespace Energistics.Etp.Common.Datatypes
 {
-    public interface IDataValue : Avro.Specific.ISpecificRecord
+    public interface IDataValue
     {
         object Item { get; set; }
     }

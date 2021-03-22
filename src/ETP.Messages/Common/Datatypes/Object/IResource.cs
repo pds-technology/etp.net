@@ -20,24 +20,40 @@ using System.Collections.Generic;
 
 namespace Energistics.Etp.Common.Datatypes.Object
 {
-    public interface IResource : Avro.Specific.ISpecificRecord, IDataObjectType
+    public interface IResource : IUuidGuidSource
     {
         string Uri { get; set; }
 
+        IList<string> AlternateUris { get; set; }
+
+        string DataObjectType { get; set; }
+
+        string ContentType { get; set; }
+
         string Name { get; set; }
-
-        bool ChannelSubscribable { get; set; }
-
-        IDictionary<string, IDataValue> CustomData { get; set; }
 
         string ResourceType { get; set; }
 
+        int? SourceCount { get; set; }
+
         int? TargetCount { get; set; }
+
+        int? HasChildren { get; set; }
 
         string Uuid { get; set; }
 
         long? LastChanged { get; set; }
 
-        bool ObjectNotifiable { get; set; }
+        long? StoreLastWrite { get; set; }
+
+        bool? ChannelSubscribable { get; set; }
+
+        bool? ObjectNotifiable { get; set; }
+
+        IReadOnlyDataValueDictionary CustomData { get; }
+
+        IDataValueDictionary GetOrCreateCustomData();
+
+        void SetCustomDataFrom(IReadOnlyDictionary<string, IDataValue> dictionary);
     }
 }
