@@ -22,8 +22,6 @@ namespace Energistics.Etp.Common.Datatypes
 {
     public class GuidGuidSource : IUuidGuidSource
     {
-        private readonly Guid _guid;
-
         public GuidGuidSource(Guid guid)
         {
             UuidGuid = guid;
