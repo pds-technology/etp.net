@@ -39,6 +39,7 @@ namespace Energistics.Etp.Common.Datatypes
                 ["20"] = "2.0",
                 ["21"] = "2.1",
                 ["22"] = "2.2",
+                ["23"] = "2.3",
             },
             ["witsml"] = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
             {
@@ -59,6 +60,7 @@ namespace Energistics.Etp.Common.Datatypes
                 ["11"] = "1.1",
                 ["20"] = "2.0.1",
                 ["21"] = "2.1",
+                ["22"] = "2.2",
             },
 
         };
@@ -70,6 +72,7 @@ namespace Energistics.Etp.Common.Datatypes
                 ["2.0"] = "20",
                 ["2.1"] = "21",
                 ["2.2"] = "22",
+                ["2.3"] = "23",
             },
             ["witsml"] = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
             {
@@ -90,6 +93,7 @@ namespace Energistics.Etp.Common.Datatypes
                 ["1.1"] = "11",
                 ["2.0.1"] = "20",
                 ["2.1"] = "21",
+                ["2.2"] = "22",
             },
 
         };
