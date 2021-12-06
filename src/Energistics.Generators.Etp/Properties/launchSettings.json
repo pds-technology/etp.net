@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Energistics.Generators.Etp": {
+      "commandName": "Project",
+      "commandLineArgs": "v12\\etp.avpr v12"
+    }
+  }
+}

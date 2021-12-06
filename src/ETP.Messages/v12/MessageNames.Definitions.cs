@@ -1,12 +1,12 @@
-//----------------------------------------------------------------------- 
+﻿//-----------------------------------------------------------------------
 // ETP DevKit, 1.2
-//
-// Copyright 2019 Energistics
+// 
+// Copyright 2021 Energistics
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
-//   
+// 
 //     http://www.apache.org/licenses/LICENSE-2.0
 // 
 // Unless required by applicable law or agreed to in writing, software
@@ -14,6 +14,11 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+//-----------------------------------------------------------------------
+// 
+//-----------------------------------------------------------------------
+// This code has been automatically generated.
+// Changes will be lost the next time it is regenerated.
 //-----------------------------------------------------------------------
 
 using System.Collections.Generic;
@@ -26,17 +31,17 @@ namespace Energistics.Etp.v12
     public static partial class MessageNames
     {
         /// <summary>
-        /// The dictionary of protocol names.
+        /// The dictionary of message names.
         /// </summary>
-        private static Dictionary<int, Dictionary<int, string>> Names { get; } = new Dictionary<int, Dictionary<int, string>>
+        public static Dictionary<int, Dictionary<int, string>> Names { get; } = new Dictionary<int, Dictionary<int, string>>()
         {
             [0] = new Dictionary<int, string>
             {
                 [1] = "RequestSession",
                 [2] = "OpenSession",
                 [5] = "CloseSession",
-                [6] = "RenewSecurityToken",
-                [7] = "RenewSecurityTokenResponse",
+                [6] = "Authorize",
+                [7] = "AuthorizeResponse",
                 [8] = "Ping",
                 [9] = "Pong",
                 [1000] = "ProtocolException",
@@ -108,6 +113,8 @@ namespace Energistics.Etp.v12
                 [16] = "PutGrowingDataObjectsHeader",
                 [17] = "PutGrowingDataObjectsHeaderResponse",
                 [18] = "ReplacePartsByRangeResponse",
+                [19] = "GetChangeAnnotations",
+                [20] = "GetChangeAnnotationsResponse",
             },
             [7] = new Dictionary<int, string>
             {

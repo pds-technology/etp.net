@@ -18,7 +18,7 @@
 
 namespace Energistics.Etp.Common.Protocol.Core
 {
-    public interface ICloseSession : Avro.Specific.ISpecificRecord
+    public interface ICloseSession : IEtpMessageBody
     {
         string Reason { get; set; }
     }

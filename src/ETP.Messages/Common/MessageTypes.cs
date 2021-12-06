@@ -31,6 +31,10 @@ namespace Energistics.Etp.Common
             RequestSession = 1,
             OpenSession = 2,
             CloseSession = 5,
+            Authorize = 6,
+            AuthorizeResponse = 7,
+            Ping = 8,
+            Pong = 9,
             ProtocolException = 1000,
             Acknowledge = 1001,
         }

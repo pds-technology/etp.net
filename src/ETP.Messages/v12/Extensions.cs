@@ -21,6 +21,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Energistics.Avro.Encoding;
+using Energistics.Avro.Encoding.Converter;
 using Energistics.Etp.Common;
 using Energistics.Etp.Common.Datatypes;
 using Energistics.Etp.Common.Datatypes.ChannelData;
@@ -39,13 +41,6 @@ namespace Energistics.Etp.v12
         {
             public partial class ChannelMetadataRecord : IChannelMetadataRecord
             {
-                [JsonIgnore]
-                string IChannelMetadataRecord.Uuid
-                {
-                    get { return null; }
-                    set { }
-                }
-
                 [JsonIgnore]
                 long IChannelMetadataRecord.ChannelId
                 {
@@ -133,26 +128,30 @@ namespace Energistics.Etp.v12
 
                 string IChannelMetadataRecord.DataType
                 {
-                    get { return this.DataType.ToString("F"); }
+                    get { return this.DataKind.ToString("F"); }
                     set
                     {
-                        Enum.TryParse<DataValueType>(value, out var dataType);
-                        this.DataType = dataType;
+                        Enum.TryParse<ChannelDataKind>(value, out var dataType);
+                        this.DataKind = dataType;
                     }
                 }
 
-                [JsonIgnore]
-                bool IUuidGuidSource.IsUuidValidGuid => CommonExtensions.IsValidGuid(((IChannelMetadataRecord)this).Uuid);
+                private static readonly Regex _UuidRegex = new Regex(@"[^(]*\(([^)]*)\)", RegexOptions.Compiled | RegexOptions.CultureInvariant);
 
                 [JsonIgnore]
-                string IUuidGuidSource.RawUuid => ((IChannelMetadataRecord)this).Uuid;
+                Guid IUuidSource.Uuid
+                {
+                    get
+                    {
+                        if (Uri == null) return default(Guid);
 
-                [JsonIgnore]
-                Guid IUuidGuidSource.UuidGuid => CommonExtensions.ToGuid(((IChannelMetadataRecord)this).Uuid);
+                        var match = _UuidRegex.Match(Uri);
+                        if (!match.Success)
+                            return default(Guid);
 
-                [JsonIgnore]
-
-                string IUuidGuidSource.DisplayUuid => ((IChannelMetadataRecord)this).Uuid;
+                        return Guid.Parse(match.Groups[1].Value);
+                    }
+                }
             }
 
             public partial class ChannelRangeInfo : IChannelRangeInfo
@@ -259,15 +258,15 @@ namespace Energistics.Etp.v12
                 [JsonIgnore]
                 string IIndexMetadataRecord.Uom
                 {
-                    get { return EnsureInterval().Uom; }
-                    set { EnsureInterval().Uom = value; }
+                    get { return Uom; }
+                    set { Uom = value; }
                 }
 
                 [JsonIgnore]
                 string IIndexMetadataRecord.DepthDatum
                 {
-                    get { return EnsureInterval().DepthDatum; }
-                    set { EnsureInterval().DepthDatum = value; }
+                    get { return DepthDatum; }
+                    set { DepthDatum = value; }
                 }
 
                 [JsonIgnore]
@@ -342,7 +341,7 @@ namespace Energistics.Etp.v12
 
         namespace Object
         {
-            public partial class DataObject : IDataObject, IBlobIdGuidSource
+            public partial class DataObject : IDataObject, IBlobIdSource
             {
                 IResource IDataObject.Resource
                 {
@@ -356,9 +355,6 @@ namespace Energistics.Etp.v12
                     get { return null; }
                     set { }
                 }
-
-                [JsonIgnore]
-                public IUuidGuidSource BlobIdGuid => new UuidGuidSource(BlobId);
             }
 
             public partial class Resource : IResource
@@ -366,26 +362,18 @@ namespace Energistics.Etp.v12
                 private static readonly Regex _UuidRegex = new Regex(@"[^(]*\(([^)]*)\)", RegexOptions.Compiled | RegexOptions.CultureInvariant);
 
                 [JsonIgnore]
-                string IResource.Uuid
+                Guid IUuidSource.Uuid
                 {
                     get
                     {
-                        if (Uri == null) return null;
+                        if (Uri == null) return default(Guid);
 
                         var match = _UuidRegex.Match(Uri);
                         if (!match.Success)
-                            return null;
+                            return default(Guid);
 
-                        return match.Groups[1].Value;
+                        return Guid.Parse(match.Groups[1].Value);
                     }
-                    set { }
-                }
-
-                [JsonIgnore]
-                string IResource.ContentType
-                {
-                    get { return DataObjectType == null ? null : new EtpDataObjectType(DataObjectType).ToContentType(); }
-                    set { DataObjectType = value == null ? null : new EtpContentType(value).ToDataObjectType(); }
                 }
 
                 [JsonIgnore]
@@ -411,30 +399,11 @@ namespace Energistics.Etp.v12
                 }
 
                 [JsonIgnore]
-                long? IResource.LastChanged
-                {
-                    get { return LastChanged; }
-                    set { LastChanged = value ?? 0L; }
-                }
-
-                [JsonIgnore]
-                long? IResource.StoreLastWrite
+                DateTime? IResource.StoreLastWrite
                 {
                     get { return StoreLastWrite; }
-                    set { StoreLastWrite = value ?? 0L; }
+                    set { StoreLastWrite = value ?? AvroConverter.UtcMinDateTime; }
                 }
-
-                [JsonIgnore]
-                bool IUuidGuidSource.IsUuidValidGuid => CommonExtensions.IsValidGuid(((IResource)this).Uuid);
-
-                [JsonIgnore]
-                string IUuidGuidSource.RawUuid => ((IResource)this).Uuid;
-
-                [JsonIgnore]
-                Guid IUuidGuidSource.UuidGuid => CommonExtensions.ToGuid(((IResource)this).Uuid);
-
-                [JsonIgnore]
-                public string DisplayUuid => ((IResource)this).Uuid;
 
                 IReadOnlyDataValueDictionary IResource.CustomData
                 {
@@ -459,10 +428,8 @@ namespace Energistics.Etp.v12
             {
             }
 
-            public partial class SubscriptionInfo : IRequestUuidGuidSource
+            public partial class SubscriptionInfo : IRequestUuidSource
             {
-                [JsonIgnore]
-                public IUuidGuidSource RequestUuidGuid => new UuidGuidSource(RequestUuid);
             }
         }
 
@@ -564,11 +531,32 @@ namespace Energistics.Etp.v12
 
         public partial class Version : IVersion { }
 
-        public partial class Uuid : IUuid { }
-
         public partial class SupportedDataObject : ISupportedDataObject
         {
+            [JsonIgnore]
+            EtpVersion ISupportedDataObject.EtpVersion => EtpVersion.v12;
+
+            [JsonIgnore]
             IDataObjectType ISupportedDataObject.QualifiedType { get { return new EtpDataObjectType(QualifiedType); } set { QualifiedType = value.DataObjectType.ToString(); } }
+
+            [JsonIgnore]
+            IReadOnlyDataValueDictionary ISupportedDataObject.DataObjectCapabilities
+            {
+                get { return DataObjectCapabilities.ToDataValueDictionary(); }
+            }
+
+            IDataValueDictionary ISupportedDataObject.GetOrCreateDataObjectCapabilities()
+            {
+                if (DataObjectCapabilities == null)
+                    DataObjectCapabilities = new Dictionary<string, DataValue>();
+
+                return DataObjectCapabilities.ToDataValueDictionary();
+            }
+
+            void ISupportedDataObject.SetDataObjectCapabilitiesFrom(IReadOnlyDictionary<string, IDataValue> dictionary)
+            {
+                DataObjectCapabilities = dictionary.ToValueDictionary<DataValue>();
+            }
         }
 
         public partial class ServerCapabilities : IServerCapabilities
@@ -614,31 +602,273 @@ namespace Energistics.Etp.v12
     {
         namespace ChannelDataFrame
         {
-            public partial class CancelGetFrame : IRequestUuidGuidSource
+            public partial class CancelGetFrame : IRequestUuidSource
             {
-                [JsonIgnore]
-                public IUuidGuidSource RequestUuidGuid => new UuidGuidSource(RequestUuid);
             }
 
-            public partial class GetFrame : IRequestUuidGuidSource
+            public partial class GetFrame : IRequestUuidSource
             {
-                [JsonIgnore]
-                public IUuidGuidSource RequestUuidGuid => new UuidGuidSource(RequestUuid);
             }
+        }
+
+        namespace ChannelDataLoad
+        {
+            public partial class ReplaceRange
+            {
+                private IEnumerable<ReplaceRange> Split(long targetSize, IAvroByteCounter byteCounter)
+                {
+                    if (Data.Count == 0)
+                        yield return this;
+
+                    var itemCount = 0;
+                    var enumerator = Data.GetEnumerator();
+                    var prevIndexes = Data[0].Indexes.ToList();
+                    var prevIndexCount = prevIndexes.Count;
+                    var first = true;
+
+                    while (itemCount < Data.Count)
+                    {
+                        var copy = new Energistics.Etp.v12.Protocol.ChannelDataLoad.ReplaceRange
+                        {
+                            Data = new List<Energistics.Etp.v12.Datatypes.ChannelData.DataItem>(),
+                        };
+                        var added = false;
+                        byteCounter.Reset();
+                        while (byteCounter.ByteCount < targetSize && itemCount++ < Data.Count)
+                        {
+                            enumerator.MoveNext();
+                            var v = enumerator.Current;
+                            if (!added)
+                            {
+                                added = true;
+                                if (!first)
+                                {
+                                    if (v.Indexes.Count == 0)
+                                    {
+                                        for (int i = 0; i < prevIndexCount; i++)
+                                            v.Indexes.Add(prevIndexes[i]);
+                                    }
+                                    else
+                                    {
+                                        for (int i = 0; i < v.Indexes.Count; i++)
+                                        {
+                                            if (v.Indexes[i].Item == null && i < prevIndexCount)
+                                                v.Indexes[i] = prevIndexes[i];
+                                            else if (i < prevIndexCount)
+                                                prevIndexes[i] = v.Indexes[i];
+                                            else
+                                                prevIndexes.Add(v.Indexes[i]);
+                                        }
+                                    }
+                                    prevIndexCount = v.Indexes.Count;
+                                }
+                                copy.Data.Add(v);
+                                byteCounter.EncodeAvroObject<Energistics.Etp.v12.Protocol.ChannelDataLoad.ReplaceRange>(copy);
+                                first = false;
+                                continue;
+                            }
+                            byteCounter.EncodeArrayItemSeparator();
+                            if (v.Indexes.Count == 0)
+                            {
+                                for (int i = 0; i < prevIndexCount; i++)
+                                    v.Indexes.Add(prevIndexes[i]);
+                            }
+                            else
+                            {
+                                for (int i = 0; i < v.Indexes.Count; i++)
+                                {
+                                    if (v.Indexes[i].Item == null && i < prevIndexCount)
+                                        v.Indexes[i] = prevIndexes[i];
+                                    else if (i < prevIndexCount)
+                                        prevIndexes[i] = v.Indexes[i];
+                                    else
+                                        prevIndexes.Add(v.Indexes[i]);
+                                }
+                            }
+                            prevIndexCount = v.Indexes.Count;
+                            byteCounter.EncodeAvroObject<Energistics.Etp.v12.Datatypes.ChannelData.DataItem>(v);
+                            if (byteCounter.ByteCount <= targetSize)
+                                copy.Data.Add(v);
+                        }
+                        yield return copy;
+                    }
+                }
+            }
+
         }
 
         namespace ChannelSubscribe
         {
-            public partial class CancelGetRanges: IRequestUuidGuidSource
+            public partial class CancelGetRanges: IRequestUuidSource
             {
-                [JsonIgnore]
-                public IUuidGuidSource RequestUuidGuid => new UuidGuidSource(RequestUuid);
             }
 
-            public partial class GetRanges : IRequestUuidGuidSource
+            public partial class GetRanges : IRequestUuidSource
             {
-                [JsonIgnore]
-                public IUuidGuidSource RequestUuidGuid => new UuidGuidSource(RequestUuid);
+            }
+
+            public partial class GetRangesResponse
+            {
+                private IEnumerable<GetRangesResponse> Split(long targetSize, IAvroByteCounter byteCounter)
+                {
+                    if (Data.Count == 0)
+                        yield return this;
+
+                    var itemCount = 0;
+                    var enumerator = Data.GetEnumerator();
+                    var prevIndexes = Data[0].Indexes.ToList();
+                    var prevIndexCount = prevIndexes.Count;
+                    var first = true;
+
+                    while (itemCount < Data.Count)
+                    {
+                        var copy = new Energistics.Etp.v12.Protocol.ChannelSubscribe.GetRangesResponse
+                        {
+                            Data = new List<Energistics.Etp.v12.Datatypes.ChannelData.DataItem>(),
+                        };
+                        var added = false;
+                        byteCounter.Reset();
+                        while (byteCounter.ByteCount < targetSize && itemCount++ < Data.Count)
+                        {
+                            enumerator.MoveNext();
+                            var v = enumerator.Current;
+                            if (!added)
+                            {
+                                added = true;
+                                if (!first)
+                                {
+                                    if (v.Indexes.Count == 0)
+                                    {
+                                        for (int i = 0; i < prevIndexCount; i++)
+                                            v.Indexes.Add(prevIndexes[i]);
+                                    }
+                                    else
+                                    {
+                                        for (int i = 0; i < v.Indexes.Count; i++)
+                                        {
+                                            if (v.Indexes[i].Item == null && i < prevIndexCount)
+                                                v.Indexes[i] = prevIndexes[i];
+                                            else if (i < prevIndexCount)
+                                                prevIndexes[i] = v.Indexes[i];
+                                            else
+                                                prevIndexes.Add(v.Indexes[i]);
+                                        }
+                                    }
+                                    prevIndexCount = v.Indexes.Count;
+                                }
+                                copy.Data.Add(v);
+                                byteCounter.EncodeAvroObject<Energistics.Etp.v12.Protocol.ChannelSubscribe.GetRangesResponse>(copy);
+                                first = false;
+                                continue;
+                            }
+                            byteCounter.EncodeArrayItemSeparator();
+                            if (v.Indexes.Count == 0)
+                            {
+                                for (int i = 0; i < prevIndexCount; i++)
+                                    v.Indexes.Add(prevIndexes[i]);
+                            }
+                            else
+                            {
+                                for (int i = 0; i < v.Indexes.Count; i++)
+                                {
+                                    if (v.Indexes[i].Item == null && i < prevIndexCount)
+                                        v.Indexes[i] = prevIndexes[i];
+                                    else if (i < prevIndexCount)
+                                        prevIndexes[i] = v.Indexes[i];
+                                    else
+                                        prevIndexes.Add(v.Indexes[i]);
+                                }
+                            }
+                            prevIndexCount = v.Indexes.Count;
+                            byteCounter.EncodeAvroObject<Energistics.Etp.v12.Datatypes.ChannelData.DataItem>(v);
+                            if (byteCounter.ByteCount <= targetSize)
+                                copy.Data.Add(v);
+                        }
+                        yield return copy;
+                    }
+                }
+            }
+
+            public partial class RangeReplaced
+            {
+                private IEnumerable<RangeReplaced> Split(long targetSize, IAvroByteCounter byteCounter)
+                {
+                    if (Data.Count == 0)
+                        yield return this;
+
+                    var itemCount = 0;
+                    var enumerator = Data.GetEnumerator();
+                    var prevIndexes = Data[0].Indexes.ToList();
+                    var prevIndexCount = prevIndexes.Count;
+                    var first = true;
+
+                    while (itemCount < Data.Count)
+                    {
+                        var copy = new Energistics.Etp.v12.Protocol.ChannelSubscribe.RangeReplaced
+                        {
+                            Data = new List<Energistics.Etp.v12.Datatypes.ChannelData.DataItem>(),
+                        };
+                        var added = false;
+                        byteCounter.Reset();
+                        while (byteCounter.ByteCount < targetSize && itemCount++ < Data.Count)
+                        {
+                            enumerator.MoveNext();
+                            var v = enumerator.Current;
+                            if (!added)
+                            {
+                                added = true;
+                                if (!first)
+                                {
+                                    if (v.Indexes.Count == 0)
+                                    {
+                                        for (int i = 0; i < prevIndexCount; i++)
+                                            v.Indexes.Add(prevIndexes[i]);
+                                    }
+                                    else
+                                    {
+                                        for (int i = 0; i < v.Indexes.Count; i++)
+                                        {
+                                            if (v.Indexes[i].Item == null && i < prevIndexCount)
+                                                v.Indexes[i] = prevIndexes[i];
+                                            else if (i < prevIndexCount)
+                                                prevIndexes[i] = v.Indexes[i];
+                                            else
+                                                prevIndexes.Add(v.Indexes[i]);
+                                        }
+                                    }
+                                    prevIndexCount = v.Indexes.Count;
+                                }
+                                copy.Data.Add(v);
+                                byteCounter.EncodeAvroObject<Energistics.Etp.v12.Protocol.ChannelSubscribe.RangeReplaced>(copy);
+                                first = false;
+                                continue;
+                            }
+                            byteCounter.EncodeArrayItemSeparator();
+                            if (v.Indexes.Count == 0)
+                            {
+                                for (int i = 0; i < prevIndexCount; i++)
+                                    v.Indexes.Add(prevIndexes[i]);
+                            }
+                            else
+                            {
+                                for (int i = 0; i < v.Indexes.Count; i++)
+                                {
+                                    if (v.Indexes[i].Item == null && i < prevIndexCount)
+                                        v.Indexes[i] = prevIndexes[i];
+                                    else if (i < prevIndexCount)
+                                        prevIndexes[i] = v.Indexes[i];
+                                    else
+                                        prevIndexes.Add(v.Indexes[i]);
+                                }
+                            }
+                            prevIndexCount = v.Indexes.Count;
+                            byteCounter.EncodeAvroObject<Energistics.Etp.v12.Datatypes.ChannelData.DataItem>(v);
+                            if (byteCounter.ByteCount <= targetSize)
+                                copy.Data.Add(v);
+                        }
+                        yield return copy;
+                    }
+                }
             }
         }
 
@@ -675,12 +905,6 @@ namespace Energistics.Etp.v12
 
             public partial class RequestSession : IRequestSession
             {
-                bool IRequestSession.IsClientInstanceIdValid => ClientInstanceId.IsValidGuid();
-
-                string IRequestSession.RawClientInstanceId => new UuidGuidSource(ClientInstanceId).RawUuid;
-
-                Guid IRequestSession.ClientInstanceId { get { return new UuidGuidSource(ClientInstanceId).UuidGuid; } set { ClientInstanceId = value.ToUuid<Uuid>(); } }
-
                 IReadOnlyList<ISupportedProtocol> IRequestSession.RequestedProtocols => new List<ISupportedProtocol>(RequestedProtocols);
 
                 void IRequestSession.SetRequestedProtocolsFrom(IEnumerable<ISupportedProtocol> requestedProtocols)
@@ -716,12 +940,6 @@ namespace Energistics.Etp.v12
 
             public partial class OpenSession : IOpenSession
             {
-                bool IOpenSession.IsServerInstanceIdValid => ServerInstanceId.IsValidGuid();
-
-                string IOpenSession.RawServerInstanceId => new UuidGuidSource(ServerInstanceId).RawUuid;
-
-                Guid IOpenSession.ServerInstanceId { get { return new UuidGuidSource(ServerInstanceId).UuidGuid; } set { ServerInstanceId = value.ToUuid<Uuid>(); } }
-
                 IReadOnlyList<ISupportedProtocol> IOpenSession.SupportedProtocols => new List<ISupportedProtocol>(SupportedProtocols);
 
                 void IOpenSession.SetSupportedProtocolsFrom(IEnumerable<ISupportedProtocol> supportedProtocols)
@@ -735,12 +953,6 @@ namespace Energistics.Etp.v12
                 {
                     SupportedDataObjects = new List<SupportedDataObject>(supportedDataObjects.Select(d => d.ToSupportedDataObject<SupportedDataObject>()));
                 }
-
-                string IOpenSession.RawSessionId => new UuidGuidSource(SessionId).RawUuid;
-
-                bool IOpenSession.IsSessionIdValid => new UuidGuidSource(SessionId).IsUuidValidGuid;
-
-                Guid IOpenSession.SessionId { get { return new UuidGuidSource(SessionId).UuidGuid; } set { SessionId = value.ToUuid<Uuid>(); } }
 
                 IReadOnlyDataValueDictionary IOpenSession.EndpointCapabilities
                 {
@@ -762,134 +974,106 @@ namespace Energistics.Etp.v12
             }
 
             public partial class CloseSession : ICloseSession { }
+
+            public partial class Ping : IPing { }
+
+            public partial class Pong : IPong { }
         }
 
         namespace GrowingObjectNotification
         {
-            public partial class PartsChanged : IRequestUuidGuidSource
+            public partial class PartsChanged : IRequestUuidSource
             {
-                [JsonIgnore]
-                public IUuidGuidSource RequestUuidGuid => new UuidGuidSource(RequestUuid);
             }
 
-            public partial class PartsDeleted : IRequestUuidGuidSource
+            public partial class PartsDeleted : IRequestUuidSource
             {
-                [JsonIgnore]
-                public IUuidGuidSource RequestUuidGuid => new UuidGuidSource(RequestUuid);
             }
 
-            public partial class PartsReplacedByRange : IRequestUuidGuidSource
+            public partial class PartsReplacedByRange : IRequestUuidSource
             {
-                [JsonIgnore]
-                public IUuidGuidSource RequestUuidGuid => new UuidGuidSource(RequestUuid);
             }
 
-            public partial class PartSubscriptionEnded : IRequestUuidGuidSource
+            public partial class PartSubscriptionEnded : IRequestUuidSource
             {
-                [JsonIgnore]
-                public IUuidGuidSource RequestUuidGuid => new UuidGuidSource(RequestUuid);
             }
 
-            public partial class UnsubscribePartNotification : IRequestUuidGuidSource
+            public partial class UnsubscribePartNotification : IRequestUuidSource
             {
-                [JsonIgnore]
-                public IUuidGuidSource RequestUuidGuid => new UuidGuidSource(RequestUuid);
             }
         }
 
         namespace Store
         {
-            public partial class Chunk : IBlobIdGuidSource
+            public partial class Chunk : IBlobIdSource
             {
                 [JsonIgnore]
-                public IUuidGuidSource BlobIdGuid => new UuidGuidSource(BlobId);
+                Guid? IBlobIdSource.BlobId => BlobId;
             }
         }
 
         namespace StoreNotification
         {
-            public partial class Chunk : IBlobIdGuidSource
+            public partial class Chunk : IBlobIdSource
             {
                 [JsonIgnore]
-                public IUuidGuidSource BlobIdGuid => new UuidGuidSource(BlobId);
+                Guid? IBlobIdSource.BlobId => BlobId;
             }
 
-            public partial class ObjectAccessRevoked : IRequestUuidGuidSource
+            public partial class ObjectAccessRevoked : IRequestUuidSource
             {
-                [JsonIgnore]
-                public IUuidGuidSource RequestUuidGuid => new UuidGuidSource(RequestUuid);
             }
 
-            public partial class ObjectActiveStatusChanged : IRequestUuidGuidSource
+            public partial class ObjectActiveStatusChanged : IRequestUuidSource
             {
-                [JsonIgnore]
-                public IUuidGuidSource RequestUuidGuid => new UuidGuidSource(RequestUuid);
             }
 
-            public partial class ObjectChanged : IRequestUuidGuidSource
+            public partial class ObjectChanged : IRequestUuidSource
             {
-                [JsonIgnore]
-                public IUuidGuidSource RequestUuidGuid => new UuidGuidSource(RequestUuid);
             }
 
-            public partial class ObjectDeleted : IRequestUuidGuidSource
+            public partial class ObjectDeleted : IRequestUuidSource
             {
-                [JsonIgnore]
-                public IUuidGuidSource RequestUuidGuid => new UuidGuidSource(RequestUuid);
             }
 
-            public partial class SubscriptionEnded : IRequestUuidGuidSource
+            public partial class SubscriptionEnded : IRequestUuidSource
             {
-                [JsonIgnore]
-                public IUuidGuidSource RequestUuidGuid => new UuidGuidSource(RequestUuid);
             }
 
-            public partial class UnsubscribeNotifications : IRequestUuidGuidSource
+            public partial class UnsubscribeNotifications : IRequestUuidSource
             {
-                [JsonIgnore]
-                public IUuidGuidSource RequestUuidGuid => new UuidGuidSource(RequestUuid);
             }
         }
 
         namespace StoreQuery
         {
-            public partial class Chunk : IBlobIdGuidSource
+            public partial class Chunk : IBlobIdSource
             {
                 [JsonIgnore]
-                public IUuidGuidSource BlobIdGuid => new UuidGuidSource(BlobId);
+                Guid? IBlobIdSource.BlobId => BlobId;
             }
         }
 
         namespace Transaction
         {
-            public partial class CommitTransaction : ITransactionUuidGuidSource
+            public partial class CommitTransaction : ITransactionUuidSource
             {
-                [JsonIgnore]
-                public IUuidGuidSource TransactionUuidGuid => new UuidGuidSource(TransactionUuid);
             }
 
-            public partial class CommitTransactionResponse : ITransactionUuidGuidSource
+            public partial class CommitTransactionResponse : ITransactionUuidSource
             {
-                [JsonIgnore]
-                public IUuidGuidSource TransactionUuidGuid => new UuidGuidSource(TransactionUuid);
             }
 
-            public partial class RollbackTransaction : ITransactionUuidGuidSource
+            public partial class RollbackTransaction : ITransactionUuidSource
             {
-                [JsonIgnore]
-                public IUuidGuidSource TransactionUuidGuid => new UuidGuidSource(TransactionUuid);
             }
 
-            public partial class RollbackTransactionResponse : ITransactionUuidGuidSource
+            public partial class RollbackTransactionResponse : ITransactionUuidSource
             {
-                [JsonIgnore]
-                public IUuidGuidSource TransactionUuidGuid => new UuidGuidSource(TransactionUuid);
             }
 
-            public partial class StartTransactionResponse : ITransactionUuidGuidSource
+            public partial class StartTransactionResponse : ITransactionUuidSource
             {
-                [JsonIgnore]
-                public IUuidGuidSource TransactionUuidGuid => new UuidGuidSource(TransactionUuid);
             }
         }
     }

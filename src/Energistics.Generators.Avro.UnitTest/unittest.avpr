@@ -1,0 +1,103 @@
+{
+  "namespace": "Energistics.Avro.Encoding.TestObjects",
+  "protocol": "TestObjects",
+  "version": "1.2",
+  "types": [
+    {
+      "type": "fixed",
+      "namespace": "Energistics.Avro.Encoding.TestObjects",
+      "name": "TestFixed",
+      "size": 4
+    },
+    {
+      "type": "enum",
+      "namespace": "Energistics.Avro.Encoding.TestObjects",
+      "name": "TestEnum",
+      "symbols": [
+        "value1",
+        "value2",
+        "value3",
+        "value4",
+        "value5"
+      ]
+    },
+    {
+      "type": "record",
+      "namespace": "Energistics.Avro.Encoding.TestObjects",
+      "name": "TestSimpleRecord",
+      "fields": [
+        {
+          "name": "test",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "type": "record",
+      "namespace": "Energistics.Avro.Encoding.TestObjects",
+      "name": "TestComplexRecord",
+      "fields": [
+        {
+          "name": "test",
+          "type": "string"
+        },
+        {
+          "name": "test2",
+          "type": "int"
+        }
+      ]
+    },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "emptyRecord", "fields": [] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "booleanRecord", "fields": [ { "name": "boolean", "type": "boolean" } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "intRecord", "fields": [ { "name": "int", "type": "int" } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "longRecord", "fields": [ { "name": "long", "type": "long" } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "floatRecord", "fields": [ { "name": "float", "type": "float" } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "doubleRecord", "fields": [ { "name": "double", "type": "double" } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "stringRecord", "fields": [ { "name": "string", "type": "string" } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "bytesRecord", "fields": [ { "name": "bytes", "type": "bytes" } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "enumRecord", "fields": [ { "name": "enum", "type": "Energistics.Avro.Encoding.TestObjects.TestEnum" } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "fixedRecord", "fields": [ { "name": "fixed", "type": "Energistics.Avro.Encoding.TestObjects.TestFixed" } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "recordRecord", "fields": [ { "name": "record", "type": "Energistics.Avro.Encoding.TestObjects.TestSimpleRecord" } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "arrayOfBooleanRecord", "fields": [ { "name": "arrayOfBoolean", "type": { "type": "array", "items": "boolean" } } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "arrayOfIntRecord", "fields": [ { "name": "arrayOfInt", "type": { "type": "array", "items": "int" } } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "arrayOfLongRecord", "fields": [ { "name": "arrayOfLong", "type": { "type": "array", "items": "long" } } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "arrayOfFloatRecord", "fields": [ { "name": "arrayOfFloat", "type": { "type": "array", "items": "float" } } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "arrayOfDoubleRecord", "fields": [ { "name": "arrayOfDouble", "type": { "type": "array", "items": "double" } } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "arrayOfStringRecord", "fields": [ { "name": "arrayOfString", "type": { "type": "array", "items": "string" } } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "arrayOfBytesRecord", "fields": [ { "name": "arrayOfBytes", "type": { "type": "array", "items": "bytes" } } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "arrayOfEnumRecord", "fields": [ { "name": "arrayOfEnum", "type": { "type": "array", "items": "Energistics.Avro.Encoding.TestObjects.TestEnum" } } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "arrayOfFixedRecord", "fields": [ { "name": "arrayOfFixed", "type": { "type": "array", "items": "Energistics.Avro.Encoding.TestObjects.TestFixed" } } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "arrayOfRecordRecord", "fields": [ { "name": "arrayOfRecord", "type": { "type": "array", "items": "Energistics.Avro.Encoding.TestObjects.TestSimpleRecord" } } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "mapOfBooleanRecord", "fields": [ { "name": "mapOfBoolean", "type": { "type": "map", "values": "boolean" } } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "mapOfIntRecord", "fields": [ { "name": "mapOfInt", "type": { "type": "map", "values": "int" } } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "mapOfLongRecord", "fields": [ { "name": "mapOfLong", "type": { "type": "map", "values": "long" } } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "mapOfFloatRecord", "fields": [ { "name": "mapOfFloat", "type": { "type": "map", "values": "float" } } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "mapOfDoubleRecord", "fields": [ { "name": "mapOfDouble", "type": { "type": "map", "values": "double" } } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "mapOfStringRecord", "fields": [ { "name": "mapOfString", "type": { "type": "map", "values": "string" } } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "mapOfBytesRecord", "fields": [ { "name": "mapOfBytes", "type": { "type": "map", "values": "bytes" } } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "mapOfEnumRecord", "fields": [ { "name": "mapOfEnum", "type": { "type": "map", "values": "Energistics.Avro.Encoding.TestObjects.TestEnum" } } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "mapOfFixedRecord", "fields": [ { "name": "mapOfFixed", "type": { "type": "map", "values": "Energistics.Avro.Encoding.TestObjects.TestFixed" } } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "mapOfRecordRecord", "fields": [ { "name": "mapOfRecord", "type": { "type": "map", "values": "Energistics.Avro.Encoding.TestObjects.TestSimpleRecord" } } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "nullableBooleanNullFirstRecord", "fields": [ { "name": "nullableBooleanNullFirst", "type": [ "null", "boolean" ] } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "nullableIntNullFirstRecord", "fields": [ { "name": "nullableIntNullFirst", "type": [ "null", "int" ] } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "nullableLongNullFirstRecord", "fields": [ { "name": "nullableLongNullFirst", "type": [ "null", "long" ] } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "nullableFloatNullFirstRecord", "fields": [ { "name": "nullableFloatNullFirst", "type": [ "null", "float" ] } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "nullableDoubleNullFirstRecord", "fields": [ { "name": "nullableDoubleNullFirst", "type": [ "null", "double" ] } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "nullableStringNullFirstRecord", "fields": [ { "name": "nullableStringNullFirst", "type": [ "null", "string" ] } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "nullableBytesNullFirstRecord", "fields": [ { "name": "nullableBytesNullFirst", "type": [ "null", "bytes" ] } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "nullableEnumNullFirstRecord", "fields": [ { "name": "nullableEnumNullFirst", "type": [ "null", "Energistics.Avro.Encoding.TestObjects.TestEnum" ] } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "nullableFixedNullFirstRecord", "fields": [ { "name": "nullableFixedNullFirst", "type": [ "null", "Energistics.Avro.Encoding.TestObjects.TestFixed" ] } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "nullableRecordNullFirstRecord", "fields": [ { "name": "nullableRecordNullFirst", "type": [ "null", "Energistics.Avro.Encoding.TestObjects.TestSimpleRecord" ] } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "nullableBooleanValueFirstRecord", "fields": [ { "name": "nullableBooleanValueFirst", "type": [ "boolean", "null" ] } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "nullableIntValueFirstRecord", "fields": [ { "name": "nullableIntValueFirst", "type": [ "int", "null" ] } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "nullableLongValueFirstRecord", "fields": [ { "name": "nullableLongValueFirst", "type": [ "long", "null" ] } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "nullableFloatValueFirstRecord", "fields": [ { "name": "nullableFloatValueFirst", "type": [ "float", "null" ] } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "nullableDoubleValueFirstRecord", "fields": [ { "name": "nullableDoubleValueFirst", "type": [ "double", "null" ] } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "nullableStringValueFirstRecord", "fields": [ { "name": "nullableStringValueFirst", "type": [ "string", "null" ] } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "nullableBytesValueFirstRecord", "fields": [ { "name": "nullableBytesValueFirst", "type": [ "bytes", "null" ] } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "nullableEnumValueFirstRecord", "fields": [ { "name": "nullableEnumValueFirst", "type": [ "Energistics.Avro.Encoding.TestObjects.TestEnum", "null" ] } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "nullableFixedValueFirstRecord", "fields": [ { "name": "nullableFixedValueFirst", "type": [ "Energistics.Avro.Encoding.TestObjects.TestFixed", "null" ] } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "nullableRecordValueFirstRecord", "fields": [ { "name": "nullableRecordValueFirst", "type": [ "Energistics.Avro.Encoding.TestObjects.TestSimpleRecord", "null" ] } ] },
+    { "type": "record", "namespace": "Energistics.Avro.Encoding.TestObjects", "name": "choiceOfIntArrayMapEnumFixedRecordRecord", "fields": [ { "name": "choiceOfIntArrayMapEnumFixedRecord", "type": [ "int", { "type": "array", "items": "int" }, { "type": "map", "values": "int" }, "Energistics.Avro.Encoding.TestObjects.TestEnum", "Energistics.Avro.Encoding.TestObjects.TestFixed", "Energistics.Avro.Encoding.TestObjects.TestSimpleRecord" ] } ] }
+  ]
+}

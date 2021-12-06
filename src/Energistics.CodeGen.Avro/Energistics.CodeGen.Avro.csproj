@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Energistics.Avro.Schemas\Energistics.Avro.Schemas.csproj" />
+    <ProjectReference Include="..\Energistics.CodeGen\Energistics.CodeGen.csproj" />
+    <ProjectReference Include="..\Energistics.Json\Energistics.Json.csproj" />
+  </ItemGroup>
+
+</Project>

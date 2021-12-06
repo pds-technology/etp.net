@@ -20,7 +20,7 @@ using System.Collections.Generic;
 
 namespace Energistics.Etp.Common.Datatypes
 {
-    public interface IMessageHeaderExtension : Avro.Specific.ISpecificRecord
+    public interface IMessageHeaderExtension : IEtpRecord
     {
         IReadOnlyDataValueDictionary Extension { get; }
 

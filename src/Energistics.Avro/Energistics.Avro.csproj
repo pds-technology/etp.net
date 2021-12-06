@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net5.0;netstandard2.0;net452;net48</TargetFrameworks>
+    <AssemblyTitle>Energistics Avro Implementation</AssemblyTitle>
+    <AssemblyName>Energistics.Avro</AssemblyName>
+    <RootNamespace>Energistics.Avro</RootNamespace>
+    <Authors>Eric Griffith</Authors>
+    <Company>Energistics</Company>
+    <Product>Energistics Avro</Product>
+    <Description>The Energistics implementation of the subset of Apache's Avro data serialization system necessary to support the Energistics Transfer Protocol (ETP).</Description>
+    <Copyright>Copyright © 2021</Copyright>
+    <PackageProjectUrl>https://bitbucket.org/energistics/etp.net</PackageProjectUrl>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Energistics.Json\Energistics.Json.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="..\..\License.txt">
+      <Link>License.txt</Link>
+    </Resource>
+  </ItemGroup>
+</Project>

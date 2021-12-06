@@ -22,15 +22,11 @@ using System.Collections.Generic;
 
 namespace Energistics.Etp.Common.Protocol.Core
 {
-    public interface IOpenSession : Avro.Specific.ISpecificRecord
+    public interface IOpenSession : IEtpMessageBody
     {
         string ApplicationName { get; set; }
 
         string ApplicationVersion { get; set; }
-
-        bool IsServerInstanceIdValid { get; }
-
-        string RawServerInstanceId { get; }
 
         Guid ServerInstanceId { get; set; }
 
@@ -46,13 +42,11 @@ namespace Energistics.Etp.Common.Protocol.Core
 
         IList<string> SupportedFormats { get; set; }
 
-        string RawSessionId { get; }
-
-        bool IsSessionIdValid { get; }
-
         Guid SessionId { get; set; }
 
-        long CurrentDateTime { get; set; }
+        DateTime CurrentDateTime { get; set; }
+
+        DateTime EarliestRetainedChangeTime { get; set; }
 
         IReadOnlyDataValueDictionary EndpointCapabilities { get; }
 

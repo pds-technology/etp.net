@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net5.0;netstandard2.0;net452;net48</TargetFrameworks>
+		<AssemblyTitle>Energistics Avro Schema Implementation</AssemblyTitle>
+		<AssemblyName>Energistics.Avro.Schemas</AssemblyName>
+		<RootNamespace>Energistics.Avro.Schemas</RootNamespace>
+		<Authors>Eric Griffith</Authors>
+		<Company>Energistics</Company>
+		<Product>Energistics Avro</Product>
+		<Description>The Energistics implementation of the subset of Apache's Avro data serialization system schema support necessary to support the Energistics Transfer Protocol (ETP).</Description>
+		<Copyright>Copyright © 2021</Copyright>
+		<PackageProjectUrl>https://bitbucket.org/energistics/etp.net</PackageProjectUrl>
+	</PropertyGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net452'">
+		<PackageReference Include="System.ValueTuple" Version="4.5.0" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<ProjectReference Include="..\Energistics.Json\Energistics.Json.csproj" />
+	</ItemGroup>
+
+</Project>

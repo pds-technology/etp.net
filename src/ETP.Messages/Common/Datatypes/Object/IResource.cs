@@ -16,19 +16,16 @@
 // limitations under the License.
 //-----------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 
 namespace Energistics.Etp.Common.Datatypes.Object
 {
-    public interface IResource : IUuidGuidSource
+    public interface IResource : IUuidSource
     {
         string Uri { get; set; }
 
         IList<string> AlternateUris { get; set; }
-
-        string DataObjectType { get; set; }
-
-        string ContentType { get; set; }
 
         string Name { get; set; }
 
@@ -40,11 +37,9 @@ namespace Energistics.Etp.Common.Datatypes.Object
 
         int? HasChildren { get; set; }
 
-        string Uuid { get; set; }
+        DateTime LastChanged { get; set; }
 
-        long? LastChanged { get; set; }
-
-        long? StoreLastWrite { get; set; }
+        DateTime? StoreLastWrite { get; set; }
 
         bool? ChannelSubscribable { get; set; }
 

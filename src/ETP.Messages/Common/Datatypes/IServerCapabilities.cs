@@ -16,11 +16,12 @@
 // limitations under the License.
 //-----------------------------------------------------------------------
 
+using Energistics.Avro;
 using System.Collections.Generic;
 
 namespace Energistics.Etp.Common.Datatypes
 {
-    public interface IServerCapabilities
+    public interface IServerCapabilities : IAvroRecord
     {
         string ApplicationName { get; set; }
 

@@ -1,12 +1,12 @@
-﻿//----------------------------------------------------------------------- 
+﻿//-----------------------------------------------------------------------
 // ETP DevKit, 1.2
-//
-// Copyright 2019 Energistics
+// 
+// Copyright 2021 Energistics
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
-//   
+// 
 //     http://www.apache.org/licenses/LICENSE-2.0
 // 
 // Unless required by applicable law or agreed to in writing, software
@@ -14,6 +14,11 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+//-----------------------------------------------------------------------
+// 
+//-----------------------------------------------------------------------
+// This code has been automatically generated.
+// Changes will be lost the next time it is regenerated.
 //-----------------------------------------------------------------------
 
 namespace Energistics.Etp.v11
@@ -35,7 +40,7 @@ namespace Energistics.Etp.v11
             ProtocolException = 1000,
             Acknowledge = 1001,
         }
-
+        
         /// <summary>
         /// An enumeration of ChannelStreaming protocol message types.
         /// </summary>
@@ -52,7 +57,7 @@ namespace Energistics.Etp.v11
             ChannelRangeRequest = 9,
             ChannelStatusChange = 10,
         }
-
+        
         /// <summary>
         /// An enumeration of ChannelDataFrame protocol message types.
         /// </summary>
@@ -62,7 +67,7 @@ namespace Energistics.Etp.v11
             ChannelMetadata = 3,
             ChannelDataFrameSet = 4,
         }
-
+        
         /// <summary>
         /// An enumeration of Discovery protocol message types.
         /// </summary>
@@ -71,7 +76,7 @@ namespace Energistics.Etp.v11
             GetResources = 1,
             GetResourcesResponse = 2,
         }
-
+        
         /// <summary>
         /// An enumeration of Store protocol message types.
         /// </summary>
@@ -82,7 +87,7 @@ namespace Energistics.Etp.v11
             DeleteObject = 3,
             Object = 4,
         }
-
+        
         /// <summary>
         /// An enumeration of StoreNotification protocol message types.
         /// </summary>
@@ -93,7 +98,7 @@ namespace Energistics.Etp.v11
             DeleteNotification = 3,
             CancelNotification = 4,
         }
-
+        
         /// <summary>
         /// An enumeration of GrowingObject protocol message types.
         /// </summary>
@@ -106,7 +111,7 @@ namespace Energistics.Etp.v11
             GrowingObjectPut = 5,
             ObjectFragment = 6,
         }
-
+        
         /// <summary>
         /// An enumeration of DataArray protocol message types.
         /// </summary>
@@ -118,7 +123,7 @@ namespace Energistics.Etp.v11
             PutDataArray = 4,
             PutDataArraySlice = 5,
         }
-
+        
         /// <summary>
         /// An enumeration of WitsmlSoap protocol message types.
         /// </summary>

@@ -151,23 +151,6 @@ namespace Energistics.Etp.Common
 			SwapBytes(guid, 6, 7);
 		}
 
-		/// <summary>
-		/// Gets the GUID bytes in swapped order.
-		/// </summary>
-		/// <param name="guid">The bytes to swap.</param>
-		/// <returns>The swapped bytes.</returns>
-		public static byte[] GetSwappedBytes(byte[] guid)
-        {
-			if (guid == null || guid.Length != 16)
-				return null;
-
-			var swappedBytes = new byte[16];
-			Buffer.BlockCopy(guid, 0, swappedBytes, 0, 16);
-			SwapByteOrder(swappedBytes);
-
-			return swappedBytes;
-        }
-
 		private static void SwapBytes(byte[] guid, int left, int right)
 		{
 			byte temp = guid[left];

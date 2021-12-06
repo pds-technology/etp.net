@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net5.0;netstandard2.0;net452;net48</TargetFrameworks>
+    <AssemblyTitle>Energistics JSON Implementation</AssemblyTitle>
+    <AssemblyName>Energistics.Json</AssemblyName>
+    <RootNamespace>Energistics.Json</RootNamespace>
+    <Authors>Eric Griffith</Authors>
+    <Company>Energistics</Company>
+    <Product>Energistics Avro</Product>
+    <Description>The Energistics implementation of the JSON Data Interchange Standard (https://www.json.org) to support the Energistics Transfer Protocol (ETP).</Description>
+    <Copyright>Copyright © 2021</Copyright>
+    <PackageProjectUrl>https://bitbucket.org/energistics/etp.net</PackageProjectUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+  </ItemGroup>
+
+</Project>

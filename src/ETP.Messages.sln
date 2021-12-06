@@ -1,16 +1,60 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30523.141
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ETP.Messages", "ETP.Messages\ETP.Messages.csproj", "{1A788A14-70D7-4B2B-96A3-086C86D0C925}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8CFE180C-9B23-4C9B-9C35-1FA4BF0775DB} = {8CFE180C-9B23-4C9B-9C35-1FA4BF0775DB}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{F2A5F0A9-DA71-46CA-B7EB-ADC7A6FDAD62}"
 	ProjectSection(SolutionItems) = preProject
 		tools\UpdatePackageHintPaths.ps1 = tools\UpdatePackageHintPaths.ps1
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ETP.Messages.Generator", "ETP.Messages.Generator\ETP.Messages.Generator.csproj", "{10D8E6E4-D267-4EE7-B908-8DFD87D4A83B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Energistics.Avro", "Energistics.Avro\Energistics.Avro.csproj", "{C20A8DB6-0AB1-465B-A878-EDACFE9B2C0C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7A0AEFC3-F643-4F5B-9D55-2D275BDEDE36} = {7A0AEFC3-F643-4F5B-9D55-2D275BDEDE36}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Energistics.Avro.UnitTest", "Energistics.Avro.UnitTest\Energistics.Avro.UnitTest.csproj", "{091BF5C6-7238-475A-B1EE-436F4925596F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C105B2E7-7372-45A7-A764-0600EB72C327} = {C105B2E7-7372-45A7-A764-0600EB72C327}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Energistics.Json.IntegrationTest", "Energistics.Json.IntegrationTest\Energistics.Json.IntegrationTest.csproj", "{95E8AC50-A75E-4670-9773-F94BCC425947}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Energistics.Json", "Energistics.Json\Energistics.Json.csproj", "{2434C487-6952-437D-B20F-DF0647C0C992}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9691F01A-9A50-4460-B9A8-6CB2776969C5} = {9691F01A-9A50-4460-B9A8-6CB2776969C5}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Energistics.CodeGen", "Energistics.CodeGen\Energistics.CodeGen.csproj", "{3A354053-2E97-47D1-B24A-847AB37F7C57}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Energistics.CodeGen.Json", "Energistics.CodeGen.Json\Energistics.CodeGen.Json.csproj", "{9691F01A-9A50-4460-B9A8-6CB2776969C5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Energistics.Generators.Json", "Energistics.Generators.Json\Energistics.Generators.Json.csproj", "{FFF6AD92-0598-49E2-8980-74FC69CA0803}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CodeGen", "CodeGen", "{044A655D-A7F5-4015-A09D-D61CC65B393A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Energistics.CodeGen.Avro", "Energistics.CodeGen.Avro\Energistics.CodeGen.Avro.csproj", "{7A0AEFC3-F643-4F5B-9D55-2D275BDEDE36}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Energistics.Generators.Avro", "Energistics.Generators.Avro\Energistics.Generators.Avro.csproj", "{A79C349C-91C2-4BA8-8A80-8E96A5FE368F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Energistics.Avro.Schemas", "Energistics.Avro.Schemas\Energistics.Avro.Schemas.csproj", "{8B0E16FE-24B0-4C85-B96C-D9141A81DFE9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Energistics.CodeGen.Etp", "Energistics.CodeGen.Etp\Energistics.CodeGen.Etp.csproj", "{CC783460-3B33-41C8-AB7F-AAFC88E87144}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Energistics.Generators.Etp", "Energistics.Generators.Etp\Energistics.Generators.Etp.csproj", "{8CFE180C-9B23-4C9B-9C35-1FA4BF0775DB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A79C349C-91C2-4BA8-8A80-8E96A5FE368F} = {A79C349C-91C2-4BA8-8A80-8E96A5FE368F}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Energistics.Generators.Avro.UnitTest", "Energistics.Generators.Avro.UnitTest\Energistics.Generators.Avro.UnitTest.csproj", "{C105B2E7-7372-45A7-A764-0600EB72C327}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A79C349C-91C2-4BA8-8A80-8E96A5FE368F} = {A79C349C-91C2-4BA8-8A80-8E96A5FE368F}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,13 +66,71 @@ Global
 		{1A788A14-70D7-4B2B-96A3-086C86D0C925}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A788A14-70D7-4B2B-96A3-086C86D0C925}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A788A14-70D7-4B2B-96A3-086C86D0C925}.Release|Any CPU.Build.0 = Release|Any CPU
-		{10D8E6E4-D267-4EE7-B908-8DFD87D4A83B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{10D8E6E4-D267-4EE7-B908-8DFD87D4A83B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{10D8E6E4-D267-4EE7-B908-8DFD87D4A83B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{10D8E6E4-D267-4EE7-B908-8DFD87D4A83B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C20A8DB6-0AB1-465B-A878-EDACFE9B2C0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C20A8DB6-0AB1-465B-A878-EDACFE9B2C0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C20A8DB6-0AB1-465B-A878-EDACFE9B2C0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C20A8DB6-0AB1-465B-A878-EDACFE9B2C0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{091BF5C6-7238-475A-B1EE-436F4925596F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{091BF5C6-7238-475A-B1EE-436F4925596F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{091BF5C6-7238-475A-B1EE-436F4925596F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{091BF5C6-7238-475A-B1EE-436F4925596F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95E8AC50-A75E-4670-9773-F94BCC425947}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95E8AC50-A75E-4670-9773-F94BCC425947}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95E8AC50-A75E-4670-9773-F94BCC425947}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95E8AC50-A75E-4670-9773-F94BCC425947}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2434C487-6952-437D-B20F-DF0647C0C992}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2434C487-6952-437D-B20F-DF0647C0C992}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2434C487-6952-437D-B20F-DF0647C0C992}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2434C487-6952-437D-B20F-DF0647C0C992}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A354053-2E97-47D1-B24A-847AB37F7C57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A354053-2E97-47D1-B24A-847AB37F7C57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A354053-2E97-47D1-B24A-847AB37F7C57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A354053-2E97-47D1-B24A-847AB37F7C57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9691F01A-9A50-4460-B9A8-6CB2776969C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9691F01A-9A50-4460-B9A8-6CB2776969C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9691F01A-9A50-4460-B9A8-6CB2776969C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9691F01A-9A50-4460-B9A8-6CB2776969C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFF6AD92-0598-49E2-8980-74FC69CA0803}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFF6AD92-0598-49E2-8980-74FC69CA0803}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFF6AD92-0598-49E2-8980-74FC69CA0803}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFF6AD92-0598-49E2-8980-74FC69CA0803}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A0AEFC3-F643-4F5B-9D55-2D275BDEDE36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A0AEFC3-F643-4F5B-9D55-2D275BDEDE36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A0AEFC3-F643-4F5B-9D55-2D275BDEDE36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A0AEFC3-F643-4F5B-9D55-2D275BDEDE36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A79C349C-91C2-4BA8-8A80-8E96A5FE368F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A79C349C-91C2-4BA8-8A80-8E96A5FE368F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A79C349C-91C2-4BA8-8A80-8E96A5FE368F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A79C349C-91C2-4BA8-8A80-8E96A5FE368F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B0E16FE-24B0-4C85-B96C-D9141A81DFE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B0E16FE-24B0-4C85-B96C-D9141A81DFE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B0E16FE-24B0-4C85-B96C-D9141A81DFE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B0E16FE-24B0-4C85-B96C-D9141A81DFE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC783460-3B33-41C8-AB7F-AAFC88E87144}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC783460-3B33-41C8-AB7F-AAFC88E87144}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC783460-3B33-41C8-AB7F-AAFC88E87144}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC783460-3B33-41C8-AB7F-AAFC88E87144}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CFE180C-9B23-4C9B-9C35-1FA4BF0775DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CFE180C-9B23-4C9B-9C35-1FA4BF0775DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CFE180C-9B23-4C9B-9C35-1FA4BF0775DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CFE180C-9B23-4C9B-9C35-1FA4BF0775DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C105B2E7-7372-45A7-A764-0600EB72C327}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C105B2E7-7372-45A7-A764-0600EB72C327}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C105B2E7-7372-45A7-A764-0600EB72C327}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C105B2E7-7372-45A7-A764-0600EB72C327}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3A354053-2E97-47D1-B24A-847AB37F7C57} = {044A655D-A7F5-4015-A09D-D61CC65B393A}
+		{9691F01A-9A50-4460-B9A8-6CB2776969C5} = {044A655D-A7F5-4015-A09D-D61CC65B393A}
+		{FFF6AD92-0598-49E2-8980-74FC69CA0803} = {044A655D-A7F5-4015-A09D-D61CC65B393A}
+		{7A0AEFC3-F643-4F5B-9D55-2D275BDEDE36} = {044A655D-A7F5-4015-A09D-D61CC65B393A}
+		{A79C349C-91C2-4BA8-8A80-8E96A5FE368F} = {044A655D-A7F5-4015-A09D-D61CC65B393A}
+		{CC783460-3B33-41C8-AB7F-AAFC88E87144} = {044A655D-A7F5-4015-A09D-D61CC65B393A}
+		{8CFE180C-9B23-4C9B-9C35-1FA4BF0775DB} = {044A655D-A7F5-4015-A09D-D61CC65B393A}
+		{C105B2E7-7372-45A7-A764-0600EB72C327} = {044A655D-A7F5-4015-A09D-D61CC65B393A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B262A9C8-8379-44C7-A3BD-B43FC6FE72CD}

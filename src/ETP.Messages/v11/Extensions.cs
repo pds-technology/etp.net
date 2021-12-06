@@ -20,6 +20,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Energistics.Avro.Encoding.Converter;
 using Energistics.Etp.Common;
 using Energistics.Etp.Common.Datatypes;
 using Energistics.Etp.Common.Datatypes.ChannelData;
@@ -84,17 +85,9 @@ namespace Energistics.Etp.v11
                     set { }
                 }
 
-                [JsonIgnore]
-                bool IUuidGuidSource.IsUuidValidGuid => CommonExtensions.IsValidGuid(Uuid);
 
                 [JsonIgnore]
-                string IUuidGuidSource.RawUuid => Uuid;
-
-                [JsonIgnore]
-                Guid IUuidGuidSource.UuidGuid => CommonExtensions.ToGuid(Uuid);
-
-                [JsonIgnore]
-                string IUuidGuidSource.DisplayUuid => Uuid;
+                Guid IUuidSource.Uuid => Uuid ?? default(Guid);
             }
 
             public partial class ChannelRangeInfo : IChannelRangeInfo
@@ -215,12 +208,12 @@ namespace Energistics.Etp.v11
 
             internal class ChannelDescribeSubscription : IChannelDescribeSubscription
             {
-                public ChannelDescribeSubscription(Guid namespaceId) { NamespaceId = namespaceId; }
+                public ChannelDescribeSubscription(Guid namespaceId) { NamespaceId = namespaceId;  }
                 public Guid NamespaceId { get; }
 
                 public string Uri { get; set; }
 
-                public IUuidGuidSource RequestUuidGuid => new HashedStringGuidSource(NamespaceId, Uri);
+                public Guid RequestUuid => GuidUtility.Create(NamespaceId, Uri);
             }
         }
 
@@ -258,13 +251,6 @@ namespace Energistics.Etp.v11
                 }
 
                 [JsonIgnore]
-                long? IResource.LastChanged
-                {
-                    get { return LastChanged < 0 ? (long?) null : LastChanged; }
-                    set { LastChanged = value ?? -1; }
-                }
-
-                [JsonIgnore]
                 bool? IResource.ObjectNotifiable
                 {
                     get { return ObjectNotifiable; }
@@ -279,26 +265,10 @@ namespace Energistics.Etp.v11
                 }
 
                 [JsonIgnore]
-                long? IResource.StoreLastWrite {  get { return null; } set { } }
+                DateTime? IResource.StoreLastWrite {  get { return null; } set { } }
 
                 [JsonIgnore]
-                string IResource.DataObjectType
-                {
-                    get { return ContentType == null ? null : new EtpContentType(ContentType).ToDataObjectType(); }
-                    set { ContentType = value == null ? null : new EtpDataObjectType(value).ToContentType(); }
-                }
-
-                [JsonIgnore]
-                public bool IsUuidValidGuid => CommonExtensions.IsValidGuid(Uuid);
-
-                [JsonIgnore]
-                public string RawUuid => Uuid;
-
-                [JsonIgnore]
-                public Guid UuidGuid => CommonExtensions.ToGuid(Uuid);
-
-                [JsonIgnore]
-                public string DisplayUuid => Uuid;
+                Guid IUuidSource.Uuid => Uuid ?? default(Guid);
 
                 IReadOnlyDataValueDictionary IResource.CustomData
                 {
@@ -319,10 +289,10 @@ namespace Energistics.Etp.v11
                 }
             }
 
-            public partial class NotificationRequestRecord : IRequestUuidGuidSource
+            public partial class NotificationRequestRecord : IRequestUuidSource
             {
                 [JsonIgnore]
-                public IUuidGuidSource RequestUuidGuid => new StringGuidSource(Uuid);
+                public Guid RequestUuid => Uuid;
             }
         }
 
@@ -395,9 +365,26 @@ namespace Energistics.Etp.v11
 
         public class SupportedDataObject : ISupportedDataObject
         {
+            [JsonIgnore]
+            EtpVersion ISupportedDataObject.EtpVersion => EtpVersion.v11;
+
+            [JsonIgnore]
             public IDataObjectType QualifiedType { get; set; }
 
-            public IList<string> DataObjectCapabilities { get { return new List<string>(); } set { } }
+            [JsonIgnore]
+            IReadOnlyDataValueDictionary ISupportedDataObject.DataObjectCapabilities
+            {
+                get { return new EtpDataValueDictionaryWrapper<DataValue>(); }
+            }
+
+            IDataValueDictionary ISupportedDataObject.GetOrCreateDataObjectCapabilities()
+            {
+                return new EtpDataValueDictionaryWrapper<DataValue>();
+            }
+
+            void ISupportedDataObject.SetDataObjectCapabilitiesFrom(IReadOnlyDictionary<string, IDataValue> dictionary)
+            {
+            }
         }
 
         public partial class ServerCapabilities : IServerCapabilities
@@ -468,10 +455,6 @@ namespace Energistics.Etp.v11
 
             public partial class RequestSession : IRequestSession
             {
-                bool IRequestSession.IsClientInstanceIdValid => true;
-
-                string IRequestSession.RawClientInstanceId => null;
-
                 Guid IRequestSession.ClientInstanceId { get { return default(Guid); } set { } }
 
                 IReadOnlyList<ISupportedProtocol> IRequestSession.RequestedProtocols => new List<ISupportedProtocol>(RequestedProtocols);
@@ -492,7 +475,11 @@ namespace Energistics.Etp.v11
 
                 IList<string> IRequestSession.SupportedFormats { get { return new List<string> { Formats.Xml }; } set { } }
 
-                long IRequestSession.CurrentDateTime { get { return 0; } set { } }
+                DateTime IRequestSession.CurrentDateTime { get { return AvroConverter.UtcMinDateTime; } set { } }
+
+                DateTime IRequestSession.EarliestRetainedChangeTime { get { return AvroConverter.UtcMinDateTime; } set { } }
+
+                bool IRequestSession.ServerAuthorizationRequired { get { return false; } set { } }
 
                 IReadOnlyDataValueDictionary IRequestSession.EndpointCapabilities
                 {
@@ -511,10 +498,6 @@ namespace Energistics.Etp.v11
 
             public partial class OpenSession : IOpenSession
             {
-                bool IOpenSession.IsServerInstanceIdValid => true;
-
-                string IOpenSession.RawServerInstanceId => null;
-
                 Guid IOpenSession.ServerInstanceId { get { return default(Guid); } set { } }
 
                 IReadOnlyList<ISupportedProtocol> IOpenSession.SupportedProtocols => new List<ISupportedProtocol>(SupportedProtocols);
@@ -531,18 +514,13 @@ namespace Energistics.Etp.v11
                     SupportedObjects = new List<string>(supportedDataObjects.Select(d => d.QualifiedType.ContentType.ToString()));
                 }
 
-
-                string IOpenSession.RawSessionId => new StringGuidSource(SessionId).RawUuid;
-
-                bool IOpenSession.IsSessionIdValid => new StringGuidSource(SessionId).IsUuidValidGuid;
-
-                Guid IOpenSession.SessionId { get { return new StringGuidSource(SessionId).UuidGuid; } set { SessionId = value.ToString(); } }
-
                 string IOpenSession.SupportedCompression { get { return null; } set { } }
 
                 IList<string> IOpenSession.SupportedFormats { get { return new List<string> { Formats.Xml }; } set { } }
 
-                long IOpenSession.CurrentDateTime { get { return 0; } set { } }
+                DateTime IOpenSession.CurrentDateTime { get { return AvroConverter.UtcMinDateTime; } set { } }
+
+                DateTime IOpenSession.EarliestRetainedChangeTime { get { return AvroConverter.UtcMinDateTime; } set { } }
 
                 IReadOnlyDataValueDictionary IOpenSession.EndpointCapabilities
                 {
@@ -590,10 +568,8 @@ namespace Energistics.Etp.v11
 
         namespace StoreNotification
         {
-            public partial class CancelNotification : IRequestUuidGuidSource
+            public partial class CancelNotification : IRequestUuidSource
             {
-                [JsonIgnore]
-                public IUuidGuidSource RequestUuidGuid => new StringGuidSource(RequestUuid);
             }
         }
     }

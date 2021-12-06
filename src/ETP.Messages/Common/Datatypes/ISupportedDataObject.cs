@@ -22,8 +22,14 @@ namespace Energistics.Etp.Common.Datatypes
 {
     public interface ISupportedDataObject
     {
+        EtpVersion EtpVersion { get; }
+
         IDataObjectType QualifiedType { get; set; }
 
-        IList<string> DataObjectCapabilities { get; set; }
+        IReadOnlyDataValueDictionary DataObjectCapabilities { get; }
+
+        IDataValueDictionary GetOrCreateDataObjectCapabilities();
+
+        void SetDataObjectCapabilitiesFrom(IReadOnlyDictionary<string, IDataValue> dictionary);
     }
 }

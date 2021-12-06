@@ -18,7 +18,7 @@
 
 namespace Energistics.Etp.Common.Protocol.Core
 {
-    public interface IAcknowledge : Avro.Specific.ISpecificRecord
+    public interface IAcknowledge : IEtpMessageBody
     {
     }
 }

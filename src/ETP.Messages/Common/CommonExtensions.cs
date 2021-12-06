@@ -16,6 +16,7 @@
 // limitations under the License.
 //-----------------------------------------------------------------------
 
+using Energistics.Avro.Encoding.Converter;
 using Energistics.Etp.Common.Datatypes;
 using Energistics.Etp.Common.Datatypes.DataArrayTypes;
 using System;
@@ -29,89 +30,24 @@ namespace Energistics.Etp.Common
     public static class CommonExtensions
     {
         /// <summary>
-        /// Converts an <see cref="IUuid"/> instance to a UUID with a concrete type.
+        /// Gets the maximum of an array of timestamps.
         /// </summary>
-        /// <typeparam name="TUuid">The concrete UUID type.</typeparam>
-        /// <param name="uuid">The <see cref="IUuid"/> to convert</param>
-        /// <returns>The converted UUID.</returns>
-        public static TUuid ToUuid<TUuid>(this IUuid uuid)
-            where TUuid : class, IUuid, new()
+        /// <param name="timestamps">The array of timestamps.</param>
+        /// <returns>The maximum timestamp in the array.</returns>
+        public static DateTime Max(params DateTime[] timestamps)
         {
-            return uuid == null
-                ? null
-                : uuid as TUuid ?? new TUuid { Value = uuid.Value };
-        }
+            var max = AvroConverter.UtcMinDateTime;
 
-        /// <summary>
-        /// Checks if the UUID can be converted to a valid <see cref="Guid"/> instance.
-        /// </summary>
-        /// <param name="uuid">The UUID.</param>
-        /// <returns><c>true</c> if the UUID can be converted to a valid <see cref="Guid"/> instance; <c>false</c> otherwise.</returns>
-        public static bool IsValidGuid(this IUuid uuid)
-        {
-            return uuid?.Value?.Length == 16;
-        }
+            if (timestamps == null || timestamps.Length == 0)
+                return AvroConverter.UtcMinDateTime;
 
-        /// <summary>
-        /// Checks if the string can be converted to a valid <see cref="Guid"/> instance.
-        /// </summary>
-        /// <param name="uuid">The string.</param>
-        /// <returns><c>true</c> if the string can be converted to a valid <see cref="Guid"/> instance; <c>false</c> otherwise.</returns>
-        public static bool IsValidGuid(string uuid)
-        {
-            return string.IsNullOrEmpty(uuid) ? false : Guid.TryParse(uuid, out _);
-        }
-
-        /// <summary>
-        /// Converts the UUID to a <see cref="Guid"/> instance.
-        /// </summary>
-        /// <param name="uuid">The UUID.</param>
-        /// <returns>A new <see cref="Guid"/> instance.</returns>
-        public static Guid ToGuid(this IUuid uuid)
-        {
-            return !uuid.IsValidGuid()
-                 ? default(Guid)
-                 : new Guid(GuidUtility.GetSwappedBytes(uuid.Value));
-        }
-
-        /// <summary>
-        /// Converts the string to a <see cref="Guid"/> instance.
-        /// </summary>
-        /// <param name="uuid">The string.</param>
-        /// <returns>A new <see cref="Guid"/> instance.</returns>
-        public static Guid ToGuid(string uuid)
-        {
-            if (string.IsNullOrEmpty(uuid))
-                return default(Guid);
-
-            Guid guid;
-            Guid.TryParse(uuid, out guid);
-            return guid;
-        }
-
-        /// <summary>
-        /// Converts the UUID to a base64 encoded string
-        /// </summary>
-        /// <param name="uuid">The UUID.</param>
-        /// <returns>The base64 encoded string representation of the UUID.</returns>
-        public static string ToBase64String(this IUuid uuid)
-        {
-            return Convert.ToBase64String(uuid?.Value ?? new byte[0]);
-        }
-
-        /// <summary>
-        /// Converts the <see cref="Guid"/> to a UUID instance.
-        /// </summary>
-        /// <typeparam name="TUuid">The concrete UUID type.</typeparam>
-        /// <param name="guid">The unique identifier.</param>
-        /// <returns>A new UUID instance.</returns>
-        public static TUuid ToUuid<TUuid>(this Guid guid)
-            where TUuid : class, IUuid, new()
-        {
-            return new TUuid
+            for (int i = 0; i < timestamps.Length; i++)
             {
-                Value = GuidUtility.GetSwappedBytes(guid.ToByteArray()),
-            };
+                if (timestamps[i] > max)
+                    max = timestamps[i];
+            }
+
+            return max;
         }
 
         /// <summary>
@@ -315,9 +251,9 @@ namespace Energistics.Etp.Common
             var converted = new TSupportedDataObject
             {
                 QualifiedType = supportedDataObject.QualifiedType,
-                DataObjectCapabilities = supportedDataObject.DataObjectCapabilities,
             };
 
+            converted.SetDataObjectCapabilitiesFrom(supportedDataObject.DataObjectCapabilities);
             return converted;
         }
 

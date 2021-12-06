@@ -1,6 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
+﻿//-----------------------------------------------------------------------
+// ETP DevKit, 1.2
+// 
+// Copyright 2021 Energistics
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+//     http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//-----------------------------------------------------------------------
+// 
+//-----------------------------------------------------------------------
+// This code has been automatically generated.
+// Changes will be lost the next time it is regenerated.
+//-----------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
 
 namespace Energistics.Etp.v12
 {
@@ -10,15 +32,15 @@ namespace Energistics.Etp.v12
     public static partial class MessageReflection
     {
         /// <summary>
-        /// The hash set of ETP messages.
+        /// The dictionary of ETP protocols by message type.
         /// </summary>
-        private static Dictionary<Type, int> ProtocolByMessage { get; } = new Dictionary<Type, int>
+        public static Dictionary<Type, int> ProtocolByMessage { get; } = new Dictionary<Type, int>()
         {
             [typeof(Energistics.Etp.v12.Protocol.Core.RequestSession)] = 0,
             [typeof(Energistics.Etp.v12.Protocol.Core.OpenSession)] = 0,
             [typeof(Energistics.Etp.v12.Protocol.Core.CloseSession)] = 0,
-            [typeof(Energistics.Etp.v12.Protocol.Core.RenewSecurityToken)] = 0,
-            [typeof(Energistics.Etp.v12.Protocol.Core.RenewSecurityTokenResponse)] = 0,
+            [typeof(Energistics.Etp.v12.Protocol.Core.Authorize)] = 0,
+            [typeof(Energistics.Etp.v12.Protocol.Core.AuthorizeResponse)] = 0,
             [typeof(Energistics.Etp.v12.Protocol.Core.Ping)] = 0,
             [typeof(Energistics.Etp.v12.Protocol.Core.Pong)] = 0,
             [typeof(Energistics.Etp.v12.Protocol.Core.ProtocolException)] = 0,
@@ -72,6 +94,8 @@ namespace Energistics.Etp.v12
             [typeof(Energistics.Etp.v12.Protocol.GrowingObject.PutGrowingDataObjectsHeader)] = 6,
             [typeof(Energistics.Etp.v12.Protocol.GrowingObject.PutGrowingDataObjectsHeaderResponse)] = 6,
             [typeof(Energistics.Etp.v12.Protocol.GrowingObject.ReplacePartsByRangeResponse)] = 6,
+            [typeof(Energistics.Etp.v12.Protocol.GrowingObject.GetChangeAnnotations)] = 6,
+            [typeof(Energistics.Etp.v12.Protocol.GrowingObject.GetChangeAnnotationsResponse)] = 6,
             [typeof(Energistics.Etp.v12.Protocol.GrowingObjectNotification.PartsChanged)] = 7,
             [typeof(Energistics.Etp.v12.Protocol.GrowingObjectNotification.PartsDeleted)] = 7,
             [typeof(Energistics.Etp.v12.Protocol.GrowingObjectNotification.UnsubscribePartNotification)] = 7,
@@ -151,17 +175,16 @@ namespace Energistics.Etp.v12
             [typeof(Energistics.Etp.v12.PrivateProtocols.WitsmlSoap.WMLS_UpdateInStore)] = 2100,
             [typeof(Energistics.Etp.v12.PrivateProtocols.WitsmlSoap.WMLS_UpdateInStoreResponse)] = 2100,
         };
-
         /// <summary>
-        /// The hash set of ETP messages.
+        /// The dictionary of ETP message types by message type.
         /// </summary>
-        private static Dictionary<Type, int> MessageTypeByMessage { get; } = new Dictionary<Type, int>
+        public static Dictionary<Type, int> MessageTypeByMessage { get; } = new Dictionary<Type, int>()
         {
             [typeof(Energistics.Etp.v12.Protocol.Core.RequestSession)] = 1,
             [typeof(Energistics.Etp.v12.Protocol.Core.OpenSession)] = 2,
             [typeof(Energistics.Etp.v12.Protocol.Core.CloseSession)] = 5,
-            [typeof(Energistics.Etp.v12.Protocol.Core.RenewSecurityToken)] = 6,
-            [typeof(Energistics.Etp.v12.Protocol.Core.RenewSecurityTokenResponse)] = 7,
+            [typeof(Energistics.Etp.v12.Protocol.Core.Authorize)] = 6,
+            [typeof(Energistics.Etp.v12.Protocol.Core.AuthorizeResponse)] = 7,
             [typeof(Energistics.Etp.v12.Protocol.Core.Ping)] = 8,
             [typeof(Energistics.Etp.v12.Protocol.Core.Pong)] = 9,
             [typeof(Energistics.Etp.v12.Protocol.Core.ProtocolException)] = 1000,
@@ -215,6 +238,8 @@ namespace Energistics.Etp.v12
             [typeof(Energistics.Etp.v12.Protocol.GrowingObject.PutGrowingDataObjectsHeader)] = 16,
             [typeof(Energistics.Etp.v12.Protocol.GrowingObject.PutGrowingDataObjectsHeaderResponse)] = 17,
             [typeof(Energistics.Etp.v12.Protocol.GrowingObject.ReplacePartsByRangeResponse)] = 18,
+            [typeof(Energistics.Etp.v12.Protocol.GrowingObject.GetChangeAnnotations)] = 19,
+            [typeof(Energistics.Etp.v12.Protocol.GrowingObject.GetChangeAnnotationsResponse)] = 20,
             [typeof(Energistics.Etp.v12.Protocol.GrowingObjectNotification.PartsChanged)] = 2,
             [typeof(Energistics.Etp.v12.Protocol.GrowingObjectNotification.PartsDeleted)] = 3,
             [typeof(Energistics.Etp.v12.Protocol.GrowingObjectNotification.UnsubscribePartNotification)] = 4,

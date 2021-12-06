@@ -18,7 +18,7 @@
 
 namespace Energistics.Etp.Common.Datatypes.ChannelData
 {
-    public interface IChannelDescribeSubscription : IRequestUuidGuidSource
+    public interface IChannelDescribeSubscription : IRequestUuidSource
     {
         string Uri { get; }
     }

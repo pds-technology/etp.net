@@ -20,7 +20,7 @@ using System;
 
 namespace Energistics.Etp.Common.Datatypes
 {
-    public interface IMessageHeader : Avro.Specific.ISpecificRecord
+    public interface IMessageHeader : IEtpRecord
     {
         EtpVersion EtpVersion { get; }
 

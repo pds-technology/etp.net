@@ -1,4 +1,27 @@
-﻿using System;
+﻿//-----------------------------------------------------------------------
+// ETP DevKit, 1.2
+// 
+// Copyright 2021 Energistics
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+//     http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//-----------------------------------------------------------------------
+// 
+//-----------------------------------------------------------------------
+// This code has been automatically generated.
+// Changes will be lost the next time it is regenerated.
+//-----------------------------------------------------------------------
+
+using System;
 using System.Collections.Generic;
 
 namespace Energistics.Etp.v11
@@ -9,9 +32,9 @@ namespace Energistics.Etp.v11
     public static partial class MessageReflection
     {
         /// <summary>
-        /// The hash set of ETP messages.
+        /// The dictionary of ETP protocols by message type.
         /// </summary>
-        private static Dictionary<Type, int> ProtocolByMessage { get; } = new Dictionary<Type, int>
+        public static Dictionary<Type, int> ProtocolByMessage { get; } = new Dictionary<Type, int>()
         {
             [typeof(Energistics.Etp.v11.Protocol.Core.RequestSession)] = 0,
             [typeof(Energistics.Etp.v11.Protocol.Core.OpenSession)] = 0,
@@ -68,11 +91,10 @@ namespace Energistics.Etp.v11
             [typeof(Energistics.Etp.v11.Protocol.WitsmlSoap.WMLS_UpdateInStore)] = 8,
             [typeof(Energistics.Etp.v11.Protocol.WitsmlSoap.WMSL_UpdateInStoreResponse)] = 8,
         };
-
         /// <summary>
-        /// The hash set of ETP messages.
+        /// The dictionary of ETP message types by message type.
         /// </summary>
-        private static Dictionary<Type, int> MessageTypeByMessage { get; } = new Dictionary<Type, int>
+        public static Dictionary<Type, int> MessageTypeByMessage { get; } = new Dictionary<Type, int>()
         {
             [typeof(Energistics.Etp.v11.Protocol.Core.RequestSession)] = 1,
             [typeof(Energistics.Etp.v11.Protocol.Core.OpenSession)] = 2,

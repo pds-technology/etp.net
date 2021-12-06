@@ -1,12 +1,12 @@
-﻿//----------------------------------------------------------------------- 
+﻿//-----------------------------------------------------------------------
 // ETP DevKit, 1.2
-//
-// Copyright 2019 Energistics
+// 
+// Copyright 2021 Energistics
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
-//   
+// 
 //     http://www.apache.org/licenses/LICENSE-2.0
 // 
 // Unless required by applicable law or agreed to in writing, software
@@ -14,6 +14,11 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+//-----------------------------------------------------------------------
+// 
+//-----------------------------------------------------------------------
+// This code has been automatically generated.
+// Changes will be lost the next time it is regenerated.
 //-----------------------------------------------------------------------
 
 namespace Energistics.Etp.v12
@@ -31,14 +36,14 @@ namespace Energistics.Etp.v12
             RequestSession = 1,
             OpenSession = 2,
             CloseSession = 5,
-            RenewSecurityToken = 6,
-            RenewSecurityTokenResponse = 7,
+            Authorize = 6,
+            AuthorizeResponse = 7,
             Ping = 8,
             Pong = 9,
             ProtocolException = 1000,
             Acknowledge = 1001,
         }
-
+        
         /// <summary>
         /// An enumeration of ChannelStreaming protocol message types.
         /// </summary>
@@ -50,7 +55,7 @@ namespace Energistics.Etp.v12
             StopStreaming = 4,
             TruncateChannels = 5,
         }
-
+        
         /// <summary>
         /// An enumeration of ChannelDataFrame protocol message types.
         /// </summary>
@@ -63,7 +68,7 @@ namespace Energistics.Etp.v12
             CancelGetFrame = 5,
             GetFrameResponseRows = 6,
         }
-
+        
         /// <summary>
         /// An enumeration of Discovery protocol message types.
         /// </summary>
@@ -75,7 +80,7 @@ namespace Energistics.Etp.v12
             GetDeletedResourcesResponse = 6,
             GetResourcesEdgesResponse = 7,
         }
-
+        
         /// <summary>
         /// An enumeration of Store protocol message types.
         /// </summary>
@@ -89,7 +94,7 @@ namespace Energistics.Etp.v12
             PutDataObjectsResponse = 9,
             DeleteDataObjectsResponse = 10,
         }
-
+        
         /// <summary>
         /// An enumeration of StoreNotification protocol message types.
         /// </summary>
@@ -106,7 +111,7 @@ namespace Energistics.Etp.v12
             SubscribeNotificationsResponse = 10,
             ObjectActiveStatusChanged = 11,
         }
-
+        
         /// <summary>
         /// An enumeration of GrowingObject protocol message types.
         /// </summary>
@@ -128,8 +133,10 @@ namespace Energistics.Etp.v12
             PutGrowingDataObjectsHeader = 16,
             PutGrowingDataObjectsHeaderResponse = 17,
             ReplacePartsByRangeResponse = 18,
+            GetChangeAnnotations = 19,
+            GetChangeAnnotationsResponse = 20,
         }
-
+        
         /// <summary>
         /// An enumeration of GrowingObjectNotification protocol message types.
         /// </summary>
@@ -144,7 +151,7 @@ namespace Energistics.Etp.v12
             UnsolicitedPartNotifications = 9,
             SubscribePartNotificationsResponse = 10,
         }
-
+        
         /// <summary>
         /// An enumeration of DataArray protocol message types.
         /// </summary>
@@ -163,7 +170,7 @@ namespace Energistics.Etp.v12
             PutDataSubarraysResponse = 11,
             PutUninitializedDataArraysResponse = 12,
         }
-
+        
         /// <summary>
         /// An enumeration of DiscoveryQuery protocol message types.
         /// </summary>
@@ -172,7 +179,7 @@ namespace Energistics.Etp.v12
             FindResources = 1,
             FindResourcesResponse = 2,
         }
-
+        
         /// <summary>
         /// An enumeration of StoreQuery protocol message types.
         /// </summary>
@@ -182,7 +189,7 @@ namespace Energistics.Etp.v12
             FindDataObjectsResponse = 2,
             Chunk = 3,
         }
-
+        
         /// <summary>
         /// An enumeration of GrowingObjectQuery protocol message types.
         /// </summary>
@@ -191,7 +198,7 @@ namespace Energistics.Etp.v12
             FindParts = 1,
             FindPartsResponse = 2,
         }
-
+        
         /// <summary>
         /// An enumeration of Transaction protocol message types.
         /// </summary>
@@ -204,7 +211,7 @@ namespace Energistics.Etp.v12
             CommitTransactionResponse = 5,
             RollbackTransactionResponse = 6,
         }
-
+        
         /// <summary>
         /// An enumeration of ChannelSubscribe protocol message types.
         /// </summary>
@@ -225,7 +232,7 @@ namespace Energistics.Etp.v12
             GetChangeAnnotations = 14,
             GetChangeAnnotationsResponse = 15,
         }
-
+        
         /// <summary>
         /// An enumeration of ChannelDataLoad protocol message types.
         /// </summary>
@@ -241,7 +248,7 @@ namespace Energistics.Etp.v12
             TruncateChannels = 9,
             TruncateChannelsResponse = 10,
         }
-
+        
         /// <summary>
         /// An enumeration of Dataspace protocol message types.
         /// </summary>
@@ -254,7 +261,7 @@ namespace Energistics.Etp.v12
             DeleteDataspacesResponse = 5,
             PutDataspacesResponse = 6,
         }
-
+        
         /// <summary>
         /// An enumeration of SupportedTypes protocol message types.
         /// </summary>
@@ -263,7 +270,7 @@ namespace Energistics.Etp.v12
             GetSupportedTypes = 1,
             GetSupportedTypesResponse = 2,
         }
-
+        
         /// <summary>
         /// An enumeration of WitsmlSoap protocol message types.
         /// </summary>

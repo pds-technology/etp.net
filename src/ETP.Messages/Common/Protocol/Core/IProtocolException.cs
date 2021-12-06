@@ -18,7 +18,7 @@
 
 namespace Energistics.Etp.Common.Protocol.Core
 {
-    public interface IProtocolException : Avro.Specific.ISpecificRecord
+    public interface IProtocolException : IEtpMessageBody
     {
         int ErrorCode { get; set; }
 

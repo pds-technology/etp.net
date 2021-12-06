@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Energistics.CodeGen.Etp\Energistics.CodeGen.Etp.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="v11\etp.avpr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="v12\etp.avpr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="dotnet $(TargetPath) v11\etp.avpr v11 Energistics Energistics.Etp.v11&#xD;&#xA;dotnet $(TargetPath) v12\etp.avpr v12" />
+  </Target>
+
+</Project>

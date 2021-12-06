@@ -22,7 +22,7 @@ using Energistics.Etp.Common.Datatypes.Object;
 
 namespace Energistics.Etp.Common.Datatypes.ChannelData
 {
-    public interface IChannelMetadataRecord : IUuidGuidSource
+    public interface IChannelMetadataRecord : IUuidSource
     {
 	    string ChannelUri { get; set; }
 
@@ -49,10 +49,6 @@ namespace Energistics.Etp.Common.Datatypes.ChannelData
         string ContentType { get; set; }
 
         string Source { get; set; }
-
-        string MeasureClass { get; set; }
-
-        string Uuid { get; set; }
 
         IReadOnlyDataValueDictionary CustomData { get; }
 

@@ -6,10 +6,10 @@
     <Company>Energistics</Company>
     <Product>Energistics Transfer Protocol</Product>
     <Description>The Energistics Transfer Protocol (ETP) is a specification for an asynchronous message-based data transfer standard used by the Energistics family data formats.</Description>
-    <Copyright>Copyright © 2019</Copyright>
-    <Version>1.6.0-dev20</Version>
-    <AssemblyVersion>1.6.0.0</AssemblyVersion>
-    <FileVersion>1.6.0.0</FileVersion>
+    <Copyright>Copyright © 2021</Copyright>
+    <Version>2.0</Version>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>2.0.0.0</FileVersion>
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <Authors>Welly Tambunan, William McKenzie, Bobby Diaz, Eric Griffith</Authors>
     <PackageIconUrl>https://bitbucket.org/account/energistics/avatar/</PackageIconUrl>
@@ -26,23 +26,21 @@
     <DebugType>pdbonly</DebugType>
   </PropertyGroup>
   <ItemGroup Condition="'$(TargetFramework)' != 'net452'">
-    <PackageReference Include="Apache.Avro" Version="1.10.2" />
     <PackageReference Include="log4net" Version="2.0.12" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'net452'">
-    <PackageReference Include="Apache.Avro" Version="1.9.0" />
     <PackageReference Include="log4net" Version="2.0.10" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Energistics.Avro\Energistics.Avro.csproj" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="..\..\License.txt">
       <Link>License.txt</Link>
     </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Remove="v11\Datatypes\Protocols.cs" />
   </ItemGroup>
 </Project>

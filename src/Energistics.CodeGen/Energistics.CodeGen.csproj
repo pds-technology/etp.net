@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyTitle>Energistics Code Generation Functionality</AssemblyTitle>
+    <AssemblyName>Energistics.CodeGen</AssemblyName>
+    <RootNamespace>Energistics.CodeGen</RootNamespace>
+    <Authors>Eric Griffith</Authors>
+    <Company>Energistics</Company>
+    <Product>Energistics CodeGen</Product>
+    <Description>Code generation functionality to support the Energistics Transfer Protocol (ETP).</Description>
+    <Copyright>Copyright © 2021</Copyright>
+  </PropertyGroup>
+
+</Project>
