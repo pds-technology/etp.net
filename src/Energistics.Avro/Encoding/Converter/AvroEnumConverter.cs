@@ -85,7 +85,7 @@ namespace Energistics.Avro.Encoding.Converter
         /// </summary>
         /// <param name="index">The enum index value to check.</param>
         /// <returns><c>true</c> if the value index is valid; <c>false</c> otherwise.</returns>
-        private static bool IsValidIndex(int index) => index >= 0 && index < MaxEnumValue;
+        private static bool IsValidIndex(int index) => index >= 0 && index <= MaxEnumValue;
 
         /// <summary>
         /// Checks if the specified enum value is valid.
