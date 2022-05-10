@@ -106,6 +106,7 @@ namespace Energistics.Avro.Encoding.Json
         {
             TopArrayEnumerator.Dispose();
             ArrayEnumerators.Pop();
+            TopArrayEnumerator = ArrayEnumerators.Count > 0 ? ArrayEnumerators.Peek() : null;
         }
 
         private void PushMapEnumerator(IEnumerator<KeyValuePair<string, Token>> enumerator)
@@ -126,6 +127,7 @@ namespace Energistics.Avro.Encoding.Json
         {
             TopMapEnumerator.Dispose();
             MapEnumerators.Pop();
+            TopMapEnumerator = MapEnumerators.Count > 0 ? MapEnumerators.Peek() : null;
         }
 
         public TEnum DecodeEnum<TEnum>() where TEnum : struct, System.Enum => AvroEnumConverter<TEnum>.StringToEnum(DecodeString());
